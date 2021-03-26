@@ -5,4 +5,9 @@ pipeline <- function(pipeline_data = FALSE,
       dat0001_bioregions()
     }
 
+    if (pipeline_format) {
+      # Area of interest
+      fmt_aoi()
+
+    }
 }
