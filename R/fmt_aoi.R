@@ -15,8 +15,9 @@ fmt_aoi <- function() {
                         layer = 'DFO_Marine_Bioregions')
 
   # Select Scotian Shelf bioregion
-  uid <- "11. Scotian Shelf / Plate-forme Scotian"
-  aoi <- bioregions[bioregions$Legend == uid, ]
+  uid <- c("11. Scotian Shelf / Plate-forme Scotian",
+           "10. Newfoundland-Labrador Shelves / Plates-formes de Terre-Neuve et du Labrador")
+  aoi <- bioregions[bioregions$Legend %in% uid, ]
 
   # Export
   save(aoi, file = './data/aoi.RData')
