@@ -20,7 +20,8 @@
 README.html
 
 # Project-specific files ----
-data/
-output/
-share/
+data/data-raw/
+data/data-format/
+data/data-output/
+analysis/
 clean/
