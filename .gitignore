@@ -23,10 +23,4 @@ README.html
 data/
 output/
 share/
-
-# Data-specific files that cannot be shared ----
-analysis/data/cv/habitats/alevinage/alevinage_mffp/
-analysis/data/cv/habitats/frayere/frayere_mffp/
-analysis/data/cv/habitats/espece_statut/espece_statut_mffp/
-analysis/data/stresseurs/deversements/deversement_gcc/20210223_Demande_UL.csv
-analysis/data/stresseurs/deversements/deversement_gcc/20210223_Demande_UL.xlsx
+clean/
