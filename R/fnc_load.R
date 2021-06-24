@@ -2,7 +2,7 @@
 #'
 #' The function imports data available in `./data/data-format/` regardless of its format.
 #'
-#' @param data_id `character` id of data to import in R session
+#' @param data_id `character` id of data to import in R session with format `dataXXXX`
 #'
 #' @keywords metadata
 #' @keywords contact
@@ -16,5 +16,22 @@
 
 ncea_load <- function(data_id) {
 
+  # List files
+  # WARNING: This might not be the best way. Perhaps I should create a table of data automatically.
+  files <- dir('./data/data-format/', full.names = TRUE)
 
+  # Identify dataset to load
+  uid <- str_detect(files, data_id)
+
+  # Identify extensions
+  ext <- last(str_split(files[uid], "\\.")[[1]])
+
+  # Load according to extension type
+  ## ---------------------------------------------
+  ## GEOJSON
+  if (ext == "geojson") {
+    assign(x = data_id,
+           value = st_read(files[uid], quiet = TRUE),
+           envir = globalenv())    
+  }
 }

@@ -1,4 +1,8 @@
-"id","nom","prenom","organisation","role","telephone","courriel"
-"0001","Beauchesne","David","Université Laval","Stagiaire postdoctoral","1-514-553-4974","david.beauchesne@hotmail.com"
-"0002","Archambault","Philippe","Université Laval","Professeur","1-418-656-2131 #405967","philippe.archambault@bio.ulaval.ca"
-"0003","Grant","Cindy","Université Laval","Professionnelle de recherche","1-418-656-2131 #417944","cindy.grant@bio.ulaval.ca"
+"id","nom","prenom","organisation","role","telephone","courriel","departement","department"
+"0001","Beauchesne","David","Université Laval","Stagiaire postdoctoral","1-514-553-4974","david.beauchesne@hotmail.com",NA,NA
+"0002","Archambault","Philippe","Université Laval","Professeur","1-418-656-2131 #405967","philippe.archambault@bio.ulaval.ca",NA,NA
+"0003","Grant","Cindy","Université Laval","Professionnelle de recherche","1-418-656-2131 #417944","cindy.grant@bio.ulaval.ca",NA,NA
+"0004","Worchester","Tana","Fisheries and Oceans Canada","Coordinator, Advisory Services","1-902-426-3246","Tana.Worcester@dfo-mpo.gc.ca","Bedford Institute of Oceanography",NA
+"0005","Gomez","Catalina","Fisheries and Oceans Canada","life saver","1-902-499-0107","Catalina.Gomez@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography"
+"0006","Longtin","Caroline","Fisheries and Oceans Canada","Science Advisor","1-343-542-4946","Caroline.Longtin@dfo-mpo.gc.ca",NA,NA
+"0030","Philippe","Carissa","Fisheries and Oceans Canada","GIS Analyst","1-613-404-5371","carissa.philippe@dfo-mpo.gc.ca","Integrated Oceans Management",NA

@@ -13,12 +13,12 @@
 #'
 #' @examples
 #' # Metadata
-#' metadata('metadata')
+#' ncea_metadata('metadata')
 #'
 #' # Contacts
-#' metadata('contact')
+#' ncea_metadata('contact')
 
-metadata <- function(type) {
+ncea_metadata <- function(type) {
 
   # Folder
   if (type == "metadata") folder <- './data/data-metadata/'

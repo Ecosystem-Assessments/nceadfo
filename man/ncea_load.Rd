@@ -7,7 +7,7 @@
 ncea_load(data_id)
 }
 \arguments{
-\item{data_id}{\code{character} id of data to import in R session}
+\item{data_id}{\code{character} id of data to import in R session with format \code{dataXXXX}}
 }
 \description{
 The function imports data available in \verb{./data/data-format/} regardless of its format.
