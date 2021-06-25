@@ -1,8 +1,24 @@
-"id","nom","prenom","organisation","role","telephone","courriel","departement","department"
-"0001","Beauchesne","David","Université Laval","Stagiaire postdoctoral","1-514-553-4974","david.beauchesne@hotmail.com",NA,NA
-"0002","Archambault","Philippe","Université Laval","Professeur","1-418-656-2131 #405967","philippe.archambault@bio.ulaval.ca",NA,NA
-"0003","Grant","Cindy","Université Laval","Professionnelle de recherche","1-418-656-2131 #417944","cindy.grant@bio.ulaval.ca",NA,NA
-"0004","Worchester","Tana","Fisheries and Oceans Canada","Coordinator, Advisory Services","1-902-426-3246","Tana.Worcester@dfo-mpo.gc.ca","Bedford Institute of Oceanography",NA
-"0005","Gomez","Catalina","Fisheries and Oceans Canada","life saver","1-902-499-0107","Catalina.Gomez@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography"
-"0006","Longtin","Caroline","Fisheries and Oceans Canada","Science Advisor","1-343-542-4946","Caroline.Longtin@dfo-mpo.gc.ca",NA,NA
-"0030","Philippe","Carissa","Fisheries and Oceans Canada","GIS Analyst","1-613-404-5371","carissa.philippe@dfo-mpo.gc.ca","Integrated Oceans Management",NA
+"id","nom","prenom","organisation","role","telephone","courriel","departement","department","subject"
+"0001","Beauchesne","David","Université Laval","Stagiaire postdoctoral","1-514-553-4974","david.beauchesne@hotmail.com",NA,NA,NA
+"0002","Archambault","Philippe","Université Laval","Professeur","1-418-656-2131 #405967","philippe.archambault@bio.ulaval.ca",NA,NA,NA
+"0003","Grant","Cindy","Université Laval","Professionnelle de recherche","1-418-656-2131 #417944","cindy.grant@bio.ulaval.ca",NA,NA,NA
+"0004","Worchester","Tana","Fisheries and Oceans Canada","Coordinator, Advisory Services","1-902-426-3246","Tana.Worcester@dfo-mpo.gc.ca","Bedford Institute of Oceanography",NA,NA
+"0005","Gomez","Catalina","Fisheries and Oceans Canada","life saver","1-902-499-0107","Catalina.Gomez@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography",NA
+"0006","Longtin","Caroline","Fisheries and Oceans Canada","Science Advisor","1-343-542-4946","Caroline.Longtin@dfo-mpo.gc.ca",NA,NA,NA
+"0007","Ward-Paige","Christine","eOceans","CEO",NA,"christine@eoceans.co",NA,NA,NA
+"0008","Cassista-daRos","Manon","Fisheries and Oceans Canada",NA,NA,"Manon.Cassista-DaRos@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography","Stomach content database"
+"0009","Bundy","Alida","Fisheries and Oceans Canada","Research scientist","1-902-426-8353","Alida.Bundy@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography","Ecopath with Ecosim"
+"0010","Greyson","Philip","Fisheries and Oceans Canada","Data manager/GIS analyst",NA,"philip.greyson@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography",NA
+"0011","Bower","Brian","Fisheries and Oceans Canada","GIS Analyst/Open Data",NA,"brian.bower@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography",NA
+"0012","Lazin","Gordana","Fisheries and Oceans Canada","Data coordinator MSP, spatial data layer inventory",NA,"Gordana.Lazin@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography",NA
+"0013","Choi","Jae","Fisheries and Oceans Canada","Reseach scientist",NA,"choi.jae.seok@gmail.com",NA,"Bedford Institute of Oceanography","Space-time modeling stratified survey data"
+"0014","Greenlaw","Michelle","Fisheries and Oceans Canada","Acting Head, Groundfish, Pelagis and Secondary Species Section","1-506-921-0265","michelle.greenlaw@dfo-mpo.gc.ca",NA,"St. Andrews Biological Station","Space-time modeling stratified survey data"
+"0015","Murphy","Grace","Fisheries and Oceans Canada",NA,NA,"Grace.Murphy@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography","Cumulative effects assessment on habitats"
+"0016","Kelly","Noreen","Fisheries and Oceans Canada",NA,NA,"Noreen.Kelly@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography","Cumulative effects assessment on habitats"
+"0017","Azetsu-Scott","Kumiko","Fisheries and Oceans Canada","Research scientist",NA,"Kumiko.Azetsu-Scott@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography","acidification"
+"0018","Lang","Shelley","Fisheries and Oceans Canada","Aquatic science biologist","","Shelley.Lang@dfo-mpo.gc.ca",NA,"Bedford Institute of Oceanography","Cetaceans - SDMs"
+"0019","Kristina","Boerder","Global Fishing Watch",NA,NA,"kristina.boerder@dal.ca",NA,NA,NA
+"0020","Wong","Sarah","Environment and Climate Change Canada","Wildlife Biologist","1-902-426-5897","sarah.wong2@canada.ca",NA,"Canadian Wildlife Service","Sea birds"
+"0021","Pratte","Isabeau","Environment and Climate Change Canada","Wildlife Biologist",NA,"isabeau.pratte@canada.ca",NA,"Canadian Wildlife Service","Sea birds"
+"0022","English","Matthew","Environment and Climate Change Canada","Wildlife Biologist",NA,"matthew.english3@canada.ca",NA,"Canadian Wildlife Service","Sea birds / shore birds"
+"0030","Philippe","Carissa","Fisheries and Oceans Canada","GIS Analyst","1-613-404-5371","carissa.philippe@dfo-mpo.gc.ca","Integrated Oceans Management",NA,NA

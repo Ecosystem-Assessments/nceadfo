@@ -11,7 +11,7 @@
 
 pipeline <- function(pipeline_metadata = FALSE,
                      pipeline_data = FALSE,
-                     pipeline_integration = FALSE,
+                     pipeline_format = FALSE,
                      pipeline_analysis = FALSE,
                      pipeline_figure = FALSE,
                      pipeline_report = TRUE) {
@@ -35,16 +35,10 @@ pipeline <- function(pipeline_metadata = FALSE,
   }
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
-  if (pipeline_integration) {
-    # Composantes valorisées
-    cv_habitat()
-    cv_berge()
-    # cv_mammiferes_marins()
-
-    # Stresseurs
-    st_ancrage()
-    st_deversement()
-    st_navigation()
+  if (pipeline_format) {
+    # -------------------
+    # Study area
+    fmt_aoi()
 
   }
 
