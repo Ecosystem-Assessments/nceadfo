@@ -1,0 +1,17 @@
+# Accronymes
+
+<!-- Faire une base de données -->
+
+| Accronymes | Signification |
+| :--------- | :------------ |
+| BST | Bureau de la sécurité des transports du Canada |
+| CEGRIM | Centre d'expertise en gestion des risques d'incidents maritimes |
+| CNUE | Le Centre national des urgences environnementales |
+| ECCC | Environnement et Changement climatique Canada |
+| GCC | Garde côtière canadienne |
+| MCC | Ministère de la Culture et des Communications |
+| MELCC | Ministère de l'environnement et lutte contre les changements climatiques |
+| MPO | Ministère Pêches et Océans Canada |
+| MTQ | Ministère des transports du Québec |
+| SHC | Service hydrographique du Canada |
+| TC | Transport Canada |
