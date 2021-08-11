@@ -19,10 +19,11 @@ pipeline <- function(pipeline_metadata = FALSE,
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
   if (pipeline_metadata) {
     # Metadata
-    metadata('metadata')
+    update_metadata("raw")
+    update_metadata("integrated")
 
     # Contacts
-    metadata('contact')
+    update_contact()
   }
 
 
