@@ -3,6 +3,8 @@
 export(fmt_aoi)
 export(get_data0001)
 export(get_data0002)
+export(get_data0003)
+export(get_dataXXXX)
 export(ncea_load)
 export(ncea_metadata)
 export(pipeline)

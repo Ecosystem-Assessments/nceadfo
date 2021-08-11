@@ -1,4 +1,4 @@
-#' Data 0002 : Pêche commerciale
+#' Data 0003 : Pêche commerciale
 #'
 #' A compilation of landing data from Zonal Interchange File Format (ZIFF) data between 2000 and 2020
 #'
@@ -12,7 +12,7 @@
 #' @details Cette fonction formatte les données
 #'
 
-get_data0002 <- function() {
+get_data0003 <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Download data
   # ----------------------------------------
@@ -20,7 +20,7 @@ get_data0002 <- function() {
   message("Les données brutes sont soumis à une entente de partage de données")
 
   # Output folder
-  output <- "data0002-peche_commerciale/"
+  output <- "data0003-peche_commerciale/"
   folder <- paste0("./data/data-raw/", output)
   if (!file.exists(folder)) dir.create(folder)
 
@@ -53,14 +53,14 @@ get_data0002 <- function() {
 
   # Import in list
   d <- list()
-  d[[1]] <- import_ziff("Version_totale_20002004.csv")
+  d[[1]] <- import_ziff("Version_totale_20003004.csv")
   d[[2]] <- import_ziff("Version_totale_20052009.csv")
   d[[3]] <- import_ziff("Version_totale_20102014.csv")
   d[[4]] <- import_ziff("Version_totale_20152019.csv")
   d[[5]] <- import_ziff("Version_totale_20202024.csv")
 
   # Single dataset
-  data0002 <- bind_rows(d)
+  data0003 <- bind_rows(d)
   # _________________________________________________________________________ #
 
 
@@ -68,8 +68,8 @@ get_data0002 <- function() {
   # Export data
   # ----------------------------------------
   # Output
-  st_write(obj = data0002,
-           dsn = "./data/data-format/data0002-peche_commerciale.geojson",
+  st_write(obj = data0003,
+           dsn = "./data/data-format/data0003-peche_commerciale.geojson",
            delete_dsn = TRUE)
   # _________________________________________________________________________ #
 }

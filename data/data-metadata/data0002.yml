@@ -1,13 +1,11 @@
 data_description:
   id: "0002"
-  name: "Pêche commerciale"
-  description: "A compilation of landing data from Zonal Interchange File Format (ZIFF) data between 2000 and 2020"
-  access_date: 2021-06-11
-  temporal_start: 2000
-  temporal_end: 2020
+  name: "Study grid"
+  description: "Gridded study area used jointly with N. Kelly and G. Murphy for the Maritimes region"
+  access_date: 2021-08-11
   contact_id:
-    - "0032"
-    - "0033"
-    - "0034"
-  availability: "data sharing agreement"
-  citation: "Fisheries and Oceans Canada (2021). Departement of Fisheries and Oceans Canada’s Fisheries and Oceans Canada Zonal Interchange File Format (ZIFF) data. A compilation of landing data from logbook data between 2000 and 2020. [Data accessed 2021-06-11]"
+    - "0015"
+    - "0016"
+  availability: "available"
+  citation:
+    - "TO DO"
