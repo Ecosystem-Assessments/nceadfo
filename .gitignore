@@ -19,9 +19,15 @@
 # User-specific files ----
 README.html
 
-# Project-specific files ----
-data/data-raw/
-data/data-format/
-data/data-output/
+# Data ----
+data/data-raw/data*
+data/data-format/*.geojson
+data/data-format/*.csv
+data/data-format/*.tif
+data/data-integrated/*.geojson
+data/data-integrated/*.csv
+data/data-integrated/*.tif
+data/data-basemap/*.geojson
+
 analysis/
 clean/
