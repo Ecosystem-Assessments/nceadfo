@@ -1,0 +1,18 @@
+project: nceadfo
+crs: 102001
+col:
+  format:
+    coastline: "#00000044"
+  integrated:
+    coastline: "#000000"
+    offset: "#25364A"
+    focus: "#2196a8"
+  palette:
+    - "#b96136"
+    - "#246e4f"
+bbox:
+  base:
+    xmin: -400000
+    xmax: 130000
+    ymin: 170000
+    ymax: 590000

@@ -10,14 +10,14 @@
 #' @details This function exports the area of interest for the project
 #'
 
-fmt_aoi <- function() {
+int_aoi <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Load data
   # ------------------------------------
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Import  data
-  ncea_load("data0001")
+  load_format("data0001")
 
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
@@ -41,7 +41,7 @@ fmt_aoi <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Export to disk
   st_write(obj = aoi,
-           dsn = "./data/data-output/aoi.geojson",
+           dsn = "./data/data-basemap/aoi.geojson",
            delete_dsn = TRUE)
 
   # Export for lazy load

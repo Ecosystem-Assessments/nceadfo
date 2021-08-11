@@ -38,7 +38,7 @@ pipeline <- function(pipeline_metadata = FALSE,
   if (pipeline_format) {
     # -------------------
     # Study area
-    fmt_aoi()
+    int_aoi()
 
   }
 
