@@ -1,22 +1,26 @@
-#' Data 0002 : Study grid
+#' Data 0004 : Index des engins de pêche pour la pêche commerciale (id: 0033)
 #'
-#' Gridded study area used jointly with N. Kelly and G. Murphy for the Maritimes region
+#' Index des engin pour les données de from Zonal Interchange File Format (ZIFF) entre 2000 et 2020
 #'
-#' @keywords study grid
+#' @keywords pêche commerciale
+#' @keywords stresseurs
 #'
-#' @source TO DO
+#' @source Fisheries and Oceans Canada (2021). Index of fishing gears in departement of Fisheries and Oceans Canada’s Fisheries and Oceans Canada Zonal Interchange File Format (ZIFF) data. A compilation of landing data from logbook data between 2000 and 2020. [Data accessed 2021-07-15]
 #'
 #' @export
 #'
 #' @details Cette fonction formatte les données
 #'
 
-get_data0002 <- function() {
+get_data0004 <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Download data
   # ----------------------------------------
+  # WARNING:
+  message("Les données brutes sont soumis à une entente de partage de données")
+
   # Output folder
-  output <- "data0002-study_grid/"
+  output <- "data0004-peche_commerciale/"
   folder <- paste0("./data/data-raw/", output)
   if (!file.exists(folder)) dir.create(folder)
 
@@ -24,18 +28,17 @@ get_data0002 <- function() {
   # _________________________________________________________________________ #
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
-  # Import data
+  # Import and format data
   # ----------------------------------------
-  data0002 <- st_read(glue("{folder}/pu.shp"), quiet = TRUE)
+  data0004 <- read.csv(paste0(folder, 'Codes_engin.csv'))
   # _________________________________________________________________________ #
 
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Export data
   # ----------------------------------------
-  # Output
-  st_write(obj = data0002,
-           dsn = "./data/data-format/data0002-study_grid.geojson",
-           delete_dsn = TRUE)
+  write.csv(x = data0004,
+            file = "./data/data-format/data0004-peche_commerciale.csv",
+            row.names = FALSE)
   # _________________________________________________________________________ #
 }

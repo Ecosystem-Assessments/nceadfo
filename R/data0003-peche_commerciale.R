@@ -32,8 +32,8 @@ get_data0003 <- function() {
   # ----------------------------------------
   # WARNING: This dataset is very big, hence I only select data that intersect
   #          our area of interest.
-  data(grid1p)
-  grid1p <- st_transform(grid1p, crs = 4326)
+  basemap("aoi") # aoi
+  aoi <- st_transform(aoi, crs = 4326)
 
   # Function to import ZIFF data
   import_ziff <- function(filename) {
@@ -48,12 +48,12 @@ get_data0003 <- function() {
              crs = 4326) %>%
 
     # Select points in study area
-    .[grid1p, ]
+    .[aoi, ]
   }
 
   # Import in list
   d <- list()
-  d[[1]] <- import_ziff("Version_totale_20003004.csv")
+  d[[1]] <- import_ziff("Version_totale_20002004.csv")
   d[[2]] <- import_ziff("Version_totale_20052009.csv")
   d[[3]] <- import_ziff("Version_totale_20102014.csv")
   d[[4]] <- import_ziff("Version_totale_20152019.csv")
