@@ -11,10 +11,9 @@
 #'
 
 st_commercial_fisheries <- function() {
-  # Load gear type dataset and fishing data
-  load_format("data0003")
-  load_format("data0004")
-  load_format("data0005")
+  load_format("data0003") # Fishing
+  load_format("data0004") # Gear index
+  load_format("data0005") # Species index
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Classify gear types
@@ -178,13 +177,13 @@ st_commercial_fisheries <- function() {
               select(Codes, gearClass, mobility = Categorie)
 
   # -----
-  fishing <- left_join(data0003, data0004, by = c("engin" = "Codes")) %>%
-           filter(!is.na(gearClass)) %>%
-           filter(!is.na(mobility))
+  data0003 <- data0003 %>%
+              filter(as.Date(date_cap) >= as.Date("2010-01-01"))
 
   # -----
-  # fishing <- fishing %>%
-  #          filter(as.Date(date_cap) >= as.Date("2010-01-01"))
+  fishing <- left_join(data0003, data0004, by = c("engin" = "Codes")) %>%
+             filter(!is.na(gearClass)) %>%
+             filter(!is.na(mobility))
 
   # -----
   # LBS to KG
@@ -205,11 +204,10 @@ st_commercial_fisheries <- function() {
              select(ID = ESP_STAT, Scientific = DL_ESP, Espece = DF_ESP,
                     Species = DA_ESP, Freq)
   # ------------------------------------------------------------
-
   # -----
   fishing <- fishing %>%
-           group_by(date_cap, latit_ori, longit_ori, gearClass, mobility) %>%
-           summarise(catch = sum(pd_deb))
+             group_by(date_cap, latit_ori, longit_ori, gearClass, mobility) %>%
+             summarise(catch = sum(pd_deb))
 
   # -----
   fix <- fishing[fishing$mobility == "F", ] %>%
