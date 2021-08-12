@@ -1,6 +1,6 @@
 data_description:
   id: "0003"
-  name: "Pêche commerciale"
+  name: "Commercial fisheries"
   description: "A compilation of landing data from Zonal Interchange File Format (ZIFF) data between 2000 and 2020"
   access_date: 2021-06-11
   temporal_start: 2000

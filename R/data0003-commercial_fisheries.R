@@ -2,8 +2,8 @@
 #'
 #' A compilation of landing data from Zonal Interchange File Format (ZIFF) data between 2000 and 2020
 #'
-#' @keywords pêche commerciale
-#' @keywords stresseurs
+#' @keywords commercial fisheries
+#' @keywords stressors
 #'
 #' @source Fisheries and Oceans Canada (2021). Departement of Fisheries and Oceans Canada’s Fisheries and Oceans Canada Zonal Interchange File Format (ZIFF) data. A compilation of landing data from logbook data between 2000 and 2020. [Data accessed: 2021-06-11]".
 #'
@@ -20,7 +20,7 @@ get_data0003 <- function() {
   message("Les données brutes sont soumis à une entente de partage de données")
 
   # Output folder
-  output <- "data0003-peche_commerciale/"
+  output <- "data0003-commercial_fisheries/"
   folder <- paste0("./data/data-raw/", output)
   if (!file.exists(folder)) dir.create(folder)
 
@@ -69,7 +69,7 @@ get_data0003 <- function() {
   # ----------------------------------------
   # Output
   st_write(obj = data0003,
-           dsn = "./data/data-format/data0003-peche_commerciale.geojson",
+           dsn = "./data/data-format/data0003-commercial_fisheries.geojson",
            delete_dsn = TRUE)
   # _________________________________________________________________________ #
 }

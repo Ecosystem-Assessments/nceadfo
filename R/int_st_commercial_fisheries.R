@@ -178,26 +178,26 @@ st_commercial_fisheries <- function() {
               select(Codes, gearClass, mobility = Categorie)
 
   # -----
-  peche <- left_join(data0003, data0004, by = c("engin" = "Codes")) %>%
+  fishing <- left_join(data0003, data0004, by = c("engin" = "Codes")) %>%
            filter(!is.na(gearClass)) %>%
            filter(!is.na(mobility))
 
   # -----
-  # peche <- peche %>%
+  # fishing <- fishing %>%
   #          filter(as.Date(date_cap) >= as.Date("2010-01-01"))
 
   # -----
   # LBS to KG
-  uid <- peche$un_mes == "P"
-  peche$pd_deb[uid] <- peche$pd_deb[uid] *  0.453592
+  uid <- fishing$un_mes == "P"
+  fishing$pd_deb[uid] <- fishing$pd_deb[uid] *  0.453592
 
   # -----
-  peche <- unique(peche)
+  fishing <- unique(fishing)
 
   # ------------------------------------------------------------
   # NOTE: For metadata
-  species_cible <- sort(unique(peche$prespvis))
-  species <- table(peche$cod_esp) %>%
+  species_cible <- sort(unique(fishing$prespvis))
+  species <- table(fishing$cod_esp) %>%
              as.data.frame() %>%
              rename(ESP_STAT = Var1) %>%
              mutate(ESP_STAT = as.numeric(as.character(ESP_STAT))) %>%
@@ -207,25 +207,25 @@ st_commercial_fisheries <- function() {
   # ------------------------------------------------------------
 
   # -----
-  peche <- peche %>%
+  fishing <- fishing %>%
            group_by(date_cap, latit_ori, longit_ori, gearClass, mobility) %>%
            summarise(catch = sum(pd_deb))
 
   # -----
-  fix <- peche[peche$mobility == "F", ] %>%
+  fix <- fishing[fishing$mobility == "F", ] %>%
          st_buffer(200)
 
-  mob <- peche[peche$mobility == "M", ] %>%
+  mob <- fishing[fishing$mobility == "M", ] %>%
          st_buffer(2000)
 
-  peche <- bind_rows(fix, mob)
+  fishing <- bind_rows(fix, mob)
 
   # -----
-  peche <- peche %>%
+  fishing <- fishing %>%
            arrange(as.Date(date_cap))
 
   # -----
-  peche$ID <- 1:nrow(peche)
+  fishing$ID <- 1:nrow(fishing)
   # --------------------------------------------------------------------------------
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
@@ -237,9 +237,9 @@ st_commercial_fisheries <- function() {
   data0002$ID <- 1:nrow(data0002)
 
   # # -----
-  # peche$year <- format(as.Date(peche$date_cap), "%Y")
-  # years <- unique(peche$year)
-  # type <- unique(peche$gearClass)
+  # fishing$year <- format(as.Date(fishing$date_cap), "%Y")
+  # years <- unique(fishing$year)
+  # type <- unique(fishing$gearClass)
   # comb <- expand.grid(type, years, stringsAsFactors = F)
   # colnames(comb) <- c('type','years')
   #
@@ -249,19 +249,19 @@ st_commercial_fisheries <- function() {
   #
   # # Fishing intensity evaluation
   # for(i in 1:length(intensity)) {
-  #   uid <- peche$year == comb[i, 'years'] & peche$gearClass == comb[i, 'type']
-  #   intensity[[i]] <- fishingMetrics(peche[uid, ], grid1p)
+  #   uid <- fishing$year == comb[i, 'years'] & fishing$gearClass == comb[i, 'type']
+  #   intensity[[i]] <- fishingMetrics(fishing[uid, ], grid1p)
   # }
   #
 
   # -----
-  peche_commerciale <- data0002 %>%
+  commercial_fisheries <- data0002 %>%
                        mutate(
-                         DNL = fishingMetrics(peche[peche$gearClass == 'DNL', ], .)[, 2],
-                         DNH = fishingMetrics(peche[peche$gearClass == 'DNH', ], .)[, 2],
-                         DD = fishingMetrics(peche[peche$gearClass == 'DD', ], .)[, 2],
-                         PLB = fishingMetrics(peche[peche$gearClass == 'PLB', ], .)[, 2],
-                         PHB = fishingMetrics(peche[peche$gearClass == 'PHB', ], .)[, 2]
+                         DNL = fishingMetrics(fishing[fishing$gearClass == 'DNL', ], .)[, 2],
+                         DNH = fishingMetrics(fishing[fishing$gearClass == 'DNH', ], .)[, 2],
+                         DD = fishingMetrics(fishing[fishing$gearClass == 'DD', ], .)[, 2],
+                         PLB = fishingMetrics(fishing[fishing$gearClass == 'PLB', ], .)[, 2],
+                         PHB = fishingMetrics(fishing[fishing$gearClass == 'PHB', ], .)[, 2]
                        ) %>%
                        select(-ID) %>%
                        # ugly
@@ -286,12 +286,12 @@ st_commercial_fisheries <- function() {
   meta$dataDescription$spatial$extent <- st_bbox(data0003)
 
   # -----
-  peche$years <- format(as.Date(peche$date_cap), "%Y")
-  meta$dataDescription$temporal$start <- min(peche$years)
-  meta$dataDescription$temporal$end <- max(peche$years)
+  fishing$years <- format(as.Date(fishing$date_cap), "%Y")
+  meta$dataDescription$temporal$start <- min(fishing$years)
+  meta$dataDescription$temporal$end <- max(fishing$years)
 
   # -----
-  obs <- peche %>% group_by(years) %>% summarize(total = n())
+  obs <- fishing %>% group_by(years) %>% summarize(total = n())
   meta$dataDescription$observations$total <- sum(obs$total)
   meta$dataDescription$observations$moyenne <- round(mean(obs$total), 0)
   meta$dataDescription$observations$sd <- round(sd(obs$total), 0)
@@ -301,7 +301,7 @@ st_commercial_fisheries <- function() {
   meta$dataDescription$especes$capture <- species
 
   # -----
-  write_yaml(meta, "./data/data-metadata/int_st_peche_commerciale.yml")
+  write_yaml(meta, "./data/data-metadata/int_st_commercial_fisheries.yml")
   # --------------------------------------------------------------------------------
 
 
@@ -312,8 +312,8 @@ st_commercial_fisheries <- function() {
   #
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
-  st_write(obj = peche_commerciale,
-           dsn = "./data/data-integrated/st_peche_commerciale.geojson",
+  st_write(obj = commercial_fisheries,
+           dsn = "./data/data-integrated/st_commercial_fisheries.geojson",
            delete_dsn = TRUE)
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
 }
