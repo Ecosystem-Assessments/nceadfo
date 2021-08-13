@@ -59,8 +59,11 @@ get_data0003 <- function() {
   d[[4]] <- import_ziff("Version_totale_20152019.csv")
   d[[5]] <- import_ziff("Version_totale_20202024.csv")
 
-  # Single dataset
+  # -----
   data0003 <- bind_rows(d)
+
+  # -----
+  data0003 <- st_transform(data0003, crs = global_parameters()$crs)
   # _________________________________________________________________________ #
 
 

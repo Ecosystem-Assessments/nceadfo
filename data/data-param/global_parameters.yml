@@ -1,5 +1,5 @@
 project: nceadfo
-crs: 102001
+crs: 3979
 col:
   format:
     coastline: "#00000044"

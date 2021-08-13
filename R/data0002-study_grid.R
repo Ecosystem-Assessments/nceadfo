@@ -27,6 +27,15 @@ get_data0002 <- function() {
   # Import data
   # ----------------------------------------
   data0002 <- st_read(glue("{folder}/pu.shp"), quiet = TRUE)
+
+  # -----
+  data0002 <- st_make_valid(data0002)
+
+  # -----
+  data0002 <- select(data0002, geometry)
+
+  # -----
+  data0002 <- st_transform(data0002, crs = global_parameters()$crs)
   # _________________________________________________________________________ #
 
 

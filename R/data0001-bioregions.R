@@ -37,8 +37,10 @@ get_data0001 <- function() {
   # Import data
   # ----------------------------------------
   data0001 <- st_read(paste0(folder, 'DFO_Marine_Bioregions/DFO_Marine_Bioregions.gdb'),
-                      layer = 'DFO_Marine_Bioregions') %>%
-              st_transform(4326)
+                      layer = 'DFO_Marine_Bioregions')
+
+  # -----
+  data0001 <- st_transform(data0001, crs = global_parameters()$crs)
   # _________________________________________________________________________ #
 
 
