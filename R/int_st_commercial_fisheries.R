@@ -217,10 +217,11 @@ st_commercial_fisheries <- function() {
          st_buffer(2000)
 
   fishing <- bind_rows(fix, mob)
+  rm(fix, mob)
 
   # -----
   fishing <- fishing %>%
-           arrange(as.Date(date_cap))
+             arrange(as.Date(date_cap))
 
   # -----
   fishing$ID <- 1:nrow(fishing)
