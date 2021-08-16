@@ -1,13 +1,10 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Onshore mining abandonned
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source http://www.snb.ca/geonb1/e/DC/catalogue-E.asp 
 #'
 #' @export
 #'

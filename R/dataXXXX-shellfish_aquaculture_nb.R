@@ -1,13 +1,10 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : New-Brunswick Shellfish aquaculture
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://www2.gnb.ca/content/gnb/en/departments/10/open-data/data_download.html
 #'
 #' @export
 #'

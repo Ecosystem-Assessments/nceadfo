@@ -1,13 +1,10 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Sea level change
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://open.canada.ca/data/en/dataset/73714ed4-a795-a7ae-7e93-36100ce7c242 
 #'
 #' @export
 #'

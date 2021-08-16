@@ -1,13 +1,10 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Hardened shoreline
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://open.canada.ca/data/en/dataset/30449352-2556-42df-9ffe-47ea8e696f91
 #'
 #' @export
 #'

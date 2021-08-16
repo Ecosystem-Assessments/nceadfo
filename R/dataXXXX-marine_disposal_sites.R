@@ -1,13 +1,10 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Marine disposal sites
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://open.canada.ca/data/en/dataset/da99526e-284f-4e06-8d04-193785cd1a96) 
 #'
 #' @export
 #'

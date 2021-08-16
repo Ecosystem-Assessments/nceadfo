@@ -1,13 +1,10 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Invasive species
 #'
-#'
+#' Species distribution models and occurrence data for marine invasive species hotspot identification
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://open.canada.ca/data/en/dataset/1bbd5131-8b34-4245-b999-3b4c4259d74f 
 #'
 #' @export
 #'

@@ -6,38 +6,51 @@
 #' @keywords
 #' @keywords
 #'
-#' @source https://open.canada.ca/data/en/dataset/a1e18963-25dd-4219-a33f-1a38c4971250  
+#' @source https://open.canada.ca/data/en/dataset/a1e18963-25dd-4219-a33f-1a38c4971250
 #'
 #' @export
 #'
 #' @details This function loads and formats the data
 #'
 
-get_dataXXXX <- function() {
-  # # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
-  # # Download data
-  # # ----------------------------------------
-  # # Output folder
-  # output <- "data0001-bioregions/"
-  # folder <- paste0("./data/data-raw/", output)
-  # if (!file.exists(folder)) dir.create(folder)
-  #
-  # if (!file.exists(paste0(output, 'DFO_Marine_Bioregions.zip'))) {
-  #   # Download from Open Canada portal
-  #   uid <- "23eb8b56-dac8-4efc-be7c-b8fa11ba62e9"
-  #   library(rgovcan)
-  #   govcan_dl_resources(uid, path = folder)
-  #
-  #   # Unzip file
-  #   unzip(zipfile = paste0(folder, 'DFO_Marine_Bioregions.zip'), exdir = folder)
-  # }
-  # # _________________________________________________________________________ #
-  #
-  # # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
-  # # Import data
-  # # ----------------------------------------
-  # data0001 <- st_read(paste0(folder, 'DFO_Marine_Bioregions/DFO_Marine_Bioregions.gdb'),
-  #                     layer = 'DFO_Marine_Bioregions') %>%
-  #             st_transform(4326)
-  # # _________________________________________________________________________ #
-}
+# get_data0036 <- function() {
+#   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
+#   # Download data
+#   # ----------------------------------------
+#   # Output folder
+#   output <- "data0036-habitat_faunique/"
+#   folder <- paste0("./data/data-raw/", output)
+#   if (!file.exists(folder)) dir.create(folder)
+#
+#   # Proceed only if data is not already loaded
+#   if (!file.exists(paste0(folder, 'Habitats_fauniques_SHP.zip'))) {
+#     # URL
+#     dat <- c('https://diffusion.mffp.gouv.qc.ca/Diffusion/DonneeGratuite/Faune/Habitats_fauniques/Habitats_fauniques_SHP.zip',
+#              'https://diffusion.mffp.gouv.qc.ca/Diffusion/DonneeGratuite/Faune/Habitats_fauniques/Metadonnees_FGDB_HAFA.pdf')
+#
+#     # Download
+#     download.file(dat[1], destfile = paste0(folder, 'Habitats_fauniques_SHP.zip'))
+#     download.file(dat[2], destfile = paste0(folder, 'Metadonnees_FGDB_HAFA.pdf'))
+#
+#     # Unzip
+#     unzip(zipfile = paste0(folder, 'Habitats_fauniques_SHP.zip'), exdir = folder)
+#   }
+#   # _________________________________________________________________________ #
+#
+#   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
+#   # Import data
+#   # ----------------------------------------
+#   data0036 <- st_read(paste0(folder, 'Habitats_fauniques.shp'), quiet = TRUE) %>%
+#               st_transform(crs = global_parameters()$crs)
+#   # _________________________________________________________________________ #
+#
+#   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
+#   # Export data
+#   # ----------------------------------------
+#   # Output
+#   st_write(obj = data0036,
+#            dsn = "./data/data-format/data0036-habitat_faunique.geojson",
+#            delete_dsn = TRUE)
+#   # _________________________________________________________________________ #
+#
+# }

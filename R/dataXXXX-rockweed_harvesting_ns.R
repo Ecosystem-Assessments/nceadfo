@@ -1,12 +1,9 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Nova-Scotia rockweed harvesting
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
 #' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
 #'
 #' @export

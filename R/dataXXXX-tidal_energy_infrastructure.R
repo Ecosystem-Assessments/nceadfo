@@ -1,13 +1,10 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Tidal energy infrastructure
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://gcgeo.gc.ca/geonetwork/metadata/eng/65d3db23-b83c-4f49-ab93-65c59ee0e6aa
 #'
 #' @export
 #'

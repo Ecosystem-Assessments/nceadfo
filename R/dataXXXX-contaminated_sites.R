@@ -1,13 +1,11 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Contaminated sites
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://www.tbs-sct.gc.ca/fcsi-rscf/numbers-numeros-eng.aspx?qid=369592
+#' @source https://www.tbs-sct.gc.ca/fcsi-rscf/numbers-numeros-eng.aspx?qid=369577
 #'
 #' @export
 #'

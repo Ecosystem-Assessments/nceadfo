@@ -1,13 +1,11 @@
-#' Data XXXX : NS spatial data, including aquaculture
+#' Data XXXX : Human Derived Diseases and Pathogens
 #'
 #'
 #'
 #' @keywords
-#' @keywords
-#' @keywords
 #'
-#' @source https://nsgi.novascotia.ca/gdd/
-#' @source https://novascotia.ca/fish/aquaculture/site-mapping-tool/
+#' @source https://gcgeo.gc.ca/geonetwork/metadata/eng/2ca643f5-1adb-4e72-93f1-abf77f3239c8
+#' @source https://gcgeo.gc.ca/geonetwork/metadata/eng/275d3d06-094a-4ae8-91cf-51098f78db37
 #'
 #' @export
 #'
