@@ -11,7 +11,7 @@
 
 pipeline <- function(pipeline_metadata = FALSE,
                      pipeline_data = FALSE,
-                     pipeline_format = FALSE,
+                     pipeline_integration = FALSE,
                      pipeline_analysis = FALSE,
                      pipeline_figure = FALSE,
                      pipeline_report = TRUE) {
@@ -36,14 +36,18 @@ pipeline <- function(pipeline_metadata = FALSE,
     get_data0004()
     get_data0005()
     get_data0006()
-
+    get_data0007()
   }
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
-  if (pipeline_format) {
+  if (pipeline_integration) {
     # -------------------
     # Study area
     int_aoi()
+
+    # -------------------
+    # Stressors
+    st_commercial_fisheries()
 
   }
 

@@ -2,7 +2,7 @@
 #'
 #' Fisheries and Oceans Canada has a number of Marine Protected Areas designated under the Oceans Act and Areas of Interest for new Marine Protected Areas at various stages of progress towards designation. These areas are ecologically significant, with species and/or properties that require special management consideration.
 #'
-#' @keywords aires protégées
+#' @keywords marine protected areas
 #'
 #' @source https://open.canada.ca/data/en/dataset/a1e18963-25dd-4219-a33f-1a38c4971250
 #'
@@ -16,7 +16,7 @@ get_data0006 <- function() {
   # Download data
   # ----------------------------------------
   # Output folder
-  output <- "data0006-protected_areas/"
+  output <- "data0006-mpa/"
   folder <- paste0("./data/data-raw/", output)
   if (!file.exists(folder)) dir.create(folder)
 
@@ -45,7 +45,7 @@ get_data0006 <- function() {
   # ----------------------------------------
   # Output
   st_write(obj = data0006,
-           dsn = "./data/data-format/data0006-protected_areas.geojson",
+           dsn = "./data/data-format/data0006-mpa.geojson",
            delete_dsn = TRUE)
   # _________________________________________________________________________ #
 
