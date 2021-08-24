@@ -1,0 +1,14 @@
+data_description:
+  id: "0008"
+  name: "CanCoast 2.0"
+  description: "CanCoast 2.0: data and indices to describe the sensitivity of Canada's marine coasts to changing climate"
+  access_date: 2021-08-23
+  contact_id:
+    - "0023"
+    - "0024"
+    - "0025"
+    - "0026"
+  url: "https://open.canada.ca/data/en/dataset/73714ed4-a795-a7ae-7e93-36100ce7c242"
+  identifiant: "73714ed4-a795-a7ae-7e93-36100ce7c242"
+  availability: "open source"
+  citation: "Manson, G.K., Couture, N.J, and James, T.S., 2019. CanCoast 2.0: data and indices to describe the sensitivity of Canada's marine coasts to changing climate; Geological Survey of Canada, Open File 8551, 1 .zip file. https://doi.org/10.4095/314669"
