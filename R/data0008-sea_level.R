@@ -1,8 +1,10 @@
-#' Data 0008 : Sea level change
+#' Data 0008 : CanCoast 2.0
 #'
+#' CanCoast 2.0: data and indices to describe the sensitivity of Canada's marine coasts to changing climate
 #'
-#'
-#' @keywords
+#' @keywords sea level
+#' @keywords climate change
+#' @keywords stressors
 #'
 #' @source https://open.canada.ca/data/en/dataset/73714ed4-a795-a7ae-7e93-36100ce7c242
 #'

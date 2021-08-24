@@ -7,7 +7,7 @@
 pipeline(
   pipeline_metadata = FALSE,
   pipeline_data = FALSE,
-  pipeline_format = FALSE,
+  pipeline_integration = FALSE,
   pipeline_analysis = FALSE,
   pipeline_figure = FALSE,
   pipeline_report = TRUE
