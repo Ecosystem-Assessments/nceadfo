@@ -1,0 +1,15 @@
+data_description:
+  id: "0010"
+  name: "Maritimes Region Fisheries Atlas: Catch Weight Landings Mapping (2014–2018)"
+  description: "These datasets show commercial fisheries catch weight landings of directed fisheries and bycatch from the Scotian Shelf, the Bay of Fundy, and Georges Bank from NAFO Divisions 4VWX and the Canadian portions of 5Y and 5Z"
+  access_date: 2021-08-25
+  temporal_start: 2014
+  temporal_end: 2018
+  contact_id:
+    - "0027"
+    - "0028"
+    - "0029"
+  url: "https://open.canada.ca/data/en/dataset/44ef4d33-20b7-45fc-974c-d73a0a8fbae8"
+  identifiant: "44ef4d33-20b7-45fc-974c-d73a0a8fbae8"
+  availability: "open source"
+  citation: "K. Rozalska and S. Coffen-Smout, 2020. Maritimes Region Fisheries Atlas: Catch Weight Landings Mapping (2014–2018) on a Hexagon Grid. Can. Tech. Rep. Fish. Aquat. Sci. 3373: vi + 68 p."
