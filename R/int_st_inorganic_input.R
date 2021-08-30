@@ -1,6 +1,6 @@
-#' Contaminated sites
+#' Inorganic input
 #'
-#' Integrated data for contaminated sites in the Scotian Shelf bioregion
+#' Integrated data for inorganic input in the Scotian Shelf bioregion
 #'
 #' @keywords inorganic pollution
 #' @keywords contaminated sites
@@ -11,7 +11,7 @@
 #' @details This function imports formatted data and prepares the data layer that will be used for the cumualtive effects assessment
 #'
 
-st_contaminated_sites <- function() {
+st_inorganic_input <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Method
   # -------------------
@@ -47,17 +47,17 @@ st_contaminated_sites <- function() {
                 filter(volume > 0)
 
   # -----
-  contaminated_sites  <- st_intersection(data0002, dat) %>%
+  inorganic_input  <- st_intersection(data0002, dat) %>%
                          mutate(area = as.numeric(st_area(.)) * 1e-6,
                                 area_prop = area / (pi * buf^2 * 1e-6),
                                 intensite = volume * area_prop) %>%
                          group_by(ID) %>%
-                         summarise(contaminated_sites = sum(intensite)) %>%
+                         summarise(inorganic_input = sum(intensite)) %>%
                          st_drop_geometry()
 
   # -----
-  contaminated_sites <- left_join(data0002, contaminated_sites, by = "ID") %>%
-                        filter(!is.na(contaminated_sites))
+  inorganic_input <- left_join(data0002, inorganic_input, by = "ID") %>%
+                        filter(!is.na(inorganic_input))
 
   # --------------------------------------------------------------------------------
 
@@ -66,10 +66,10 @@ st_contaminated_sites <- function() {
   # ----------------------------------
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
-  meta <- load_metadata("int_st_contaminated_sites")
+  meta <- load_metadata("int_st_inorganic_input")
 
   # -----
-  meta$dataDescription$spatial$extent <- st_bbox(contaminated_sites)
+  meta$dataDescription$spatial$extent <- st_bbox(inorganic_input)
 
   # -----
   meta$dataDescription$observations$total <- nrow(dat)
@@ -84,11 +84,11 @@ st_contaminated_sites <- function() {
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # -----
-  write_yaml(meta, "./data/data-metadata/int_st_contaminated_sites.yml")
+  write_yaml(meta, "./data/data-metadata/int_st_inorganic_input.yml")
 
   # -----
-  st_write(obj = contaminated_sites,
-           dsn = "./data/data-integrated/st_contaminated_sites.geojson",
+  st_write(obj = inorganic_input,
+           dsn = "./data/data-integrated/st_inorganic_input.geojson",
            delete_dsn = TRUE,
            quiet = TRUE)
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #

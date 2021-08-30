@@ -53,9 +53,7 @@ pipeline <- function(pipeline_metadata = FALSE,
     # -------------------
     # Stressors
     st_commercial_fisheries()
-    st_contaminate_sites()
-    message("Decide whether contaminated sites will be inorganic pollution")
-
+    st_inorganic_input()
   }
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
