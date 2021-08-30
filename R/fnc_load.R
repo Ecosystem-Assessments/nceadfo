@@ -95,10 +95,12 @@ load_contact <- function(data_id) {
 #' @export
 load_integrated <- function(data_name) {
   # Possible values
-  st <- c("navigation", "peche", "deversement", "dragage", "ancrage", "rejet", "epaves")
-  cv <- c("habitat", "site", "berge", "mammiferes_marins", "quality")
-  nm <- paste(c(st, cv), collapse = ", ")
-  if (!data_name %in% c(st,cv)) stop(glue("Les données identifiées ne sont pas disponibles. Utilisez plutôt un des identifiants suivants: {nm}"))
+  dat <- dir("data/data-integrated/")
+  dat <- gsub("st_","", dat)
+  dat <- gsub("vc_","", dat)
+  dat <- gsub(".geojson","", dat)
+  nm <- paste(dat, collapse = ", ")
+  if (!data_name %in% dat) stop(glue("Identified data are unavailable. Use instead one of the following: {nm}"))
 
   # List files
   # WARNING: This might not be the best way. Perhaps I should create a table of data automatically.
