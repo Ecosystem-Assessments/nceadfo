@@ -13,5 +13,7 @@ Integrated data for contaminated sites in the Scotian Shelf bioregion
 This function imports formatted data and prepares the data layer that will be used for the cumualtive effects assessment
 }
 \keyword{contaminated}
+\keyword{inorganic}
+\keyword{pollution}
 \keyword{sites}
 \keyword{stressors}
