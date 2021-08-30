@@ -54,6 +54,7 @@ pipeline <- function(pipeline_metadata = FALSE,
     # -------------------
     # Stressors
     st_commercial_fisheries()
+    st_hardened_shoreline()
     st_inorganic_input()
     st_marine_debris()
   }
