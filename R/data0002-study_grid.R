@@ -32,7 +32,7 @@ get_data0002 <- function() {
   data0002 <- st_make_valid(data0002)
 
   # -----
-  data0002 <- select(data0002, geometry)
+  data0002 <- select(data0002, ID = UNIT_ID, geometry)
 
   # -----
   data0002 <- st_transform(data0002, crs = global_parameters()$crs)
