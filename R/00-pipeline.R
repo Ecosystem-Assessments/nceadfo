@@ -42,6 +42,7 @@ pipeline <- function(pipeline_metadata = FALSE,
     get_data0010()
     get_data0011()
     get_data0012()
+    get_data0013()
   }
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
@@ -54,6 +55,7 @@ pipeline <- function(pipeline_metadata = FALSE,
     # Stressors
     st_commercial_fisheries()
     st_inorganic_input()
+    st_marine_debris()
   }
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
