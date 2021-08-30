@@ -1,0 +1,18 @@
+title: Contaminated sites
+description: Active contaminated sites intensity on the Scotian Shelf Bioregion
+rawData: data0011
+dataDescription:
+  units: m^3*km^-2
+  spatial:
+    resolution: 1km^2
+    extent:
+    - 2175368.2723104
+    - -75132.5641516
+    - 2745890.6790693
+    - 421648.5640605
+  temporal:
+    resolution: Event based
+    start: '2006'
+    end: '2021'
+  observations:
+    total: 108
