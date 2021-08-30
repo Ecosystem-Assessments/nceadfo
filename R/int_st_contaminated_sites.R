@@ -2,6 +2,7 @@
 #'
 #' Integrated data for contaminated sites in the Scotian Shelf bioregion
 #'
+#' @keywords inorganic pollution
 #' @keywords contaminated sites
 #' @keywords stressors
 #'
