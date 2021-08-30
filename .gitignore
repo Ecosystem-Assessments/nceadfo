@@ -32,3 +32,4 @@ data/data-basemap/*.geojson
 analysis/
 clean/
 StressorDataSummary.xlsx
+*.xlsx

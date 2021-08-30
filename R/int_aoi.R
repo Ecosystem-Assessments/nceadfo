@@ -31,7 +31,9 @@ int_aoi <- function() {
   #          "10. Newfoundland-Labrador Shelves / Plates-formes de Terre-Neuve et du Labrador")
 
   # Area of interest
-  aoi <- data0001[data0001$Legend %in% uid, ]
+  aoi <- data0001[data0001$Legend %in% uid, ] %>%
+         st_transform(crs = global_parameters()$crs)
+
 
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
