@@ -2,7 +2,8 @@
 #'
 #' @export
 get_data <- function() {
-  global_parameters()
   uid <- param$pipedat$data_pipelines
-  pipedat::pipedat(uid)
+  crs <- param$crs
+  bbox <- param$bbox$assessment
+  pipedat::pipedat(uid, crs = crs)
 }

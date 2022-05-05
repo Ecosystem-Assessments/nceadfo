@@ -12,7 +12,9 @@ global_parameters <- function() {
   assign(x = "param",
          value = yaml::read_yaml("./data/data-config/global_parameters.yml"),
          envir = globalenv())
-  
+         
+  # Save as .rdata for the package 
+  save(param, file = "data/global_parameters.RData")
 }
 
 # #' @describeIn comp_utils load data from raw, ingrid, or output folders

@@ -1,5 +1,5 @@
 project: nceadfo
-crs: 4326
+crs: 32198
 figures: 
   resolution: 400
   width: 200
@@ -18,7 +18,7 @@ col:
     - "#e4be29"
     - "#f2ea8b"
 bbox:
-  base:
+  assessment:
     xmin: -400000
     xmax: 130000
     ymin: 170000
@@ -26,4 +26,3 @@ bbox:
 pipedat:
   data_pipelines:
     - "f635934a"
-    - "68609420"
