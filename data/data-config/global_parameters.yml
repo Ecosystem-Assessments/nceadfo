@@ -23,3 +23,6 @@ bbox:
     xmax: 130000
     ymin: 170000
     ymax: 590000
+pipedat:
+  data_pipelines:
+    - "f635934a"
