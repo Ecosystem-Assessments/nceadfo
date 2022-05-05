@@ -17,3 +17,9 @@ col:
     - "#e3af16"
     - "#e4be29"
     - "#f2ea8b"
+bbox:
+  base:
+    xmin: -400000
+    xmax: 130000
+    ymin: 170000
+    ymax: 590000
