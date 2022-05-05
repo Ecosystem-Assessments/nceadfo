@@ -33,7 +33,9 @@ get_data0015 <- function() {
            "VNL_v2_npp_2017_global_vcmslcfg_c202102150000.average_masked.tif.gz",
            "VNL_v2_npp_2018_global_vcmslcfg_c202102150000.average_masked.tif.gz",
            "VNL_v2_npp_2019_global_vcmslcfg_c202102150000.average_masked.tif.gz",
-           "VNL_v2_npp_2020_global_vcmslcfg_c202102150000.average_masked.tif.gz")
+           "VNL_v2_npp_2020_global_vcmslcfg_c202102150000.average_masked.tif.gz",
+           "VNL_v2_npp_2021_global_vcmslcfg_c202203152300.average_masked.tif.gz",
+         )
   # _________________________________________________________________________ #
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
