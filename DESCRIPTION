@@ -3,29 +3,33 @@ Type: Research compendium
 Title: Research compendium for contribution agreement on the assessment of network cumulative effects of global changes on communities of the Scotian Shelf Bioregion
 Version: 1.0.0
 Authors@R: c(
-    person(given = "David",
-           family = "Beauchesne",
-           role = c("aut", "cre"),
-           email = "david.beauchesne@hotmail.com"))
+    person(given   = "David",
+           family  = "Beauchesne",
+           role    = c("aut", "cre", "cph"),
+           email   = "david.beauchesne@hotmail.com",
+           comment = c(ORCID = "0000-0002-3590-8161")))
 Description: Research compendium for contribution agreement on the assessment of network cumulative effects of global changes on communities of the Scotian Shelf Bioregion
 URL: https://github.com/david-beauchesne/nceadfo
 BugReports: https://github.com/david-beauchesne/nceadfo/issues
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
-Depends:
-    R (>= 4.0),
-    sf (>= 0.9-7),
-    stars (>= 0.5-1),
-    tidyverse (>= 1.3.0),
-    magrittr (>= 2.0.1),
-    mapview(>= 2.9.8),
-    graphicsutils(>= 1.6.0)
-Imports:
-    stringr(>= 1.4.0),
-    rgovcan(>= 1.0.1)
-Suggests:
-    knitr,
-    rmarkdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Depends: 
+    R (>= 4.0)
+Imports: 
+    data.table,
+    dplyr,
+    exactextractr,
+    fs,
+    glue,
+    graphicsutils,
+    pipedat,
+    mapview,
+    sf,
+    stars,
+    stringr,
+    units,
+    whisker,
+    yaml
