@@ -21,18 +21,19 @@ options(clustermq.scheduler = "multicore")
 # Install packages {{future}}, {{future.callr}}, and {{future.batchtools}} to allow use_targets() to configure tar_make_future() options.
 
 # Load the R scripts with your custom functions:
-# for (file in list.files("R", full.names = TRUE)) source(file)
+for (file in list.files("R", full.names = TRUE)) source(file)
 # source("other_functions.R") # Source other scripts as needed. # nolint
 
 # Replace the target list below with your own:
 list(
-#   tar_target(
-#     name = config,
-#     command = nceadfo::global_parameters()
-# #   format = "feather" # efficient storage of large data frames # nolint
-#   ),
+  tar_target(
+    name = config,
+    command = "./data/data-config/global_parameters.yml",
+    format = "file"
+#   format = "feather" # efficient storage of large data frames # nolint
+  ),
   tar_target(
     name = raw_data,
-    command = nceadfo::get_data()
+    command = get_data()
   )
 )
