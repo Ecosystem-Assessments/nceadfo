@@ -2,7 +2,7 @@
 #' @importFrom exactextractr exact_extract
 #' @importFrom fs path path_package
 #' @importFrom glue glue glue_sql
-#' @importFrom raster getData
+#' @importFrom units set_units
 #' @importFrom whisker whisker.render
 #' @importFrom yaml yaml.load_file write_yaml read_yaml
 NULL
@@ -25,7 +25,7 @@ rep_hyperlien <- function(texte, url) {
   hyperlien <- character(nl)
 
   for(i in 1:nl) {
-    if(!is.na(url[i])) {
+    if(!is.null(url[i])) {
       hyperlien[i] <- paste0("[",texte[i],"](",url[i],")")
     } else {
       hyperlien[i] <- texte[i]
@@ -42,3 +42,4 @@ clean <- function() {
   objs <- ls(envir = globalenv())
   rm(list = objs, pos = ".GlobalEnv")
 }
+

@@ -1,0 +1,3 @@
+# Appendix 2 {.unnumbered #annexe2}
+
+- Automatically generate a contact list from pipedat workflow

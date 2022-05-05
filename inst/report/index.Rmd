@@ -1,0 +1,80 @@
+---
+title: "Title of project"
+# subtitle: "Rapport préliminaire"
+author: "Author 1, author 2, ..., author n"
+date: "`r Sys.Date()`"
+knit: "bookdown::render_book"
+documentclass: scrbook
+bibliography: [pipedat.bib, compendium.bib]
+# biblio-style: apalike
+csl: frontiers.csl
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+monofont: "Courier"
+monofontoptions: "Scale=0.7"
+site: bookdown::bookdown_site
+always_allow_html: true
+---
+
+<!-- description: "TO WRITE"
+url: 'https\://bookdown.org/yihui/bookdown/'
+github-repo: rstudio/bookdown
+cover-image: images/cover.jpg -->
+
+<!--
+setwd("./report")
+suppressWarnings(bookdown::render_book("index.Rmd", "bookdown::gitbook"))
+setwd("../")
+-->
+
+<!--
+<img src="https://img.shields.io/badge/Zone-Fluvial-brightgreen">
+-->
+
+
+```{r setup, include = FALSE, purl = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  dev = "png",
+  dpi = 108,
+  fig.width = 8,
+  fig.height = 6,
+  fig.align = 'center',
+  width = 120#,
+  # table.attr = 'class="flat-table"'
+)
+
+
+
+# Load project package
+library(compendium)
+```
+
+# {-}
+
+Author 1 <br/>
+Position <br/>
+Mail <br/>
+
+<br/>
+
+Author 2 <br/>
+Position <br/>
+Mail <br/>
+
+<br/>
+
+
+<br/>
+
+
+#### Citation {-}
+
+Citation proposition
