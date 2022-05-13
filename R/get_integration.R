@@ -1,13 +1,11 @@
 #' Script to load and format all data using the pipedat package
 #'
 #' @export
-get_data <- function() {
+get_integrated <- function() {
   old <- getOption("warn")
   on.exit(options(warn = old), add = TRUE)
   options(warn = -1)
 
-  uid <- param$pipedat$data_pipelines
-  crs <- param$crs
-  bbox <- unlist(param$bbox$assessment)
-  pipedat::pipedat(uid, crs = crs, bbox = bbox)
+  uid <- param$pipedat$integration_pipelines
+  pipedat::pipein(uid)
 }

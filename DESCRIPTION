@@ -21,6 +21,7 @@ Depends:
 Imports: 
     data.table,
     dplyr,
+    eaMethods,
     exactextractr,
     fs,
     glue,

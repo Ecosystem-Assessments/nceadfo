@@ -25,4 +25,10 @@ bbox:
     ymax: 590000
 pipedat:
   data_pipelines:
-    - "f635934a"
+    - "f635934a" # Federal marine bioregions
+    - "f2109e69" # DFO logbooks
+    - "8449dee0" # GFW shipping 
+  integration_pipelines:
+    - ""
+  extra_parameters:
+    fishing_intensity_metric: 3

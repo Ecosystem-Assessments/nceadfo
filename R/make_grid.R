@@ -14,7 +14,7 @@ make_grid <- function(cellsize) {
   # Export
   sf::st_write(
     obj = grid_poly,
-    dsn = "./data/data-basemap/grid_poly.geojson",
+    dsn = "./data/data-grid/grid_poly.geojson",
     delete_dsn = TRUE,
     quiet = TRUE
   )
