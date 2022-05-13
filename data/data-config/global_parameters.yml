@@ -29,6 +29,6 @@ pipedat:
     - "f2109e69" # DFO logbooks
     - "8449dee0" # GFW shipping 
   integration_pipelines:
-    - ""
+    - "e2b7e6c4"
   extra_parameters:
     fishing_intensity_metric: 3
