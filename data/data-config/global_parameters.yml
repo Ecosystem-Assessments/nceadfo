@@ -1,5 +1,5 @@
 project: nceadfo
-crs: 32198
+crs: 4326
 figures: 
   resolution: 400
   width: 200
@@ -19,10 +19,10 @@ col:
     - "#f2ea8b"
 bbox:
   assessment:
-    xmin: 62351.93
-    xmax: -439434.81
-    ymin: 1037183.51
-    ymax: 342109.75
+    xmin: -67
+    xmax: 39
+    ymin: -54
+    ymax: 47
 pipedat:
   data_pipelines:
     - "f635934a" # Federal marine bioregions
@@ -32,3 +32,4 @@ pipedat:
     - "e2b7e6c4"
   extra_parameters:
     fishing_intensity_metric: 3
+    shipping_type: "interpolated"

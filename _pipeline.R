@@ -12,9 +12,8 @@ pipeline <- function() {
   get_aoi()
   
   # Make grid 
-  make_grid(cellsize = 10000)
+  make_grid(cellsize = 0.1)
 
   # Integrate data 
   get_integrated()
-  
 }
