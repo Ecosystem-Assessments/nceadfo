@@ -15,6 +15,6 @@ pipeline <- function() {
   make_grid(cellsize = 10000)
 
   # Integrate data 
-  integrate_data()
+  get_integrated()
   
 }
