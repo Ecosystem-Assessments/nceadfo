@@ -8,6 +8,7 @@ get_data <- function() {
 
   uid <- param$pipedat$data_pipelines
   crs <- param$crs
-  bbox <- unlist(param$bbox$assessment)
+  bbox <- unlist(param$bbox$assessment) |> as.numeric()
+  names(bbox) <- c("xmin","ymin","xmax","ymax")
   pipedat::pipedat(uid, crs = crs, bbox = bbox)
 }
