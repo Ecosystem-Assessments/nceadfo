@@ -27,9 +27,12 @@ pipedat:
   data_pipelines:
     - "f635934a" # Federal marine bioregions
     - "f2109e69" # DFO logbooks
-    - "8449dee0" # GFW shipping 
+    - "8449dee0" # GFW shipping
+    - "8509eeb1" # Night lights
   integration_pipelines:
-    - "e2b7e6c4"
+    - "e2b7e6c4" # Fisheries
+    - "72312316" # Shipping 
+    - "aba5e90a" # Night lights
   extra_parameters:
     fishing_intensity_metric: 3
     shipping_type: "interpolated"
