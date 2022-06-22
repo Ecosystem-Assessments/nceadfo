@@ -20,19 +20,38 @@ col:
 bbox:
   assessment:
     xmin: -67
-    xmax: 39
-    ymin: -54
+    ymin: 39
+    xmax: -54
     ymax: 47
 pipedat:
   data_pipelines:
-    - "f635934a" # Federal marine bioregions
-    - "f2109e69" # DFO logbooks
-    - "8449dee0" # GFW shipping
-    - "8509eeb1" # Night lights
+    # - "f635934a" # Federal marine bioregions
+    # - "f2109e69" # DFO logbooks
+    # - "8449dee0" # GFW shipping
+    # - "8509eeb1" # Night lights
+    # - "c676dc2b" # Census cartographic boundary files 2016
+    # - "b9024b04" # Census cartographic boundary files 2021
+    # - "d147406d" # Census population 2016
+    # - "d96dec16" # Census population 2021
+    # - "3d1bfb8e" # Marine mammals
+    # - "71944efd" # Monthly temperature climatology
+    # - "0d61380a" # Monthly salinity climatology
+    # - "e775900b" # GEBCO 2021 bathymetry
+    # - "7c8c4da1" # Invasive species 
+    - "2aafec74" # DFO Research Vessel Survey 4VSW
+    - "90e90110" # DFO Research Vessel Survey Fall
+    - "21f8a758" # DFO Research Vessel Survey Spring
+    - "3348d162" # DFO Research Vessel Survey Summer
+    - "084860fd" # WoRMS North-West Atlantic species checklist
   integration_pipelines:
-    - "e2b7e6c4" # Fisheries
-    - "72312316" # Shipping 
-    - "aba5e90a" # Night lights
+    # - "e2b7e6c4" # Fisheries
+    # - "72312316" # Shipping 
+    # - "aba5e90a" # Night lights
+    # - "99bb2d51" # Direct human impact
+    # - "aa3dcb26" # Marine mammals
+    # - "c055366b" # Monthly temperature climatology
+    # - "608c7f2f" # Monthly salinity climatology
+    # - "ee0dd36a" # GEBCO 2021 bathymetry
   extra_parameters:
     fishing_intensity_metric: 3
     shipping_type: "interpolated"

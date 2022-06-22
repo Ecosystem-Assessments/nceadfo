@@ -10,5 +10,5 @@ get_data <- function() {
   crs <- param$crs
   bbox <- unlist(param$bbox$assessment) |> as.numeric()
   names(bbox) <- c("xmin","ymin","xmax","ymax")
-  pipedat::pipedat(uid, crs = crs, bbox = bbox)
+  pipedat::pipedat(uid, crs = crs, bbox = bbox, bbox_crs = crs)
 }

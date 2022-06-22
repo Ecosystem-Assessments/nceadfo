@@ -2,6 +2,9 @@
 #'
 #' @export
 get_aoi <- function() {
+  # Get federal marine bioregions 
+  pipedat::pipedat("f635934a")
+  
   # Load federal bioregions
   dat <- sf::st_read(
     "data/data-raw/federal_marine_bioregions-f635934a/federal_marine_bioregions-f635934a.geojson",

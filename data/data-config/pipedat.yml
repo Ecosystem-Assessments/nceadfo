@@ -1,42 +1,43 @@
-parameters: 
-  bbox:
-    xmin: -400000
-    xmax: 130000
-    ymin: 170000
-    ymax: 590000
-  timespan:
-    - 2000
-    - 2001
-    - 2002
-    - 2003
-    - 2004
-    - 2005
-    - 2006
-    - 2007
-    - 2008
-    - 2009
-    - 2010
-    - 2011
-    - 2012
-    - 2013
-    - 2014
-    - 2015
-    - 2016
-    - 2017
-    - 2018
-    - 2019
-    - 2020
-    - 2021
-    - 2022
-  grid: 
-    resolution: 0.1
+data_workflow:
+  parameters: 
     crs: 4326
     bbox:
-      xmin: -400000
-      xmax: 130000
-      ymin: 170000
-      ymax: 590000
-data_pipelines:
-  - ""
-integration_pipelines:
-  - ""
+      xmin: -67
+      ymin: 39
+      xmax: -54
+      ymax: 47
+    grid: 
+      resolution: 
+      - 10
+        10
+      bbox:
+        xmin: -180
+        ymin: -90
+        xmax: 180
+        ymax: 90
+  data_pipeline:
+    # - f2109e69 # Commercial fisheries logbooks
+    - 084860fd # WoRMS North-West Atlantic species checklist
+    - 8509eeb1 # Nighttime Ligths
+    - 8449dee0 # AIS global shipping data
+    # - 4f84f0e3 # Global cumulative human impacts assessments
+    - 3d1bfb8e # Marine mammals WWF-ROMM
+    - 71944efd # Monthly temperature climatology	
+    - 0d61380a # Monthly salinity climatology
+    - e775900b # The GEBCO_2021 Grid Bathymetry
+    - 2aafec74 # DFO Research Vessel Survey 4VSW
+    - 90e90110 # DFO Research Vessel Survey Fall
+    - 21f8a758 # DFO Research Vessel Survey Spring
+    - 3348d162 # DFO Research Vessel Survey Summer
+  data_integration:
+    # - e2b7e6c4 # Fisheries intensity
+    - 72312316 # Shipping intensity
+    - aba5e90a # Night lights
+    - 99bb2d51 # Direct human impact
+    # - 16c0d3ad # Global cumulative human impacts assessments 
+    - aa3dcb26 # Marine mammals
+    - c055366b # Monthly temperature climatology
+    - 608c7f2f # Monthly salinity climatology
+    - ee0dd36a # The GEBCO_2021 Grid Bathymetry
+    - 84b6ea0b # Invasive species environmental stressor
+    

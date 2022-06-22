@@ -13,6 +13,7 @@ make_grid <- function(cellsize) {
   
   # Raster grid
   grid_ras <- stars::st_rasterize(grid_poly, dx = cellsize, dy = cellsize)
+  names(grid_ras) <- "uid"
 
   # Export
   sf::st_write(

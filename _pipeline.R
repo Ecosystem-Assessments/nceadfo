@@ -5,15 +5,12 @@ pipeline <- function() {
   # Update global parameters
   global_parameters()
   
-  # Get raw data 
-  get_data()
-  
   # Get area of interest 
   get_aoi()
   
   # Make grid 
-  make_grid(cellsize = 0.1)
+  make_grid(cellsize = 0.05)
 
   # Integrate data 
-  get_integrated()
+  pipedat::pipeflow("./data/data-config/pipedat.yml")
 }
