@@ -1,0 +1,43 @@
+pipeline:
+  pipeline_id: 99bb2d51
+  pipeline_type: integration
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-05-25'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_direct_human_impact-99bb2d51.R
+description:
+  name: Direct human impact
+  description: Assessment of the intensity of direct human impact along coastlines
+    using population density as a proxy
+  access_date: '2022-09-21'
+  citekey:
+  - halpern2008a
+  - beauchesne2020
+  integration_data:
+  - c676dc2b
+  - b9024b04
+  - d147406d
+  - d96dec16
+  grid:
+    type: polygon
+    crs: 32198
+    resolution:
+      resolution: 2.448324e+07
+      units:
+        numerator:
+        - m
+        - m
+        denominator: []
+    bbox:
+    - 62166.872204
+    - -439921.7611695
+    - 1038582.354691
+    - 342962.6034087
+    ncells: 19051
