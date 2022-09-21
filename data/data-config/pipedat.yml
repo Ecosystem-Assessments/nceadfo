@@ -21,8 +21,8 @@ data_workflow:
     - "4f84f0e3" # Global cumulative human impacts assessments (Halpern)
     - "7c8c4da1" # Invasive species distribution models
     - "fdd796d7" # Summer Groundfish Interpolated Results Scotian Shelf
-    # # ------------------------------------------------------------------------
-    # # Abiotic data 
+    # ------------------------------------------------------------------------
+    # Abiotic data 
     - "71944efd" # Monthly temperature climatology	
     - "0d61380a" # Monthly salinity climatology
     - "906f1155" # Monthly currents climatology

@@ -1,0 +1,32 @@
+pipeline:
+  pipeline_id: d147406d
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-05-24'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_census_population_2016-d147406d.R
+description:
+  name: Census population 2016
+  description: Population and dwelling counts, for dissemination areas, 2016 Census
+  access_date: '2022-09-08'
+  contacts:
+  - contact_id: 43
+    first_name: ''
+    last_name: ''
+    organization: Statistics Canada
+    department: ''
+    role: ''
+    email: STATCAN.infostats-infostats.STATCAN@canada.ca
+    phone: ''
+  citekey: statisticscanada2016b
+  timespan: 2016.0
+  url: https://open.canada.ca/data/en/dataset/3cf36302-1060-444e-988a-d97b6db5ad24
+  uuid: 3cf36302-1060-444e-988a-d97b6db5ad24
+  availability: open

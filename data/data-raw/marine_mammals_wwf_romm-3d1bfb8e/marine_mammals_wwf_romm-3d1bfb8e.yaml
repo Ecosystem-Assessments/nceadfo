@@ -1,0 +1,61 @@
+pipeline:
+  pipeline_id: 3d1bfb8e
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-06-01'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_marine_mammals_wwf_romm-3d1bfb8e.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Marine mammals
+  description: 'Cartographic data: a mariner''s guide to whales in the Northwest Atlantic,
+    2nd edition'
+  access_date: '2022-06-22'
+  contacts:
+  - contact_id: 47
+    first_name: Aurélie
+    last_name: Cosandey-Godin
+    organization: WWF-Canada
+    department: ''
+    role: Senior Specialist Marine Ecosystems and Sustainable Shipping
+    email: acosandeygodin@WWFCanada.org
+    phone: 1-514-709-7847
+  - contact_id: 48
+    first_name: Sonia
+    last_name: Giroux
+    organization: Réseau d'observation de mammifères marins
+    department: ''
+    role: Directrice adjointe
+    email: sgiroux@romm.ca
+    phone: 1-581-673-1384
+  citekey:
+  - wwfromm2021
+  - wwfromm2021b
+  - wwfromm2021c
+  timespan:
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  bbox:
+  - -72.0
+  - 39.952
+  - -47.952
+  - 55.0
+  url: .na.character
+  uuid: .na.character
+  availability: on demand

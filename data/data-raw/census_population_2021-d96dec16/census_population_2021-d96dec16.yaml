@@ -1,0 +1,33 @@
+pipeline:
+  pipeline_id: d96dec16
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-05-24'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_census_population_2021-d96dec16.R
+description:
+  name: Census population 2021
+  description: 'Population and dwelling counts: Canada, provinces and territories,
+    census subdivisions and dissemination areas'
+  access_date: '2022-09-08'
+  contacts:
+  - contact_id: 44
+    first_name: ''
+    last_name: ''
+    organization: Statistics Canada
+    department: ''
+    role: ''
+    email: infostats@statcan.gc.ca
+    phone: ''
+  citekey: statisticscanada2022b
+  timespan: 2021.0
+  url: https://open.canada.ca/data/en/dataset/8323e60a-d7c4-48cf-9130-c14ba6f2c382
+  uuid: 8323e60a-d7c4-48cf-9130-c14ba6f2c382
+  availability: open

@@ -1,0 +1,61 @@
+pipeline:
+  pipeline_id: 8449dee0
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-04-29'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_shipping_gfw-8449dee0.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: AIS global shipping data
+  description: 'Monthly shipping rasters at 0.1 degree resolution including the number
+    of vessels and total hours of vessel presence for all vessels classified by Global
+    Fishing Watch as one of the following: ''cargo'', ''specialized_reefer'', ''tanker'',
+    ''bunker'', ''cargo_or_tanker'', ''cargo_or_reefer'', ''bunker_or_tanker'', ''container_reefer'',
+    ''passenger''. There are two versions of the data available, one based only on
+    actual AIS positions and one where vessel location is interpolated to a regular
+    interval of five minutes.'
+  access_date: '2022-02-28'
+  contacts:
+  - contact_id: 42
+    first_name: Tyler
+    last_name: Clavelle
+    organization: Global Fishing Watch
+    department: ''
+    role: Data scientist
+    email: tyler@globalfishingwatch.org
+    phone: ''
+  - contact_id: 43
+    first_name: ''
+    last_name: ''
+    organization: Statistics Canada
+    department: ''
+    role: ''
+    email: STATCAN.infostats-infostats.STATCAN@canada.ca
+    phone: ''
+  citekey: gfw2022
+  timespan:
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  bbox:
+  - -180.0
+  - -83.6
+  - 180.0
+  - 89.9
+  url: .na.character
+  uuid: .na.character
+  availability: on demand

@@ -1,0 +1,45 @@
+pipeline:
+  pipeline_id: e775900b
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-06-06'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_bathymetry_gebco_2021-e775900b.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: The GEBCO_2021 Grid
+  description: The GEBCO_2021 Grid was published in July 2021 and is a global terrain
+    model for ocean and land, providing elevation data, in meters, on a 15 arc-second
+    interval grid
+  access_date: '2022-09-21'
+  contacts:
+  - contact_id: 50
+    first_name: ''
+    last_name: ''
+    organization: General Bathymetric Chart of the Oceans (GEBCO)
+    department: Seabed 2030 Global Center
+    role: ''
+    email: gdacc@seabed2030.org
+    phone: ''
+  citekey: gebco2021
+  timespan: 2021.0
+  bbox:
+  - -180.0
+  - -90.0
+  - 180.0
+  - 90.0
+  url: https://www.gebco.net/data_and_products/gridded_bathymetry_data/#global
+  uuid: .na.character
+  availability: open

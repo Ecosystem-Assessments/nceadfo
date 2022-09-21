@@ -1,0 +1,72 @@
+pipeline:
+  pipeline_id: 0d61380a
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-06-04'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_salinity_climatology_bnam-0d61380a.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Monthly salinity climatology
+  description: Monthly mean salinity from Bedford Institute of Oceanography North
+    Atlantic Model (BNAM) results averaged over 1990 to 2015 period
+  access_date: '2022-09-09'
+  contacts:
+  - contact_id: 49
+    first_name: Zeliang
+    last_name: Wang
+    organization: Fisheries and Oceans Canada
+    department: ''
+    role: Research scientist
+    email: zeliang.wang@dfo-mpo.gc.ca
+    phone: ''
+  citekey:
+  - wang2018
+  - wang2018b
+  timespan:
+  - 1990
+  - 1991
+  - 1992
+  - 1993
+  - 1994
+  - 1995
+  - 1996
+  - 1997
+  - 1998
+  - 1999
+  - 2000
+  - 2001
+  - 2002
+  - 2003
+  - 2004
+  - 2005
+  - 2006
+  - 2007
+  - 2008
+  - 2009
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  bbox:
+  - -86.4230011
+  - 35.657222
+  - -37.2230011
+  - 72.157222
+  url: https://open.canada.ca/data/en/dataset/c44a8574-9f7d-45b7-afda-27802353a04c
+  uuid: c44a8574-9f7d-45b7-afda-27802353a04c
+  availability: open

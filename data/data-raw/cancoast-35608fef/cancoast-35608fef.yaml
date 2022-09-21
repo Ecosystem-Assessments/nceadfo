@@ -1,0 +1,70 @@
+pipeline:
+  pipeline_id: 35608fef
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-04-26'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_cancoast-35608fef.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: CanCoast - Coastal Materials Version 2.0
+  description: 'CanCoast 2.0: data and indices to describe the sensitivity of Canada''s
+    marine coasts to changing climate'
+  access_date: '2022-09-08'
+  contacts:
+  - contact_id: 25
+    first_name: Gavin K
+    last_name: Manson
+    organization: Natural Resources Canada
+    department: Marine Environmental Geoscience
+    role: Coastal Geoscience Specialist
+    email: gavin.manson@canada.ca
+    phone: 1-902-426-3144
+  - contact_id: 26
+    first_name: Nicole J
+    last_name: Couture
+    organization: Natural Resources Canada
+    department: Geological Survey of Canada
+    role: ''
+    email: nicole.couture@canada.ca
+    phone: ''
+  - contact_id: 27
+    first_name: Thomas
+    last_name: James
+    organization: Natural Resources Canada
+    department: Geological Survey of Canada
+    role: ''
+    email: thomas.james@canada.ca
+    phone: ''
+  - contact_id: 28
+    first_name: ''
+    last_name: ''
+    organization: Natural Resources Canada
+    department: Geological Survey of Canada
+    role: ''
+    email: nrcan.gsc-geosciencedata-donneesgeoscience-cgc.rncan@canada.ca
+    phone: ''
+  citekey: manson2019
+  timespan:
+  - 2010.0
+  - 2011.0
+  bbox:
+  - -141.0
+  - 43.3877475
+  - -52.6193663
+  - 83.1370864
+  url: https://open.canada.ca/data/en/dataset/73714ed4-a795-a7ae-7e93-36100ce7c242
+  uuid: 73714ed4-a795-a7ae-7e93-36100ce7c242
+  availability: open

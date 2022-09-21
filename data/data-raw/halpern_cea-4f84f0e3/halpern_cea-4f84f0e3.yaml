@@ -1,0 +1,76 @@
+pipeline:
+  pipeline_id: 4f84f0e3
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-05-30'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_halpern_cea-4f84f0e3.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Global cumulative human impacts assessments in 2008 and 2013
+  description: Data from the assessments of global marine cumulative human impacts
+    in 2008 and 2013
+  access_date: '2022-09-21'
+  contacts:
+  - contact_id: 46
+    first_name: Benjamin
+    last_name: S. Halpern
+    organization: University of California
+    department: Bren School of Environmental Science and Management
+    role: Professor
+    email: halpern@bren.ucsb.edu
+    phone: ''
+  citekey:
+  - halpern2008a
+  - halpern2015
+  - halpern2015a
+  timespan:
+  - 1985
+  - 1986
+  - 1987
+  - 1988
+  - 1989
+  - 1990
+  - 1991
+  - 1992
+  - 1993
+  - 1994
+  - 1995
+  - 1996
+  - 1997
+  - 1998
+  - 1999
+  - 2000
+  - 2001
+  - 2002
+  - 2003
+  - 2004
+  - 2005
+  - 2006
+  - 2007
+  - 2008
+  - 2009
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  bbox:
+  - -1.7702748e+07
+  - -9.0191129e+06
+  - 1.78766e+07
+  - 8.750003e+06
+  url: https://knb.ecoinformatics.org/#view/doi:10.5063/F1S180FS
+  uuid: .na.character
+  availability: open

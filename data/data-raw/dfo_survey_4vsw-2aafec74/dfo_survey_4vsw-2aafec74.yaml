@@ -1,0 +1,71 @@
+pipeline:
+  pipeline_id: 2aafec74
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-06-07'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_dfo_survey_4vsw-2aafec74.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: DFO Research Vessel Survey 4VSW
+  description: The Fisheries and Oceans Canada (DFO) ecosystem surveys consist of
+    research vessel survey data collected to monitor the distribution and abundance
+    of fish and invertebrates throughout the Scotian Shelf, Bay of Fundy and Georges
+    Bank. The 4VSW survey is focused on the eastern half of the Scotian Shelf, and
+    occurs primarily in March, but sets in both February, and April are also present
+    in the data
+  access_date: '2022-09-09'
+  contacts:
+  - contact_id: 52
+    first_name: ''
+    last_name: ''
+    organization: Fisheries and Oceans Canada
+    department: ''
+    role: ''
+    email: DFO.MAR-PED-Data-Request-Demande-de-donnes-DEP-MAR.MPO@dfo-mpo.gc.ca
+    phone: ''
+  citekey: dfo2020
+  timespan:
+  - '1986'
+  - '1987'
+  - '1988'
+  - '1989'
+  - '1990'
+  - '1991'
+  - '1992'
+  - '1993'
+  - '1994'
+  - '1995'
+  - '1996'
+  - '1997'
+  - '1999'
+  - '2000'
+  - '2001'
+  - '2002'
+  - '2003'
+  - '2005'
+  - '2006'
+  - '2007'
+  - '2008'
+  - '2009'
+  - '2010'
+  bbox:
+  - -63.300333
+  - 42.801667
+  - -56.488333
+  - 45.969833
+  url: https://open.canada.ca/data/en/dataset/a851ce30-e216-4d7d-a29c-05631eef140e
+  uuid: a851ce30-e216-4d7d-a29c-05631eef140e
+  availability: open

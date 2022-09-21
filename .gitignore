@@ -20,17 +20,11 @@
 README.html
 
 # Data ----
-data/data-raw/data*
-data/data-format/*.geojson
-data/data-format/*.csv
-data/data-format/*.tif
-data/data-integrated/*.geojson
-data/data-integrated/*.csv
-data/data-integrated/*.tif
-data/data-basemap/*.geojson
-figures/
-
-analysis/
-clean/
-StressorDataSummary.xlsx
+*.geojson
+*.tif
+*.csv
+*.png
+*.pdf
 *.xlsx
+*.zip
+raw/

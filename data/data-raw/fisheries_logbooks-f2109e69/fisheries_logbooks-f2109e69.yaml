@@ -1,0 +1,81 @@
+pipeline:
+  pipeline_id: f2109e69
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-04-26'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_fisheries_logbooks-f2109e69.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Commercial fisheries logbooks
+  description: A compilation of landing data from Zonal Interchange File Format (ZIFF)
+    data between 2000 and 2020
+  access_date: '2021-06-11'
+  contacts:
+  - contact_id: 34
+    first_name: Denis
+    last_name: Bernier
+    organization: Fisheries and Oceans Canada
+    department: Institut Maurice-Lamontagne
+    role: Data management
+    email: Denis.Bernier@dfo-mpo.gc.ca
+    phone: 1-581-624-3144
+  - contact_id: 35
+    first_name: ''
+    last_name: ''
+    organization: Fisheries and Oceans Canada
+    department: Institut Maurice-Lamontagne
+    role: Data management
+    email: gddaiss-dmsaisb.XLAU@dfo-mpo.gc.ca
+    phone: ''
+  - contact_id: 36
+    first_name: Brian
+    last_name: Boivin
+    organization: Fisheries and Oceans Canada
+    department: Institut Maurice-Lamontagne
+    role: Data management
+    email: Brian.Boivin@dfo-mpo.gc.ca
+    phone: 1-418-775-0880
+  citekey: dfo2021b
+  timespan:
+  - '1999'
+  - '2001'
+  - '2002'
+  - '2003'
+  - '2004'
+  - '2005'
+  - '2006'
+  - '2007'
+  - '2008'
+  - '2009'
+  - '2010'
+  - '2011'
+  - '2012'
+  - '2013'
+  - '2014'
+  - '2015'
+  - '2016'
+  - '2017'
+  - '2018'
+  - '2019'
+  - '2020'
+  bbox:
+  - -95.3833333
+  - 0.7585
+  - -1.0368333
+  - 97.4
+  url: .na.character
+  uuid: .na.character
+  availability: data sharing agreement

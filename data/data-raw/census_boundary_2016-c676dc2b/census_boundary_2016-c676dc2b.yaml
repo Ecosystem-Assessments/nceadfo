@@ -1,0 +1,46 @@
+pipeline:
+  pipeline_id: c676dc2b
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-05-19'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_census_boundary_2016-c676dc2b.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Census cartographic boundary files 2016
+  description: Cartographic boundary files for dissemination areas of the 2016 Canadian
+    census
+  access_date: '2022-09-08'
+  contacts:
+  - contact_id: 43
+    first_name: ''
+    last_name: ''
+    organization: Statistics Canada
+    department: ''
+    role: ''
+    email: STATCAN.infostats-infostats.STATCAN@canada.ca
+    phone: ''
+  citekey:
+  - statisticscanada2016a
+  - statisticscanada2017
+  timespan: 2016.0
+  bbox:
+  - -141.0180732
+  - 41.6814354
+  - -52.6194085
+  - 83.1355025
+  url: https://open.canada.ca/data/en/dataset/2dd7fed4-4e0f-406c-ab96-c29b6a9116b1
+  uuid: 2dd7fed4-4e0f-406c-ab96-c29b6a9116b1
+  availability: open
