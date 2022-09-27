@@ -1,0 +1,57 @@
+pipeline:
+  pipeline_id: 9d64101c
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-09-19'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_sea_surface_temperature_anomalies_dfo-9d64101c.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Sea surface temperature anomalies
+  description: Surface-water temperature anomalies from the Department of Fisheries
+    and Oceans (DFO) Atlantic Zone Monitoring Program (AZMP) between 2010 and 2022
+  access_date: '2022-09-27'
+  contacts:
+  - contact_id: 45
+    first_name: Peter
+    last_name: S. Galbraith
+    organization: Fisheries and Oceans Canada
+    department: ''
+    role: Research scientist
+    email: Peter.Galbraith@dfo-mpo.gc.ca
+    phone: ''
+  citekey: galbraith2021
+  timespan:
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+  - 2022
+  bbox:
+  - -70.989
+  - 39.007
+  - -42.011
+  - 62.493
+  url: .na.character
+  uuid: .na.character
+  availability: on demand
