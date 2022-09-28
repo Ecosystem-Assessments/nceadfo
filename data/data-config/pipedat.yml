@@ -69,3 +69,7 @@ data_workflow:
       - "model"
     invasive_species:
       - "richness"
+    fishing_intensity_metric: 
+      - 3
+    shipping_type: 
+      - "interpolated"
