@@ -40,7 +40,7 @@ data_workflow:
   data_integration:
     # # ------------------------------------------------------------------------
     # # Environmental stressors
-    # # - "e2b7e6c4" # Fisheries intensity
+    - "e2b7e6c4" # Fisheries intensity
     # - "72312316" # Shipping intensity
     # - "aba5e90a" # Night lights
     # - "99bb2d51" # Direct human impact
@@ -53,10 +53,10 @@ data_workflow:
     # - "c055366b" # Monthly temperature climatology
     # - "608c7f2f" # Monthly salinity climatology
     # - "62753cdf" # Monthly currents climatology
-    - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
+    # - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
     # ------------------------------------------------------------------------
     # Biotic data 
-    - "aa3dcb26" # Marine mammals
+    # - "aa3dcb26" # Marine mammals
     # - "893b37e8" # Species list North West Atlantic
   # ==========================================================================
   params:

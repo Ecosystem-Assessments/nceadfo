@@ -1,0 +1,818 @@
+pipeline:
+  pipeline_id: e2b7e6c4
+  pipeline_type: integration
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-05-10'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_fisheries_intensity-e2b7e6c4.R
+description:
+  name: Fisheries intensity
+  description: Assessment of the intensity of fishing activities divided by gear type
+    as in Halpern et al. 2008 (i.e. demersal, destructive, high bycatch (DD); demersal,
+    non-destructive, high bycatch (DNH); demersal, non-destructive, low bycatch (DNL);
+    pelagic, high bycatch (PHB); pelagic, low bycatch (PLB)and gear mobility (i.e.
+    fixed vs mobile).
+  access_date: '2022-09-29'
+  citekey:
+  - halpern2008a
+  - beauchesne2020
+  integration_data: f2109e69
+  grid:
+    type: raster
+    crs: 4326
+    resolution:
+      x:
+        from: 1.0
+        to: 1171.0
+        offset: -67.7425005
+        delta: 0.01
+        refsys:
+          input: WGS 84
+          wkt: |-
+            GEOGCRS["WGS 84",
+                DATUM["World Geodetic System 1984",
+                    ELLIPSOID["WGS 84",6378137,298.257223563,
+                        LENGTHUNIT["metre",1]]],
+                PRIMEM["Greenwich",0,
+                    ANGLEUNIT["degree",0.0174532925199433]],
+                CS[ellipsoidal,2],
+                    AXIS["geodetic latitude (Lat)",north,
+                        ORDER[1],
+                        ANGLEUNIT["degree",0.0174532925199433]],
+                    AXIS["geodetic longitude (Lon)",east,
+                        ORDER[2],
+                        ANGLEUNIT["degree",0.0174532925199433]],
+                ID["EPSG",4326]]
+        point: no
+        values: ~
+      'y':
+        from: 1.0
+        to: 661.0
+        offset: 46.6434225
+        delta: -0.01
+        refsys:
+          input: WGS 84
+          wkt: |-
+            GEOGCRS["WGS 84",
+                DATUM["World Geodetic System 1984",
+                    ELLIPSOID["WGS 84",6378137,298.257223563,
+                        LENGTHUNIT["metre",1]]],
+                PRIMEM["Greenwich",0,
+                    ANGLEUNIT["degree",0.0174532925199433]],
+                CS[ellipsoidal,2],
+                    AXIS["geodetic latitude (Lat)",north,
+                        ORDER[1],
+                        ANGLEUNIT["degree",0.0174532925199433]],
+                    AXIS["geodetic longitude (Lon)",east,
+                        ORDER[2],
+                        ANGLEUNIT["degree",0.0174532925199433]],
+                ID["EPSG",4326]]
+        point: no
+        values: ~
+    bbox:
+    - -67.7425005
+    - 40.0334225
+    - -56.0325005
+    - 46.6434225
+    ncells: 1171
+dataDescription:
+- accronyme: DD
+  english: Demersal, destructive, high-bycatch
+  description: Commercial fishing activities using demersal fishing gear that may
+    damage habitats or substrate, e.g. trawling and dragging.
+- accronyme: DNL
+  english: Demersal, non-destructive, low-bycatch
+  description: Commercial fishing activities using demersal fishing gear with little
+    or no bycatch and not causing habitat modification, e.g., deep-sea fishing.
+- accronyme: DNH
+  english: Demersal, non-destructive, high-bycatch
+  description: Commercial fishing activities using demersal fishing gear with high
+    bycatch and not causing habitat modification, e.g., trap and seine.
+- accronyme: PLB
+  english: Pelagic, low-bycatch
+  description: Commercial fishing activities using pelagic fishing gear with little
+    or no bycatch and not causing habitat modification, e.g., line fishing, purse
+    seine.
+- accronyme: PHB
+  english: Pelagic, high-bycatch
+  description: Commercial fishing activities using pelagic fishing gear with high
+    bycatch and not causing habitat modification, e.g., gillnet and longline.
+species:
+  species_target:
+  - 0
+  - 100
+  - 101
+  - 110
+  - 120
+  - 121
+  - 130
+  - 140
+  - 141
+  - 142
+  - 143
+  - 144
+  - 146
+  - 149
+  - 160
+  - 161
+  - 166
+  - 170
+  - 171
+  - 172
+  - 173
+  - 174
+  - 176
+  - 177
+  - 179
+  - 180
+  - 181
+  - 186
+  - 188
+  - 190
+  - 191
+  - 192
+  - 193
+  - 194
+  - 197
+  - 199
+  - 200
+  - 250
+  - 251
+  - 252
+  - 253
+  - 254
+  - 255
+  - 256
+  - 259
+  - 261
+  - 262
+  - 263
+  - 299
+  - 350
+  - 351
+  - 355
+  - 356
+  - 359
+  - 360
+  - 362
+  - 369
+  - 372
+  - 373
+  - 375
+  - 377
+  - 379
+  - 399
+  - 600
+  - 606
+  - 607
+  - 608
+  - 612
+  - 613
+  - 615
+  - 616
+  - 617
+  - 619
+  - 622
+  - 626
+  - 627
+  - 650
+  - 700
+  - 701
+  - 702
+  - 703
+  - 704
+  - 705
+  - 706
+  - 708
+  - 909
+  - 928
+  - 944
+  - 951
+  - 952
+  - 953
+  - 956
+  - 999
+  species_capture:
+  - ID: 100.0
+    Scientific: Gadus morhua
+    Espece: Morue
+    Species: Cod
+    Freq: 428782
+  - ID: 101.0
+    Scientific: Gadus ogac
+    Espece: Morue de roche
+    Species: Rock cod
+    Freq: 303
+  - ID: 110.0
+    Scientific: Melanogrammus aeglefinus
+    Espece: Aiglefin
+    Species: Haddock
+    Freq: 530342
+  - ID: 120.0
+    Scientific: Sebastes sp
+    Espece: Sébaste
+    Species: Redfish
+    Freq: 193780
+  - ID: 121.0
+    Scientific: Tautogolabrus adspersus
+    Espece: Tanche-tautogue
+    Species: Cunner
+    Freq: 2
+  - ID: 130.0
+    Scientific: Hippoglossus hippoglossus
+    Espece: Flétan Atlantique
+    Species: Atlantic halibut
+    Freq: 223158
+  - ID: 140.0
+    Scientific: Hippoglossoides platessoides
+    Espece: Plie canadienne
+    Species: American plaice
+    Freq: 59851
+  - ID: 141.0
+    Scientific: Pleuronectes ferrugineus
+    Espece: Limande à queue jaune
+    Species: Yellowtail
+    Freq: 39126
+  - ID: 142.0
+    Scientific: Glyptocephalus cynoglossus
+    Espece: Plie grise
+    Species: Greysole (Witch)
+    Freq: 144626
+  - ID: 143.0
+    Scientific: Pleuronectes americanus
+    Espece: Plie rouge
+    Species: Winter flounder
+    Freq: 121394
+  - ID: 144.0
+    Scientific: Reinhardtius hippoglossoides
+    Espece: Flétan du Groenland
+    Species: Greenland halibut
+    Freq: 28061
+  - ID: 145.0
+    Scientific: Scophthalmus aquosus
+    Espece: Turbot de sable
+    Species: Windowpane flounder
+    Freq: 1
+  - ID: 146.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 615
+  - ID: 149.0
+    Scientific: Pleuronectiformes
+    Espece: Plies non spécifiées
+    Species: Unspecified flounders
+    Freq: 35561
+  - ID: 152.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 1
+  - ID: 156.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 121
+  - ID: 158.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 6
+  - ID: 159.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 29
+  - ID: 160.0
+    Scientific: Raja spp.
+    Espece: Raie
+    Species: Skate
+    Freq: 31472
+  - ID: 161.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 8560
+  - ID: 162.0
+    Scientific: Centroscyllium fabricii
+    Espece: Aiguillat noir
+    Species: Dogfish, black
+    Freq: 2
+  - ID: 166.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 1198
+  - ID: 170.0
+    Scientific: Pollachius virens
+    Espece: Goberge
+    Species: Pollock
+    Freq: 264642
+  - ID: 171.0
+    Scientific: Urophycis tenuis
+    Espece: Merluche blanche
+    Species: White hake
+    Freq: 191373
+  - ID: 172.0
+    Scientific: Merluccius bilinearis
+    Espece: Merlu argenté
+    Species: Silver hake
+    Freq: 76320
+  - ID: 173.0
+    Scientific: Brosme brosme
+    Espece: Brosme
+    Species: Cusk
+    Freq: 95046
+  - ID: 174.0
+    Scientific: Anarhichadidae
+    Espece: Loup de mer
+    Species: Catfish
+    Freq: 37101
+  - ID: 175.0
+    Scientific: Microgadus tomcod
+    Espece: Poulamon
+    Species: Tomcod
+    Freq: 7
+  - ID: 176.0
+    Scientific: Cyclopterus lumpus
+    Espece: Poule de mer
+    Species: Lumpfish
+    Freq: 351
+  - ID: 177.0
+    Scientific: Lophius americanus
+    Espece: Baudroie
+    Species: Monkfish
+    Freq: 162525
+  - ID: 179.0
+    Scientific: Coryphaenoides rupestris
+    Espece: Grenadier de roche
+    Species: Roundnose grenadier
+    Freq: 313
+  - ID: 180.0
+    Scientific: Urophycis chuss
+    Espece: Merluche écureuil
+    Species: Red hake
+    Freq: 68876
+  - ID: 181.0
+    Scientific: Cottidae
+    Espece: Chaboisseaux
+    Species: Sculpins
+    Freq: 49618
+  - ID: 182.0
+    Scientific: Macrourus berglax
+    Espece: Grenadier à tête rude
+    Species: Grenadier, rough-head
+    Freq: 549
+  - ID: 183.0
+    Scientific: Zoarces americanus
+    Espece: Loquette d'Amérique
+    Species: Ocean pout
+    Freq: 5
+  - ID: 184.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 88
+  - ID: 186.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 58
+  - ID: 188.0
+    Scientific: Antimora rostrata
+    Espece: Antimore bleu
+    Species: Hake, blue
+    Freq: 3962
+  - ID: 190.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 562
+  - ID: 191.0
+    Scientific: Anarhichas denticulatus
+    Espece: Loup à tête large
+    Species: Northern wolffish
+    Freq: 90
+  - ID: 192.0
+    Scientific: Anarhichas lupus
+    Espece: Loup atlantique
+    Species: Atlantic wolffish
+    Freq: 14625
+  - ID: 193.0
+    Scientific: Anarhichas minor
+    Espece: Loup tacheté
+    Species: Spotted wolffish
+    Freq: 26
+  - ID: 194.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 333
+  - ID: 197.0
+    Scientific: Myxina glutinosa
+    Espece: Myxine du Nord
+    Species: Hagfish/Slime eel
+    Freq: 4217
+  - ID: 199.0
+    Scientific: ''
+    Espece: Poissons de fond non spécifiés
+    Species: Unspecified groundfish
+    Freq: 8094
+  - ID: 200.0
+    Scientific: Clupea harengus
+    Espece: Hareng
+    Species: Herring
+    Freq: 110675
+  - ID: 250.0
+    Scientific: Scomber scombrus
+    Espece: Maquereau
+    Species: Mackerel
+    Freq: 20216
+  - ID: 251.0
+    Scientific: Xiphias gladius
+    Espece: Espadon
+    Species: Swordfish
+    Freq: 52793
+  - ID: 252.0
+    Scientific: Thunnus alalunga
+    Espece: Germon
+    Species: Tuna, Albacore
+    Freq: 11701
+  - ID: 253.0
+    Scientific: Thunnus obesus
+    Espece: Thon ventru
+    Species: Tuna, Bigeye
+    Freq: 14787
+  - ID: 254.0
+    Scientific: Thunnus thynnus
+    Espece: Thon rouge
+    Species: Tuna, Bluefin
+    Freq: 33214
+  - ID: 255.0
+    Scientific: Katsuwonus pelamis
+    Espece: Thonine à ventre rayé
+    Species: Tuna, Skipjack
+    Freq: 29
+  - ID: 256.0
+    Scientific: Thunnus albacares
+    Espece: Albacore
+    Species: Tuna, Yellowfin
+    Freq: 10439
+  - ID: 259.0
+    Scientific: ''
+    Espece: Thon non spécifié
+    Species: Unspecified tuna
+    Freq: 269
+  - ID: 261.0
+    Scientific: Makaira nigricans
+    Espece: makaire bleu
+    Species: blue marlin
+    Freq: 113
+  - ID: 262.0
+    Scientific: Tetrapterus albidus
+    Espece: makaire blanc
+    Species: white marlin
+    Freq: 2288
+  - ID: 263.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 11053
+  - ID: 299.0
+    Scientific: ''
+    Espece: Espèces pélagiques non spécifiées
+    Species: Unspecified pelagic fish
+    Freq: 129
+  - ID: 350.0
+    Scientific: Alosa pseudoharengus
+    Espece: Gaspareau
+    Species: Alewife
+    Freq: 31367
+  - ID: 351.0
+    Scientific: Argentinidae
+    Espece: Argentine
+    Species: Argentine
+    Freq: 3707
+  - ID: 352.0
+    Scientific: Anguilla rostrata
+    Espece: Anguille
+    Species: Eel
+    Freq: 102
+  - ID: 354.0
+    Scientific: Salmo salar
+    Espece: Saumon
+    Species: Salmon
+    Freq: 3
+  - ID: 355.0
+    Scientific: Alosa sapidissima
+    Espece: Alose
+    Species: Shad
+    Freq: 1817
+  - ID: 356.0
+    Scientific: Raja sp
+    Espece: Raie
+    Species: Skate
+    Freq: 2625
+  - ID: 357.0
+    Scientific: Osmerus mordax
+    Espece: Éperlan
+    Species: Smelt
+    Freq: 83
+  - ID: 358.0
+    Scientific: Morone saxatilis
+    Espece: Bar d'Amérique
+    Species: Striped bass
+    Freq: 1
+  - ID: 359.0
+    Scientific: Acipenseridae
+    Espece: Esturgeon
+    Species: Sturgeon
+    Freq: 3
+  - ID: 360.0
+    Scientific: Mallotus villosus
+    Espece: Capelan
+    Species: Capelin
+    Freq: 5
+  - ID: 362.0
+    Scientific: Squalus acanthias
+    Espece: Aiguillat commun
+    Species: Spiny dogfish
+    Freq: 5099
+  - ID: 368.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 3
+  - ID: 369.0
+    Scientific: Lamna nasus, Lamna cornubica
+    Espece: Maraîche
+    Species: Porbeagle
+    Freq: 6301
+  - ID: 371.0
+    Scientific: Cetorhinus maximus
+    Espece: Requin pèlerin
+    Species: Basking shark
+    Freq: 19
+  - ID: 372.0
+    Scientific: Prionace glauca
+    Espece: Requin bleu
+    Species: Blue shark
+    Freq: 227
+  - ID: 373.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 52
+  - ID: 374.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 25
+  - ID: 375.0
+    Scientific: Isurus oxyrinchus
+    Espece: Mako à nageoires courtes
+    Species: Shortfin mako
+    Freq: 13811
+  - ID: 377.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 24
+  - ID: 379.0
+    Scientific: Squaliformes
+    Espece: Requins non spécifiés
+    Species: Unspecified shark
+    Freq: 1521
+  - ID: 399.0
+    Scientific: Pisces
+    Espece: Autres poissons non spécifiés
+    Species: Unspecified, other fish
+    Freq: 259
+  - ID: 600.0
+    Scientific: Spisula solidissima
+    Espece: Mactre de l'Atlantique
+    Species: Surf Clam
+    Freq: 37
+  - ID: 602.0
+    Scientific: Mercenaria mercenaria
+    Espece: Praire
+    Species: Quahaug clams
+    Freq: 1839
+  - ID: 606.0
+    Scientific: Cyrtodaria siliqua
+    Espece: Pitot
+    Species: Banks clam
+    Freq: 24953
+  - ID: 607.0
+    Scientific: Arctica islandica
+    Espece: Palourde de mer
+    Species: Ocean quahaug
+    Freq: 619
+  - ID: 608.0
+    Scientific: Mactromeris polynyma
+    Espece: Mactre de Stimpson
+    Species: Stimpson's Surf clam
+    Freq: 58205
+  - ID: 609.0
+    Scientific: Bivalvia
+    Espece: Clams non spécifiés
+    Species: Unspecified clams
+    Freq: 9
+  - ID: 610.0
+    Scientific: Mytilus edulis
+    Espece: Moule
+    Species: Mussel
+    Freq: 17
+  - ID: 612.0
+    Scientific: Pectinidae
+    Espece: Pétoncle
+    Species: Scallop
+    Freq: 601640
+  - ID: 613.0
+    Scientific: Teuthoidea
+    Espece: Calmar
+    Species: Squid
+    Freq: 18590
+  - ID: 615.0
+    Scientific: Buccinum sp
+    Espece: Buccin
+    Species: Whelk
+    Freq: 21876
+  - ID: 616.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 12833
+  - ID: 617.0
+    Scientific: Chlamys islandica
+    Espece: Pétoncle d'Islande
+    Species: Iceland scallop
+    Freq: 2753
+  - ID: 619.0
+    Scientific: Holothuroidea
+    Espece: Concombre de mer
+    Species: Sea cucumber
+    Freq: 11539
+  - ID: 622.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 3655
+  - ID: 626.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 10902
+  - ID: 627.0
+    Scientific: Loligo
+    Espece: Calmar, Loligo
+    Species: Squid, Loligo
+    Freq: 1131
+  - ID: 650.0
+    Scientific: .na.character
+    Espece: .na.character
+    Species: .na.character
+    Freq: 2110
+  - ID: 699.0
+    Scientific: Mollusca
+    Espece: Mollusques non spécifiés
+    Species: Unspecified molluscs
+    Freq: 145
+  - ID: 700.0
+    Scientific: Homarus americanus
+    Espece: Homard
+    Species: Lobster
+    Freq: 81007
+  - ID: 701.0
+    Scientific: Hyas sp
+    Espece: Crabe araignée
+    Species: Toad crab
+    Freq: 3606
+  - ID: 702.0
+    Scientific: Pandalus sp
+    Espece: Crevette
+    Species: Shrimp
+    Freq: 48404
+  - ID: 703.0
+    Scientific: Cancer borealis
+    Espece: Crabe boréal
+    Species: Jonah crab
+    Freq: 19436
+  - ID: 704.0
+    Scientific: Cancer irroratus
+    Espece: Crabe commun
+    Species: Rock crab
+    Freq: 47642
+  - ID: 705.0
+    Scientific: Chionoecetes opilio
+    Espece: Crabe des neiges
+    Species: Snow crab
+    Freq: 179774
+  - ID: 706.0
+    Scientific: Geryon quinquedens
+    Espece: Crabe rouge
+    Species: Red crab
+    Freq: 2540
+  - ID: 708.0
+    Scientific: Lithodidae
+    Espece: Crabe épineux
+    Species: Stone crab
+    Freq: 45
+  - ID: 710.0
+    Scientific: ''
+    Espece: Crabe des neiges (permis seulement)
+    Species: Snow crab (fishing licence only)
+    Freq: 123
+  - ID: 901.0
+    Scientific: ''
+    Espece: Mousse d'Irlande
+    Species: Irish moss
+    Freq: 1
+  - ID: 909.0
+    Scientific: Strongylocentrotus sp
+    Espece: Oursin
+    Species: Sea urchins
+    Freq: 7488
+  - ID: 919.0
+    Scientific: ''
+    Espece: Foies non spécifiés
+    Species: Unspecified livers
+    Freq: 2310
+  - ID: 920.0
+    Scientific: ''
+    Espece: Langues, noues, flancs
+    Species: Tongues, sounds, cheeks
+    Freq: 82
+  - ID: 922.0
+    Scientific: ''
+    Espece: oeufs
+    Species: roes
+    Freq: 76
+  - ID: 923.0
+    Scientific: ''
+    Espece: Nageoires de poisson
+    Species: Fish fins
+    Freq: 1327
+  - ID: 928.0
+    Scientific: ''
+    Espece: Caviar de lompe
+    Species: Lumpfish roe
+    Freq: 277
+  - ID: 933.0
+    Scientific: ''
+    Espece: Phoque du Groenland, bête de mer
+    Species: Harp seal, bedlamer
+    Freq: 326
+  - ID: 944.0
+    Scientific: Balaenoptera acutorostrata
+    Espece: Petit rorqual
+    Species: Whale, minke
+    Freq: 140
+  - ID: 951.0
+    Scientific: ''
+    Espece: Maquereau exploratoire (permis seulement)
+    Species: Exploratory mackerel (fishing licence)
+    Freq: 27097
+  - ID: 952.0
+    Scientific: ''
+    Espece: Pétoncle exploratoire (permis seulement)
+    Species: Exploratory scallop (fishing licence)
+    Freq: 253
+  - ID: 953.0
+    Scientific: ''
+    Espece: Homard exploratoire (permis seulement)
+    Species: Exploratory lobster (fishing licence)
+    Freq: 871
+  - ID: 956.0
+    Scientific: ''
+    Espece: Crabe commun (permis seulement)
+    Species: Commun crab (fishing licence)
+    Freq: 1350
+  - ID: 957.0
+    Scientific: ''
+    Espece: Buccin exploratoire (permis seulement)
+    Species: Exploratory winkles (fishing licence)
+    Freq: 8
+  - ID: 959.0
+    Scientific: ''
+    Espece: Crevette exploratoire (permis seulement)
+    Species: Exploratory shrimp (fishing licence)
+    Freq: 368
+gear:
+- Var1: DD
+  Freq: 3046812
+- Var1: DNH
+  Freq: 397682
+- Var1: DNL
+  Freq: 24469
+- Var1: PHB
+  Freq: 815156
+- Var1: PLB
+  Freq: 73857
