@@ -9,7 +9,7 @@ pipeline <- function() {
   get_aoi()
   
   # Make grid 
-  make_grid(cellsize = 0.05)
+  make_grid(cellsize = 0.01)
 
   # Integrate data 
   pipedat::pipeflow("./data/data-config/pipedat.yml")

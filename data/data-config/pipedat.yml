@@ -6,10 +6,11 @@ data_workflow:
       ymin: 39
       xmax: -54
       ymax: 47
+    cellsize: 0.01
   # ==========================================================================
   data_pipelines:
     # # ------------------------------------------------------------------------
-    # # Environmental stressors
+    # # # Environmental stressors
     # - "f2109e69" # Commercial fisheries logbooks
     # - "35608fef" # CanCoast - Coastal Materials Version 2.0
     # - "8509eeb1" # Nighttime Ligths    
@@ -21,9 +22,9 @@ data_workflow:
     # - "4f84f0e3" # Global cumulative human impacts assessments (Halpern)
     # - "7c8c4da1" # Invasive species distribution models
     # - "fdd796d7" # Summer Groundfish Interpolated Results Scotian Shelf
-    - "9d64101c" # Sea surface temperature anomalies
-    # # ------------------------------------------------------------------------
-    # # Abiotic data 
+    # - "9d64101c" # Sea surface temperature anomalies
+    # # # ------------------------------------------------------------------------
+    # # # Abiotic data 
     # - "71944efd" # Monthly temperature climatology	
     # - "0d61380a" # Monthly salinity climatology
     # - "906f1155" # Monthly currents climatology
@@ -37,25 +38,25 @@ data_workflow:
     # - "3348d162" # DFO Research Vessel Survey Summer
   # ==========================================================================
   data_integration:
-    # ------------------------------------------------------------------------
-    # Environmental stressors
-    # - "e2b7e6c4" # Fisheries intensity
+    # # ------------------------------------------------------------------------
+    # # Environmental stressors
+    # # - "e2b7e6c4" # Fisheries intensity
     # - "72312316" # Shipping intensity
     # - "aba5e90a" # Night lights
     # - "99bb2d51" # Direct human impact
     # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
     # - "84b6ea0b" # Invasive species environmental stressor
     # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
-    - "3992e1a6" # Sea surface temperature anomalies intensity
-    # ------------------------------------------------------------------------
-    # Abiotic data 
+    # - "3992e1a6" # Sea surface temperature anomalies intensity
+    # # ------------------------------------------------------------------------
+    # # Abiotic data 
     # - "c055366b" # Monthly temperature climatology
     # - "608c7f2f" # Monthly salinity climatology
     # - "62753cdf" # Monthly currents climatology
-    # - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
+    - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
     # ------------------------------------------------------------------------
     # Biotic data 
-    # - "aa3dcb26" # Marine mammals
+    - "aa3dcb26" # Marine mammals
     # - "893b37e8" # Species list North West Atlantic
   # ==========================================================================
   params:

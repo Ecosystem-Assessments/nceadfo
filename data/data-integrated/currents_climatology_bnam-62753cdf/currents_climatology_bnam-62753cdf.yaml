@@ -16,7 +16,7 @@ description:
   name: Monthly currents climatology
   description: Monthly mean salinity from Bedford Institute of Oceanography North
     Atlantic Model (BNAM) results averaged over 1990 to 2015 period
-  access_date: '2022-09-21'
+  access_date: '2022-09-28'
   contacts:
   - contact_id: 49
     first_name: Zeliang
@@ -36,9 +36,9 @@ description:
     resolution:
       x:
         from: 1.0
-        to: 235.0
+        to: 1171.0
         offset: -67.7425005
-        delta: 0.05
+        delta: 0.01
         refsys:
           input: WGS 84
           wkt: |-
@@ -60,9 +60,9 @@ description:
         values: ~
       'y':
         from: 1.0
-        to: 133.0
+        to: 661.0
         offset: 46.6434225
-        delta: -0.05
+        delta: -0.01
         refsys:
           input: WGS 84
           wkt: |-
@@ -84,7 +84,7 @@ description:
         values: ~
     bbox:
     - -67.7425005
-    - 39.9934225
-    - -55.9925005
+    - 40.0334225
+    - -56.0325005
     - 46.6434225
-    ncells: 235
+    ncells: 1171

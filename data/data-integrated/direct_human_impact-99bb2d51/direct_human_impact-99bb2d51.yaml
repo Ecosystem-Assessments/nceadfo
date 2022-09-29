@@ -16,7 +16,7 @@ description:
   name: Direct human impact
   description: Assessment of the intensity of direct human impact along coastlines
     using population density as a proxy
-  access_date: '2022-09-21'
+  access_date: '2022-09-28'
   citekey:
   - halpern2008a
   - beauchesne2020
@@ -29,15 +29,15 @@ description:
     type: polygon
     crs: 32198
     resolution:
-      resolution: 2.448324e+07
+      resolution: 979752.4043522
       units:
         numerator:
         - m
         - m
         denominator: []
     bbox:
-    - 62166.872204
-    - -439921.7611695
-    - 1038582.354691
-    - 342962.6034087
-    ncells: 19051
+    - 62309.0257714
+    - -439890.0862485
+    - 1037804.8025811
+    - 342252.4443677
+    ncells: 463303
