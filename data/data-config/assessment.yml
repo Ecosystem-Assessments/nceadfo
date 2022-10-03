@@ -1,0 +1,59 @@
+assessment:
+  type: cumulative effects
+  scale: network
+  vc: species
+  stressors:
+    dd:
+      - id: "e2b7e6c4"
+      - accronym: dd
+      - name: Demersal 
+      - description: 
+    dnh:
+      - id: "e2b7e6c4"
+      - accronym: dd
+      - name: Demersal 
+      - description: 
+    dnl:
+      - id: "e2b7e6c4"
+      - accronym: dd
+      - name: Demersal 
+      - description: 
+    phb:
+      - id: "e2b7e6c4"
+      - accronym: dd
+      - name: Demersal 
+      - description:       
+    plb: 
+      - id: "e2b7e6c4"
+      - accronym: dd
+      - name: Demersal 
+      - description: 
+    ship:
+      - id: "72312316"
+    inv:
+      - id: "84b6ea0b"
+    sstp:
+      - id: "3992e1a6"
+    sstn:
+      - id: "3992e1a6"
+    sbtp:
+      - id: "6dba9a9f"
+    sbtn:
+      - id: "6dba9a9f"
+    dhi:
+      - id: "99bb2d51"
+    cd:
+      - id: "aba5e90a"
+    inorg:
+      - id: "16c0d3ad"
+    nutpl:
+      - id: "16c0d3ad"
+    orgpl:
+      - id: "16c0d3ad"
+      
+      
+    
+    -
+    
+        
+  

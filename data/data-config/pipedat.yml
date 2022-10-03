@@ -7,6 +7,19 @@ data_workflow:
       xmax: -54
       ymax: 47
     cellsize: 0.01
+    timespan:
+      - 2010
+      - 2011
+      - 2012
+      - 2013
+      - 2014
+      - 2015
+      - 2016
+      - 2017
+      - 2018
+      - 2019
+      - 2020
+      - 2021
   # ==========================================================================
   data_pipelines:
     # # ------------------------------------------------------------------------
@@ -40,14 +53,14 @@ data_workflow:
   data_integration:
     # # ------------------------------------------------------------------------
     # # Environmental stressors
-    - "e2b7e6c4" # Fisheries intensity
-    # - "72312316" # Shipping intensity
+    # - "e2b7e6c4" # Fisheries intensity
+    - "72312316" # Shipping intensity
     # - "aba5e90a" # Night lights
     # - "99bb2d51" # Direct human impact
     # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
     # - "84b6ea0b" # Invasive species environmental stressor
     # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
-    # - "3992e1a6" # Sea surface temperature anomalies intensity
+    - "3992e1a6" # Sea surface temperature anomalies intensity
     # # ------------------------------------------------------------------------
     # # Abiotic data 
     # - "c055366b" # Monthly temperature climatology
@@ -73,4 +86,6 @@ data_workflow:
     fishing_intensity_metric: 
       - 3
     shipping_type: 
+      - "num_vessels"
+    shipping_model: 
       - "interpolated"
