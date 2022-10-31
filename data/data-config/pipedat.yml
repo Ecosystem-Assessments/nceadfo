@@ -49,18 +49,19 @@ data_workflow:
     # - "90e90110" # DFO Research Vessel Survey Fall
     # - "21f8a758" # DFO Research Vessel Survey Spring
     # - "3348d162" # DFO Research Vessel Survey Summer
+    - "d8094d1b" # Species interactions catalog
   # ==========================================================================
   data_integration:
     # # ------------------------------------------------------------------------
     # # Environmental stressors
     # - "e2b7e6c4" # Fisheries intensity
-    - "72312316" # Shipping intensity
+    # - "72312316" # Shipping intensity
     # - "aba5e90a" # Night lights
     # - "99bb2d51" # Direct human impact
     # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
     # - "84b6ea0b" # Invasive species environmental stressor
     # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
-    - "3992e1a6" # Sea surface temperature anomalies intensity
+    # - "3992e1a6" # Sea surface temperature anomalies intensity
     # # ------------------------------------------------------------------------
     # # Abiotic data 
     # - "c055366b" # Monthly temperature climatology
@@ -70,7 +71,7 @@ data_workflow:
     # ------------------------------------------------------------------------
     # Biotic data 
     # - "aa3dcb26" # Marine mammals
-    # - "893b37e8" # Species list North West Atlantic
+    - "893b37e8" # Species list North West Atlantic
   # ==========================================================================
   params:
     halpern_layers:

@@ -1,0 +1,31 @@
+pipeline:
+  pipeline_id: d8094d1b
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-10-31'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_species_interactions_catalog-d8094d1b.R
+description:
+  name: Species interations catalog
+  description: Catalog of empirical binary species interactions from various sources
+  access_date: '2022-10-31'
+  contacts:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  citekey: beauchesne2016a
+  url: https://github.com/david-beauchesne/Predict_interactions
+  uuid: .na.character
+  availability: open
