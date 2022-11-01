@@ -13,4 +13,7 @@ pipeline <- function() {
 
   # Integrate data 
   pipedat::pipeflow("./data/data-config/pipedat.yml")
+  
+  # Aggregate temporal data 
+  # temporal_aggregate()
 }

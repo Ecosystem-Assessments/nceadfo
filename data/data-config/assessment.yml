@@ -2,6 +2,11 @@ assessment:
   type: cumulative effects
   scale: network
   vc: species
+  temporal_aggregation:
+    temp1: 2010:2012
+    temp2: 2013:2015
+    temp3: 2016:2018
+    temp4: 2019:2021
   stressors:
     fish: "e2b7e6c4"
     ship: "72312316"
