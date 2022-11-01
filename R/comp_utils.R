@@ -9,11 +9,13 @@
 global_parameters <- function() {
   ## ---------------------------------------------
   ## Global parameters stored as YAML
-  assign(x = "param",
-         value = yaml::read_yaml("./data/data-config/global_parameters.yml"),
-         envir = globalenv())
-         
-  # Save as .rdata for the package 
+  assign(
+    x = "param",
+    value = yaml::read_yaml("./data/data-config/global_parameters.yml"),
+    envir = globalenv()
+  )
+
+  # Save as .rdata for the package
   save(param, file = "data/global_parameters.RData")
 }
 
@@ -24,18 +26,18 @@ global_parameters <- function() {
 #   if (type == "raw") {
 #     files <- dir(glue('./data/data-raw/{did}/data-format/'), full.names = TRUE)
 #   }
-# 
+#
 #   if (type == "ingrid") {
-# 
+#
 #   }
-# 
+#
 #   if (type == "output") {
-# 
+#
 #   }
-# 
+#
 #   # Identify extensions
 #   ext <- data.table::last(stringr::str_split(files, "\\.")[[1]])
-# 
+#
 #   # Import data according to extension type
 #   ## ----------
 #   ## GEOJSON
@@ -44,7 +46,7 @@ global_parameters <- function() {
 #            value = sf::st_read(files[uid], quiet = TRUE),
 #            envir = globalenv())
 #   }
-# 
+#
 #   ## ----------
 #   ## GeoTIFF
 #   if (ext == "tif") {
@@ -52,7 +54,7 @@ global_parameters <- function() {
 #            value = stars::read_stars(files[uid], quiet = TRUE),
 #            envir = globalenv())
 #   }
-# 
+#
 #   ## ----------
 #   ## CSV
 #   if (ext == "csv") {
@@ -61,4 +63,4 @@ global_parameters <- function() {
 #            envir = globalenv())
 #   }
 # }
-# 
+#

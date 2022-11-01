@@ -2,19 +2,19 @@
 #'
 #' @export
 get_aoi <- function() {
-  # Get federal marine bioregions 
+  # Get federal marine bioregions
   pipedat::pipedat("f635934a")
-  
+
   # Load federal bioregions
   dat <- sf::st_read(
     "data/data-raw/federal_marine_bioregions-f635934a/federal_marine_bioregions-f635934a.geojson",
     quiet = TRUE
   )
-  
+
   # Select Scotian Shelf bioregion
   uid <- c("Scotian Shelf")
   aoi <- dat[dat$NAME_E %in% uid, ] |>
-         sf::st_transform(crs = param$crs)
+    sf::st_transform(crs = param$crs)
 
 
   # Export data
@@ -26,5 +26,5 @@ get_aoi <- function() {
   )
 
   # Export for lazy load
-  save(aoi, file = './data/aoi.RData')
+  save(aoi, file = "./data/aoi.RData")
 }

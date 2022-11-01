@@ -24,9 +24,9 @@ rep_hyperlien <- function(texte, url) {
   nl <- length(texte)
   hyperlien <- character(nl)
 
-  for(i in 1:nl) {
-    if(!is.null(url[i])) {
-      hyperlien[i] <- paste0("[",texte[i],"](",url[i],")")
+  for (i in 1:nl) {
+    if (!is.null(url[i])) {
+      hyperlien[i] <- paste0("[", texte[i], "](", url[i], ")")
     } else {
       hyperlien[i] <- texte[i]
     }
@@ -42,4 +42,3 @@ clean <- function() {
   objs <- ls(envir = globalenv())
   rm(list = objs, pos = ".GlobalEnv")
 }
-

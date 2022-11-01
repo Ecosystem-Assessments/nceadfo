@@ -6,11 +6,11 @@ make_grid <- function(cellsize) {
   aoi <- sf::st_read("data/data-basemap/aoi.geojson", quiet = TRUE)
 
   # Make grids
-  grid_poly <- sf::st_make_grid(aoi, cellsize = cellsize)  
+  grid_poly <- sf::st_make_grid(aoi, cellsize = cellsize)
   grid_poly <- grid_poly[aoi] |>
-               sf::st_sf() |>
-               dplyr::mutate(uid = 1:dplyr::n())  
-  
+    sf::st_sf() |>
+    dplyr::mutate(uid = 1:dplyr::n())
+
   # Raster grid
   grid_ras <- stars::st_rasterize(grid_poly, dx = cellsize, dy = cellsize)
   names(grid_ras) <- "uid"

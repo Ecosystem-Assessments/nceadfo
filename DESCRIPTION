@@ -27,6 +27,7 @@ Imports:
     fs,
     glue,
     graphicsutils,
+    iEat,
     pipedat,
     mapview,
     sf,

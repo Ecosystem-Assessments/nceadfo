@@ -28,3 +28,6 @@ README.html
 *.xlsx
 *.zip
 raw/
+*.RData
+
+# Specific datasets
