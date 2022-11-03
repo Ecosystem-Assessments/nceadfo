@@ -49,7 +49,7 @@ data_workflow:
     # - "90e90110" # DFO Research Vessel Survey Fall
     # - "21f8a758" # DFO Research Vessel Survey Spring
     # - "3348d162" # DFO Research Vessel Survey Summer
-    - "d8094d1b" # Species interactions catalog
+    # - "d8094d1b" # Species interactions catalog
   # ==========================================================================
   data_integration:
     # # ------------------------------------------------------------------------
@@ -72,6 +72,7 @@ data_workflow:
     # Biotic data 
     # - "aa3dcb26" # Marine mammals
     - "893b37e8" # Species list North West Atlantic
+    - "18869625" # Species occurrences North West Atlantic
   # ==========================================================================
   params:
     halpern_layers:
