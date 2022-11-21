@@ -42,6 +42,7 @@ data_workflow:
     # - "0d61380a" # Monthly salinity climatology
     # - "906f1155" # Monthly currents climatology
     # - "e775900b" # The GEBCO_2021 Grid Bathymetry
+    - "4d4292ca" # Bio-ORACLE
     # # # ------------------------------------------------------------------------
     # # # Biotic data 
     # - "3d1bfb8e" # Marine mammals WWF-ROMM
@@ -66,13 +67,13 @@ data_workflow:
     # # Abiotic data 
     # - "c055366b" # Monthly temperature climatology
     # - "608c7f2f" # Monthly salinity climatology
-    # - "62753cdf" # Monthly currents climatology
+    - "62753cdf" # Monthly currents climatology
     # - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
     # ------------------------------------------------------------------------
     # Biotic data 
     # - "aa3dcb26" # Marine mammals
-    - "893b37e8" # Species list North West Atlantic
-    - "18869625" # Species occurrences North West Atlantic
+    # - "893b37e8" # Species list North West Atlantic
+    # - "18869625" # Species occurrences North West Atlantic
   # ==========================================================================
   params:
     halpern_layers:
@@ -91,3 +92,23 @@ data_workflow:
       - "num_vessels"
     shipping_model: 
       - "interpolated"
+    biooracle_layers:
+      - "BO22_calcite"
+      - "BO22_ph"
+      - "BO22_carbonphytomean_bdmean"
+      - "BO22_carbonphytomean_ss"
+      - "BO22_chlomean_bdmean"
+      - "BO22_chlomean_ss"
+      - "BO22_dissoxmean_bdmean"
+      - "BO22_dissoxmean_ss"
+      - "BO22_ironmean_bdmean"
+      - "BO22_ironmean_ss"
+      - "BO22_lightbotmean_bdmean"
+      - "BO22_nitratemean_bdmean"
+      - "BO22_nitratemean_ss"
+      - "BO22_phosphatemean_bdmean"
+      - "BO22_phosphatemean_ss"
+      - "BO22_ppmean_bdmean"
+      - "BO22_ppmean_ss"
+      - "BO22_silicatemean_bdmean"
+      - "BO22_silicatemean_ss"

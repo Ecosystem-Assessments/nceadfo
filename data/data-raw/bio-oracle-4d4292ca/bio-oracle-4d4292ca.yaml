@@ -1,0 +1,62 @@
+pipeline:
+  pipeline_id: 4d4292ca
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-11-21'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_bio-oracle-4d4292ca.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Bio-ORACLE
+  description: Bio-ORACLE is a set of GIS rasters providing geophysical, biotic and
+    environmental data for surface and benthic marine realms.
+  access_date: '2022-11-21'
+  contacts:
+  - contact_id: 69
+    first_name: Lennert
+    last_name: Tyberghein
+    organization: Flanders Marine Institute
+    department: ''
+    role: Division Head
+    email: lennert.tyberghein@vliz.be
+    phone: ''
+  - contact_id: 70
+    first_name: Samuel
+    last_name: Bosch
+    organization: Institute for Agricultural and Fisheries Research
+    department: ''
+    role: ''
+    email: mail@samuelbosch.com
+    phone: ''
+  - contact_id: 71
+    first_name: Salvador
+    last_name: Fernandez
+    organization: Flanders Marine Institute
+    department: ''
+    role: Science officer
+    email: salvafern@pm.me
+    phone: ''
+  citekey:
+  - bosch2022
+  - tyberghein2012
+  - assis2018
+  bbox:
+  - -180.0
+  - -90.0
+  - 180.0
+  - 90.0
+  url: https://www.bio-oracle.org/
+  uuid: .na.character
+  availability: open
