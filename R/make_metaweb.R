@@ -1,8 +1,7 @@
 #' Predict species metaweb
 #'
 #' @export
-get_metaweb <- function() {
-  library(magrittr)
+make_metaweb <- function() {
   # Load interactions catalog & species list
   dat <- importdat(c("d8094d1b", "893b37e8"))
   S0_catalog <- dat[["species_interactions_catalog-d8094d1b.csv"]] |>
