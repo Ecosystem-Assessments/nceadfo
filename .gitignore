@@ -29,5 +29,6 @@ README.html
 *.zip
 raw/
 *.RData
+*.gpkg
 
 # Specific datasets

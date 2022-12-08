@@ -12,7 +12,7 @@ pipeline <- function() {
   make_grid(cellsize = 0.01)
 
   # Integrate data 
-  pipedat::pipeflow("./data/data-config/pipedat.yml")
+  pipedat::pipeflow("./data/config/pipedat.yml")
   
   # Prepare assessment modules 
   # make_stressors()

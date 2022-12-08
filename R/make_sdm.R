@@ -1,4 +1,4 @@
-#' Predict species metaweb
+#' Predict species distribution
 #'
 #' @export
 make_sdm <- function() {
@@ -216,8 +216,7 @@ make_sdm <- function() {
   }
   
   # Modeling
-  # for(i in 1:nSp) {
-  for(i in 1:2) {
+  for(i in 1:nSp) {
     cat(i, ' of ', nSp, '\r')
     nmSp <- sp$shortname[i]
     

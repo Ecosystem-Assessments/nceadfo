@@ -1,5 +1,6 @@
-data_workflow:
-  parameters: 
+pipedat:
+  parameters:
+    make_grid: TRUE
     crs: 4326
     bbox:
       xmin: -67
@@ -7,6 +8,7 @@ data_workflow:
       xmax: -54
       ymax: 47
     cellsize: 0.01
+    aoi: data/data-basemap/aoi.geojson
     timespan:
       - 2010
       - 2011
@@ -42,7 +44,7 @@ data_workflow:
     # - "0d61380a" # Monthly salinity climatology
     # - "906f1155" # Monthly currents climatology
     # - "e775900b" # The GEBCO_2021 Grid Bathymetry
-    - "4d4292ca" # Bio-ORACLE
+    # - "4d4292ca" # Bio-ORACLE
     # # # ------------------------------------------------------------------------
     # # # Biotic data 
     # - "3d1bfb8e" # Marine mammals WWF-ROMM
@@ -59,7 +61,7 @@ data_workflow:
     # - "72312316" # Shipping intensity
     # - "aba5e90a" # Night lights
     # - "99bb2d51" # Direct human impact
-    # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
+    - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
     # - "84b6ea0b" # Invasive species environmental stressor
     # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
     # - "3992e1a6" # Sea surface temperature anomalies intensity
@@ -67,7 +69,7 @@ data_workflow:
     # # Abiotic data 
     # - "c055366b" # Monthly temperature climatology
     # - "608c7f2f" # Monthly salinity climatology
-    - "62753cdf" # Monthly currents climatology
+    # - "62753cdf" # Monthly currents climatology
     # - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
     # ------------------------------------------------------------------------
     # Biotic data 
