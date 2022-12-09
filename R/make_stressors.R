@@ -5,93 +5,145 @@ make_stressors <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load & prepare data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  uid <- c("3992e1a6", "6dba9a9f", "e2b7e6c4", "72312316", "16c0d3ad", "99bb2d51")
+  uid <- c(
+    "3992e1a6", "6dba9a9f", "e2b7e6c4", "72312316", 
+    "16c0d3ad", "99bb2d51", "aba5e90a", "84b6ea0b"
+  )
   dat <- pipedat::importdat(uid)
-  nm <- data.frame(datname = names(dat))
-  stringr::str_split(nm$datname, "-")
-  
-  loc <- function(dat, field, years = NULL) {
-    nm <- names(dat)
-    field <- stringr::str_detect(nm, field) |> which()
-    years <- lapply(years, function(x) stringr::str_detect(nm, pattern = as.character(x))) |>
-             lapply(which) |>
-             unlist()
-    years[years %in% field]
-    dat[stringr::str_detect(names(dat), pattern)]
-  }
-  # ------------------------------
-  # Climate stressors 
-  ## Sea surface temperature anomalies
-  sst <- importdat("3992e1a6")
-  sst_pos <- loc(sst, "positive")
-  sst_neg <- loc(sst, "negative")
-  
-  ## Sea bottom temperature anomalies 
-  sbt <- importdat("6dba9a9f")
-  
-  # ------------------------------
-  # Fisheries stressors 
-  fish <- importdat("e2b7e6c4")
-
-  ## DD
-  dd <- loc(fish, "DD")
-  
-  ## DNH
-  dnh <- loc(fish, "DNH")
-  
-  ## DNL
-  dnl <- loc(fish, "DNL")
-  
-  ## PLB
-  plb <- loc(fish, "PLB")
-  
-  ## PHB
-  phb <- loc(fish, "PHB")
-
-  # ------------------------------
-  # Shipping 
-  ## Traffic 
-  ship <- importdat("72312316")
-  
-  ## Marine pollution 
-  # marpol <- 
-  
-  ## Invasive species 
-  inv <- importdat("84b6ea0b")
-  
-  
-  # ------------------------------
-  # Land-based
-  halp <- importdat("16c0d3ad")
-  
-  ## Inorganic pollution
-  inorg <- loc(halp, "inorganic")
-  
-  ## Nutrient import
-  nut <- loc(halp, "plumes_fert")
-  
-  ## Organic pollution
-  org <- loc(halp, "plumes_pest")
-  
-  ## Coastal development
-  cd <- importdat("aba5e90a")
-  
-  ## Direct human impact
-  dhi <- importdat("99bb2d51")
-  
+  names(dat) <- tools::file_path_sans_ext(names(dat))  
+  nm <- data.frame(datname = tools::file_path_sans_ext(names(dat)))
+  name <- stringr::str_split(nm$datname, "-") |>
+          lapply(
+            function(x) {
+              num <- as.numeric(x)
+              iid <- !is.na(num)
+              year <- ifelse(any(iid[-c(1,2)]), dplyr::last(num[iid]), NA)
+              type <- ifelse(!iid[3], x[3], NA)
+              data.frame(name = x[1],uid = x[2],type = type,year = year)
+            }
+          ) |>
+          dplyr::bind_rows()
+  name <- cbind(nm,name)
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Divide into periods
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  flt_nm <- function(nm, id, tp, yr) {
+    dplyr::filter(nm, uid == id, type %in% tp, year %in% yr) |>
+    dplyr::select(datname, name)
+  }
+
+  cbn_dat <- function(dat, nm, id, tp, yr, met = "mean") {
+    library(stars)
+    nm <- flt_nm(nm, id, tp, yr)
+    do.call("c", dat[nm$datname]) |>
+    stars::st_redimension() |>
+    stars::st_apply(c(1,2), met, na.rm = TRUE) |>
+    setNames(
+      ifelse(
+        is.na(tp),
+        glue::glue("{nm$name[1]}-{id}"),
+        glue::glue("{nm$name[1]}-{id}-{tp}")
+      )
+    )
+  }
+  
   # Creating four periods for the assessment
-  period_2010_2012 <- list()
-  period_2013_2015 <- list()
-  period_2016_2018 <- list()
-  period_2019_2021 <- list()
+  period_2010_2012 <- list(
+    cbn_dat(dat, name, "3992e1a6","negative",2010:2012, "sum"), # SST anomalies -
+    cbn_dat(dat, name, "3992e1a6","positive",2010:2012, "sum"), # SST anomalies +
+    cbn_dat(dat, name, "6dba9a9f","bottomValues",2010:2012, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "e2b7e6c4","DD",2010:2012, "mean"), # fisheries DD
+    cbn_dat(dat, name, "e2b7e6c4","DNH",2010:2012, "mean"), # fisheries DNH
+    cbn_dat(dat, name, "e2b7e6c4","DNL",2010:2012, "mean"), # fisheries DNL
+    cbn_dat(dat, name, "e2b7e6c4","PLB",2010:2012, "mean"), # fisheries PLB
+    cbn_dat(dat, name, "e2b7e6c4","PHB",2010:2012, "mean"), # fisheries PHB
+    cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
+    cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
+    cbn_dat(dat, name, "16c0d3ad","inorganic",2008,"mean"), # inorganic
+    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2008,"mean"), # fert
+    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2008,"mean"), # pest
+    cbn_dat(dat, name, "aba5e90a",NA,2012,"mean"), # coastdev
+    cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
+  )
+  period_2013_2015 <- list(
+    cbn_dat(dat, name, "3992e1a6","negative",2013:2015, "sum"), # SST anomalies -
+    cbn_dat(dat, name, "3992e1a6","positive",2013:2015, "sum"), # SST anomalies +
+    cbn_dat(dat, name, "6dba9a9f","bottomValues",2013:2015, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "e2b7e6c4","DD",2013:2015, "mean"), # fisheries DD
+    cbn_dat(dat, name, "e2b7e6c4","DNH",2013:2015, "mean"), # fisheries DNH
+    cbn_dat(dat, name, "e2b7e6c4","DNL",2013:2015, "mean"), # fisheries DNL
+    cbn_dat(dat, name, "e2b7e6c4","PLB",2013:2015, "mean"), # fisheries PLB
+    cbn_dat(dat, name, "e2b7e6c4","PHB",2013:2015, "mean"), # fisheries PHB
+    cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
+    cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
+    cbn_dat(dat, name, "16c0d3ad","inorganic",2008,"mean"), # inorganic
+    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2008,"mean"), # fert
+    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2008,"mean"), # pest
+    cbn_dat(dat, name, "aba5e90a",NA,2013:2015,"mean"), # coastdev
+    cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
+  )
+  period_2016_2018 <- list(
+    cbn_dat(dat, name, "3992e1a6","negative",2016:2018, "sum"), # SST anomalies -
+    cbn_dat(dat, name, "3992e1a6","positive",2016:2018, "sum"), # SST anomalies +
+    cbn_dat(dat, name, "6dba9a9f","bottomValues",2016:2018, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "e2b7e6c4","DD",2016:2018, "mean"), # fisheries DD
+    cbn_dat(dat, name, "e2b7e6c4","DNH",2016:2018, "mean"), # fisheries DNH
+    cbn_dat(dat, name, "e2b7e6c4","DNL",2016:2018, "mean"), # fisheries DNL
+    cbn_dat(dat, name, "e2b7e6c4","PLB",2016:2018, "mean"), # fisheries PLB
+    cbn_dat(dat, name, "e2b7e6c4","PHB",2016:2018, "mean"), # fisheries PHB
+    cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
+    cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
+    cbn_dat(dat, name, "16c0d3ad","inorganic",2013,"mean"), # inorganic
+    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2013,"mean"), # fert
+    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2013,"mean"), # pest
+    cbn_dat(dat, name, "aba5e90a",NA,2016:2018,"mean"), # coastdev
+    cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
+  )
+  period_2019_2021 <- list(
+    cbn_dat(dat, name, "3992e1a6","negative",2019:2021, "sum"), # SST anomalies -
+    cbn_dat(dat, name, "3992e1a6","positive",2019:2021, "sum"), # SST anomalies +
+    cbn_dat(dat, name, "6dba9a9f","bottomValues",2019, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "e2b7e6c4","DD",2019:2020, "mean"), # fisheries DD
+    cbn_dat(dat, name, "e2b7e6c4","DNH",2019:2020, "mean"), # fisheries DNH
+    cbn_dat(dat, name, "e2b7e6c4","DNL",2019:2020, "mean"), # fisheries DNL
+    cbn_dat(dat, name, "e2b7e6c4","PLB",2019:2020, "mean"), # fisheries PLB
+    cbn_dat(dat, name, "e2b7e6c4","PHB",2019:2020, "mean"), # fisheries PHB
+    cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
+    cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
+    cbn_dat(dat, name, "16c0d3ad","inorganic",2013,"mean"), # inorganic
+    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2013,"mean"), # fert
+    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2013,"mean"), # pest
+    cbn_dat(dat, name, "aba5e90a",NA,2019:2021,"mean"), # coastdev
+    cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
+  ) 
+
+  # Export 
+  out <- here::here("data","stressors")
+  p <- list(
+    p1 = here::here(out, "2010_2012"),
+    p2 = here::here(out, "2013_2015"),
+    p3 = here::here(out, "2016_2018"),
+    p4 = here::here(out, "2019_2021")    
+  )
+  lapply(p, chk_create)
     
+  # Function to export
+  exp_stress <- function(x, p) {
+    lapply(
+      x, 
+      function(y) {
+        stars::write_stars(
+          y,
+          dsn = here::here(p, glue::glue("{names(y)}.tif")),
+          delete_dsn = TRUE, 
+          silent = TRUE
+        )
+      }
+    )  
+  }
   
-  
-  sst_pos <- list(
-    sst_pos_2010_2012 = sst_pos[]
-)  
-  
+  exp_stress(period_2010_2012, p$p1)
+  exp_stress(period_2013_2015, p$p2)
+  exp_stress(period_2016_2018, p$p3)
+  exp_stress(period_2019_2021, p$p4)
 }

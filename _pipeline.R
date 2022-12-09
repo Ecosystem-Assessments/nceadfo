@@ -15,12 +15,12 @@ pipeline <- function() {
   pipedat::pipeflow("./data/config/pipedat.yml")
   
   # Prepare assessment modules 
-  # make_stressors()
+  make_stressors()
   make_abiotic()
   make_sdm()
   make_metaweb()
   # make_vulnerability()
+
+  # Outputs
   
-  # Aggregate temporal data 
-  # temporal_aggregate()
 }

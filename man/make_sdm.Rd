@@ -2,10 +2,10 @@
 % Please edit documentation in R/make_sdm.R
 \name{make_sdm}
 \alias{make_sdm}
-\title{Predict species metaweb}
+\title{Predict species distribution}
 \usage{
 make_sdm()
 }
 \description{
-Predict species metaweb
+Predict species distribution
 }
