@@ -17,7 +17,7 @@ pipeline <- function() {
   # Prepare assessment modules 
   make_stressors()
   make_abiotic()
-  make_sdm()
+  make_biotic()
   make_metaweb()
   # make_vulnerability()
 

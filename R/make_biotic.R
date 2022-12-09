@@ -1,7 +1,7 @@
 #' Predict species distribution
 #'
 #' @export
-make_sdm <- function() {
+make_biotic <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load and prepare data for analyses
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,6 +127,10 @@ make_sdm <- function() {
   grd <- raster::raster("data/data-grid/grid_raster.tif")
   resolution <- 1000
   bandwidth <- 5000
+  
+  # ------------------------------------
+  # Binary parameters 
+  th <- 0.5
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Smoothing function for predictions
@@ -175,19 +179,20 @@ make_sdm <- function() {
   # 
   # Steps:
   # 1. Regression model 
-  # 2. Classification model 
+  # 2. Classification model NOTE: removed, but kept in code as comment
   # 3. Predict models
   # 4. Smooth predictions
   # ------------------------------------------------------------------------------
   # Outputs 
   out <- here::here("data","data-biotic")
   out <- list(
-    regression_model = here::here("output","biotic","random_forest_regression"),
-    classification_model = here::here("output","biotic","random_forest_classification"),
+    regression_model = here::here(out,"random_forest_regression_rsq"),
+    # classification_model = here::here("output","biotic","random_forest_classification"),
     regression = here::here(out, "random_forest_regression"),
-    classification = here::here(out, "random_forest_classification"),
+    # classification = here::here(out, "random_forest_classification"),
     regression_smooth = here::here(out, "random_forest_regression_smoothing"),
-    classification_smooth = here::here(out, "random_forest_classification_smoothing")
+    # classification_smooth = here::here(out, "random_forest_classification_smoothing")
+    regression_binary = here::here(out, "random_forest_regression_binary")
   )
   lapply(out, chk_create)
   
@@ -231,19 +236,19 @@ make_sdm <- function() {
       ntree = 500,
       nodesize = 5
     )
-    export_rdata(reg, out$regression_model, nmSp)
+    export_rdata(dplyr::last(reg$rsq), out$regression_model, nmSp) 
     
-    # ----------------
-    classif <- randomForest::randomForest(
-      formula = as.factor(species[[i]]$presence) ~ .,
-      data = species[[i]][, envVar, drop = TRUE],
-      importance = TRUE,
-      keep.forest = TRUE,
-      na.action = na.omit,
-      ntree = 500,
-      nodesize = 5
-    )
-    export_rdata(classif, out$classification_model, nmSp)
+    # # ----------------
+    # classif <- randomForest::randomForest(
+    #   formula = as.factor(species[[i]]$presence) ~ .,
+    #   data = species[[i]][, envVar, drop = TRUE],
+    #   importance = TRUE,
+    #   keep.forest = TRUE,
+    #   na.action = na.omit,
+    #   ntree = 500,
+    #   nodesize = 5
+    # )
+    # export_rdata(classif, out$classification_model, nmSp)
     })
   
     # ----------------
@@ -258,17 +263,17 @@ make_sdm <- function() {
     setNames(sp$shortname[i])
     export_stars(pred_reg, out$regression, nmSp)
 
-    # ----------------
-    pred_classif <- stats::predict(classif, envDat)
-    pred_classif <- raster::raster(
-      crs = raster::projection(env),
-      resolution = raster::res(env),
-      ext = raster::extent(env),
-      vals = as.numeric(pred_classif) - 1
-    ) |>
-    stars::st_as_stars() |>
-    setNames(sp$shortname[i])
-    export_stars(pred_classif, out$classification, nmSp)
+    # # ----------------
+    # pred_classif <- stats::predict(classif, envDat)
+    # pred_classif <- raster::raster(
+    #   crs = raster::projection(env),
+    #   resolution = raster::res(env),
+    #   ext = raster::extent(env),
+    #   vals = as.numeric(pred_classif) - 1
+    # ) |>
+    # stars::st_as_stars() |>
+    # setNames(sp$shortname[i])
+    # export_stars(pred_classif, out$classification, nmSp)
   
     # ----------------
     smooth_reg <- smooth_predict(
@@ -279,13 +284,20 @@ make_sdm <- function() {
     )
     export_raster(smooth_reg, out$regression_smooth, nmSp)
 
+    # # ----------------
+    # smooth_classif <- smooth_predict(
+    #   dat = pred_classif, 
+    #   resolution = resolution, 
+    #   bandwidth = bandwidth, 
+    #   grd = grd
+    # )
+    # export_raster(smooth_classif, out$classification_smooth, nmSp)
+    
     # ----------------
-    smooth_classif <- smooth_predict(
-      dat = pred_classif, 
-      resolution = resolution, 
-      bandwidth = bandwidth, 
-      grd = grd
-    )
-    export_raster(smooth_classif, out$classification_smooth, nmSp)
+    binary_reg <- smooth_reg
+    raster::values(binary_reg) <- ifelse(raster::values(binary_reg) > th, 1, 0)
+    export_raster(binary_reg, out$regression_binary, nmSp)
+    
+
   }
 }
