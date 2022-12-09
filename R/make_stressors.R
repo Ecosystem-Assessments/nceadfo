@@ -118,7 +118,7 @@ make_stressors <- function() {
   ) 
 
   # Export 
-  out <- here::here("data","stressors")
+  out <- here::here("data","stressors","raw")
   p <- list(
     p1 = here::here(out, "2010_2012"),
     p2 = here::here(out, "2013_2015"),
@@ -146,4 +146,37 @@ make_stressors <- function() {
   exp_stress(period_2013_2015, p$p2)
   exp_stress(period_2016_2018, p$p3)
   exp_stress(period_2019_2021, p$p4)
+
+  # Log transform and normalize stressor data
+  out <- here::here("data","stressors","transformed")
+  p <- list(
+    p1 = here::here(out, "2010_2012"),
+    p2 = here::here(out, "2013_2015"),
+    p3 = here::here(out, "2016_2018"),
+    p4 = here::here(out, "2019_2021")    
+  )
+  lapply(p, chk_create)
+  
+  # Get aoi
+  aoi <- sf::st_read("data/aoi/aoi.gpkg")
+
+  # Function to transform data 
+  trdat <- function(dat) {
+    dat <- dat[aoi] # Mask data 
+    dat <- log(dat + 1) # Log transformation
+    dat <- dat / (max(dat[[1]], na.rm = TRUE)) # Standardize 
+    dat <- dat[aoi] # Mask data (again)
+    dat
+  }
+  
+  r <- list(period_2010_2012, period_2013_2015, period_2016_2018, period_2019_2021)
+  for(i in 1:length(r)) {
+      r[[i]] <- lapply(r[[i]], trdat)
+  }  
+
+  # Export
+  exp_stress(r[[1]], p$p1)
+  exp_stress(r[[2]], p$p2)
+  exp_stress(r[[3]], p$p3)
+  exp_stress(r[[4]], p$p4)
 }
