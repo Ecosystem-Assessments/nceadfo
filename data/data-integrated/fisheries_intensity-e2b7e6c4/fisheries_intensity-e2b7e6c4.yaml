@@ -19,69 +19,11 @@ description:
     non-destructive, high bycatch (DNH); demersal, non-destructive, low bycatch (DNL);
     pelagic, high bycatch (PHB); pelagic, low bycatch (PLB)and gear mobility (i.e.
     fixed vs mobile).
-  access_date: '2022-09-29'
+  access_date: '2022-12-09'
   citekey:
   - halpern2008a
   - beauchesne2020
   integration_data: f2109e69
-  grid:
-    type: raster
-    crs: 4326
-    resolution:
-      x:
-        from: 1.0
-        to: 1171.0
-        offset: -67.7425005
-        delta: 0.01
-        refsys:
-          input: WGS 84
-          wkt: |-
-            GEOGCRS["WGS 84",
-                DATUM["World Geodetic System 1984",
-                    ELLIPSOID["WGS 84",6378137,298.257223563,
-                        LENGTHUNIT["metre",1]]],
-                PRIMEM["Greenwich",0,
-                    ANGLEUNIT["degree",0.0174532925199433]],
-                CS[ellipsoidal,2],
-                    AXIS["geodetic latitude (Lat)",north,
-                        ORDER[1],
-                        ANGLEUNIT["degree",0.0174532925199433]],
-                    AXIS["geodetic longitude (Lon)",east,
-                        ORDER[2],
-                        ANGLEUNIT["degree",0.0174532925199433]],
-                ID["EPSG",4326]]
-        point: no
-        values: ~
-      'y':
-        from: 1.0
-        to: 661.0
-        offset: 46.6434225
-        delta: -0.01
-        refsys:
-          input: WGS 84
-          wkt: |-
-            GEOGCRS["WGS 84",
-                DATUM["World Geodetic System 1984",
-                    ELLIPSOID["WGS 84",6378137,298.257223563,
-                        LENGTHUNIT["metre",1]]],
-                PRIMEM["Greenwich",0,
-                    ANGLEUNIT["degree",0.0174532925199433]],
-                CS[ellipsoidal,2],
-                    AXIS["geodetic latitude (Lat)",north,
-                        ORDER[1],
-                        ANGLEUNIT["degree",0.0174532925199433]],
-                    AXIS["geodetic longitude (Lon)",east,
-                        ORDER[2],
-                        ANGLEUNIT["degree",0.0174532925199433]],
-                ID["EPSG",4326]]
-        point: no
-        values: ~
-    bbox:
-    - -67.7425005
-    - 40.0334225
-    - -56.0325005
-    - 46.6434225
-    ncells: 1171
 dataDescription:
 - accronyme: DD
   english: Demersal, destructive, high-bycatch
