@@ -3,6 +3,7 @@
 #' @export
 
 cumul <- function(dat) {
+  library(stars)
   do.call("c", dat) |>
   stars::st_redimension() |>
   stars::st_apply(c(1,2), sum, na.rm = TRUE)      
