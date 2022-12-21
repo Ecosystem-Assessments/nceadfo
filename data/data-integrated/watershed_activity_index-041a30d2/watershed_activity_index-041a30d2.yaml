@@ -1,0 +1,37 @@
+pipeline:
+  pipeline_id: 041a30d2
+  pipeline_type: integration
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-12-20'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_watershed_activity_index-041a30d2.R
+description:
+  name: Integration of watershed activity index in study grid
+  description: .na.character
+  access_date: '2022-12-20'
+  contacts:
+  - contact_id: 17
+    first_name: Grace
+    last_name: Murphy
+    organization: Fisheries and Oceans Canada
+    department: Bedford Institute of Oceanography
+    role: ''
+    email: Grace.Murphy@dfo-mpo.gc.ca
+    phone: ''
+  - contact_id: 18
+    first_name: Noreen
+    last_name: Kelly
+    organization: Fisheries and Oceans Canada
+    department: Bedford Institute of Oceanography
+    role: ''
+    email: Noreen.Kelly@dfo-mpo.gc.ca
+    phone: ''
+  citekey: guijarro-sabaniel2022
+  integration_data: '57121439'

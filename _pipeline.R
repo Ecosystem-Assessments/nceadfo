@@ -22,5 +22,6 @@ pipeline <- function() {
   # make_vulnerability()
 
   # Outputs
-  output_footprint()
+  out_footprint()
+  out_exposure()
 }

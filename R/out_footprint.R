@@ -2,7 +2,7 @@
 #'
 #' @export
 
-out_footporint <- function() {
+out_footprint <- function() {
   library(stars)
   # Stressors 
   out <- here::here("data","stressors","transformed")

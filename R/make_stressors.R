@@ -7,7 +7,7 @@ make_stressors <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   uid <- c(
     "3992e1a6", "6dba9a9f", "e2b7e6c4", "72312316", 
-    "16c0d3ad", "99bb2d51", "aba5e90a", "84b6ea0b"
+    "041a30d2", "99bb2d51", "aba5e90a", "84b6ea0b"
   )
   dat <- pipedat::importdat(uid)
   names(dat) <- tools::file_path_sans_ext(names(dat))  
@@ -59,9 +59,10 @@ make_stressors <- function() {
     cbn_dat(dat, name, "e2b7e6c4","PHB",2010:2012, "mean"), # fisheries PHB
     cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
     cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
-    cbn_dat(dat, name, "16c0d3ad","inorganic",2008,"mean"), # inorganic
-    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2008,"mean"), # fert
-    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2008,"mean"), # pest
+    cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
     cbn_dat(dat, name, "aba5e90a",NA,2012,"mean"), # coastdev
     cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
   )
@@ -76,9 +77,10 @@ make_stressors <- function() {
     cbn_dat(dat, name, "e2b7e6c4","PHB",2013:2015, "mean"), # fisheries PHB
     cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
     cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
-    cbn_dat(dat, name, "16c0d3ad","inorganic",2008,"mean"), # inorganic
-    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2008,"mean"), # fert
-    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2008,"mean"), # pest
+    cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
     cbn_dat(dat, name, "aba5e90a",NA,2013:2015,"mean"), # coastdev
     cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
   )
@@ -93,9 +95,10 @@ make_stressors <- function() {
     cbn_dat(dat, name, "e2b7e6c4","PHB",2016:2018, "mean"), # fisheries PHB
     cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
     cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
-    cbn_dat(dat, name, "16c0d3ad","inorganic",2013,"mean"), # inorganic
-    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2013,"mean"), # fert
-    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2013,"mean"), # pest
+    cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
     cbn_dat(dat, name, "aba5e90a",NA,2016:2018,"mean"), # coastdev
     cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
   )
@@ -110,9 +113,10 @@ make_stressors <- function() {
     cbn_dat(dat, name, "e2b7e6c4","PHB",2019:2020, "mean"), # fisheries PHB
     cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
     cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
-    cbn_dat(dat, name, "16c0d3ad","inorganic",2013,"mean"), # inorganic
-    cbn_dat(dat, name, "16c0d3ad","plumes_fert",2013,"mean"), # fert
-    cbn_dat(dat, name, "16c0d3ad","plumes_pest",2013,"mean"), # pest
+    cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
+    cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
     cbn_dat(dat, name, "aba5e90a",NA,2019:2021,"mean"), # coastdev
     cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
   ) 

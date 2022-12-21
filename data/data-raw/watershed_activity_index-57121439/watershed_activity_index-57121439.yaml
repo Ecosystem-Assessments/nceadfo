@@ -1,0 +1,50 @@
+pipeline:
+  pipeline_id: '57121439'
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-12-13'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_watershed_activity_index-57121439.R
+  pipeline_bbox:
+  - -67
+  - 39
+  - -54
+  - 47
+  pipeline_bbox_crs: 4326
+description:
+  name: Watershed activity index
+  description: TBD
+  access_date: '2022-12-20'
+  contacts:
+  - contact_id: 17
+    first_name: Grace
+    last_name: Murphy
+    organization: Fisheries and Oceans Canada
+    department: Bedford Institute of Oceanography
+    role: ''
+    email: Grace.Murphy@dfo-mpo.gc.ca
+    phone: ''
+  - contact_id: 18
+    first_name: Noreen
+    last_name: Kelly
+    organization: Fisheries and Oceans Canada
+    department: Bedford Institute of Oceanography
+    role: ''
+    email: Noreen.Kelly@dfo-mpo.gc.ca
+    phone: ''
+  citekey: guijarro-sabaniel2022
+  bbox:
+  - 2213412.5478286
+  - 936965.2514
+  - 2693912.5478286
+  - 1439065.2514
+  url: .na.character
+  uuid: .na.character
+  availability: available

@@ -2,7 +2,7 @@
 #'
 #' @export
 
-out_footporint <- function() {
+out_exposure <- function() {
   dat <- here::here("output","footprint") |>
          dir(full.names = TRUE) |>
          lapply(stars::read_stars)
