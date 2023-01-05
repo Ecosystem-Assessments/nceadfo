@@ -1,0 +1,33 @@
+pipeline:
+  pipeline_id: 084860fd
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2022-04-26'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_carms_checklist-084860fd.R
+  pipeline_crs: 4326.0
+data:
+  name: WoRMS North-West Atlantic species checklist
+  description: CaRMS and WoRMS species list for the North-West Atlantic area of interest
+  access_date: '2022-05-04'
+  contacts:
+  - contact_id: 40
+    first_name: ''
+    last_name: ''
+    organization: World Register of Marine Species
+    department: ''
+    role: ''
+    email: info@marinespecies.org
+    phone: ''
+  url: http://www.marinespecies.org/carms/aphia.php?p=checklist&action=search&gu_id=8048&tRank=220&inc_sub=1&status=pv
+  uuid: .na.character
+  availability: open
+  citekey:
+  - nozeres2021
+  - worms2022

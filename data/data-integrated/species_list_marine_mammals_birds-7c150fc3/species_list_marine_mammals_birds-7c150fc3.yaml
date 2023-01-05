@@ -1,0 +1,21 @@
+pipeline:
+  pipeline_id: 7c150fc3
+  pipeline_type: integration
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2023-01-05'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_species_list_marine_mammals_birds-7c150fc3.R
+description:
+  name: Marine mammals and birds in eastern Canada
+  description: List of marine mammal and marine bird species in eastern Canada from
+    CARMs species list
+  access_date: '2023-01-05'
+  citekey: []
+  integration_data: 084860fd
