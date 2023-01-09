@@ -13,17 +13,17 @@ pipeline:
   date_created: '2022-06-06'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_bathymetry_gebco_2021-e775900b.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: The GEBCO_2021 Grid
   description: The GEBCO_2021 Grid was published in July 2021 and is a global terrain
     model for ocean and land, providing elevation data, in meters, on a 15 arc-second
     interval grid
-  access_date: '2022-09-21'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 50
     first_name: ''

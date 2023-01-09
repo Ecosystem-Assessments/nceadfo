@@ -13,16 +13,16 @@ pipeline:
   date_created: '2022-06-01'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_marine_mammals_wwf_romm-3d1bfb8e.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: Marine mammals
   description: 'Cartographic data: a mariner''s guide to whales in the Northwest Atlantic,
     2nd edition'
-  access_date: '2022-06-22'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 47
     first_name: Aurélie

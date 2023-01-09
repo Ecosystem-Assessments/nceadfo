@@ -13,16 +13,16 @@ pipeline:
   date_created: '2022-05-30'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_halpern_cea-4f84f0e3.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: Global cumulative human impacts assessments in 2008 and 2013
   description: Data from the assessments of global marine cumulative human impacts
     in 2008 and 2013
-  access_date: '2022-09-21'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 46
     first_name: Benjamin

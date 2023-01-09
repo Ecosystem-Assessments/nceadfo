@@ -16,7 +16,7 @@ description:
   name: Shipping intensity
   description: Assessment of the intensity of commercial shipping between 2017 and
     2020 using data from the Global Fishing Watch.
-  access_date: '2022-12-08'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 21
     first_name: Boerder

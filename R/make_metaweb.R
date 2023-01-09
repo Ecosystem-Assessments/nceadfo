@@ -3,14 +3,20 @@
 #' @export
 make_metaweb <- function() {
   # Load interactions catalog & species list
-  dat <- importdat(c("d8094d1b", "893b37e8"))
+  dat <- importdat(c("d8094d1b","893b37e8","7c150fc3"))
   S0_catalog <- dat[["species_interactions_catalog-d8094d1b.csv"]] |>
     dplyr::rename(
       nonconsumer = non.consumer,
       nonresource = non.resource
     )
   species <- dat[["species_list_nw_atlantic-893b37e8.csv"]] |>
-    dplyr::rename(taxon = SPEC)
+    dplyr::rename(taxon = SPEC) |>
+    dplyr::select(-Freq, -ScientificName)
+  mmb <- dat[["species_list_marine_mammals_birds-7c150fc3.csv"]] |>
+    dplyr::rename(taxon = ScientificName) |>
+    dplyr::mutate(Species = taxon)
+  species <- dplyr::bind_rows(species, mmb) |>
+             unique()
   taxonomy <- dplyr::select(species, Kingdom, Phylum, Class, Order, Family, Genus, Species)
 
   # Column with taxonomy separated by "|"
@@ -66,6 +72,7 @@ make_metaweb <- function() {
   S0 <- dplyr::select(S0, taxon, resource, consumer) |>
     dplyr::rename(target = resource, source = consumer)
 
+  library(magrittr)
   metaweb <- iEat::iEat(
     S0 = S0,
     S1 = species$taxon,

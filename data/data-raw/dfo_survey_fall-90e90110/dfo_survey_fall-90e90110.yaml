@@ -13,11 +13,24 @@ pipeline:
   date_created: '2022-06-07'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_dfo_survey_fall-90e90110.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
+  pipeline_timespan:
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
 description:
   name: DFO Research Vessel Survey Fall
   description: The Fisheries and Oceans Canada (DFO) ecosystem surveys consist of
@@ -25,7 +38,7 @@ description:
     of fish and invertebrates throughout the Scotian Shelf, Bay of Fundy and Georges
     Bank. The fall survey occurs primarily in October and November, but sets from
     September and December are also present in the data
-  access_date: '2022-09-09'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 52
     first_name: ''

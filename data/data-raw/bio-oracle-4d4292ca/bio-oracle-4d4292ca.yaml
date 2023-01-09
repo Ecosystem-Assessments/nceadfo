@@ -13,16 +13,16 @@ pipeline:
   date_created: '2022-11-21'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_bio-oracle-4d4292ca.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: Bio-ORACLE
   description: Bio-ORACLE is a set of GIS rasters providing geophysical, biotic and
     environmental data for surface and benthic marine realms.
-  access_date: '2022-11-21'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 69
     first_name: Lennert

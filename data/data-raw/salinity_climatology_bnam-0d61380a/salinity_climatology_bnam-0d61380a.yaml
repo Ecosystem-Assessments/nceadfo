@@ -13,16 +13,16 @@ pipeline:
   date_created: '2022-06-04'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_salinity_climatology_bnam-0d61380a.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: Monthly salinity climatology
   description: Monthly mean salinity from Bedford Institute of Oceanography North
     Atlantic Model (BNAM) results averaged over 1990 to 2015 period
-  access_date: '2022-09-09'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 49
     first_name: Zeliang

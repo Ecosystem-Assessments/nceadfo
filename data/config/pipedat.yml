@@ -3,12 +3,12 @@ pipedat:
     make_grid: TRUE
     crs: 4326
     bbox:
-      xmin: -67
-      ymin: 39
-      xmax: -54
-      ymax: 47
+      xmin: -72
+      ymin: 35
+      xmax: -50
+      ymax: 50
     cellsize: 0.01
-    aoi: data/data-basemap/aoi.geojson
+    aoi: data/aoi/aoi.gpkg
     timespan:
       - 2010
       - 2011
@@ -24,8 +24,8 @@ pipedat:
       - 2021
   # ==========================================================================
   data_pipelines:
-    # # ------------------------------------------------------------------------
-    # # # Environmental stressors
+    # ------------------------------------------------------------------------
+    # # Environmental stressors
     # - "f2109e69" # Commercial fisheries logbooks
     # - "35608fef" # CanCoast - Coastal Materials Version 2.0
     # - "8509eeb1" # Nighttime Ligths    
@@ -39,15 +39,15 @@ pipedat:
     # - "fdd796d7" # Summer Groundfish Interpolated Results Scotian Shelf
     # - "9d64101c" # Sea surface temperature anomalies
     # - "57121439" # Watershed activity index
-    # # # ------------------------------------------------------------------------
-    # # # Abiotic data 
+    # # ------------------------------------------------------------------------
+    # # Abiotic data 
     # - "71944efd" # Monthly temperature climatology	
     # - "0d61380a" # Monthly salinity climatology
     # - "906f1155" # Monthly currents climatology
     # - "e775900b" # The GEBCO_2021 Grid Bathymetry
     # - "4d4292ca" # Bio-ORACLE
-    # # # ------------------------------------------------------------------------
-    # # # Biotic data 
+    # # ------------------------------------------------------------------------
+    # # Biotic data 
     # - "3d1bfb8e" # Marine mammals WWF-ROMM
     # - "2aafec74" # DFO Research Vessel Survey 4VSW
     # - "90e90110" # DFO Research Vessel Survey Fall
@@ -57,29 +57,29 @@ pipedat:
     # - "084860fd" # CARMs checklist
   # ==========================================================================
   data_integration:
-    # # ------------------------------------------------------------------------
-    # # Environmental stressors
-    # - "e2b7e6c4" # Fisheries intensity
-    # - "72312316" # Shipping intensity
-    # - "aba5e90a" # Night lights
-    # - "99bb2d51" # Direct human impact
+    # ------------------------------------------------------------------------
+    # Environmental stressors
+    - "e2b7e6c4" # Fisheries intensity
+    - "72312316" # Shipping intensity
+    - "aba5e90a" # Night lights
+    - "99bb2d51" # Direct human impact
     # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
-    # - "84b6ea0b" # Invasive species environmental stressor
-    # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
-    # - "3992e1a6" # Sea surface temperature anomalies intensity
-    # - "041a30d2" # Watershed activity index
-    # # ------------------------------------------------------------------------
-    # # Abiotic data 
+    - "84b6ea0b" # Invasive species environmental stressor
+    - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
+    - "3992e1a6" # Sea surface temperature anomalies intensity
+    - "041a30d2" # Watershed activity index
+    # ------------------------------------------------------------------------
+    # Abiotic data 
     # - "c055366b" # Monthly temperature climatology
     # - "608c7f2f" # Monthly salinity climatology
     # - "62753cdf" # Monthly currents climatology
     # - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
     # ------------------------------------------------------------------------
     # Biotic data 
-    # - "aa3dcb26" # Marine mammals
-    # - "893b37e8" # Species list North West Atlantic
-    # - "18869625" # Species occurrences North West Atlantic
-    # - "7c150fc3" # Marine mammals and birds in eastern Canada
+    - "aa3dcb26" # Marine mammals
+    - "893b37e8" # Species list North West Atlantic
+    - "18869625" # Species occurrences North West Atlantic
+    - "7c150fc3" # Marine mammals and birds in eastern Canada
   # ==========================================================================
   params:
     halpern_layers:

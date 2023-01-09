@@ -1,5 +1,6 @@
 pipeline:
   pipeline_id: 084860fd
+  pipeline_type: data
   creators:
   - contact_id: 1
     first_name: David
@@ -11,11 +12,10 @@ pipeline:
     phone: 1-514-553-4974
   date_created: '2022-04-26'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_carms_checklist-084860fd.R
-  pipeline_crs: 4326.0
-data:
+description:
   name: WoRMS North-West Atlantic species checklist
   description: CaRMS and WoRMS species list for the North-West Atlantic area of interest
-  access_date: '2022-05-04'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 40
     first_name: ''
@@ -25,9 +25,9 @@ data:
     role: ''
     email: info@marinespecies.org
     phone: ''
-  url: http://www.marinespecies.org/carms/aphia.php?p=checklist&action=search&gu_id=8048&tRank=220&inc_sub=1&status=pv
-  uuid: .na.character
-  availability: open
   citekey:
   - nozeres2021
   - worms2022
+  url: http://www.marinespecies.org/carms/aphia.php?p=checklist&action=search&gu_id=8048&tRank=220&inc_sub=1&status=pv
+  uuid: .na.character
+  availability: open

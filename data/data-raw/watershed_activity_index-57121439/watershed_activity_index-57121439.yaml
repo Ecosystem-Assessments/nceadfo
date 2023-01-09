@@ -13,15 +13,15 @@ pipeline:
   date_created: '2022-12-13'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_watershed_activity_index-57121439.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: Watershed activity index
   description: TBD
-  access_date: '2022-12-20'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 17
     first_name: Grace

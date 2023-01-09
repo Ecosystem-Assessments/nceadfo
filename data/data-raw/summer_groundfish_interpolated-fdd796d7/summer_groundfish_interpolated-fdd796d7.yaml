@@ -13,16 +13,29 @@ pipeline:
   date_created: '2022-09-07'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_summer_groundfish_interpolated-fdd796d7.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
+  pipeline_timespan:
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
 description:
   name: Summer Groundfish Interpolated Results Scotian Shelf
   description: Temperature data from the summer groundfish survey of Fisheries and
     Oceans Canada on the Scotian Shelf
-  access_date: '2022-09-09'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 59
     first_name: Chantelle

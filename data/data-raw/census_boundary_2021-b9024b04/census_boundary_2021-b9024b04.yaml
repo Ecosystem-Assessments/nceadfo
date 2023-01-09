@@ -13,15 +13,15 @@ pipeline:
   date_created: '2022-05-20'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_census_boundary_2021-b9024b04.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: Census cartographic boundary files 2021
   description: Boundary files for dissemination areas of the 2021 Canadian census
-  access_date: '2022-09-08'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 44
     first_name: ''
@@ -32,7 +32,7 @@ description:
     email: infostats@statcan.gc.ca
     phone: ''
   citekey:
-  - statisticscanada2021
+  - statisticscanada2022
   - statisticscanada2022a
   timespan: 2021.0
   bbox:

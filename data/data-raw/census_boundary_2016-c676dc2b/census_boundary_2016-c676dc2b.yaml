@@ -13,16 +13,16 @@ pipeline:
   date_created: '2022-05-19'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_census_boundary_2016-c676dc2b.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
 description:
   name: Census cartographic boundary files 2016
   description: Cartographic boundary files for dissemination areas of the 2016 Canadian
     census
-  access_date: '2022-09-08'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 43
     first_name: ''

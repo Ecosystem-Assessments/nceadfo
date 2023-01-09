@@ -13,16 +13,29 @@ pipeline:
   date_created: '2022-09-19'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_sea_surface_temperature_anomalies_dfo-9d64101c.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
+  pipeline_timespan:
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
 description:
   name: Sea surface temperature anomalies
   description: Surface-water temperature anomalies from the Department of Fisheries
-    and Oceans (DFO) Atlantic Zone Monitoring Program (AZMP) between 2010 and 2022
-  access_date: '2022-09-27'
+    and Oceans (DFO) Atlantic Zone Monitoring Program (AZMP) between 2000 and 2022
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 45
     first_name: Peter
@@ -34,6 +47,16 @@ description:
     phone: ''
   citekey: galbraith2021
   timespan:
+  - 2000
+  - 2001
+  - 2002
+  - 2003
+  - 2004
+  - 2005
+  - 2006
+  - 2007
+  - 2008
+  - 2009
   - 2010
   - 2011
   - 2012

@@ -13,11 +13,24 @@ pipeline:
   date_created: '2022-06-07'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_dfo_survey_4vsw-2aafec74.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
+  pipeline_timespan:
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
 description:
   name: DFO Research Vessel Survey 4VSW
   description: The Fisheries and Oceans Canada (DFO) ecosystem surveys consist of
@@ -26,7 +39,7 @@ description:
     Bank. The 4VSW survey is focused on the eastern half of the Scotian Shelf, and
     occurs primarily in March, but sets in both February, and April are also present
     in the data
-  access_date: '2022-09-09'
+  access_date: '2023-01-09'
   contacts:
   - contact_id: 52
     first_name: ''

@@ -13,11 +13,24 @@ pipeline:
   date_created: '2022-04-29'
   url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_shipping_gfw-8449dee0.R
   pipeline_bbox:
-  - -67
-  - 39
-  - -54
-  - 47
+  - -72
+  - 35
+  - -50
+  - 50
   pipeline_bbox_crs: 4326
+  pipeline_timespan:
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
 description:
   name: AIS global shipping data
   description: 'Monthly shipping rasters at 0.1 degree resolution including the number
