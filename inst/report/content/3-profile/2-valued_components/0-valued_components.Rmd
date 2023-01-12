@@ -1,5 +1,0 @@
-## Valued components {#cvprofile}
-
-- Read in stressors metadata 
-- Automatically generate a summary table
-- check `ceanav` for working example

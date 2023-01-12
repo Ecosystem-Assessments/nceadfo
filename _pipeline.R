@@ -24,4 +24,7 @@ pipeline <- function() {
   # Outputs
   out_footprint()
   out_exposure()
+  
+  # Report 
+  render_report()
 }

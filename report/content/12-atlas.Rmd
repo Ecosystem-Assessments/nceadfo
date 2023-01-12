@@ -1,0 +1,13 @@
+# Atlas {#atlas}
+
+## Stressors {#stratlas}
+
+## Species distribution {#spatlas}
+
+## Cumulative stressors {#csatlas}
+
+## Species richness {#rcatlas}
+
+## Cumulative exposure {#exatlas}
+
+## Cumulative effects {#ceaatlas}

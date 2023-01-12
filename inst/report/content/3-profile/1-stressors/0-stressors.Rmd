@@ -1,5 +1,0 @@
-## Environmental stressors {#strprofile}
-
-- Read in stressors metadata 
-- Automatically generate a summary table
-- check `ceanav` for working example
