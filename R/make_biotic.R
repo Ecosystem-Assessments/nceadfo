@@ -125,6 +125,7 @@ make_biotic <- function() {
   # ------------------------------------
   # Smoothing objects & parameters
   grd <- raster::raster("data/data-grid/grid_raster.tif")
+  grd <- raster::raster("data/grid/grid.tif")
   resolution <- 1000
   bandwidth <- 5000
   
@@ -313,7 +314,8 @@ make_biotic <- function() {
   grd <- stars::read_stars("data/grid/grid.tif")
   mm <- lapply(mm, stars::st_warp, dest = grd) |>
         lapply(function(x) x[aoi]) |> # Mask data 
-        lapply(function(x) x / max(x[[1]], na.rm = TRUE))
+        lapply(function(x) x / max(x[[1]], na.rm = TRUE)) |> 
+        lapply(function(x) x / x) #binary, keep previous lines in case I want continuous data
 
   # Remove empty species
   uid <- lapply(mm, function(x) max(x[[1]], na.rm = TRUE)) |> unlist()

@@ -40,10 +40,14 @@ out_footprint <- function() {
   chk_create(out)
   nm <- glue::glue("cumulative_species.tif")
 
-  dat <- here::here("data","data-biotic","random_forest_regression_binary") |>
-         dir(full.names = TRUE) |>
-         lapply(stars::read_stars) |>
-         cumul()
+  dat <- c(
+    here::here("data","data-biotic","random_forest_regression_binary"),
+    here::here("data","data-biotic","marine_mammals")
+  ) |>
+  dir(full.names = TRUE) |>
+  lapply(stars::read_stars) |>
+  cumul()
+  
   dat <- dat[aoi] # Mask data 
   
   stars::write_stars(
