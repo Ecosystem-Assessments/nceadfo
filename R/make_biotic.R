@@ -3,7 +3,7 @@
 #' @export
 make_biotic <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Load and prepare data for analyses
+  # Load and prepare data DFO occurrence for analyses
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # ------------------------------
   # Load data 
@@ -300,4 +300,57 @@ make_biotic <- function() {
     
 
   }
+  
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Load and prepare marine mammals data
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  out <- here::here("data","data-biotic","marine_mammals")
+  chk_create(out)
+  mm <- importdat("3d1bfb8e")
+  mmList <- importdat("7c150fc3")[[1]] |>
+            dplyr::select("ScientificName","aphiaID")
+  aoi <- sf::st_read("data/aoi/aoi.gpkg")
+  grd <- stars::read_stars("data/grid/grid.tif")
+  mm <- lapply(mm, stars::st_warp, dest = grd) |>
+        lapply(function(x) x[aoi]) |> # Mask data 
+        lapply(function(x) x / max(x[[1]], na.rm = TRUE))
+
+  # Remove empty species
+  uid <- lapply(mm, function(x) max(x[[1]], na.rm = TRUE)) |> unlist()
+  uid <- which(uid == 1)
+  mm <- mm[uid]
+  
+  # Names
+  nm <- lapply(mm, names) |>
+        unlist() |>
+        unname() |>
+        tools::file_path_sans_ext() |>
+        stringr::str_replace("marine_mammals_wwf_romm.3d1bfb8e.","")
+  uid <- which(nm == "leatherback_turtle") 
+  nm <- nm[-uid]
+  mm[[uid]] <- NULL
+  nm <- data.frame(common = nm, species = "")
+  nm$species[nm$common == "blue_whale"] <- "Balaenoptera musculus"
+  nm$species[nm$common == "fin_whale"] <- "Balaenoptera physalus"
+  nm$species[nm$common == "humpback_whale"] <- "Megaptera novaeangliae"
+  nm$species[nm$common == "minke_whale"] <- "Balaenoptera acutorostrata"
+  nm$species[nm$common == "north_atlantic_right_whale"] <- "Eubalaena glacialis"
+  nm$species[nm$common == "northern_bottlenose_whale"] <- "Hyperoodon ampullatus"
+  nm$species[nm$common == "sei_whale"] <- "Balaenoptera borealis"
+  nm$species[nm$common == "sperm_whale"] <- "Physeter macrocephalus"
+  nm <- dplyr::left_join(nm, mmList, by = c("species" = "ScientificName"))
+  nm$filename <- tolower(stringr::str_replace(nm$species, " ", "_"))
+  nm$filename <- glue::glue("{nm$filename}-{nm$aphiaID}.tif")
+  for(i in 1:length(mm)) names(mm[[i]]) <- nm$filename[i]
+  
+  # Export 
+  for(i in 1:length(mm)) {
+    stars::write_stars(
+      mm[[i]],
+      dsn = here::here(out, nm$filename[i]),
+      delete_dsn = TRUE,
+      quiet = TRUE
+    )
+  }
+  
 }
