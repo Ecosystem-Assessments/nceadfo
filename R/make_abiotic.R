@@ -5,7 +5,7 @@ make_abiotic <- function() {
   library(stars)
   out <- here::here("data","data-abiotic")
   chk_create(out)
-  grd <- stars::read_stars("data/data-grid/grid_raster.tif")
+  grd <- stars::read_stars("data/grid/grid.tif")
   
   # Functions 
   mean_stars <- function(dat) {

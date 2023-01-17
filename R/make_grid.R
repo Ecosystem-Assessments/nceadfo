@@ -24,7 +24,7 @@ make_grid <- function(cellsize) {
   )
   stars::write_stars(
     obj = grid_ras,
-    dsn = "./data/data-grid/grid_raster.tif",
+    dsn = "./data/grid/grid.tif",
     delete_dsn = TRUE,
     quiet = TRUE
   )

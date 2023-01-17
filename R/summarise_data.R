@@ -5,7 +5,7 @@ summarise_data <- function() {
   assess <- yaml::read_yaml("data/data-config/assessment.yml")
   uid <- unlist(assess$assessment$stressors)
 
-  grd <- stars::read_stars("data/data-grid/grid_raster.tif")
+  grd <- stars::read_stars("data/grid/grid.tif")
   names(grd) <- "uid"
   stress <- as.data.frame(grd)
   for (i in 1:length(uid)) {
@@ -65,7 +65,7 @@ summarise_data <- function() {
       dplyr::summarise(intensity = sum(intensity, na.rm = TRUE))
   })
   # grd <- sf::st_read("data/data-grid/grid_poly.geojson")
-  grd <- stars::read_stars("data/data-grid/grid_raster.tif")
+  grd <- stars::read_stars("data/grid/grid.tif")
   names(grd) <- "uid"
   grddat <- as.data.frame(grd) |>
     dplyr::left_join(dnh[[1]], by = "uid") |>
@@ -89,7 +89,7 @@ summarise_data <- function() {
     dplyr::summarise(intensity = sum(intensity, na.rm = TRUE))
 
   # grd <- sf::st_read("data/data-grid/grid_poly.geojson")
-  grd <- stars::read_stars("data/data-grid/grid_raster.tif")
+  grd <- stars::read_stars("data/grid/grid.tif")
   names(grd) <- "uid"
   grddat <- as.data.frame(grd) |>
     dplyr::left_join(dd1, by = "uid") |>
