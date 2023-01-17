@@ -6,13 +6,6 @@ make_eDrivers <- function() {
   #                                    DESCRIPTION
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Data used for the shiny application called `eDrivers`
-  # Eventually, this should be replaced by a direct call to the `eDrivers` R
-  # package, but for now we keep things simple and have a data version specific
-  # to the application since the resolution of the data is coarser for application
-  # speed purposes.
-  #
-  # The data products are:
-  #   - driver[[1]] <- data as `raster` object
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   out <- "data/data-eDrivers/"
   chk_create(out)
@@ -37,10 +30,8 @@ make_eDrivers <- function() {
              lapply(stars::read_stars) |>
              lapply(stars::st_warp, dest = grd) |>
              lapply(function(x) round(x,4))
-
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  #                                     HOTSPOTS
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  # Hotspots
   hotspots <- lapply(
     drivers, 
     function(x) {
@@ -48,9 +39,17 @@ make_eDrivers <- function() {
       dat[,3] <- ifelse(dat[,3] <= 0, NA, dat[,3])
       th <- quantile(dat[,3], probs = .8, na.rm = TRUE)
       dat[,3] <- ifelse(dat[,3] > th, 1, NA)
-      stars::st_as_stars(dat, crs = 3857)
+      dat <- stars::st_as_stars(dat)
+      sf::st_crs(dat) <- sf::st_crs(3857)
+      dat
     }
   )
+  
+  
+  # Stressor names 
+  nm <- lapply(drivers, names) |>
+        unlist() |>
+        tools::file_path_sans_ext() 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   #                                   RASTER STACKS
@@ -64,13 +63,16 @@ make_eDrivers <- function() {
   drivers <- raster::stack(drivers)
   hotspots <- raster::stack(hotspots)
 
+  # Names 
+  names(rawDrivers) <- names(drivers) <- names(hotspots) <- nm
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   #                                 MASK RASTER STACKS
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Save raster values to memory
-  rawDrivers <- readAll(rawDrivers)
-  drivers <- readAll(drivers)
-  hotspots <- readAll(hotspots)
+  # # Save raster values to memory
+  # rawDrivers <- readAll(rawDrivers)
+  # drivers <- readAll(drivers)
+  # hotspots <- readAll(hotspots)
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -87,6 +89,7 @@ make_eDrivers <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Drivers data as matrix and remove NAs
   library(magrittr)
+  library(raster)
   dr <- as.matrix(drivers)
   id0 <- apply(dr, 1, function(x) !all(is.na(x)))
   dr <- dr[id0, ]
