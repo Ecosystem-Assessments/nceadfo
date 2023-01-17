@@ -28,6 +28,9 @@ pipeline <- function() {
   out_footprint()
   out_exposure()
   
+  # Figures 
+  fig_atlas()
+  
   # Report 
   render_report()
 }

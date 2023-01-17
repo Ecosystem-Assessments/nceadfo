@@ -1,9 +1,14 @@
 project: nceadfo
 crs: 4326
+bbox:
+  xmin: -69
+  ymin: 38
+  xmax: -54
+  ymax: 48
 figures: 
   resolution: 400
   width: 200
-  height: 140
+  height: 180
   pointsize: 24
 col:
   palette:
@@ -17,3 +22,9 @@ col:
     - "#e3af16"
     - "#e4be29"
     - "#f2ea8b"
+  aoi: "#000000"
+  coastline: "#777777"
+  offset: "#25364A"
+  focus: "#2196a8"
+  textOff: "#7c7c7c"
+
