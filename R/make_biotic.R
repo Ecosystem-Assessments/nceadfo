@@ -125,7 +125,6 @@ make_biotic <- function() {
   # ------------------------------------
   # Smoothing objects & parameters
   grd <- raster::raster("data/grid/grid.tif")
-  grd <- raster::raster("data/grid/grid.tif")
   resolution <- 1000
   bandwidth <- 5000
   
