@@ -21,6 +21,9 @@ pipeline <- function() {
   make_metaweb()
   # make_vulnerability()
 
+  # Date for eDrivers 
+  make_eDrivers()
+  
   # Outputs
   out_footprint()
   out_exposure()
