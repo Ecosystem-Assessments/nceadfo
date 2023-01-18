@@ -55,6 +55,7 @@ pipedat:
     # - "3348d162" # DFO Research Vessel Survey Summer
     # - "d8094d1b" # Species interactions catalog
     # - "1386850b" # Species-specific sensitivities
+    # - "0b902b1e" # Species trophic sensitivities
     # - "084860fd" # CARMs checklist
   # ==========================================================================
   data_integration:

@@ -14,14 +14,15 @@ pipeline <- function() {
   # Integrate data 
   pipedat::pipeflow("./data/config/pipedat.yml")
   
-  # Prepare assessment modules 
+  # Prepare assessment data modules 
   make_stressors()
   make_abiotic()
   make_biotic()
   make_metaweb()
-  # make_vulnerability()
+  # make_species_sensitivity()
+  make_trophic_sensitivity()
 
-  # Date for eDrivers 
+  # Data for eDrivers 
   make_eDrivers()
   
   # Outputs
