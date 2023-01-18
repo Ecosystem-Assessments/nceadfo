@@ -19,7 +19,7 @@ pipeline <- function() {
   make_abiotic()
   make_biotic()
   make_metaweb()
-  # make_species_sensitivity()
+  make_species_sensitivity()
   make_trophic_sensitivity()
 
   # Data for eDrivers 

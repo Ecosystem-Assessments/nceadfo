@@ -297,8 +297,6 @@ make_biotic <- function() {
     binary_reg <- smooth_reg
     raster::values(binary_reg) <- ifelse(raster::values(binary_reg) > th, 1, 0)
     export_raster(binary_reg, out$regression_binary, nmSp)
-    
-
   }
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -353,5 +351,14 @@ make_biotic <- function() {
       quiet = TRUE
     )
   }
-  
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Export all species considered in the assessement in cea modules
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  sp <- here::here("data","data-biotic","random_forest_regression_binary")
+  mm <- here::here("data","data-biotic","marine_mammals")
+  out <- here::here("data","cea_modules","species")
+  chk_create(out)
+  files <- dir(c(sp,mm), full.names = TRUE)
+  file.copy(files, out, overwrite = TRUE)
 }
