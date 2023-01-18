@@ -15,11 +15,11 @@ pipeline <- function() {
   pipedat::pipeflow("./data/config/pipedat.yml")
   
   # Prepare assessment data modules 
-  make_stressors()
+  make_drivers()
   make_abiotic()
   make_biotic()
   make_metaweb()
-  make_species_sensitivity()
+  # make_species_sensitivity()
   make_trophic_sensitivity()
 
   # Data for eDrivers 

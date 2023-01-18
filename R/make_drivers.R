@@ -1,7 +1,7 @@
-#' Prepare stressors data 
+#' Prepare drivers data 
 #'
 #' @export
-make_stressors <- function() {
+make_drivers <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load & prepare data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,7 +122,7 @@ make_stressors <- function() {
   ) 
 
   # Export 
-  out <- here::here("data","stressors","raw")
+  out <- here::here("data","drivers","raw")
   p <- list(
     p1 = here::here(out, "2010_2012"),
     p2 = here::here(out, "2013_2015"),
@@ -152,7 +152,7 @@ make_stressors <- function() {
   exp_stress(period_2019_2021, p$p4)
 
   # Log transform and normalize stressor data
-  out <- here::here("data","stressors","transformed")
+  out <- here::here("data","drivers","transformed")
   p <- list(
     p1 = here::here(out, "2010_2012"),
     p2 = here::here(out, "2013_2015"),
@@ -183,4 +183,85 @@ make_stressors <- function() {
   exp_stress(r[[2]], p$p2)
   exp_stress(r[[3]], p$p3)
   exp_stress(r[[4]], p$p4)
+  
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Export formated data in format directly usable for the assessment
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Change names of drivers 
+  mod <- data.frame(
+    from = c(
+      "bottom_water_temperature_anomalies_atlantic.6dba9a9f.bottomValues.tif",
+      "direct_human_impact.99bb2d51.tif",
+      "fisheries_intensity.e2b7e6c4.DD.tif",
+      "fisheries_intensity.e2b7e6c4.DNH.tif",
+      "fisheries_intensity.e2b7e6c4.DNL.tif",
+      "fisheries_intensity.e2b7e6c4.PHB.tif",
+      "fisheries_intensity.e2b7e6c4.PLB.tif",
+      "invasive_species_richness.84b6ea0b.Present_Richness.tif",
+      "night_lights.aba5e90a.tif",
+      "sea_surface_temperature_anomalies_dfo.3992e1a6.negative.tif",
+      "sea_surface_temperature_anomalies_dfo.3992e1a6.positive.tif",
+      "shipping_intensity.72312316.interpolated_vessels.tif",
+      "watershed_activity_index.041a30d2.SummedRasters_AgriCover.tif",
+      "watershed_activity_index.041a30d2.SummedRasters_ImperviousSurface.tif",
+      "watershed_activity_index.041a30d2.SummedRasters_NutrientLoading.tif",
+      "watershed_activity_index.041a30d2.SummedRasters_PopDensity.tif"
+    ),
+    to = c(
+      "SBT",
+      "DirectHumanImpact",
+      "FisheriesDD",
+      "FisheriesDNH",
+      "FisheriesDNL",
+      "FisheriesPHB",
+      "FisheriesPLB",
+      "InvasiveSpecies",
+      "CoastalDevelopment",
+      "NegativeSST",
+      "PositiveSST",
+      "Shipping",
+      "OrganicPollution",
+      "InorganicPollution",
+      "NutrientInput",
+      "PopulationDensity"
+    )
+  )
+
+  # drivers 
+  fold <- here::here("data","drivers","transformed")
+  modules <- here::here("data","cea_modules","drivers")
+  per <- dir(fold)
+  for(i in 1:length(per)) {
+    dat <- dir(here::here(fold, per[i]), full.names = TRUE) |>
+           lapply(stars::read_stars)
+    for(j in 1:length(dat)) {
+      # Change names
+      uid <- names(dat[[j]]) %in% mod$from
+      nm <- glue::glue("{mod$to[j]}-{per[i]}")
+      names(dat[[j]]) <- nm
+      
+      # Export
+      out <- here::here(modules, per[i])
+      chk_create(out)
+      stars::write_stars(
+        dat[[j]], 
+        dsn = here::here(out,glue::glue("{nm}.tif")),
+        quiet = TRUE, 
+        overwrite = TRUE)
+    }
+  }
+  
+  
+  
+  
+  
+  
+  r <- lapply(
+    r, 
+    function(x) {
+      dir(x, recursive = TRUE, full.names = TRUE) |>
+      lapply(stars::read_stars)
+    }
+  )
+
 }
