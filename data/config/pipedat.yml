@@ -54,20 +54,21 @@ pipedat:
     # - "21f8a758" # DFO Research Vessel Survey Spring
     # - "3348d162" # DFO Research Vessel Survey Summer
     # - "d8094d1b" # Species interactions catalog
+    # - "1386850b" # Species-specific sensitivities
     # - "084860fd" # CARMs checklist
   # ==========================================================================
   data_integration:
     # ------------------------------------------------------------------------
     # Environmental stressors
-    - "e2b7e6c4" # Fisheries intensity
-    - "72312316" # Shipping intensity
-    - "aba5e90a" # Night lights
-    - "99bb2d51" # Direct human impact
-    # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
-    - "84b6ea0b" # Invasive species environmental stressor
-    - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
-    - "3992e1a6" # Sea surface temperature anomalies intensity
-    - "041a30d2" # Watershed activity index
+    # - "e2b7e6c4" # Fisheries intensity
+    # - "72312316" # Shipping intensity
+    # - "aba5e90a" # Night lights
+    # - "99bb2d51" # Direct human impact
+    ## - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
+    # - "84b6ea0b" # Invasive species environmental stressor
+    # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
+    # - "3992e1a6" # Sea surface temperature anomalies intensity
+    # - "041a30d2" # Watershed activity index
     # ------------------------------------------------------------------------
     # Abiotic data 
     # - "c055366b" # Monthly temperature climatology

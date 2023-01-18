@@ -1,0 +1,23 @@
+pipeline:
+  pipeline_id: 1386850b
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2023-01-18'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_species_vulneravility-1386850b.R
+description:
+  name: Species vulnerability to environmental stressors
+  description: Evaluation of species-specific vulnerabilities to environmental stressors
+    as a function of a series of traits such as body composition, body size and environment.
+  access_date: '2023-01-18'
+  citekey: beauchesne2020c
+  url: https://github.com/Ecosystem-Assessments/Species_direct_sensitivity/raw/master/Data/Vulnerability/Vulnerability.RData
+  uuid: .na.character
+  availability: open
