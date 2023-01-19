@@ -187,7 +187,7 @@ make_drivers <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Export formated data in format directly usable for the assessment
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Change names of drivers 
+  # Change names of drivers, and add group of drivers (for exported drivers list) 
   mod <- data.frame(
     from = c(
       "bottom_water_temperature_anomalies_atlantic.6dba9a9f.bottomValues.tif",
@@ -224,6 +224,24 @@ make_drivers <- function() {
       "InorganicPollution",
       "NutrientInput",
       "PopulationDensity"
+    ),
+    group = c(
+      "Climate",
+      "Coastal",
+      "Fisheries",
+      "Fisheries",
+      "Fisheries",
+      "Fisheries",
+      "Fisheries",
+      "Marine traffic",
+      "Coastal",
+      "Climate",
+      "Climate",
+      "Marine traffic",
+      "Coastal",
+      "Coastal",
+      "Coastal",
+      "Coastal"
     )
   )
 
@@ -251,17 +269,15 @@ make_drivers <- function() {
     }
   }
   
-  
-  
-  
-  
-  
-  r <- lapply(
-    r, 
-    function(x) {
-      dir(x, recursive = TRUE, full.names = TRUE) |>
-      lapply(stars::read_stars)
-    }
-  )
+  # Drivers list 
+  dir(modules, recursive = TRUE) |>
+  basename() |> 
+  tools::file_path_sans_ext() |>
+  stringr::str_split("-") |>
+  lapply(function(x) data.frame(drivers = x[1], period = x[2])) |>
+  dplyr::bind_rows() |>
+  dplyr::left_join(mod[,c("to","group")], by = c("drivers" = "to")) |>
+  dplyr::arrange(group, drivers, period) |>
+  write.csv(file = here::here("data","cea_modules","drivers_list.csv"), row.names = FALSE)
 
 }

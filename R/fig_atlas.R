@@ -25,7 +25,7 @@ fig_atlas <- function() {
   
   # Species distribution
   dir(
-    c("data/data-biotic/marine_mammals",
+    c("data/data-biotic/marine_mammals/continuous",
       "data/data-biotic/random_forest_regression_smoothing"), 
     full.names = TRUE
   ) |>

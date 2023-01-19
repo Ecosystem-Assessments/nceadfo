@@ -298,6 +298,32 @@ make_biotic <- function() {
     raster::values(binary_reg) <- ifelse(raster::values(binary_reg) > th, 1, 0)
     export_raster(binary_reg, out$regression_binary, nmSp)
   }
+
+  # ----------------
+  # Mask all data 
+  aoi <- sf::st_read("data/aoi/aoi.gpkg")
+  mask <- function(fold) {
+    dat <- dir(fold, full.names = TRUE) |>
+           lapply(stars::read_stars) 
+    nm <- lapply(dat, names) |> unlist()    
+    for(i in 1:length(dat)) {
+      dat[[i]] <- dat[[i]][aoi]
+      names(dat[[i]]) <- nm[i]
+    }
+           
+    lapply(dat, function(x) {
+     stars::write_stars(
+       x,
+       dsn = here::here(fold, names(x)),
+       quiet = TRUE,
+       overwrite = TRUE
+     )
+    })    
+  }
+  mask(here::here("data","data-biotic","random_forest_regression"))
+  mask(here::here("data","data-biotic","random_forest_regression_smoothing"))
+  mask(here::here("data","data-biotic","random_forest_regression_binary"))
+  
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load and prepare marine mammals data
@@ -311,8 +337,8 @@ make_biotic <- function() {
   grd <- stars::read_stars("data/grid/grid.tif")
   mm <- lapply(mm, stars::st_warp, dest = grd) |>
         lapply(function(x) x[aoi]) |> # Mask data 
-        lapply(function(x) x / max(x[[1]], na.rm = TRUE)) |> 
-        lapply(function(x) x / x) #binary, keep previous lines in case I want continuous data
+        lapply(function(x) x / max(x[[1]], na.rm = TRUE)) #|> 
+        # lapply(function(x) x / x) #binary, keep previous lines in case I want continuous data
 
   # Remove empty species
   uid <- lapply(mm, function(x) max(x[[1]], na.rm = TRUE)) |> unlist()
@@ -343,10 +369,25 @@ make_biotic <- function() {
   for(i in 1:length(mm)) names(mm[[i]]) <- nm$filename[i]
   
   # Export 
+  out2 <- here::here(out,"continuous")
+  chk_create(out2)
   for(i in 1:length(mm)) {
     stars::write_stars(
       mm[[i]],
-      dsn = here::here(out, nm$filename[i]),
+      dsn = here::here(out2, nm$filename[i]),
+      delete_dsn = TRUE,
+      quiet = TRUE
+    )
+  }
+  
+  # Binary 
+  out2 <- here::here(out,"binary")
+  chk_create(out2)
+  dat <- lapply(mm, function(x) x / x) 
+  for(i in 1:length(dat)) {
+    stars::write_stars(
+      dat[[i]],
+      dsn = here::here(out2, nm$filename[i]),
       delete_dsn = TRUE,
       quiet = TRUE
     )
@@ -356,9 +397,19 @@ make_biotic <- function() {
   # Export all species considered in the assessement in cea modules
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   sp <- here::here("data","data-biotic","random_forest_regression_binary")
-  mm <- here::here("data","data-biotic","marine_mammals")
+  mm <- here::here("data","data-biotic","marine_mammals","binary")
   out <- here::here("data","cea_modules","species")
   chk_create(out)
-  files <- dir(c(sp,mm), full.names = TRUE)
-  file.copy(files, out, overwrite = TRUE)
+  file.copy(dir(sp, full.names = TRUE), out, overwrite = TRUE)
+  file.copy(dir(mm, full.names = TRUE), out, overwrite = TRUE)
+  
+  # Species list 
+  dir(out) |>
+  tools::file_path_sans_ext() |>
+  stringr::str_split("-") |>
+  lapply(function(x) data.frame(shortname = x[1], aphiaID = x[2])) |>
+  dplyr::bind_rows() |>
+  dplyr::mutate(scientific_name = stringr::str_replace(shortname, "_", " ")) |>
+  dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
+  write.csv(file = here::here("data","cea_modules","species_list.csv"), row.names = FALSE)
 }
