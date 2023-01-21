@@ -49,7 +49,7 @@ make_biotic <- function() {
                dplyr::bind_cols()
   stations <- cbind(stations, abioticpt)
   rm(abioticpt)
-              
+  
   # ------------------------------------
   # Divide by species
   species <- dplyr::group_by(occ, aphiaID) |>
@@ -69,10 +69,10 @@ make_biotic <- function() {
   }) |>
   unlist()
   sp <- data.frame(aphiaID = sp) |>
-        dplyr::left_join(species_list[, c("aphiaID","ScientificName")], by = "aphiaID") |>
+        dplyr::left_join(species_list[, c("aphiaID","SPEC")], by = "aphiaID") |>
         dplyr::mutate(
           shortname = tolower(
-            glue::glue("{stringr::str_replace(ScientificName, ' ', '_')}-{aphiaID}")
+            glue::glue("{gsub(' ', '_', SPEC)}-{aphiaID}")
           )
         )
   nSp <- nrow(sp)
@@ -104,7 +104,7 @@ make_biotic <- function() {
     "surface_primary.productivity",
     "surface_silicate"
   )
-
+  
   # ------------------------------------
   # Environmental data as data.frame 
   nm <- lapply(abiotic, names) |> unlist() |> unname()
@@ -131,7 +131,7 @@ make_biotic <- function() {
   # ------------------------------------
   # Binary parameters 
   th <- 0.5
-
+  
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Smoothing function for predictions
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,7 +146,7 @@ make_biotic <- function() {
     dat <- cbind(sf::st_coordinates(dat), dat) |>
            sf::st_drop_geometry() |>
            dplyr::rename(x = X, y = Y)
-    
+  
     # Smoothing
     suppressMessages({
       kernel <- btb::btb_smooth(
@@ -158,7 +158,7 @@ make_biotic <- function() {
     })    
     kernel[,3] <- ifelse(kernel[,3,drop=T] > 1, 1, kernel[,3,drop=T])
     kernel <- sf::st_transform(kernel, crs = 4326)
-    
+  
     # Rasterize and return
     # WARNING: I am having an issue with transforming the outputs of fasterize to a stars object
     #          I therefore export raster objects directly, then export them to disk using the 
@@ -224,7 +224,7 @@ make_biotic <- function() {
   for(i in 1:nSp) {
     cat(i, ' of ', nSp, '\r')
     nmSp <- sp$shortname[i]
-    
+  
     suppressWarnings({
     # ----------------
     reg <- randomForest::randomForest(
@@ -237,7 +237,7 @@ make_biotic <- function() {
       nodesize = 5
     )
     export_rdata(dplyr::last(reg$rsq), out$regression_model, nmSp) 
-    
+  
     # # ----------------
     # classif <- randomForest::randomForest(
     #   formula = as.factor(species[[i]]$presence) ~ .,
@@ -262,7 +262,7 @@ make_biotic <- function() {
     stars::st_as_stars() |>
     setNames(sp$shortname[i])
     export_stars(pred_reg, out$regression, nmSp)
-
+  
     # # ----------------
     # pred_classif <- stats::predict(classif, envDat)
     # pred_classif <- raster::raster(
@@ -283,7 +283,7 @@ make_biotic <- function() {
       grd = grd
     )
     export_raster(smooth_reg, out$regression_smooth, nmSp)
-
+  
     # # ----------------
     # smooth_classif <- smooth_predict(
     #   dat = pred_classif, 
@@ -292,13 +292,13 @@ make_biotic <- function() {
     #   grd = grd
     # )
     # export_raster(smooth_classif, out$classification_smooth, nmSp)
-    
+  
     # ----------------
     binary_reg <- smooth_reg
     raster::values(binary_reg) <- ifelse(raster::values(binary_reg) > th, 1, 0)
     export_raster(binary_reg, out$regression_binary, nmSp)
   }
-
+  
   # ----------------
   # Mask all data 
   aoi <- sf::st_read("data/aoi/aoi.gpkg")
@@ -310,7 +310,7 @@ make_biotic <- function() {
       dat[[i]] <- dat[[i]][aoi]
       names(dat[[i]]) <- nm[i]
     }
-           
+  
     lapply(dat, function(x) {
      stars::write_stars(
        x,
@@ -333,8 +333,8 @@ make_biotic <- function() {
   mm <- importdat("3d1bfb8e")
   mmList <- importdat("7c150fc3")[[1]] |>
             dplyr::select("ScientificName","aphiaID")
-  aoi <- sf::st_read("data/aoi/aoi.gpkg")
-  grd <- stars::read_stars("data/grid/grid.tif")
+  aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE)
+  grd <- stars::read_stars("data/grid/grid.tif", quiet = TRUE)
   mm <- lapply(mm, stars::st_warp, dest = grd) |>
         lapply(function(x) x[aoi]) |> # Mask data 
         lapply(function(x) x / max(x[[1]], na.rm = TRUE)) #|> 
@@ -409,7 +409,7 @@ make_biotic <- function() {
   stringr::str_split("-") |>
   lapply(function(x) data.frame(shortname = x[1], aphiaID = x[2])) |>
   dplyr::bind_rows() |>
-  dplyr::mutate(scientific_name = stringr::str_replace(shortname, "_", " ")) |>
+  dplyr::mutate(scientific_name = gsub("_", " ", shortname)) |>
   dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
   write.csv(file = here::here("data","cea_modules","species_list.csv"), row.names = FALSE)
 }

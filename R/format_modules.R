@@ -4,41 +4,43 @@
 format_modules <- function() {
   library(raster)
   library(tidyverse)
-  library(magrittr)
+  # library(magrittr)
   library(motifcensus)
+  modules <- here::here("data","cea_modules")
+  out <- here::here("data","format_modules")
+  chk_create(out)
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Species list
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  load('./Data/SpeciesList/SpeciesList.RData')
-
-  # New column with sp. removed from taxa names
-  sp$sp <- gsub('\\b sp.\\b', '', sp$species)
-
-  # New columns with . instead of spaces
-  sp$sp. <- gsub(' ', '\\.', sp$sp)
-  sp$species. <- gsub(' ', '\\.', sp$species)
-
-  # Export
-  save(sp, file = './Data/FormatData/SpeciesList.RData')
+  sp <- vroom::vroom(here::here(modules, "species_list.csv")) |>
+        dplyr::rename(species = scientific_name) |>
+        dplyr::mutate()
+  save(sp, file = here::here(out, "SpeciesList.RData"))
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Simulated trophic sensitivities
   # (Adapted from Beauchesne et al. in review hopefully)
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  load('./Data/TrophicSensitivity/TrophicSensitivitySpecies.RData')
-  save(sensitivity, file = './Data/FormatData/TrophicSensitivity.RData')
+  sensitivity <- vroom::vroom(here::here(modules, "trophic_sensitivity", "trophic_sensitivity.csv"))
+  save(sensitivity, file = here::here(out, "TrophicSensitivity.RData"))
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Biotic data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  load('./Data/Biotic/Biotic.RData')
+  biotic <- here::here(modules,"species") |>
+            dir(full.names = TRUE) |>
+            lapply(raster::raster) |>
+            raster::stack()
 
   # Taxa names
-  txNames <- names(biotic)
+  txNames <- names(biotic) |>
+             tools::file_path_sans_ext()
+
 
   # Transform data to matrix
   bioticData <- as.matrix(biotic)
+  colnames(bioticData) <- txNames
 
   # Identify cells with biotic data
   idBiotic <- apply(bioticData, 1, function(x) !all(is.na(x)))
@@ -48,7 +50,7 @@ format_modules <- function() {
 
   # Add phytoplankton and zooplankton everywhere
   message('WARNING: We are assuming that phytoplankton and zooplankton are everywhere in the study area. A better assessment with proper data would be desirable.')
-  bt <- cbind(bt, Zooplankton = 1, Phytoplankton = 1)
+  bt <- cbind(bt, zooplankton = 1, phytoplankton = 1)
 
   # Transform biotic data as logical
   bt <- apply(bt, 2, as.logical)
@@ -59,92 +61,130 @@ format_modules <- function() {
   values(r)[!is.na(values(r))] <- 0
 
   # Export
-  save(txNames, file = './Data/FormatData/txNames.RData')
-  save(bt, file = './Data/FormatData/biotic.RData')
-  save(r, file = './Data/FormatData/emptyRaster.RData')
-  save(idBiotic, file = './Data/FormatData/idBiotic.RData')
+  save(txNames, file = here::here(out, "txNames.RData"))
+  save(bt, file = here::here(out, "biotic.RData"))
+  save(r, file = here::here(out, "emptyRaster.RData"))
+  save(idBiotic, file = here::here(out, "idBiotic.RData"))
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Metaweb
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  load('./Data/Metaweb/metaweb.RData')
+  metaweb <- vroom::vroom(
+    here::here(modules, "metaweb", "metaweb.csv")
+  ) |>
+  as.data.frame()
+  rownames(metaweb) <- metaweb[,1]
+  metaweb <- metaweb[,-1]
+  stopifnot(all(colnames(metaweb) == rownames(metaweb)))
+
+  # Change species names to match species list
+  cn <- colnames(metaweb) 
+  cn <- gsub(" ","_", cn) |>
+        tolower()
+  colnames(metaweb) <- rownames(metaweb) <- cn
+  
+  # # All species in biotic data must be in metaweb
+  stopifnot(all(colnames(bt) %in% cn))
+                      
+  # Diag = 0 (no cannibalism)
   diag(metaweb) <- 0
 
-  # Change species names
-  # There are MUCH better ways to do this, but I'm tired and can't think straight
-  for(i in 1:ncol(metaweb)) {
-    idnm <- sp$sp %in% colnames(metaweb)[i]
-    if (any(idnm)) colnames(metaweb)[i] <- rownames(metaweb)[i] <- sp$species.[i]
-  }
-
   # Take only species in biotic dataset
-  uid <- colnames(metaweb) %in% colnames(bt)
+  # uid <- colnames(metaweb) %in% colnames(bt)
+  uid <- lapply(colnames(bt), function(x) which(x == colnames(metaweb))) |> unlist()
   metaweb <- metaweb[uid, uid]
-  all(colnames(bt) == colnames(metaweb))
+  stopifnot(all(colnames(bt) == colnames(metaweb)))
 
   # Export
-  save(metaweb, file = './Data/FormatData/metaweb.RData')
+  save(metaweb, file = here::here(out, "metaweb.RData"))
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Species-specific vulnerabilities
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  load('./Data/Vulnerability/Vulnerability.RData')
+  species_sensitivity <- vroom::vroom(
+    here::here(modules, "species_sensitivity", "species_sensitivity.csv")
+  ) |>
+  dplyr::mutate(species = gsub(" ","_", species)) |>
+  dplyr::mutate(species = tolower(species)) |>
+  as.data.frame()
+  rownames(species_sensitivity) <- species_sensitivity$species
+  species_sensitivity <- dplyr::select(species_sensitivity, -species)
+  stopifnot(all(sp$shortname %in% rownames(species_sensitivity)))
 
-  if (!all(rownames(vulnerability) == sp$species)) {
-    stop('Names in vulnerability dataset should be the same as in the species list')
-  }
-
-  # Change taxa names
-  rownames(vulnerability) <- sp$species.
+  # Make vulnerability to population density the same as that of direct human impact. One is coastal, the other is modelling at pourpoints along the coast, but both for population density
+  # Also change SBT name because there is no distinction between positive and negative in this project
+  species_sensitivity <- dplyr::mutate(
+    species_sensitivity,
+    PopulationDensity = DirectHumanImpact,
+    SBT = NegativeSBT
+  )
 
   # Add phytoplankton and zooplankton with no vulnerability
   message('WARNING: We are assuming that phytoplankton and zooplankton are insensitive to all drivers. A better assessment with proper data would be desirable.')
-  vulnerability <- rbind(vulnerability, Zooplankton = 0, Phytoplankton = 0)
+  species_sensitivity <- rbind(species_sensitivity, zooplankton = 0, phytoplankton = 0)
 
   # Take only species in biotic dataset
-  uid <- rownames(vulnerability) %in% colnames(bt)
-  vulnerability <- vulnerability[uid, ]
-  all(colnames(bt) == rownames(vulnerability))
+  uid <- rownames(species_sensitivity) %in% colnames(bt)
+  species_sensitivity <- species_sensitivity[uid, ]
+  stopifnot(all(colnames(bt) == rownames(species_sensitivity)))
 
   # Export
-  save(vulnerability, file = './Data/FormatData/vulnerability.RData')
-
+  # Saved on next step to select only drivers for which we have data
+  # save(species_sensitivity, file = here::here(out,'species_sensitivity.RData'))
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Drivers data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  library(raster)
-  load('./Data/Drivers/Drivers.RData')
-
+  drivers <- here::here(modules,"drivers") |>
+            dir(full.names = TRUE) |>
+            lapply(dir, full.names = TRUE, recursive = TRUE)
+  for(i in 1:length(drivers)) drivers[[i]] <- lapply(drivers[[i]], raster::raster)
+  drivers <- lapply(drivers, raster::stack)
+  
+  # Periods 
+  per <- here::here(modules,"drivers") |>
+         dir() 
+  names(drivers) <- per
+         
+  # Remove periods from driver names
+  nm <- stringr::str_split(names(drivers[[1]]), "\\.") |>
+        lapply(function(x) x[1]) |>
+        unlist()
+  for(i in 1:length(drivers)) names(drivers[[i]]) <- nm
+            
+  # Only keep drivers for which we have vulnerability assessment
+  uid <- which(names(drivers[[1]]) %in% colnames(species_sensitivity))
+  for(i in 1:length(drivers)) drivers[[i]] <- drivers[[i]][[names(drivers[[i]])[uid]]]
+  
+  # Sort drivers 
+  nm <- sort(names(drivers[[1]]))
+  for(i in 1:length(drivers)) drivers[[i]] <- drivers[[i]][[nm]]
+  
   # Transform data to matrix
-  driversData <- as.matrix(drivers)
+  driversData <- lapply(drivers, as.matrix)
 
   # Select only relevant data
   # Locations with information on taxa distribution
-  dr <- driversData[idBiotic, ]
-
-  # Drivers for which we have vulnerability assessment
-  uid <- colnames(dr) %in% colnames(vulnerability)
-  dr <- dr[, uid]
-  drivers <- drivers[[colnames(vulnerability)]]
+  dr <- driversData
+  for(i in 1:length(dr)) dr[[i]] <- dr[[i]][idBiotic, ]
 
   # Make sure that the order of the vulnerability db column is the same as
   # the order of the columns in the drivers db
-  uid <- sort(colnames(dr))
-  dr <- dr[, uid]
-  vulnerability <- vulnerability[, uid]
-  all(colnames(dr) == colnames(vulnerability))
-
+  stopifnot(all(nm %in% colnames(species_sensitivity)))
+  species_sensitivity <- species_sensitivity[, nm]
+  stopifnot(all(colnames(species_sensitivity) == nm))
+  
   # Export
-  save(dr, file = './Data/FormatData/drivers.RData')
-  save(drivers, file = './Data/FormatData/driversRaster.RData')
-
+  save(dr, file = here::here(out, "drivers.RData"))
+  save(drivers, file = here::here(out, "driversRaster.RData"))
+  save(species_sensitivity, file = here::here(out,'species_sensitivity.RData'))
+  
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Evaluate metaweb motif triplets
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Triads
-  triads <- motif_census_triplet(metaweb)
+  triads <- motif_census_triplet(as.matrix(metaweb))
 
   # Select only motifs of interest
   motifs <- c('exploitative competition','linear chain','apparent competition','omnivory')
@@ -187,4 +227,5 @@ format_modules <- function() {
   triads$pk[triads$pk == triads$pi] <- 2
 
   # Export
-  save(triads, file = './Data/FormatData/triads.RData')
+  save(triads, file = here::here(out, "triads.RData"))
+}
