@@ -57,6 +57,7 @@ pipedat:
     # - "1386850b" # Species-specific sensitivities
     # - "0b902b1e" # Species trophic sensitivities
     # - "084860fd" # CARMs checklist
+    # - "08e94a14" # ECSAS sea bird survey
   # ==========================================================================
   data_integration:
     # ------------------------------------------------------------------------
@@ -78,9 +79,9 @@ pipedat:
     # - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
     # ------------------------------------------------------------------------
     # Biotic data 
-    - "893b37e8" # Species list North West Atlantic
-    - "18869625" # Species occurrences North West Atlantic
-    - "7c150fc3" # Marine mammals and birds in eastern Canada
+    # - "893b37e8" # Species list North West Atlantic
+    # - "18869625" # Species occurrences North West Atlantic
+    # - "7c150fc3" # Marine mammals and birds in eastern Canada
   # ==========================================================================
   params:
     halpern_layers:

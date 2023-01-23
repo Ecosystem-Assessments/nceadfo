@@ -1,0 +1,66 @@
+pipeline:
+  pipeline_id: 08e94a14
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2023-01-23'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_sea_birds_ecsas-08e94a14.R
+description:
+  name: Eastern Canada Seabirds at Sea (ECSAS) database
+  description: Boat-based and aerial-based data from the Eastern Canada Seabirds at
+    Sea (ECSAS) database extracted on 2023-01-19 and 2022-01-17, respectively. The
+    data was clipped to the Scotian Shelf Bioregion and for the project on evaluating
+    the cumulative effects of global changes on food webs of the region.
+  access_date: '2023-01-23'
+  contacts:
+  - contact_id: 22
+    first_name: Sarah
+    last_name: Wong
+    organization: Environment and Climate Change Canada
+    department: Canadian Wildlife Service
+    role: Wildlife Biologist
+    email: sarah.wong2@canada.ca
+    phone: 1-902-426-5897
+  - contact_id: 73
+    first_name: Carina
+    last_name: Gjerdrum
+    organization: Environment and Climate Change Canada
+    department: ''
+    role: Researcher
+    email: Carina.Gjerdrum@ec.gc.ca
+    phone: ''
+  citekey:
+  - gjerdrum2012
+  - eccc2022b
+  timespan:
+  - 2006
+  - 2007
+  - 2008
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+  - 2022
+  bbox:
+  - -67.5398026
+  - 40.3979988
+  - -56.4449997
+  - 46.6305008
+  url: ''
+  uuid: ''
+  availability: on demand
