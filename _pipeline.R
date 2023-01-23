@@ -38,6 +38,7 @@ pipeline <- function() {
   # Outputs
   out_footprint()
   out_exposure()
+  out_cea_species()
   
   # Figures 
   fig_atlas()
