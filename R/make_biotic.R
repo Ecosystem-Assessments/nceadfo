@@ -393,15 +393,154 @@ make_biotic <- function() {
     )
   }
 
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Load and prepare sea bird data
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  out <- list() 
+  out$cont <- here::here("data","data-biotic","sea_birds","continuous")
+  out$bin <- here::here("data","data-biotic","sea_birds","binary")
+  lapply(out, chk_create)
+  bird <- importdat("08e94a14")
+
+  # Format and filter data 
+  remove <- c("UNDU","WFSP","UNGU","UNSH","UNLA","UNWW","HARD","PUSA","UNKI","USHO","MURA")
+  modify <- list(
+    c(from = "COMU", to = "UNMU"),
+    c(from = "TBMU", to = "UNMU"),
+    c(from = "WISP", to = "UNSP"),
+    c(from = "LESP", to = "UNSP"),
+    c(from = "REPH", to = "UNPH"),
+    c(from = "RNPH", to = "UNPH"),
+    c(from = "WIPH", to = "UNPH"),
+    c(from = "COLO", to = "UNLO"),
+    c(from = "RTLO", to = "UNLO"),
+    c(from = "UNEI", to = "COEI"),
+    c(from = "WWSC", to = "UNSC"),
+    c(from = "BLSC", to = "UNSC"),
+    c(from = "SUSC", to = "UNSC"),
+    c(from = "DCCO", to = "UNCO"),
+    c(from = "GRCO", to = "UNCO"),
+    c(from = "UNJA", to = "UNJA"),
+    c(from = "LTJA", to = "UNJA"),
+    c(from = "SPSK", to = "UNJA"),
+    c(from = "PAJA", to = "UNJA"),
+    c(from = "POJA", to = "UNJA"),
+    c(from = "GRSK", to = "UNJA"),
+    c(from = "UNSK", to = "UNJA"),
+    c(from = "UNST", to = "UNTE"),
+    c(from = "LETE", to = "UNTE"),
+    c(from = "COTE", to = "UNTE"),
+    c(from = "ACTE", to = "UNTE"),
+    c(from = "ARTE", to = "UNTE")
+  ) |>
+  dplyr::bind_rows()
+  taxa_remove <- function(dat) dat <- dat[!dat$Alpha %in% remove, ]
+  taxa_combine <- function(dat) {
+    for(i in 1:nrow(modify)) {
+      uid <- dat$Alpha %in% modify$from[i]
+      dat$Alpha[uid] <- modify$to[i]
+    }
+    dat
+  }
+
+  ## Species list 
+  latin <- bird[["sea_birds_ecsas-08e94a14-vessel_sightings.geojson"]] |>
+           sf::st_drop_geometry() |>
+           dplyr::select(Alpha, Latin) |>
+           dplyr::distinct() |>
+           dplyr::arrange(Latin) |>
+           dplyr::mutate(
+             Latin = stringr::str_replace(Latin, "Stercorarius Jaegers","Stercorarius"),
+             Latin = stringr::str_replace(Latin, "Ardenna griseus", "Puffinus griseus")
+           ) |>
+           eaMethods::get_aphia(field = "Latin")
+  latin$aphiaID[latin$Latin == "Phalaropus"] <- 137049
+  
+  # Add shortname for file and object names
+  latin$shortname <- tolower(latin$Latin)
+  latin$shortname <- gsub(" ","_",latin$shortname)
+  latin$shortname <- glue::glue("{latin$shortname}-{latin$aphiaID}")
+           
+  ## Vessel-based surveys
+  vw <- bird[["sea_birds_ecsas-08e94a14-vessel_watches.geojson"]] |>
+        dplyr::filter(CalcDurMin > 0 & CalcDurMin < 25) |>
+        dplyr::filter(!is.na(WatchLenKm)) 
+
+  vs <- bird[["sea_birds_ecsas-08e94a14-vessel_sightings.geojson"]] |>
+        dplyr::filter(WatchID %in% vw$WatchID) |>
+        dplyr::select(Alpha)
+
+  ## Aerial-based surveys
+  ars <- bird[["sea_birds_ecsas-08e94a14-aerial_sightings.geojson"]] |>
+         dplyr::select(Alpha)
+         
+  ## Combine datasets, group by species and select only those with more than 50 obs
+  bird <- dplyr::bind_rows(vs, ars) |>
+          taxa_remove() |>
+          taxa_combine() |>
+          dplyr::left_join(latin, by = "Alpha") |>
+          dplyr::group_by(Latin) |>
+          dplyr::filter(dplyr::n() >= 50) |>
+          dplyr::group_split()
+          
+  ## Species names 
+  bird_names <- data.frame(species = unlist(lapply(bird, function(x) unique(x$Latin)))) |>
+                dplyr::left_join(latin, by = c("species" = "Latin"))
+      
+  # Grid for analysis
+  aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE) |>
+         dplyr::select(geom)
+  cellsize <- 0.05
+  grd_bird <- stars::st_rasterize(aoi, dx = cellsize, dy = cellsize)
+  
+  # Export number of points per grid cell and transform to raster
+  sightings <- lapply(bird, function(x) {
+    temp <- grd_bird
+    dat <- sf::st_intersects(grd_bird, x) |>
+           lapply(length) |>
+           unlist()
+    temp$sight <- dat 
+    temp <- temp["sight"]
+    temp[aoi]
+  })
+  
+  # Add species names
+  for(i in 1:length(sightings)) names(sightings[[i]]) <- bird_names$shortname[i]
+
+  # Smooth and binary observations
+  grd <- raster::raster("data/grid/grid.tif")
+  resolution <- 1000
+  bandwidth <- 10000
+  th <- 0
+  for(i in 1:length(sightings)) {
+    # Smooth
+    smooth_sight <- smooth_predict(
+      dat = sightings[[i]], 
+      resolution = resolution, 
+      bandwidth = bandwidth, 
+      grd = grd
+    )
+    export_raster(smooth_sight, out$cont, bird_names$shortname[i])    
+    
+    # Binary
+    binary_sight <- smooth_sight
+    raster::values(binary_sight) <- ifelse(raster::values(binary_sight) > th, 1, 0)
+    export_raster(binary_sight, out$bin, bird_names$shortname[i])
+  }
+  
+  
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Export all species considered in the assessement in cea modules
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   sp <- here::here("data","data-biotic","random_forest_regression_binary")
   mm <- here::here("data","data-biotic","marine_mammals","binary")
+  bd <- here::here("data","data-biotic","sea_birds","binary")
   out <- here::here("data","cea_modules","species")
   chk_create(out)
   file.copy(dir(sp, full.names = TRUE), out, overwrite = TRUE)
   file.copy(dir(mm, full.names = TRUE), out, overwrite = TRUE)
+  file.copy(dir(bd, full.names = TRUE), out, overwrite = TRUE)
   
   # Species list 
   dir(out) |>
