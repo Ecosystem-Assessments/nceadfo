@@ -62,7 +62,8 @@ format_modules <- function() {
 
   # Export
   save(txNames, file = here::here(out, "txNames.RData"))
-  save(bt, file = here::here(out, "biotic.RData"))
+  save(bt, file = here::here(out, "bt.RData"))
+  save(biotic, file = here::here(out, "biotic.RData"))
   save(r, file = here::here(out, "emptyRaster.RData"))
   save(idBiotic, file = here::here(out, "idBiotic.RData"))
 

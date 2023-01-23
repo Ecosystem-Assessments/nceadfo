@@ -30,6 +30,7 @@ README.html
 raw/
 *.RData
 *.gpkg
+*.rds
 
 # Specific datasets
 data-integrated2/
