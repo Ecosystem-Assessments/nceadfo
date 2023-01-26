@@ -12,7 +12,7 @@ fig_atlas <- function() {
   plotDat <- function(dat, out, suffix = "") {
     nm <- tools::file_path_sans_ext(names(dat))
     png(
-      here::here(out, glue::glue("{nm}-{suffix}.png")), 
+      here::here(out, glue::glue("{nm}{suffix}.png")), 
       res = param$figures$resolution, 
       width = param$figures$width, 
       height = param$figures$height, 
@@ -43,6 +43,6 @@ fig_atlas <- function() {
   for(i in 1:length(per)) {
     dir(glue::glue("data/stressors/transformed/{per[i]}"), full.names = TRUE) |>
     lapply(stars::read_stars) |>
-    lapply(plotDat, out$stressors, suffix = per[i])
+    lapply(plotDat, out$stressors, suffix = glue::glue("-{per[i]}"))
   }
 }

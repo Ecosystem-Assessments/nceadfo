@@ -398,13 +398,14 @@ make_biotic <- function() {
   # Load and prepare sea bird data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   out <- list() 
-  out$cont <- here::here("data","data-biotic","sea_birds","continuous")
-  out$bin <- here::here("data","data-biotic","sea_birds","binary")
+  out$out <- here::here("data","data-biotic","sea_birds")
+  out$cont <- here::here(out$out, "continuous")
+  out$bin <- here::here(out$out,"binary")
   lapply(out, chk_create)
   bird <- importdat("08e94a14")
 
   # Format and filter data 
-  remove <- c("UNDU","WFSP","UNGU","UNSH","UNLA","UNWW","HARD","PUSA","UNKI","USHO","MURA")
+  remove <- c("UNDU","WFSP","UNGU","UNSH","UNLA","HARD","PUSA","UNKI","USHO","MURA")
   modify <- list(
     c(from = "COMU", to = "UNMU"),
     c(from = "TBMU", to = "UNMU"),
@@ -432,7 +433,15 @@ make_biotic <- function() {
     c(from = "LETE", to = "UNTE"),
     c(from = "COTE", to = "UNTE"),
     c(from = "ACTE", to = "UNTE"),
-    c(from = "ARTE", to = "UNTE")
+    c(from = "ARTE", to = "UNTE"),
+    c(from = "LAGU", to = "UNLA"),
+    c(from = "RBGU", to = "UNLA"),
+    c(from = "LBBG", to = "UNLA"),
+    c(from = "ICGU", to = "UNLA"),
+    c(from = "GLGU", to = "UNLA"),
+    c(from = "UNWW", to = "UNLA"),
+    c(from = "BOGU", to = "UNLA"),
+    c(from = "BHGU", to = "UNLA")
   ) |>
   dplyr::bind_rows()
   taxa_remove <- function(dat) dat <- dat[!dat$Alpha %in% remove, ]
@@ -477,7 +486,7 @@ make_biotic <- function() {
          
   ## Combine datasets, group by species and select only those with more than 50 obs
   bird <- dplyr::bind_rows(vs, ars) |>
-          taxa_remove() |>
+          taxa_remove() |> # The order is important because I drop Larus than rename some Larus
           taxa_combine() |>
           dplyr::left_join(latin, by = "Alpha") |>
           dplyr::group_by(Latin) |>
@@ -485,9 +494,13 @@ make_biotic <- function() {
           dplyr::group_split()
           
   ## Species names 
-  bird_names <- data.frame(species = unlist(lapply(bird, function(x) unique(x$Latin)))) |>
-                dplyr::left_join(latin, by = c("species" = "Latin"))
-      
+  bird_names <- data.frame(
+    species = unlist(lapply(bird, function(x) unique(x$Latin))),
+    observations = unlist(lapply(bird, function(x) nrow(x)))
+  ) |>
+  dplyr::left_join(latin, by = c("species" = "Latin"))
+  write.csv(bird_names, here::here(out$out, "bird_list.csv"), row.names = FALSE)
+  
   # Grid for analysis
   aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE) |>
          dplyr::select(geom)
@@ -495,15 +508,18 @@ make_biotic <- function() {
   grd_bird <- stars::st_rasterize(aoi, dx = cellsize, dy = cellsize)
   
   # Export number of points per grid cell and transform to raster
-  sightings <- lapply(bird, function(x) {
+  sightings <- list()
+  for(i in 1:length(bird)) {
     temp <- grd_bird
-    dat <- sf::st_intersects(grd_bird, x) |>
+    dat <- sf::st_intersects(grd_bird, bird[[i]]) |>
            lapply(length) |>
            unlist()
-    temp$sight <- dat 
+    dat <- log((dat / sum(dat)) + 1)
+    dat <- ifelse(dat == 0, NA, dat)
+    temp$sight <- dat
     temp <- temp["sight"]
-    temp[aoi]
-  })
+    sightings[[i]] <- temp[aoi]
+  }
   
   # Add species names
   for(i in 1:length(sightings)) names(sightings[[i]]) <- bird_names$shortname[i]
@@ -511,7 +527,7 @@ make_biotic <- function() {
   # Smooth and binary observations
   grd <- raster::raster("data/grid/grid.tif")
   resolution <- 1000
-  bandwidth <- 10000
+  bandwidth <- 20000
   th <- 0
   for(i in 1:length(sightings)) {
     # Smooth

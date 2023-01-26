@@ -3,3 +3,34 @@
 - Read in stressors metadata 
 - Automatically generate a summary table
 - check `ceanav` for working example
+
+### Sea birds 
+
+```{r birdlist} 
+  bird <- read.csv(here::here("data","data-biotic","sea_birds","bird_list.csv")) 
+```
+
+The distribution of sea birds was obtained through vessel-based and aerial-based surveys and available through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @eccc2022b].
+All sightings of individual bird species or bird groups from the vessel and aerial surveys between 2006 and 2022 were combined to evaluate the distribution of birds in the area of interest. A total of `r nrow(bird)` bird species / groups were obtained (Table \@ref(tab:distbirds)).
+
+<br> 
+
+```{r distbirds}
+dplyr::select(bird, Alpha, aphiaID, species, observations) |>
+  knitr::kable(
+    col.names = c("Alpha", "Aphia ID", "Scientific name", "Observations (n)"),
+    row.names = FALSE,
+    caption = "List of sea birds obtained through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @eccc2022b]."
+  ) #%>%
+  #kableExtra::row_spec(uid, extra_css = "border-bottom: 2px solid")
+```
+
+<br> 
+
+To evaluate the distribution of birds, a similar approach to that used for marine mammals was used. The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ degrees grid. For each species or species group, the number of sightings recorded in the ECSAS database was evaluated in each grid cell. A Gaussian smoothing - *i.e.* an interpolation method based on a normal distribution - of 20 $km$ was then applied to the grid. Cell valued were then normalized by the total number of sightings to represent the proportion of the total total number of sightings in the area of interest. Finally, a log transformation was applied to minimize the effect of extreme values on the resulting maps. 
+
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+img <- here::here("figures","biotic", glue::glue("{bird$shortname}.png"))
+knitr::include_graphics(img)
+```
