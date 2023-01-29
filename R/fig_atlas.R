@@ -27,7 +27,7 @@ fig_atlas <- function() {
   dir(
     c("data/data-biotic/marine_mammals/continuous",
       "data/data-biotic/sea_birds/continuous", 
-      "data/data-biotic/random_forest_regression_smoothing"), 
+      "data/data-biotic/marine_species/random_forest_regression_smoothing"), 
     full.names = TRUE
   ) |>
   lapply(stars::read_stars) |>

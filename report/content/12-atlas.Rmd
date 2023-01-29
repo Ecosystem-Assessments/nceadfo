@@ -2,7 +2,7 @@
 
 ## Stressors {#stratlas}
 
-## Species distribution {#spatlas}
+## Species {#spatlas}
 
 ## Cumulative stressors {#csatlas}
 

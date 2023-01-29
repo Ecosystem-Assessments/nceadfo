@@ -68,7 +68,13 @@ make_biotic <- function() {
     na.omit()
   }) |>
   unlist()
+  freq <- lapply(species, function(x) table(x$presence)) |>
+          dplyr::bind_rows()
+  colnames(freq) <- c("absences","presences")
+  freq <- freq[-nrow(freq),]
+  
   sp <- data.frame(aphiaID = sp) |>
+        cbind(freq) |>
         dplyr::left_join(species_list[, c("aphiaID","SPEC")], by = "aphiaID") |>
         dplyr::mutate(
           shortname = tolower(
@@ -76,6 +82,7 @@ make_biotic <- function() {
           )
         )
   nSp <- nrow(sp)
+  
   
   # -----------------------------------------
   # Environtal covariates to use for modeling 
@@ -184,7 +191,8 @@ make_biotic <- function() {
   # 4. Smooth predictions
   # ------------------------------------------------------------------------------
   # Outputs 
-  out <- here::here("data","data-biotic")
+  out <- here::here("data","data-biotic","marine_species")
+  write.csv(sp, here::here(out, "species_list.csv"), row.names = FALSE)
   out <- list(
     regression_model = here::here(out,"random_forest_regression_rsq"),
     # classification_model = here::here("output","biotic","random_forest_classification"),
@@ -367,6 +375,7 @@ make_biotic <- function() {
   nm$filename <- tolower(stringr::str_replace(nm$species, " ", "_"))
   nm$filename <- glue::glue("{nm$filename}-{nm$aphiaID}.tif")
   for(i in 1:length(mm)) names(mm[[i]]) <- nm$filename[i]
+  write.csv(nm, here::here(out, "mm_list.csv"), row.names = FALSE)
   
   # Export 
   out2 <- here::here(out,"continuous")

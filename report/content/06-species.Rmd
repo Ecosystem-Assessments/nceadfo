@@ -1,14 +1,153 @@
 ## Species {#spmodule}
 
-- Read in stressors metadata 
-- Automatically generate a summary table
-- check `ceanav` for working example
-
-### Sea birds 
-
-```{r birdlist} 
-  bird <- read.csv(here::here("data","data-biotic","sea_birds","bird_list.csv")) 
+```{r splists}
+sp <- read.csv(here::here("data","data-biotic","marine_species","species_list.csv")) 
+mm <- read.csv(here::here("data","data-biotic","marine_mammals","mm_list.csv")) 
+bird <- read.csv(here::here("data","data-biotic","sea_birds","bird_list.csv")) 
+abiotic <- read.csv(here::here("data","data-abiotic","abiotic_list.csv"))
+nsp <- nrow(sp)
+nmm <- nrow(mm)
+nbd <- nrow(bird)
+nab <- nrow(abiotic)
 ```
+
+The assessment considers `r nsp` [marine](marinesp), `r nmm` [marine mammal](marinemammals), and `r nbd` [sea bird](seabirds) taxa, for a total of `r nsp+nmm+nbd` taxa considered. We also assumed that phytoplankton and zooplankton species were present throughout the St. Lawrence System since these taxa are missing from our dataset and are required to properly consider trophic dynamics. The following sections describe the data and approaches used to evaluate their distribution on the Scotian Shelf
+
+### Marine species {#marinesp}
+
+#### Biotic data
+
+We used taxa occurrence data from Fisheries and Oceans Canada (DF) ecosystem spring [@dfo2020b], summer [@dfo2020c], and 4vsw [@dfo2020] surveys. These surveys collect data to monitor the distriution and abundance of fish and invertebrates through the Scotian Shelf, Bay of Fundy and Georges Bank. We formatted the list of taxa considered for the analyses gy combining and removing taxa based on expert knowledge and bibliographic research (*e.g.* species of the same genus and hard to distinguish *in situ* were combined). Only taxa with at least 50 observations were considered for the assessment. This process yielded `r sum(sp$presences)` occurrences and `r sum(sp$absences)` absences for `r nsp` on the Scotial Shelf (Table \@ref(tab:spnm)). All species scientific names were resolved using the `taxize` R package [@chamberlain2013; @chamberlain2019].
+
+```{r spnm}
+dplyr::select(sp, aphiaID, SPEC, presences, absences) |>
+dplyr::arrange(SPEC) |>
+  knitr::kable(
+    col.names = c("Aphia ID", "Scientific name", "Presences (n)" , "Absences (n)"),
+    row.names = FALSE,
+    caption = "List of marine species obtained through Fisheries and Oceans Canada (DF) ecosystem spring [@dfo2020b], summer [@dfo2020c], and 4vsw [@dfo2020] surveys on the Scotian Shelf, Bay of Fundy and Goerges Bank."
+  ) #%>%
+  #kableExtra::row_spec(uid, extra_css = "border-bottom: 2px solid")
+```
+
+
+#### Abiotic data
+
+We used environmental data characterizing the bottom-water and surface-water conditions on the Scotian Shelf using data from Bio-ORACLE, which provides geophysical, biotic and environmental data layers for surface and benthic marine environments [@bosch2022; @tyberghein2012; @assis2018], the General Bathymetric Chart of the Oceans (GEBCO) offering a global terrain model for ocean and land, providing elevation data, in meters, on a 15 arc-second interval grid [@gebco], and the Bedford Institute of Oceanography North Atlantic Model (BNAM) averaged over the 1990 to 2015 period for monthly temperatures and salinities at the bottome and at the surface [@wang2018; @wang2018a; @wang2018b]. See table \ref(tab:abiotic) for more details.
+
+```{r abiotic}
+dplyr::select(abiotic, name, cite) |>
+dplyr::arrange(cite, name) |>
+  knitr::kable(
+    col.names = c("Name","Source"),
+    row.names = FALSE,
+    caption = "List of abiotic variable considered to model the distribution of taxa on the Scotian Shelf."
+  )
+```
+
+
+#### Taxa distribution
+
+We evaluated the distribution of taxa on the Scotian Shelf using the Random Forest ensemble learner [@breiman2001]. We used the default parameters of the `randomForest` R package to classify the presence or absence of taxa: 500 trees and the number of variables in the random subset at each node set to the square root of the number of variables [@liaw2002]. All `r nab` abiotic variables (Table \ref(tab:abiotic)) were used to model the distribution of species. The performance of each modell was evaluated using the sensitivity, specificity, accuracy and True Skilled Statistics [TSS; Table \ref(tab:spnm); @allouche2006]. We predicted the spatial distribution of all taxa within the grid of our area of interest and performed a smoothing of predictions using a bisquare kernel smoothing approach [@dossantos2018] with a 5 km radius to avoid granular distributions; this is done that affect the assessment of species co-occurrences ncecessary for the subsequent network-scale cumualtive effects assessment. 
+
+
+### Marine mammals {#marinemammals}
+
+<!--
+Citation: Le WWF-Canada et le Réseau d’observation de mammifères marins. Données cartographiques : Navires et baleines de l’Atlantique Nord-Ouest : Guide à l’intention de l’industrie maritime, 2e édition. 2021. Données disponibles sur le site https://www.navigationbaleines.ca/fr/accueil/
+--->
+
+The distribution fo marine mammals in the area of interest comes from the second edition of a guidebook published for mariners who frequent the Northwest Atlantic [@wwfromm2021]. The purpose of this guide is to inform mariners on the problem of collisions between vessels and whales, how to minimize such incidents, the various species of whales and leatherback turtles in the area and where they might be present, and on areas where heightened vigilance is required. Nine species of marine mammals were selected for this guide based on their conservation status and their known risk of collision with vessels [@wwfromm2021; @wwfromm2021b].
+
+The distribution of each marine mammal was assessed throught the integration of 14 datasets from scientific and opportunistic surveys between 2010-2015 (Table \@ref(tab:datamm); @wwfromm2021c). The area of interest covered by the guide covers the geographic boundaries of $40^o$ to $55^o$ N and -72$^o$ to -48$^o$ W.  The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ grid and the number of sightings recorded in the 14 available databases was calculated for each species considered. A Gaussian smoothing -- *i.e.* an interpolation method based on a normal distribution -- of 0.2$^o$ was then applied to the grid. Values in each grid cells were then normalized by the total number of sightings for a species and log-transformed to minimize the effect of extreme values. 
+
+The caveats that accompany these maps in the guide and are reported *verbatim* in this report:
+
+> - Sighting effort was not quantified and varies considerably in time and space. The data represent the relative occurrence of reported sightings rather than the actual density or abundance of the species.
+
+> - The quality of some of the sighting data is unknown. Sightings are reported from individuals with varying degrees of expertise in identifying marine mammals.
+
+
+<br/>
+
+```{r datamm}
+tab <- data.frame(nom = c("Whitehead, Université Dalhousie",
+                          "WWAM",
+                          "WWAM_C",
+                          "Predator pelagic prey",
+                          "NAISS",
+                          "NARW",
+                          "NARW",
+                          "WSDB",
+                          "TC",
+                          "MICS",
+                          "NOAA",
+                          "NARWC",
+                          "AOM_MMON",
+                          "Shipping_MMON"),
+                 temp = c("1988-2019",
+                          "2015-2019",
+                          "2015-2019",
+                          "2015-2018",
+                          "2016",
+                          "2017",
+                          "2018",
+                          "1963-2019",
+                          "2018",
+                          "2014-2018",
+                          "2018-2020",
+                          "2015-2019",
+                          "2014-2019",
+                          "2015-2019"),
+                 prop = c("Université Dalhousie",
+                          "Parcs Canada",
+                          "Parcs Canada",
+                          "Parcs Canada",
+                          "Pêches et Océans Canada",
+                          "Pêches et Océans Canada",
+                          "Pêches et Océans Canada",
+                          "Base de données des observations de mammifères marins et d’animaux pélagiques, Pêches et Océans Canada, Dartmouth, N.-É. [2020/02/13]",
+                          "Transports Canada",
+                          "Station de recherche des îles Mingan",
+                          "National Oceanic and Atmospheric Administration",
+                          "North Atlantic Right Whale Consortium",
+                          "Réseau d’observation de mammifères marins",
+                          "Réseau d’observation de mammifères marins"),
+                  esp = c(27,7,7,7,39,31,39,67,19,11,5,16,8,35),
+                  obs = c(2464,1353,1774,816,2508,2910,7312,24538,3517,4808,2699,18190,4705,5891),
+                 type = c("S/O","S","S","S","S","S","S","O","S","S","S","S","S","O"))
+# -----
+tab |>
+  knitr::kable(
+    col.names = c("Name of dataset","Temporal series","Owner","Species (n)",
+                  "Observations (n)","Scientific (S) or Opportunistic (O)"),
+    row.names = FALSE,
+    caption = "List of scientific and opportunistic datasets used to generate maps, including informations on the period covered by the data, the number of species and the number of observations of one or more individuals available for the analysis, and the owner of the dataset. Table from: @wwfromm2021c."
+  )
+```
+
+<br/>
+
+Of the nine species available in the guide, `r nrow(mm)` are present on the Scotian Shelf (Table \@ref(tab:distmm)). For our study, we resampled the distributional maps available in the guide to integrate them into our own grid. The values were then normalized between 0 and 1 by dividing each value by the maximum value observed within the grid for each species. The resulting values can be interpreted as the relative density of marine mammal sightings, with values of 0 representing a low relative density and a value of 1 a high relative density.
+
+<br/>
+
+```{r distmm}
+dplyr::select(mm, aphiaID, species, common) |>
+dplyr::mutate(common = stringr::str_to_sentence(gsub("_"," ", common))) |>
+  knitr::kable(
+    col.names = c("Aphia ID", "Scientific name", "Common name"),
+    row.names = FALSE,
+    caption = "List of marine mammal distributions obtained through the the second edition of a guidebook published for mariners who frequent the Northwest Atlantic [@wwfromm2021; @wwfromm2021b; @wwfromm2021c]."
+  ) #%>%
+  #kableExtra::row_spec(uid, extra_css = "border-bottom: 2px solid")
+```
+
+<br/>
+
+
+### Sea birds {#seabirds}
+
 
 The distribution of sea birds was obtained through vessel-based and aerial-based surveys and available through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @eccc2022b].
 All sightings of individual bird species or bird groups from the vessel and aerial surveys between 2006 and 2022 were combined to evaluate the distribution of birds in the area of interest. A total of `r nrow(bird)` bird species / groups were obtained (Table \@ref(tab:distbirds)).
@@ -30,7 +169,9 @@ dplyr::select(bird, Alpha, aphiaID, species, observations) |>
 To evaluate the distribution of birds, a similar approach to that used for marine mammals was used. The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ degrees grid. For each species or species group, the number of sightings recorded in the ECSAS database was evaluated in each grid cell. A Gaussian smoothing - *i.e.* an interpolation method based on a normal distribution - of 20 $km$ was then applied to the grid. Cell valued were then normalized by the total number of sightings to represent the proportion of the total total number of sightings in the area of interest. Finally, a log transformation was applied to minimize the effect of extreme values on the resulting maps. 
 
 
+<!--
 ```{r out.width = "90%", echo=FALSE, fig.align='center'}
 img <- here::here("figures","biotic", glue::glue("{bird$shortname}.png"))
 knitr::include_graphics(img)
-```
+``` 
+-->

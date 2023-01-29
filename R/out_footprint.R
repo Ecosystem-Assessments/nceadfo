@@ -41,7 +41,7 @@ out_footprint <- function() {
   nm <- glue::glue("cumulative_species.tif")
 
   dat <- c(
-    here::here("data","data-biotic","random_forest_regression_binary"),
+    here::here("data","data-biotic","marine_species","random_forest_regression_binary"),
     here::here("data","data-biotic","marine_mammals")
   ) |>
   dir(full.names = TRUE) |>

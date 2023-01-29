@@ -65,6 +65,19 @@ make_abiotic <- function() {
     temperature
   )
 
+  source <- c(
+    rep("e775900b", length(bathy)), 
+    rep("4d4292ca",length(biooracle)),
+    rep("0d61380a", length(salinity)),
+    rep("71944efd", length(temperature))
+  )
+  cite <- c(
+    rep("@gebco2021", length(bathy)), 
+    rep("@bosch2022; @tyberghein2012; @assis2018",length(biooracle)),
+    rep("@wang2018; @wang2018b", length(salinity)),
+    rep("@wang2018; @wang2018a", length(temperature))
+  )
+  
   # Warp 
   abiotic <- lapply(abiotic, stars::st_warp, dest = grd)
   
@@ -90,4 +103,17 @@ make_abiotic <- function() {
       delete_dsn = TRUE
     )
   }
+  
+  # Abiotic data names 
+  nm <- data.frame(
+    filename = unlist(lapply(abiotic, names)),
+    shortname = nm, 
+    name = nm,
+    source = source, 
+    cite = cite
+  ) |>
+  dplyr::mutate(name = gsub("_"," ",name)) |>
+  dplyr::mutate(name = gsub("\\."," ",name)) |>
+  dplyr::mutate(name = stringr::str_to_sentence(name))
+  write.csv(nm, file = here::here(out, "abiotic_list.csv"), row.names = FALSE)
 }
