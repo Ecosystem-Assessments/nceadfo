@@ -38,6 +38,7 @@ stratlas
 spatlas
 marine-species
 marine-mammals
+sea-birds
 csatlas
 rcatlas
 exatlas
