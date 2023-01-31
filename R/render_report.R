@@ -11,5 +11,10 @@ render_report <- function() {
       config_file = "_bookdown.yml"
     )
     setwd('../')
+    # file.copy("./figures/", "./report/", recursive = TRUE)
   })
+  from <- here::here("report","docs")
+  to <- here::here("docs")
+  fs::file_delete
+  fs::file_move(from, to)
 }
