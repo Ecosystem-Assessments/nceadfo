@@ -5,33 +5,40 @@
 ## Species {#spatlas}
 
 ```{r} 
-atlas <- dir(here::here("figures","atlas","biotic"), full.names = TRUE)
-nm <- basename(atlas)
+atlas <- dir(here::here("figures","atlas","biotic"))
 out <- here::here("data","data-biotic")
 sp <- read.csv(here::here(out, "marine_species","species_list.csv"))
 mm <- read.csv(here::here(out, "marine_mammals","mm_list.csv"))
 sb <- read.csv(here::here(out, "sea_birds","bird_list.csv"))
+urls <- c(
+  "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/biotic/",
+  "?raw=true"
+)
+
+
 ```
 
 ### Marine species 
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center'}
-uid <- nm %in% glue::glue("{sp$shortname}.png")
-knitr::include_graphics(atlas[uid])
+uid <- atlas %in% glue::glue("{sp$shortname}.png")
+paths <- glue::glue("{urls[1]}{atlas[uid]}{urls[2]}")
+knitr::include_graphics(paths)
 ``` 
 
 ### Marine mammals
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center'}
-uid <- nm %in% glue::glue("{tools::file_path_sans_ext(mm$filename)}.png")
-knitr::include_graphics(atlas[uid])
+uid <- atlas %in% glue::glue("{tools::file_path_sans_ext(mm$filename)}.png")
+paths <- glue::glue("{urls[1]}{atlas[uid]}{urls[2]}")
+knitr::include_graphics(paths)
 ``` 
-
 ### Sea birds 
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center'}
-uid <- nm %in% glue::glue("{sb$shortname}.png")
-knitr::include_graphics(atlas[uid])
+uid <- atlas %in% glue::glue("{sb$shortname}.png")
+paths <- glue::glue("{urls[1]}{atlas[uid]}{urls[2]}")
+knitr::include_graphics(paths)
 ``` 
 
 
