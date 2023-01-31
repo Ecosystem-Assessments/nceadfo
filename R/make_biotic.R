@@ -469,7 +469,8 @@ make_biotic <- function() {
            dplyr::arrange(Latin) |>
            dplyr::mutate(
              Latin = stringr::str_replace(Latin, "Stercorarius Jaegers","Stercorarius"),
-             Latin = stringr::str_replace(Latin, "Ardenna griseus", "Puffinus griseus")
+             Latin = stringr::str_replace(Latin, "Ardenna griseus", "Puffinus griseus"),
+             Latin = stringr::str_replace(Latin, "Ardenna gravis", "Puffinus gravis")
            ) |>
            eaMethods::get_aphia(field = "Latin")
   latin$aphiaID[latin$Latin == "Phalaropus"] <- 137049
