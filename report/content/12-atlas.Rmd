@@ -5,7 +5,7 @@
 ## Species {#spatlas}
 
 ```{r} 
-atlas <- dir(here::here("figures","biotic","atlas"), full.names = TRUE)
+atlas <- dir(here::here("figures","atlas","biotic"), full.names = TRUE)
 nm <- basename(atlas)
 out <- here::here("data","data-biotic")
 sp <- read.csv(here::here(out, "marine_species","species_list.csv"))

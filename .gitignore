@@ -23,7 +23,6 @@ README.html
 *.geojson
 *.tif
 *.csv
-*.png
 *.pdf
 *.xlsx
 *.zip
@@ -32,5 +31,7 @@ raw/
 *.gpkg
 *.rds
 
-# Specific datasets
-data-integrated2/
+# Specific folders
+figures/abiotic/
+figures/biotic/
+figures/drivers/

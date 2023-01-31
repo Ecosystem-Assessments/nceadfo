@@ -67,9 +67,9 @@ fig_atlas <- function() {
   # Species 
   out <- list()
   out$out <- here::here("figures","biotic")
-  out$atlas <- here::here(out$out, "atlas")
   out$cnt <- here::here(out$out, "continuous")
   out$bin <- here::here(out$out, "binary")
+  out$atlas <- here::here("figures", "atlas","biotic")
   chk <- file.exists(out$cnt) & file.exists(out$bin)
   stopifnot(chk)
   chk_create(out$atlas)

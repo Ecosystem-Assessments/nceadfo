@@ -15,6 +15,6 @@ render_report <- function() {
   })
   from <- here::here("report","docs")
   to <- here::here("docs")
-  fs::file_delete
+  if (file.exists(to)) fs::file_delete(to)
   fs::file_move(from, to)
 }
