@@ -18,7 +18,7 @@ description:
     Sea (ECSAS) database extracted on 2023-01-19 and 2022-01-17, respectively. The
     data was clipped to the Scotian Shelf Bioregion and for the project on evaluating
     the cumulative effects of global changes on food webs of the region.
-  access_date: '2023-01-23'
+  access_date: '2023-01-31'
   contacts:
   - contact_id: 22
     first_name: Sarah
@@ -38,7 +38,7 @@ description:
     phone: ''
   citekey:
   - gjerdrum2012
-  - eccc2022b
+  - cws2022
   timespan:
   - 2006
   - 2007

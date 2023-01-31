@@ -4,6 +4,37 @@
 
 ## Species {#spatlas}
 
+```{r} 
+atlas <- dir(here::here("figures","biotic","atlas"), full.names = TRUE)
+nm <- basename(atlas)
+out <- here::here("data","data-biotic")
+sp <- read.csv(here::here(out, "marine_species","species_list.csv"))
+mm <- read.csv(here::here(out, "marine_mammals","mm_list.csv"))
+sb <- read.csv(here::here(out, "sea_birds","bird_list.csv"))
+```
+
+### Marine species 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+uid <- nm %in% glue::glue("{sp$shortname}.png")
+knitr::include_graphics(atlas[uid])
+``` 
+
+### Marine mammals
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+uid <- nm %in% glue::glue("{tools::file_path_sans_ext(mm$filename)}.png")
+knitr::include_graphics(atlas[uid])
+``` 
+
+### Sea birds 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+uid <- nm %in% glue::glue("{sb$shortname}.png")
+knitr::include_graphics(atlas[uid])
+``` 
+
+
 ## Cumulative stressors {#csatlas}
 
 ## Species richness {#rcatlas}

@@ -15,7 +15,7 @@ pipeline:
 description:
   name: WoRMS North-West Atlantic species checklist
   description: CaRMS and WoRMS species list for the North-West Atlantic area of interest
-  access_date: '2023-01-09'
+  access_date: '2023-01-30'
   contacts:
   - contact_id: 40
     first_name: ''

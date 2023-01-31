@@ -48,7 +48,7 @@ dplyr::arrange(cite, name) |>
 
 #### Taxa distribution
 
-We evaluated the distribution of taxa on the Scotian Shelf using the Random Forest ensemble learner [@breiman2001]. We used the default parameters of the `randomForest` R package to classify the presence or absence of taxa: 500 trees and the number of variables in the random subset at each node set to the square root of the number of variables [@liaw2002]. All `r nab` abiotic variables (Table \ref(tab:abiotic)) were used to model the distribution of species. The performance of each modell was evaluated using the sensitivity, specificity, accuracy and True Skilled Statistics [TSS; Table \ref(tab:spnm); @allouche2006]. We predicted the spatial distribution of all taxa within the grid of our area of interest and performed a smoothing of predictions using a bisquare kernel smoothing approach [@dossantos2018] with a 5 km radius to avoid granular distributions; this is done that affect the assessment of species co-occurrences ncecessary for the subsequent network-scale cumualtive effects assessment. 
+We evaluated the distribution of taxa on the Scotian Shelf using the Random Forest ensemble learner [@breiman2001]. We used the default parameters of the `randomForest` R package to classify the presence or absence of taxa: 500 trees and the number of variables in the random subset at each node set to the square root of the number of variables [@liaw2002]. All `r nab` abiotic variables (Table \ref(tab:abiotic)) were used to model the distribution of species. The performance of each modell was evaluated using the sensitivity, specificity, accuracy and True Skilled Statistics [TSS; Table \ref(tab:spnm); @allouche2006]. We predicted the spatial distribution of all taxa within the grid of our area of interest and performed a smoothing of predictions using a bisquare kernel smoothing approach [@dossantos2018] with a 5 km radius to avoid granular distributions; this is done that affect the assessment of species co-occurrences ncecessary for the subsequent network-scale cumualtive effects assessment. A threshold of 0.5 was used to transform continuous predictions to binary distributions, identifying areas where taxa are most likely to be found.
 
 
 ### Marine mammals {#marinemammals}
@@ -128,7 +128,7 @@ tab |>
 
 <br/>
 
-Of the nine species available in the guide, `r nrow(mm)` are present on the Scotian Shelf (Table \@ref(tab:distmm)). For our study, we resampled the distributional maps available in the guide to integrate them into our own grid. The values were then normalized between 0 and 1 by dividing each value by the maximum value observed within the grid for each species. The resulting values can be interpreted as the relative density of marine mammal sightings, with values of 0 representing a low relative density and a value of 1 a high relative density.
+Of the nine species available in the guide, `r nrow(mm)` are present on the Scotian Shelf (Table \@ref(tab:distmm)). For our study, we resampled the distributional maps available in the guide to integrate them into our own grid. The values were then normalized between 0 and 1 by dividing each value by the maximum value observed within the grid for each species. The resulting values can be interpreted as the relative density of marine mammal sightings, with values of 0 representing a low relative density and a value of 1 a high relative density. All cells with values greater than 0 were used to identify the binary distribution of marine mammals.
 
 <br/>
 
@@ -166,12 +166,4 @@ dplyr::select(bird, Alpha, aphiaID, species, observations) |>
 
 <br> 
 
-To evaluate the distribution of birds, a similar approach to that used for marine mammals was used. The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ degrees grid. For each species or species group, the number of sightings recorded in the ECSAS database was evaluated in each grid cell. A Gaussian smoothing - *i.e.* an interpolation method based on a normal distribution - of 20 $km$ was then applied to the grid. Cell valued were then normalized by the total number of sightings to represent the proportion of the total total number of sightings in the area of interest. Finally, a log transformation was applied to minimize the effect of extreme values on the resulting maps. 
-
-
-<!--
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-img <- here::here("figures","biotic", glue::glue("{bird$shortname}.png"))
-knitr::include_graphics(img)
-``` 
--->
+To evaluate the distribution of birds, a similar approach to that used for marine mammals was used. The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ degrees grid. For each species or species group, the number of sightings recorded in the ECSAS database was evaluated in each grid cell. A Gaussian smoothing - *i.e.* an interpolation method based on a normal distribution - of 20 $km$ was then applied to the grid. A log transformation was then applied to minimize the effect of extreme values on the resulting maps. Cell values were then normalized between 0 and 1 by dividing by the maximum value observed for each bird across the area of interest. All cells with values greater than 0 were used to identify the binary distribution of sea birds.

@@ -5,11 +5,9 @@ pipeline <- function() {
   # Update global parameters
   global_parameters()
   
-  # Get area of interest 
+  # Get area of interest & basemaps
   get_aoi()
-  
-  # Make grid 
-  make_grid(cellsize = 0.01)
+  get_basemap()
 
   # Integrate data 
   pipedat::pipeflow("./data/config/pipedat.yml")
@@ -41,6 +39,7 @@ pipeline <- function() {
   out_cea_species()
   
   # Figures 
+  figures()
   fig_atlas()
   
   # Report 

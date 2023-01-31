@@ -18,13 +18,12 @@ get_aoi <- function() {
 
 
   # Export data
+  out <- here::here("data","aoi")
+  chk_create(out)
   sf::st_write(
     obj = aoi,
-    dsn = "./data/data-basemap/aoi.geojson",
+    dsn = here::here(out, "aoi.gpkg"),
     delete_dsn = TRUE,
     quiet = TRUE
   )
-
-  # Export for lazy load
-  save(aoi, file = "./data/aoi.RData")
 }

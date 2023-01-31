@@ -191,18 +191,17 @@ make_biotic <- function() {
   # 4. Smooth predictions
   # ------------------------------------------------------------------------------
   # Outputs 
-  out <- here::here("data","data-biotic","marine_species")
-  write.csv(sp, here::here(out, "species_list.csv"), row.names = FALSE)
-  out <- list(
-    regression_model = here::here(out,"random_forest_regression_rsq"),
-    # classification_model = here::here("output","biotic","random_forest_classification"),
-    regression = here::here(out, "random_forest_regression"),
-    # classification = here::here(out, "random_forest_classification"),
-    regression_smooth = here::here(out, "random_forest_regression_smoothing"),
-    # classification_smooth = here::here(out, "random_forest_classification_smoothing")
-    regression_binary = here::here(out, "random_forest_regression_binary")
-  )
+  out <- list()
+  out$out = here::here("data","data-biotic","marine_species")
+  out$regression_model = here::here(out$out,"random_forest_regression_rsq")
+  # out$classification_model = here::here(out$out,"random_forest_classification")
+  out$regression = here::here(out$out, "random_forest_regression")
+  # out$classification = here::here(out$out, "random_forest_classification")
+  out$regression_smooth = here::here(out$out, "random_forest_regression_smoothing")
+  # out$classification_smooth = here::here(out$out, "random_forest_classification_smoothing")
+  out$regression_binary = here::here(out$out, "random_forest_regression_binary")
   lapply(out, chk_create)
+  write.csv(sp, here::here(out$out, "species_list.csv"), row.names = FALSE)
   
   # Functions 
   export_rdata <- function(dat, out, nm) {
@@ -328,9 +327,9 @@ make_biotic <- function() {
      )
     })    
   }
-  mask(here::here("data","data-biotic","random_forest_regression"))
-  mask(here::here("data","data-biotic","random_forest_regression_smoothing"))
-  mask(here::here("data","data-biotic","random_forest_regression_binary"))
+  mask(out$regression)
+  mask(out$regression_smooth)
+  mask(out$regression_binary)
   
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -523,8 +522,6 @@ make_biotic <- function() {
     dat <- sf::st_intersects(grd_bird, bird[[i]]) |>
            lapply(length) |>
            unlist()
-    dat <- log((dat / sum(dat)) + 1)
-    dat <- ifelse(dat == 0, NA, dat)
     temp$sight <- dat
     temp <- temp["sight"]
     sightings[[i]] <- temp[aoi]
@@ -546,6 +543,8 @@ make_biotic <- function() {
       bandwidth = bandwidth, 
       grd = grd
     )
+    smooth_sight <- log(smooth_sight + 1)
+    smooth_sight <- smooth_sight / raster::maxValue(smooth_sight)
     export_raster(smooth_sight, out$cont, bird_names$shortname[i])    
     
     # Binary
@@ -558,7 +557,7 @@ make_biotic <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Export all species considered in the assessement in cea modules
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  sp <- here::here("data","data-biotic","random_forest_regression_binary")
+  sp <- here::here("data","data-biotic","marine_species","random_forest_regression_binary")
   mm <- here::here("data","data-biotic","marine_mammals","binary")
   bd <- here::here("data","data-biotic","sea_birds","binary")
   out <- here::here("data","cea_modules","species")

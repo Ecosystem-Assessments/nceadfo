@@ -24,11 +24,11 @@ pipedat:
       - 2021
   # ==========================================================================
   data_pipelines:
-    # ------------------------------------------------------------------------
+    # # ------------------------------------------------------------------------
     # # Environmental stressors
     # - "f2109e69" # Commercial fisheries logbooks
     # - "35608fef" # CanCoast - Coastal Materials Version 2.0
-    # - "8509eeb1" # Nighttime Ligths    
+    # # - "8509eeb1" # Nighttime Ligths    
     # - "8449dee0" # AIS global shipping data
     # - "c676dc2b" # Census cartographic boundary files 2016
     # - "b9024b04" # Census cartographic boundary files 2021
@@ -60,13 +60,13 @@ pipedat:
     # - "08e94a14" # ECSAS sea bird survey
   # ==========================================================================
   data_integration:
-    # ------------------------------------------------------------------------
-    # Environmental stressors
+    # # ------------------------------------------------------------------------
+    # # Environmental stressors
     # - "e2b7e6c4" # Fisheries intensity
     # - "72312316" # Shipping intensity
-    # - "aba5e90a" # Night lights
+    - "aba5e90a" # Night lights
     # - "99bb2d51" # Direct human impact
-    ## - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
+    # # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
     # - "84b6ea0b" # Invasive species environmental stressor
     # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
     # - "3992e1a6" # Sea surface temperature anomalies intensity

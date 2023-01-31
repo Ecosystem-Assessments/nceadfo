@@ -21,7 +21,7 @@ pipeline:
 description:
   name: Census cartographic boundary files 2021
   description: Boundary files for dissemination areas of the 2021 Canadian census
-  access_date: '2023-01-09'
+  access_date: '2023-01-30'
   contacts:
   - contact_id: 44
     first_name: ''

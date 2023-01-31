@@ -16,7 +16,7 @@ description:
   name: Species trophic sensitivity
   description: Evaluation of a species sensitivity based on its position in food chain,
     omnivory, apparent competition and exploitative competition
-  access_date: '2023-01-18'
+  access_date: '2023-01-30'
   citekey: beauchesne2021
   url: https://github.com/david-beauchesne/FoodWeb-MultiStressors/raw/master/Data/vulnerability.RData
   uuid: .na.character

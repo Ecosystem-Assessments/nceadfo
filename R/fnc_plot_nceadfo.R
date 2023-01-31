@@ -32,8 +32,8 @@ plot_nceadfo.stars <- function(dat) {
   
   # ------------------
   aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE)
-  can <- sf::st_read("data/data-basemap/canada_east.gpkg", quiet = TRUE)
-  usa <- sf::st_read("data/data-basemap/usa.gpkg", quiet = TRUE)    
+  can <- sf::st_read("data/basemap/canada.gpkg", quiet = TRUE)
+  usa <- sf::st_read("data/basemap/usa.gpkg", quiet = TRUE)    
 
 
   # ------------------

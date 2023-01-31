@@ -15,7 +15,7 @@ pipeline:
 description:
   name: Species interations catalog
   description: Catalog of empirical binary species interactions from various sources
-  access_date: '2023-01-09'
+  access_date: '2023-01-30'
   contacts:
   - contact_id: 1
     first_name: David

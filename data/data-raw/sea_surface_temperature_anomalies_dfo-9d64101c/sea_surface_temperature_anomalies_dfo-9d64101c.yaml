@@ -35,7 +35,7 @@ description:
   name: Sea surface temperature anomalies
   description: Surface-water temperature anomalies from the Department of Fisheries
     and Oceans (DFO) Atlantic Zone Monitoring Program (AZMP) between 2000 and 2022
-  access_date: '2023-01-09'
+  access_date: '2023-01-30'
   contacts:
   - contact_id: 45
     first_name: Peter
