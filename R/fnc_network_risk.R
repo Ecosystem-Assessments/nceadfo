@@ -1,7 +1,7 @@
 #' Assessment of network-scale risk for species
 #'
 #' @export
-CumulativeRisk <- function(focusID,
+network_risk <- function(focusID,
                            biotic,
                            drivers,
                            vulnerability,
@@ -34,9 +34,11 @@ CumulativeRisk <- function(focusID,
     sensitivity_dix <- sensitivity$Sensitivity[uid]
 
     # Individual risk
-    risk <- IndividualRisk(drivers = drivers,
-                              vulnerability = vulnerability,
-                              sensitivity = sensitivity_dix)
+    risk <- network_risk_disconnect(
+      drivers = drivers,
+      vulnerability = vulnerability,
+      sensitivity = sensitivity_dix
+    )
 
     # Cumulative risk and return
     return(list(Cumulative_risk = risk[[1]][focusID, ],
@@ -188,4 +190,64 @@ CumulativeRisk <- function(focusID,
                 Contribution_Intensity = contribution_intensity,
                 Contribution_Effect = contribution_effect))
   }
+}
+
+
+#' Assessment of network-scale risk for species not involved in an interaction
+#'
+#' @export
+network_risk_disconnect <- function(drivers,
+                           vulnerability,
+                           sensitivity) {
+
+  # Vulnerability of species * Drivers intensity in cell j
+  # Function to evaluate the relative intensity of all drivers (as a sum of
+  # relative intensities) on each species involved in all triads.
+  intensity <- sweep(vulnerability, MARGIN=2, drivers, `*`)
+
+  intensity_direct <- intensity
+  intensity_indirect <- intensity
+  intensity_indirect[] <- 0
+
+  # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  # Effects
+  effect_total <- intensity * sensitivity
+  effect_direct <- intensity_direct * sensitivity
+  effect_indirect <- intensity_indirect
+
+  # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  # Cumulative risk
+  intensityCumulative <- rowSums(intensity)
+
+  # Multiply with Trophic sensitivity for disconnected species x
+  cumulativeRisk <- intensityCumulative * sensitivity
+
+  # Identify whether species is affected (px)
+  px <- as.numeric(as.logical(intensityCumulative))
+
+  # Risk
+  risk <- data.frame(risk_total = cumulativeRisk,
+                     risk_direct = cumulativeRisk,
+                     risk_indirect = 0,
+                     intensity_total = intensityCumulative,
+                     intensity_direct = intensityCumulative,
+                     intensity_indirect = 0,
+                     sensitivity = sensitivity,
+                     count = 1,
+                     px = px,
+                     py = 0,
+                     pz = 0,
+                     focus = 1)
+
+  # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  # Return
+  return(list(Cumulative_risk = risk,
+              Intensity_Total = intensity,
+              Intensity_Direct = intensity_direct,
+              Intensity_Indirect = intensity_indirect,
+              Effect_Total = effect_total,
+              Effect_Direct = effect_direct,
+              Effect_Indirect = effect_indirect,
+              Contribution_Intensity = NULL,
+              Contribution_Effect = NULL))
 }

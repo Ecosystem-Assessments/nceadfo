@@ -31,24 +31,23 @@ out_cea_network <- function() {
     # If run on a single laptop
     # For species of interest i that are involved in triads (loop over species)
     connectRisk <- list()
-    system.time({
     for(i in 1:ncol(bt)) {
       connectRisk[[i]] <- list()
       # # For each raster cell j (loop over cells)
       # for(j in 1:nrow(bt)) {
       for(j in 100000:100100) {
-        connectRisk[[i]][[j]] <- CumulativeRisk(focusID = i,
-                                              biotic = bt[j,],
-                                              drivers = dr[j,],
-                                              vulnerability = species_sensitivity,
-                                              sensitivity = sensitivity)
+        connectRisk[[i]][[j]] <- network_risk(
+          focusID = i,
+          biotic = bt[j,],
+          drivers = dr[j,],
+          vulnerability = species_sensitivity,
+          sensitivity = sensitivity
+        )
       }
-      print(i)
+      saveRDS(connectRisk, file = here::here(out[k],shortnames[i]))
     }
-    })
 
     # Save
-    saveRDS(connectRisk, file = here::here(out[k],shortnames[i]))
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
     # Function to create impact rasters
@@ -81,11 +80,12 @@ out_cea_network <- function() {
     #
     # There is a lot of things to measure, so to manage memory I calculate each
     # metric (almost) seperately for each taxa
-    files <- dir('./Data/res/', full.names = TRUE)
+    files <- dir(here::here(out[k]), full.names = TRUE)
     spNames <- colnames(bt)
 
+    # WARNING OK UP TO HERE. HAVE TO ORGANIZE THE REST.
+    
     # Process for each taxa
-    system.time({
     for(i in 1:length(files)) {
       cat('      ', i, 'of', length(files), ': ', spNames[i], '\n')
       # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
