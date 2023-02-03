@@ -198,6 +198,24 @@ make_drivers <- function() {
       "Coastal",
       "Coastal",
       "Coastal"
+    ),
+    description = c(
+      "Sea bottom temperature anomalies",
+      "Direct human impact",
+      "Demersal, destructive",
+      "Demersal, non-destructive, high-bycatch",
+      "Demersal, non-destructive, low-bycatch",
+      "Pelagic, high-bycatch",
+      "Pelagic, low-bycatch",
+      "Invasive species",
+      "Coastal development",
+      "Negative sea surface temperature anomalies",
+      "Positive sea surface temperature anomalies",
+      "Shipping",
+      "Organic pollution",
+      "Inorganic pollution",
+      "Nutrient input",
+      "Population density"
     )
   )
 
@@ -232,8 +250,7 @@ make_drivers <- function() {
   stringr::str_split("-") |>
   lapply(function(x) data.frame(drivers = x[1], period = x[2])) |>
   dplyr::bind_rows() |>
-  dplyr::left_join(mod[,c("to","group")], by = c("drivers" = "to")) |>
+  dplyr::left_join(mod[,c("to","group","description")], by = c("drivers" = "to")) |>
   dplyr::arrange(group, drivers, period) |>
   write.csv(file = here::here("data","cea_modules","drivers_list.csv"), row.names = FALSE)
-
 }

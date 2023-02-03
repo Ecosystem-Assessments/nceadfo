@@ -35,6 +35,10 @@ results
 eDrivers
 atlas
 stratlas
+climate
+coastal
+fisheries
+marine-traffic
 spatlas
 marine-species
 marine-mammals

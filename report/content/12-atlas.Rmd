@@ -2,9 +2,49 @@
 
 ## Stressors {#stratlas}
 
+```{r}
+atlas <-  here::here("figures","atlas","drivers")
+drList <- read.csv(here::here("data","cea_modules","drivers_list.csv")) |>
+          dplyr::select(-period) |>
+          dplyr::distinct() |>
+          dplyr::mutate(shortname = glue::glue("{drList$drivers}.png"))
+urls <- c(
+  "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/drivers/",
+  "?raw=true"
+)
+```
+
+### Climate
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+uid <- drList$group == "Climate"
+knitr::include_graphics(glue::glue("{urls[1]}{drList$shortname[uid]}{urls[2]}"))
+```
+
+### Coastal 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+uid <- drList$group == "Coastal"
+knitr::include_graphics(glue::glue("{urls[1]}{drList$shortname[uid]}{urls[2]}"))
+```
+
+### Fisheries 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+uid <- drList$group == "Fisheries"
+knitr::include_graphics(glue::glue("{urls[1]}{drList$shortname[uid]}{urls[2]}"))
+```
+
+### Marine traffic
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+uid <- drList$group == "Marine traffic"
+knitr::include_graphics(glue::glue("{urls[1]}{drList$shortname[uid]}{urls[2]}"))
+```
+
 ## Species {#spatlas}
 
-```{r} 
+```{r}
 atlas <- dir(here::here("figures","atlas","biotic"))
 out <- here::here("data","data-biotic")
 sp <- read.csv(here::here(out, "marine_species","species_list.csv"))
