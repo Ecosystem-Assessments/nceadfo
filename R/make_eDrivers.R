@@ -7,7 +7,7 @@ make_eDrivers <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Data used for the shiny application called `eDrivers`
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  out <- "data/data-eDrivers/"
+  out <- "data/eDrivers/"
   chk_create(out)
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -19,14 +19,14 @@ make_eDrivers <- function() {
          sf::st_transform(3857) |>
          stars::st_rasterize(dx = cellsize, dy = cellsize)
   
-  # Get raw stressors 
-  rawDrivers <- dir("data/stressors/raw/2019_2021", full.names = TRUE) |>
+  # Get raw drivers 
+  rawDrivers <- dir("data/drivers/raw/2019_2021", full.names = TRUE) |>
                 lapply(stars::read_stars) |>
                 lapply(stars::st_warp, dest = grd) |>
                 lapply(function(x) round(x,4))
          
-  # Get transformed stressors 
-  drivers <- dir("data/stressors/transformed/2019_2021", full.names = TRUE) |>
+  # Get transformed drivers 
+  drivers <- dir("data/drivers/transformed/2019_2021", full.names = TRUE) |>
              lapply(stars::read_stars) |>
              lapply(stars::st_warp, dest = grd) |>
              lapply(function(x) round(x,4))

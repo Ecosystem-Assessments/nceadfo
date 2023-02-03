@@ -15,7 +15,8 @@ format_modules <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   sp <- vroom::vroom(here::here(modules, "species_list.csv")) |>
         dplyr::rename(species = scientific_name) |>
-        dplyr::mutate()
+        dplyr::arrange(species) |>
+        dplyr::mutate(file = glue::glue("{shortname}-{aphiaID}.tif"))
   save(sp, file = here::here(out, "SpeciesList.RData"))
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -28,15 +29,13 @@ format_modules <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Biotic data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  biotic <- here::here(modules,"species") |>
-            dir(full.names = TRUE) |>
+  biotic <- here::here(modules,"species",sp$file) |>
             lapply(raster::raster) |>
             raster::stack()
 
   # Taxa names
   txNames <- names(biotic) |>
              tools::file_path_sans_ext()
-
 
   # Transform data to matrix
   bioticData <- as.matrix(biotic)
@@ -107,6 +106,7 @@ format_modules <- function() {
   ) |>
   dplyr::mutate(species = gsub(" ","_", species)) |>
   dplyr::mutate(species = tolower(species)) |>
+  dplyr::arrange(species) |>
   as.data.frame()
   rownames(species_sensitivity) <- species_sensitivity$species
   species_sensitivity <- dplyr::select(species_sensitivity, -species)

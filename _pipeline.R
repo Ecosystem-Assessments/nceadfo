@@ -27,11 +27,11 @@ pipeline <- function() {
   # This should be corrected later on in the process 
   # The following script essentially creates a list of RData that are then used for the assessment
   # https://github.com/Ecosystem-Assessments/nceadfo/issues/3
-  format_modules()
+  format_modules() # WARNING function not working, but code does...
   # ------------------------------------------------------------------------------------------------
 
   # Data for eDrivers 
-  make_eDrivers()
+  make_eDrivers() # WARNING function not working, but code does...
   
   # Outputs
   out_footprint()

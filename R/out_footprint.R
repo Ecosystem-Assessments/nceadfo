@@ -1,11 +1,11 @@
-#' Function to export cumulative stressors and species (richness)
+#' Function to export cumulative drivers and species (richness)
 #'
 #' @export
 
 out_footprint <- function() {
   library(stars)
-  # Stressors 
-  out <- here::here("data","stressors","transformed")
+  # drivers 
+  out <- here::here("data","drivers","transformed")
   r <- dir(out, full.names = TRUE)
   r <- lapply(
     r, 
@@ -15,14 +15,14 @@ out_footprint <- function() {
     }
   )
   
-  # Cumulative stressors 
+  # Cumulative drivers 
   r <- lapply(r, cumul)
   
   # Export 
   out <- here::here("output","footprint")
   chk_create(out)
   years <- c("2010_2012","2013_2015","2016_2018","2019_2021")
-  nm <- glue::glue("cumulative_stressors-{years}.tif")
+  nm <- glue::glue("cumulative_drivers-{years}.tif")
   for(i in 1:length(r)) {
     stars::write_stars(
       r[[i]],
@@ -42,7 +42,8 @@ out_footprint <- function() {
 
   dat <- c(
     here::here("data","data-biotic","marine_species","random_forest_regression_binary"),
-    here::here("data","data-biotic","marine_mammals")
+    here::here("data","data-biotic","marine_mammals","binary"),
+    here::here("data","data-biotic","sea_birds","binary")
   ) |>
   dir(full.names = TRUE) |>
   lapply(stars::read_stars) |>

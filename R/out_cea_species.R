@@ -1,4 +1,4 @@
-#' Function to export cumulative stressors and species (richness)
+#' Function to export cumulative drivers and species (richness)
 #'
 #' @export
 

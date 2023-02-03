@@ -1,4 +1,4 @@
-#' Function to export cumulative stressors and species (richness)
+#' Function to export cumulative drivers and species (richness)
 #'
 #' @export
 
@@ -8,12 +8,12 @@ out_exposure <- function() {
          lapply(stars::read_stars)
   nm <- lapply(dat, names) |> unlist()
   names(dat) <- tools::file_path_sans_ext(nm)
-  uid <- stringr::str_detect(nm, "stressors")
-  stressors <- dat[uid]
+  uid <- stringr::str_detect(nm, "drivers")
+  drivers <- dat[uid]
   species <- dat[!uid]
   
   # Cumulative exposure 
-  exposure <- lapply(stressors, function(x) x * species[[1]])
+  exposure <- lapply(drivers, function(x) x * species[[1]])
   
   # Export
   out <- here::here("output","exposure")
