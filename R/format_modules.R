@@ -42,7 +42,11 @@ format_modules <- function() {
   colnames(bioticData) <- txNames
 
   # Identify cells with biotic data
-  idBiotic <- apply(bioticData, 1, function(x) !all(is.na(x)))
+  # idBiotic <- apply(bioticData, 1, function(x) !all(is.na(x)))
+  # WARNING: Do this only with the marine species data 
+  marinesp <- read.csv(here::here("data","data-biotic","marine_species","species_list.csv"))
+  uid <- tools::file_path_sans_ext(sp$file) %in% marinesp$shortname
+  idBiotic <- apply(bioticData[, sp$shortname[uid]], 1, function(x) !all(is.na(x)))
 
   # Select only relevant data
   bt <- bioticData[idBiotic, ]

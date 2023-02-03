@@ -1,7 +1,7 @@
 #' Assessment of species-scale risk for species
 #'
 #' @export
-IndividualRisk <- function(drivers,
+species_risk <- function(drivers,
                            vulnerability,
                            sensitivity) {
 

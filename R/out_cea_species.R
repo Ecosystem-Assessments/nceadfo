@@ -26,7 +26,7 @@ out_cea_species <- function() {
     system.time({
       for(j in 1:nrow(dr[[i]])) {
         cat("period: ", i, ' of ', length(dr), '\r')
-        disconnectRisk[[i]][[j]] <- IndividualRisk(
+        disconnectRisk[[i]][[j]] <- species_risk(
           drivers = dr[[i]][j, ],
           vulnerability = species_sensitivity,
           sensitivity = sensitivity_dix

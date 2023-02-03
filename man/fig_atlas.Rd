@@ -4,7 +4,7 @@
 \alias{fig_atlas}
 \title{Export figures for atlas}
 \usage{
-fig_atlas()
+fig_atlas(type = c("species", "drivers"))
 }
 \description{
 Export figures for atlas

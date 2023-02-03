@@ -37,6 +37,7 @@ pipeline <- function() {
   out_footprint()
   out_exposure()
   out_cea_species()
+  out_cea_network()
   
   # Figures 
   figures()

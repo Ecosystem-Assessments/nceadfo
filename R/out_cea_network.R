@@ -21,6 +21,7 @@ out_cea_network <- function() {
   dr_all <- dr 
   per <- names(dr_all)
   out <- here::here(out, per)
+  lapply(out, chk_create)
   shortnames <- glue::glue("{tools::file_path_sans_ext(sp$file)}.rds")
   for(k in 1:length(dr_all)) {
     dr <- dr_all[[k]]
@@ -34,14 +35,15 @@ out_cea_network <- function() {
     for(i in 1:ncol(bt)) {
       connectRisk[[i]] <- list()
       # # For each raster cell j (loop over cells)
-      for(j in 1:nrow(bt)) {
+      # for(j in 1:nrow(bt)) {
+      for(j in 100000:100100) {
         connectRisk[[i]][[j]] <- CumulativeRisk(focusID = i,
                                               biotic = bt[j,],
                                               drivers = dr[j,],
                                               vulnerability = species_sensitivity,
                                               sensitivity = sensitivity)
-      print(j)
       }
+      print(i)
     }
     })
 
