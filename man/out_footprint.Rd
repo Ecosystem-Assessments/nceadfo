@@ -2,10 +2,10 @@
 % Please edit documentation in R/out_footprint.R
 \name{out_footprint}
 \alias{out_footprint}
-\title{Function to export cumulative stressors and species (richness)}
+\title{Function to export cumulative drivers and species (richness)}
 \usage{
 out_footprint()
 }
 \description{
-Function to export cumulative stressors and species (richness)
+Function to export cumulative drivers and species (richness)
 }

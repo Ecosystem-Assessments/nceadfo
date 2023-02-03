@@ -48,86 +48,48 @@ make_drivers <- function() {
   }
   
   # Creating four periods for the assessment
-  period_2010_2012 <- list(
-    cbn_dat(dat, name, "3992e1a6","negative",2010:2012, "sum"), # SST anomalies -
-    cbn_dat(dat, name, "3992e1a6","positive",2010:2012, "sum"), # SST anomalies +
-    cbn_dat(dat, name, "6dba9a9f","bottomValues",2010:2012, "mean"), # SBT anomalies
-    cbn_dat(dat, name, "e2b7e6c4","DD",2010:2012, "mean"), # fisheries DD
-    cbn_dat(dat, name, "e2b7e6c4","DNH",2010:2012, "mean"), # fisheries DNH
-    cbn_dat(dat, name, "e2b7e6c4","DNL",2010:2012, "mean"), # fisheries DNL
-    cbn_dat(dat, name, "e2b7e6c4","PLB",2010:2012, "mean"), # fisheries PLB
-    cbn_dat(dat, name, "e2b7e6c4","PHB",2010:2012, "mean"), # fisheries PHB
+  period_2010_2015 <- list(
+    cbn_dat(dat, name, "3992e1a6","negative",2010:2015, "sum"), # SST anomalies -
+    cbn_dat(dat, name, "3992e1a6","positive",2010:2015, "sum"), # SST anomalies +
+    cbn_dat(dat, name, "6dba9a9f","bottomValues",2010:2015, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "e2b7e6c4","DD",2010:2015, "mean"), # fisheries DD
+    cbn_dat(dat, name, "e2b7e6c4","DNH",2010:2015, "mean"), # fisheries DNH
+    cbn_dat(dat, name, "e2b7e6c4","DNL",2010:2015, "mean"), # fisheries DNL
+    cbn_dat(dat, name, "e2b7e6c4","PLB",2010:2015, "mean"), # fisheries PLB
+    cbn_dat(dat, name, "e2b7e6c4","PHB",2010:2015, "mean"), # fisheries PHB
     cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
     cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
     cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
     cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
     cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
     cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
-    cbn_dat(dat, name, "aba5e90a",NA,2012,"mean"), # coastdev
+    cbn_dat(dat, name, "aba5e90a",NA,2012:2015,"mean"), # coastdev
     cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
   )
-  period_2013_2015 <- list(
-    cbn_dat(dat, name, "3992e1a6","negative",2013:2015, "sum"), # SST anomalies -
-    cbn_dat(dat, name, "3992e1a6","positive",2013:2015, "sum"), # SST anomalies +
-    cbn_dat(dat, name, "6dba9a9f","bottomValues",2013:2015, "mean"), # SBT anomalies
-    cbn_dat(dat, name, "e2b7e6c4","DD",2013:2015, "mean"), # fisheries DD
-    cbn_dat(dat, name, "e2b7e6c4","DNH",2013:2015, "mean"), # fisheries DNH
-    cbn_dat(dat, name, "e2b7e6c4","DNL",2013:2015, "mean"), # fisheries DNL
-    cbn_dat(dat, name, "e2b7e6c4","PLB",2013:2015, "mean"), # fisheries PLB
-    cbn_dat(dat, name, "e2b7e6c4","PHB",2013:2015, "mean"), # fisheries PHB
+  period_2016_2021 <- list(
+    cbn_dat(dat, name, "3992e1a6","negative",2016:2021, "sum"), # SST anomalies -
+    cbn_dat(dat, name, "3992e1a6","positive",2016:2021, "sum"), # SST anomalies +
+    cbn_dat(dat, name, "6dba9a9f","bottomValues",2016:2019, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "e2b7e6c4","DD",2016:2020, "mean"), # fisheries DD
+    cbn_dat(dat, name, "e2b7e6c4","DNH",2016:2020, "mean"), # fisheries DNH
+    cbn_dat(dat, name, "e2b7e6c4","DNL",2016:2020, "mean"), # fisheries DNL
+    cbn_dat(dat, name, "e2b7e6c4","PLB",2016:2020, "mean"), # fisheries PLB
+    cbn_dat(dat, name, "e2b7e6c4","PHB",2016:2020, "mean"), # fisheries PHB
     cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
     cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
     cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
     cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
     cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
     cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
-    cbn_dat(dat, name, "aba5e90a",NA,2013:2015,"mean"), # coastdev
+    cbn_dat(dat, name, "aba5e90a",NA,2016:2021,"mean"), # coastdev
     cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
   )
-  period_2016_2018 <- list(
-    cbn_dat(dat, name, "3992e1a6","negative",2016:2018, "sum"), # SST anomalies -
-    cbn_dat(dat, name, "3992e1a6","positive",2016:2018, "sum"), # SST anomalies +
-    cbn_dat(dat, name, "6dba9a9f","bottomValues",2016:2018, "mean"), # SBT anomalies
-    cbn_dat(dat, name, "e2b7e6c4","DD",2016:2018, "mean"), # fisheries DD
-    cbn_dat(dat, name, "e2b7e6c4","DNH",2016:2018, "mean"), # fisheries DNH
-    cbn_dat(dat, name, "e2b7e6c4","DNL",2016:2018, "mean"), # fisheries DNL
-    cbn_dat(dat, name, "e2b7e6c4","PLB",2016:2018, "mean"), # fisheries PLB
-    cbn_dat(dat, name, "e2b7e6c4","PHB",2016:2018, "mean"), # fisheries PHB
-    cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
-    cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
-    cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
-    cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
-    cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
-    cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
-    cbn_dat(dat, name, "aba5e90a",NA,2016:2018,"mean"), # coastdev
-    cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
-  )
-  period_2019_2021 <- list(
-    cbn_dat(dat, name, "3992e1a6","negative",2019:2021, "sum"), # SST anomalies -
-    cbn_dat(dat, name, "3992e1a6","positive",2019:2021, "sum"), # SST anomalies +
-    cbn_dat(dat, name, "6dba9a9f","bottomValues",2019, "mean"), # SBT anomalies
-    cbn_dat(dat, name, "e2b7e6c4","DD",2019:2020, "mean"), # fisheries DD
-    cbn_dat(dat, name, "e2b7e6c4","DNH",2019:2020, "mean"), # fisheries DNH
-    cbn_dat(dat, name, "e2b7e6c4","DNL",2019:2020, "mean"), # fisheries DNL
-    cbn_dat(dat, name, "e2b7e6c4","PLB",2019:2020, "mean"), # fisheries PLB
-    cbn_dat(dat, name, "e2b7e6c4","PHB",2019:2020, "mean"), # fisheries PHB
-    cbn_dat(dat, name, "72312316","interpolated_vessels",2017:2020,"mean"), # shipping
-    cbn_dat(dat, name, "84b6ea0b","Present_Richness",NA,"mean"), # invasives
-    cbn_dat(dat, name, "041a30d2","SummedRasters_AgriCover",NA,"mean"),
-    cbn_dat(dat, name, "041a30d2","SummedRasters_ImperviousSurface",NA,"mean"),
-    cbn_dat(dat, name, "041a30d2","SummedRasters_NutrientLoading",NA,"mean"),
-    cbn_dat(dat, name, "041a30d2","SummedRasters_PopDensity",NA,"mean"),
-    cbn_dat(dat, name, "aba5e90a",NA,2019:2021,"mean"), # coastdev
-    cbn_dat(dat, name, "99bb2d51",NA,c(2016,2021),"mean") # dhi
-  ) 
-
+  
   # Export 
   out <- here::here("data","drivers","raw")
   p <- list(
-    p1 = here::here(out, "2010_2012"),
-    p2 = here::here(out, "2013_2015"),
-    p3 = here::here(out, "2016_2018"),
-    p4 = here::here(out, "2019_2021")    
+    p1 = here::here(out, "2010_2015"),
+    p2 = here::here(out, "2016_2021")    
   )
   lapply(p, chk_create)
     
@@ -146,18 +108,14 @@ make_drivers <- function() {
     )  
   }
   
-  exp_stress(period_2010_2012, p$p1)
-  exp_stress(period_2013_2015, p$p2)
-  exp_stress(period_2016_2018, p$p3)
-  exp_stress(period_2019_2021, p$p4)
+  exp_stress(period_2010_2015, p$p1)
+  exp_stress(period_2016_2021, p$p2)
 
   # Log transform and normalize stressor data
   out <- here::here("data","drivers","transformed")
   p <- list(
-    p1 = here::here(out, "2010_2012"),
-    p2 = here::here(out, "2013_2015"),
-    p3 = here::here(out, "2016_2018"),
-    p4 = here::here(out, "2019_2021")    
+    p1 = here::here(out, "2010_2015"),
+    p2 = here::here(out, "2016_2021")
   )
   lapply(p, chk_create)
   
@@ -173,7 +131,7 @@ make_drivers <- function() {
     dat
   }
   
-  r <- list(period_2010_2012, period_2013_2015, period_2016_2018, period_2019_2021)
+  r <- list(period_2010_2015, period_2016_2021)
   for(i in 1:length(r)) {
       r[[i]] <- lapply(r[[i]], trdat)
   }  
@@ -181,8 +139,6 @@ make_drivers <- function() {
   # Export
   exp_stress(r[[1]], p$p1)
   exp_stress(r[[2]], p$p2)
-  exp_stress(r[[3]], p$p3)
-  exp_stress(r[[4]], p$p4)
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Export formated data in format directly usable for the assessment

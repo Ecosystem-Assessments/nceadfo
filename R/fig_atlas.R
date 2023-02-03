@@ -51,9 +51,11 @@ figures <- function() {
   lapply(plotDat, out$abiotic)
   
   # Drivers 
-  per <- dir("data/drivers/transformed")
+  dr <- here::here("data","cea_modules","drivers")
+  per <- dir(dr)
   for(i in 1:length(per)) {
-    dir(glue::glue("data/drivers/transformed/{per[i]}"), full.names = TRUE, pattern = ".tif$") |>
+    here::here(dr, per[i]) |>
+    dir(full.names = TRUE, pattern = ".tif$") |>
     lapply(stars::read_stars) |>
     lapply(plotDat, out$drivers, suffix = glue::glue("-{per[i]}"))
   }
