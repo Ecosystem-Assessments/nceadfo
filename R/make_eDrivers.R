@@ -20,13 +20,13 @@ make_eDrivers <- function() {
          stars::st_rasterize(dx = cellsize, dy = cellsize)
   
   # Get raw drivers 
-  rawDrivers <- dir("data/drivers/raw/2019_2021", full.names = TRUE) |>
+  rawDrivers <- dir("data/drivers/raw/2016_2021", full.names = TRUE) |>
                 lapply(stars::read_stars) |>
                 lapply(stars::st_warp, dest = grd) |>
                 lapply(function(x) round(x,4))
          
   # Get transformed drivers 
-  drivers <- dir("data/drivers/transformed/2019_2021", full.names = TRUE) |>
+  drivers <- dir("data/drivers/transformed/2016_2021", full.names = TRUE) |>
              lapply(stars::read_stars) |>
              lapply(stars::st_warp, dest = grd) |>
              lapply(function(x) round(x,4))

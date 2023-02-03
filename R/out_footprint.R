@@ -21,7 +21,7 @@ out_footprint <- function() {
   # Export 
   out <- here::here("output","footprint")
   chk_create(out)
-  years <- c("2010_2012","2013_2015","2016_2018","2019_2021")
+  years <- c("2010_2015","2016_2021")
   nm <- glue::glue("cumulative_drivers-{years}.tif")
   for(i in 1:length(r)) {
     stars::write_stars(
