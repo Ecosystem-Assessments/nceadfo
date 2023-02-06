@@ -47,9 +47,10 @@ network_risk <- function(focusID,
                 Intensity_Indirect = risk[[4]][focusID, ],
                 Effect_total = risk[[5]][focusID, ],
                 Effect_direct = risk[[6]][focusID, ],
-                Effect_indirect = risk[[7]][focusID, ],
-                Contribution_Intensity = NULL,
-                Contribution_Effect = NULL))
+                Effect_indirect = risk[[7]][focusID, ]#,
+                # Contribution_Intensity = NULL,
+                # Contribution_Effect = NULL
+              ))
   } else {
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # Vulnerability of species * Drivers intensity in cell j
@@ -108,8 +109,7 @@ network_risk <- function(focusID,
                      by = c("sum_pos" = "motifID",
                             "focus" = "speciesID",
                             "path" = "pathID"))
-
-
+                            
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # cumulative_risk(species may not be present)
     dat$risk_total <- dat$intensity_total * dat$Sensitivity
@@ -122,37 +122,43 @@ network_risk <- function(focusID,
     effect_direct <- intensity_direct * dat$Sensitivity
     effect_indirect <- intensity_indirect * dat$Sensitivity
 
-    # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    # Species contribution to indirect effects
-    cont_i <- i %>% as.data.frame() %>% mutate(Taxa = rownames(i))
-    cont_j <- j %>% as.data.frame() %>% mutate(Taxa = rownames(j))
-    cont_k <- k %>% as.data.frame() %>% mutate(Taxa = rownames(k))
-
-    # Indirect intensity
-    contribution_intensity <- rbind(cont_i,cont_j,cont_k) %>%
-                              gather('Stressor', 'Intensity', -Taxa) %>%
-                              group_by(Taxa, Stressor) %>%
-                              summarize_all(sum) %>%
-                              spread('Stressor', 'Intensity', fill = 0) %>%
-                              filter(Taxa != names(biotic[focusID])) %>%
-                              as.data.frame(stringsAsFactors = FALSE)
-
-    # Indirect effect
-    cont_i <- i * dat$Sensitivity
-    cont_j <- j * dat$Sensitivity
-    cont_k <- k * dat$Sensitivity
-    cont_i <- as.data.frame(cont_i) %>% mutate(Taxa = rownames(i))
-    cont_j <- as.data.frame(cont_j) %>% mutate(Taxa = rownames(j))
-    cont_k <- as.data.frame(cont_k) %>% mutate(Taxa = rownames(k))
-
-    contribution_effect <- rbind(cont_i,cont_j,cont_k) %>%
-                           gather('Stressor', 'Intensity', -Taxa) %>%
-                           group_by(Taxa, Stressor) %>%
-                           summarize_all(sum) %>%
-                           spread('Stressor', 'Intensity', fill = 0) %>%
-                           filter(Taxa != names(biotic[focusID])) %>%
-                           as.data.frame(stringsAsFactors = FALSE)
-
+    # # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    # WARNING: Adjust following code to get species contribution at some point 
+    # NOTE: Species are duplicated rownames at the moment, i.e. they have added numbers, 
+    #       e.g. alta.corda.1, alta.corda.2, for each interaction considered. 
+    #       To be able to sum on taxa name, it would mean that the name of the taxa 
+    #       would have to be considered as an extra column to allow use of group_by()
+    #       This will likely add considerable extraction time to an analysis that is 
+    #       already very long. To keep in mind! 
+    # # Species contribution to indirect effects
+    # cont_i <- i %>% as.data.frame() %>% mutate(Taxa = rownames(i))
+    # cont_j <- j %>% as.data.frame() %>% mutate(Taxa = rownames(j))
+    # cont_k <- k %>% as.data.frame() %>% mutate(Taxa = rownames(k))
+    # 
+    # # Indirect intensity
+    # contribution_intensity <- rbind(cont_i,cont_j,cont_k) %>%
+    #                           gather('Stressor', 'Intensity', -Taxa) %>%
+    #                           group_by(Taxa, Stressor) %>%
+    #                           summarize_all(sum) %>%
+    #                           spread('Stressor', 'Intensity', fill = 0) %>%
+    #                           filter(Taxa != names(biotic[focusID])) %>%
+    #                           as.data.frame(stringsAsFactors = FALSE)
+    # 
+    # # Indirect effect
+    # cont_i <- i * dat$Sensitivity
+    # cont_j <- j * dat$Sensitivity
+    # cont_k <- k * dat$Sensitivity
+    # cont_i <- as.data.frame(cont_i) %>% mutate(Taxa = rownames(i))
+    # cont_j <- as.data.frame(cont_j) %>% mutate(Taxa = rownames(j))
+    # cont_k <- as.data.frame(cont_k) %>% mutate(Taxa = rownames(k))
+    # 
+    # contribution_effect <- rbind(cont_i,cont_j,cont_k) %>%
+    #                        gather('Stressor', 'Intensity', -Taxa) %>%
+    #                        group_by(Taxa, Stressor) %>%
+    #                        summarize_all(sum) %>%
+    #                        spread('Stressor', 'Intensity', fill = 0) %>%
+    #                        filter(Taxa != names(biotic[focusID])) %>%
+    #                        as.data.frame(stringsAsFactors = FALSE)
 
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # Summarize stressor contributions
@@ -166,30 +172,34 @@ network_risk <- function(focusID,
 
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # Cumulative risk
-    risk <- data.frame(risk_total = sum(dat$risk_total),
-                       risk_direct = sum(dat$risk_direct),
-                       risk_indirect = sum(dat$risk_indirect),
-                       intensity_total = sum(dat$intensity_total),
-                       intensity_direct = sum(dat$intensity_direct),
-                       intensity_indirect = sum(dat$intensity_indirect),
-                       sensitivity = sum(dat$Sensitivity),
-                       count = nrow(dat),
-                       px = sum(dat$px),
-                       py = sum(dat$py),
-                       pz = sum(dat$pz),
-                       focus = mean(dat$focus))
+    risk <- data.frame(
+      risk_total = sum(dat$risk_total),                       
+      risk_direct = sum(dat$risk_direct),
+      risk_indirect = sum(dat$risk_indirect),
+      intensity_total = sum(dat$intensity_total),
+      intensity_direct = sum(dat$intensity_direct),
+      intensity_indirect = sum(dat$intensity_indirect),
+      sensitivity = sum(dat$Sensitivity),
+      count = nrow(dat),
+      px = sum(dat$px),
+      py = sum(dat$py),
+      pz = sum(dat$pz),
+      focus = mean(dat$focus)
+    )
 
     # Cumulative risk and return
-    return(list(Cumulative_risk = risk,
-                Intensity_Total = intensity_total,
-                Intensity_Direct = intensity_direct,
-                Intensity_Indirect = intensity_indirect,
-                Effect_total = effect_total,
-                Effect_direct = effect_direct,
-                Effect_indirect = effect_indirect,
-                Contribution_Intensity = contribution_intensity,
-                Contribution_Effect = contribution_effect))
-  }
+    return(list(
+      Cumulative_risk = risk,
+      Intensity_Total = intensity_total,
+      Intensity_Direct = intensity_direct,
+      Intensity_Indirect = intensity_indirect,
+      Effect_total = effect_total,
+      Effect_direct = effect_direct,
+      Effect_indirect = effect_indirect#,
+      # Contribution_Intensity = contribution_intensity, # Species contribution
+      # Contribution_Effect = contribution_effect # Species contribution
+    ))
+ }
 }
 
 
@@ -247,7 +257,8 @@ network_risk_disconnect <- function(drivers,
               Intensity_Indirect = intensity_indirect,
               Effect_Total = effect_total,
               Effect_Direct = effect_direct,
-              Effect_Indirect = effect_indirect,
-              Contribution_Intensity = NULL,
-              Contribution_Effect = NULL))
+              Effect_Indirect = effect_indirect#,
+              #Contribution_Intensity = NULL,
+              #Contribution_Effect = NULL
+            ))
 }

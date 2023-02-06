@@ -172,6 +172,10 @@ format_modules <- function() {
   # Locations with information on taxa distribution
   dr <- driversData
   for(i in 1:length(dr)) dr[[i]] <- dr[[i]][idBiotic, ]
+  
+  # All NAs to 0 (for calculations)
+  for(i in 1:length(dr)) dr[[i]][is.na(dr[[i]])] <- 0
+  
 
   # Make sure that the order of the vulnerability db column is the same as
   # the order of the columns in the drivers db
