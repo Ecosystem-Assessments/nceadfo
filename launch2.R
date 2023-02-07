@@ -18,7 +18,7 @@ lapply(out_per, dir.create, recursive = TRUE, showWarnings = FALSE)
 
 # Run analysis
 # for(k in 1:length(dr_all)) {
-  k = 1
+  k = 2
   dr <- dr_all[[k]]
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Impact for connected species

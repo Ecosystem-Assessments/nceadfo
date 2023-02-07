@@ -10,4 +10,4 @@
 
 # I think this is the defaut behavior anyway
 module load StdEnv/2020 r/4.2.1
-Rscript ./launch.R $SLURM_ARRAY_TASK_ID
+Rscript ./launch2.R $SLURM_ARRAY_TASK_ID
