@@ -49,3 +49,14 @@ clean <- function() {
 chk_create <- function(path) {
   if (!file.exists(path)) dir.create(path, recursive = TRUE)
 }
+
+# ------------------------------------------------------------------------------
+#' Function to export raster objects
+export_raster <- function(dat, out, nm) {
+  raster::writeRaster(
+    x = dat,
+    filename = here::here(out, glue::glue("{nm}.tif")),
+    overwrite = TRUE
+  )
+  unlink(here::here(out, glue::glue("{nm}.tif.aux.xml")))
+}

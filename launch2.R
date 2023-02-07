@@ -13,8 +13,9 @@ for (i in dat) load(i)
 # Identify periods and create folders for outputs per period
 dr_all <- dr 
 per <- names(dr_all)
-out_per <- paste0(output,"/",per)
+out_per <- paste0(output,"/",per,"/cell_cea")
 lapply(out_per, dir.create, recursive = TRUE, showWarnings = FALSE)  
+shortnames <- paste0(tools::file_path_sans_ext(sp$file),".rds")
 
 # Run analysis
 # for(k in 1:length(dr_all)) {
@@ -36,5 +37,5 @@ lapply(out_per, dir.create, recursive = TRUE, showWarnings = FALSE)
                       vulnerability = species_sensitivity,
                       sensitivity = sensitivity)
   }
-  saveRDS(out, sprintf(paste0(out_per[k], "/cumrisk_sp.%03d.rds"), i))
+  saveRDS(out, file = paste0(out_per[k],shortnames[i]))
 # }
