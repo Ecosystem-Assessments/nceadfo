@@ -12,6 +12,9 @@ pipeline <- function() {
   # Integrate data 
   pipedat::pipeflow("./data/config/pipedat.yml")
   
+  # Get bibliographies
+  get_bib()
+  
   # Prepare assessment data modules 
   make_drivers()
   make_abiotic()

@@ -7,7 +7,7 @@ atlas <-  here::here("figures","atlas","drivers")
 drList <- read.csv(here::here("data","cea_modules","drivers_list.csv")) |>
           dplyr::select(-period) |>
           dplyr::distinct() |>
-          dplyr::mutate(shortname = glue::glue("{drList$drivers}.png"))
+          dplyr::mutate(shortname = glue::glue("{drivers}.png"))
 urls <- c(
   "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/drivers/",
   "?raw=true"

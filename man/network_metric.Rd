@@ -5,7 +5,7 @@
 \title{Assessment of network-scale risk for species not involved in an interaction
 Simple wrapper function to create a raster stack with network cea metric per species}
 \usage{
-network_metric(metric)
+network_metric(path, metric)
 }
 \description{
 Assessment of network-scale risk for species not involved in an interaction

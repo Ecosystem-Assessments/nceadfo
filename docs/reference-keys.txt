@@ -1,4 +1,7 @@
 fig:icfig
+tab:drnm
+tab:fishCat
+tab:fishGear
 tab:spnm
 tab:abiotic
 tab:datamm
@@ -21,6 +24,19 @@ data-requirements
 nceadfo
 modules
 drmodule
+drclimate
+sea-surface-temperature-anomalies
+sea-bottom-temperature-anomalies
+drcoastal
+coastal-development
+direct-human-impact
+inorganic-pollution
+nutrient-input
+organic-pollution
+population-density
+drfisheries
+drmarinetraffic
+shipping
 spmodule
 marinesp
 biotic-data
