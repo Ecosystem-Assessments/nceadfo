@@ -1,10 +1,8 @@
 #!/bin/bash
 #SBATCH --account=def-benthos
-#SBATCH --time=10:00:00
-#SBATCH --nodes=6
-#SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=4G
-#SBATCH --array=1-207
+#SBATCH --mem=100GB
+#SBATCH --time=30:00:00
+#SBATCH --array=1-205
 #SBATCH --mail-user=david.beauchesne@hotmail.com
 #SBATCH --mail-type=ALL
 
