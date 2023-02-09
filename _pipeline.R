@@ -13,7 +13,7 @@ pipeline <- function() {
   pipedat::pipeflow("./data/config/pipedat.yml")
   
   # Get bibliographies
-  get_bib()
+  gather_bib()
   
   # Prepare assessment data modules 
   make_drivers()

@@ -64,11 +64,11 @@ pipedat:
     # # Environmental stressors
     # - "e2b7e6c4" # Fisheries intensity
     # - "72312316" # Shipping intensity
-    - "aba5e90a" # Night lights
+    # - "aba5e90a" # Night lights
     # - "99bb2d51" # Direct human impact
     # # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
     # - "84b6ea0b" # Invasive species environmental stressor
-    # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
+    - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
     # - "3992e1a6" # Sea surface temperature anomalies intensity
     # - "041a30d2" # Watershed activity index
     # ------------------------------------------------------------------------
@@ -100,6 +100,8 @@ pipedat:
       - "num_vessels"
     shipping_model: 
       - "interpolated"
+    groundfish_variables: 
+      - "sea_water_temperature_anomaly"
     biooracle_layers:
       - "BO22_calcite"
       - "BO22_ph"

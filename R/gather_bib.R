@@ -1,7 +1,7 @@
 #' Script to create a single bib file from the downloaded raw data using pipedat
 #'
 #' @export
-get_bib <- function() {
+gather_bib <- function() {
   # List of bib files 
   files <- dir(
     here::here("data","data-raw"),
