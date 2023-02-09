@@ -6,7 +6,7 @@ author: "David Beauchesne, Cindy Grant, Philippe Archambault"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: scrbook
-bibliography: [pipedat.bib, compendium.bib]
+bibliography: [pipedat.bib, nceadfo.bib]
 # biblio-style: apalike
 csl: frontiers.csl
 link-citations: yes

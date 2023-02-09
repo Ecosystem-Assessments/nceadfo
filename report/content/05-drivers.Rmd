@@ -32,13 +32,11 @@ The data used to characterize sea surface temperature anomalies come from the At
 
 The surface layer is characterized using sea surface-water temperature (SST) monthly composites from Advanced Very High Resolution Radiometer (AVHRR) satellite images obtained from the National Oceanic and Atmospheric Administration (NOAA) and European Organization for the Exploitation of Meteorological Satellites (EUMETSAT). Images used are from DFO’s Maurice Lamontagne Institute at a 1 km resolution from 1985-2013 and from DFO’s Bedford Institute of Oceanography (BIO) Operational Remote Sensing group at a 1.5 km resolution since 2014. Monthly anomalies were constructed as the difference between monthly averages and the 1985-2010 climatological mean for each month.
 
-We used temperature anomalies, *i.e.* deviations from long-term normal conditions between 1985 and 2010, to evaluate an annual index of stress associated with extreme temperatures between 2010 and 2021. Temperature anomalies were calculated using the difference between grid cell values with 1985-2010 climatological averages. Anomaly time series were normalized by their standard deviation (SD) to allow comparisons between areas with different temperature ranges. Grid cells whose monthly value exceeded ±0.5 standard deviation (SD) from the long-term average were considered as anomalous [@galbraith2021]. Outliers in the data were defined as those that fell beyond the interquartile range * 3, identified as extreme outliers by @tukey1977. Outlier values were capped to correspond to the 5th and 95th percentile values. Anomalies were divided into positive and negative anomalies and the absolute value of anomalies were used as the intensity of the surface-water temperature anomalies in a given cell. Only the months of May to November were included to avoid biases associated with the presence of ice cover. The sum of anomalies between 2010 and 2015, and between 2016 and 2021, were used to obtain a single value per cell per period considered for the assessment. 
+We used temperature anomalies, *i.e.* deviations from long-term normal conditions between 1985 and 2010, to evaluate an annual index of stress associated with extreme temperatures between 2010 and 2021. Temperature anomalies were calculated using the difference between grid cell values with 1985-2010 climatological averages. Anomaly time series were normalized by their standard deviation (SD) to allow comparisons between areas with different temperature ranges. Grid cells whose monthly value exceeded ±0.5 standard deviation (SD) from the long-term average were considered as anomalous [@galbraith2021]. Outliers in the data were defined as those that fell beyond the interquartile range * 3, identified as extreme outliers by @tukey1977. Outlier values were capped to correspond to the 5th and 95th percentile values. Anomalies were divided into positive and negative anomalies and the absolute value of anomalies were used as the intensity of the surface-water temperature anomalies in a given cell. Only the months of May to November were included to avoid biases associated with the presence of ice cover. The sum of anomalies between 2010 and 2015, and between 2016 and 2021, were used to obtain a single value per cell per period considered for the assessment. The anomalies were then resampled on the study grid used for this assessment.
 
 #### Sea bottom temperature anomalies
 
-TODO 
-
-@dfo2022a
+The data used to characterize bottom-water temperature anomalies come from the Department of Fisheries and Oceans’ (DFO) temperature data from the summer groundfish survey on the Scotian Shelf. Bottom-water temperatures are interpolated from conductivity-temperature-depth (CTD) sampling performed annually at a 0.2 degrees resolution [@dfo2022a]. Anomalies are evaluated as a cell value for a given year minus that cell's value from a climatology spanning YYYY to YYYY. Anomalies were divided into positive and negative anomalies and the absolute value of anomalies were used as the intensity of the surface-water temperature anomalies in a given cell. The anomalies were then resampled on the study grid used for this assessment and we performed a smoothing of predictions using a bisquare kernel smoothing approach with a 5 km radius to reduce the granularity of the resulting predictions for ecological commnunities. The mean anomaly intensity between 2010 and 2015, and between 2016 and 2019, for each grid cell was used to generate the final index of bottom-water temperature anomalies for each period considered.
 
 ### Coastal {#drcoastal}
 
@@ -64,16 +62,30 @@ and $A_{tot}$ is the total area of $k$. This approach was favoured to reduce the
 effects of very large dissemination areas overlapping with buffers on a very
 small percentage of their total area. We used the mean values from the 2016 and 2021 census for both periods of the assessment, as we did not have the data for the period between 2010 and 2015.
 
-#### Inorganic pollution 
+#### Land-based drivers
+
+The data used to characterize the intensity of inorganic pollution, organic pollution, population density and nutrient input in coastal areas come from an atlas of land use for coastal watershed in the Maritimes Region, hereafter the Land Use Atlas [@guijarro-sabaniel2022]. We provide a brief summary of data and methods in this document. For more details, refer to @guijarro-sabaniel2022.
+
+Coastal watershed boundaries in the Scotian Shelf Biogeographic Marine Management Sub-region were delineated using a digital elevation model (DEM) for each province was combined with national hydrographic data and calculating the flow direction and accumulation for each DEM. Stream orders for the stream network were then evaluated to locate the highest flow accumulation value for each watershed and given a value between 1 (lowest) and 4 (highest). The locations of these values were then used to identify pour points (*e.g.* river mouths) along the coast for each watershed. Spread of land stressors into coastal and marine environments was then modeled using a diffusive plume model using a density decay buffer based on stream order of the main pour points. 
+
+The following sections describes how this model was used to characterize the intensity of inorganic pollution, nutrient input, organic pollution and population density in coastal areas of the Scotian Shelf.
+
+##### Inorganic pollution
+
+The intensity of inorganic pollution was modelled using the percent area covered by impervious surfaces in each watershed. Impervious surfaces refer to articifial structures such as roads and parking lots and industrial areas such as ports that are covered by water-resistan materials. Impervious surfaces are used as a proxy of inorganic pollution under the assumption that most of this pollution comes from urban runoff. Impervious surfaces were identified in watershed using a combination of multiple datasets from the provinces New Brunswick and Nova Scotia. Refer to the *Land cover* section and Table 1 of the Material and Methods in @guijarro-sabaniel2022 for more details. 
+
+##### Organic pollution 
+
+We used the percent cover of agriculture land use in each watershed as a proxy of the intensity organic pollution in each watershed. The percent area covered by agricultural land in each watershed was identified in watershed using a combination of multiple datasets from the provinces New Brunswick and Nova Scotia. Refer to the *Land cover* section and Table 1 of the Material and Methods in @guijarro-sabaniel2022 for more details. 
+
+##### Population density 
+
+This intensity of stress caused by watershed population in coastal areas was modelled using the population density in each watershed in $person * ha^{-1}$. Total population was estimated as the number of civic address datasets from New Brunswick and Nova Scotia multiplied by the average number of residents per household (*i.e.* 2.3) obtained from Statistics Canada. Population density was then evaluated as the total population in a watershed divided by the watershed area in hectares.
 
 
-#### Nutrient input 
+##### Nutrient input 
 
-
-#### Organic pollution 
-
-
-#### Population density 
+We used data from @kelly2021a to obtain the intensity of nutrient input in coastal areas of the Scotian Shelf. @kelly2021a used data from the Land Use Atlas to estimate nitrogen loading in coastal areas with the Nitrogen Loading Model (NLM) framework [@valiela1997; @valiela2000; @mciver2015; @nagel2018] to estimate total (dissolved) nitrogen from point and non-point source inputs in coastal areas from atmospheric deposition, fertilizer use, and wastewater disposal. Data and methods used to apply the NLM framework are described in details in @kelly2021a.
 
 
 ### Fisheries {#drfisheries}
@@ -138,3 +150,6 @@ To characterize the intensity of fishing activities, we used a biomass yield den
 ### Marine traffic {#drmarinetraffic}
 
 #### Shipping
+
+The data used to characterize shipping come the [Global Fishing Watch](https://globalfishingwatch.org/), which provides shipping data from Automatic Identification System (AIS) data globally. We obtained data between 2017 and 2020 that characterize monthly commercial shipping (*e.g.* cargo, reefer, tanker, bunker) as rasters with a 0.1 degree resolution, either as the number of vessels or the total hours of vessel presence in each grid cell [@gfw2022]. The data was also available either as direct observations from the AIS data, or interpolated to a regular interval of five minutes between points. We used the sum of monthly interpolated number of all vessel types in each grid cell to obtain an assessment of annual shipping intensity on the Scotian Shelf. When then resampled the 0.1 degree resolution grid to our own study grid. We used the mean annual shipping intensity value between 2017 and 2020 for both periods considered in the assessment. 
+
