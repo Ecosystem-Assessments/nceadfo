@@ -50,7 +50,8 @@ out_cea_network <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Impact for connected species - from Compute Canada outputs
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  for(k in 1:length(dr_all)) {
+  # for(k in 1:length(dr_all)) {
+  k=1
     dr <- dr_all[[k]]
     output_cell <- here::here(output[k], "cell_cea")
     chk_create(output_cell)
@@ -117,42 +118,34 @@ out_cea_network <- function() {
       # As matrix
       temp <- dplyr::bind_rows(temp)
     
-      # --------------------
-      # Cumulative impact
-      outfold <- here::here(output[k], "impact")
-      chk_create(outfold)
-      out <- makeRaster(temp$risk_total, spNames[i])
-      export_raster(out, outfold, shortnamestif[i])
+      # # --------------------
+      # # Cumulative effects - not normalized by number of interactions
+      # outfold <- here::here(output[k], "impact")
+      # chk_create(outfold)
+      # out <- makeRaster(temp$risk_total, spNames[i])
+      # export_raster(out, outfold, shortnamestif[i])
       
     
       # --------------------
-      # Normalized cumulative impact
-      outfold <- here::here(output[k], "impact_normalized")
+      # Normalized cumulative effects - normalized by number of interactions
+      outfold <- here::here(output[k], "cea")
       chk_create(outfold)
       out <- makeRaster(temp$risk_total/temp$count, spNames[i])
       export_raster(out, outfold, shortnamestif[i])
 
     
       # --------------------
-      # Total intensity
-      outfold <- here::here(output[k], "intensity_total")
+      # Direct effects
+      outfold <- here::here(output[k], "cea_direct")
       chk_create(outfold)
-      out <- makeRaster(temp$intensity_total/temp$count, spNames[i])
-      export_raster(out, outfold, shortnamestif[i])
-
-    
-      # --------------------
-      # Direct intensity
-      outfold <- here::here(output[k], "intensity_direct")
-      chk_create(outfold)
-      out <- makeRaster(temp$intensity_direct/temp$count, spNames[i])
+      out <- makeRaster(temp$risk_direct/temp$count, spNames[i])
       export_raster(out, outfold, shortnamestif[i])
     
       # --------------------
-      # Indirect intensity
-      outfold <- here::here(output[k], "intensity_indirect")
+      # Indirect effects
+      outfold <- here::here(output[k], "cea_indirect")
       chk_create(outfold)
-      out <- makeRaster(temp$intensity_indirect/temp$count, spNames[i])
+      out <- makeRaster(temp$risk_indirect/temp$count, spNames[i])
       export_raster(out, outfold, shortnamestif[i])
     
       # # --------------------
@@ -187,7 +180,7 @@ out_cea_network <- function() {
               as.data.frame()
     
       # --------------------
-      outfold <- here::here(output[k], "stressor_total", drNames)
+      outfold <- here::here(output[k], "cea_drivers", drNames)
       lapply(outfold, chk_create)
       for(l in 1:length(drNames)) {
         out <- makeRaster(temp[, drNames[l]], spNames[i])
@@ -211,7 +204,7 @@ out_cea_network <- function() {
               as.data.frame()
     
       # --------------------
-      outfold <- here::here(output[k], "stressor_direct", drNames)
+      outfold <- here::here(output[k], "cea_drivers_direct", drNames)
       lapply(outfold, chk_create)
       for(l in 1:length(drNames)) {
         out <- makeRaster(temp[, drNames[l]], spNames[i])
@@ -234,7 +227,7 @@ out_cea_network <- function() {
               as.data.frame()
     
       # --------------------
-      outfold <- here::here(output[k], "stressor_indirect", drNames)
+      outfold <- here::here(output[k], "cea_drivers_indirect", drNames)
       lapply(outfold, chk_create)
       for(l in 1:length(drNames)) {
         out <- makeRaster(temp[, drNames[l]], spNames[i])
@@ -259,5 +252,5 @@ out_cea_network <- function() {
     out <- sum(out, na.rm = TRUE)
     values(out)[!idBiotic] <- NA
     export_raster(out, outfold, glue::glue("cea_network-{per[k]}"))
-  } #k
+  # } #k
 }

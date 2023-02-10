@@ -1,6 +1,5 @@
 ---
-title: "Cumulative effects of natural and human drivers on food webs in the
-offshore Scotian Shelf Bioregion to support Marine Spatial Planning"
+title: "Cumulative effects of natural and human drivers on food webs of the Scotian Shelf Bioregion to support Marine Spatial Planning"
 subtitle: "Preliminary report"
 author: "David Beauchesne, Cindy Grant, Philippe Archambault"
 date: "`r Sys.Date()`"

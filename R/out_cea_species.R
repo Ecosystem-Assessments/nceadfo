@@ -105,7 +105,8 @@ out_cea_species <- function() {
       nm <- names(risk[[j]])[i]
       names(out) <- nm
       # readAll(out)
-      saveRDS(out, here::here(out_per[j], glue::glue("{nm}.rds")))
+      # saveRDS(out, here::here(out_per[j], glue::glue("{nm}.rds")))
+      export_raster(out, out_per[j],nm)
     }
   }
   
@@ -125,9 +126,10 @@ out_cea_species <- function() {
   out <- here::here("output","cea")
   chk_create(out)
   for(i in 1:length(disconnectCumImpact)) {
-    saveRDS(
-      disconnectCumImpact[[i]], 
-      here::here(out, glue::glue("cea_species-{names(dr)[i]}.rds"))
-    )
+    export_raster(disconnectCumImpact[[i]], out, glue::glue("cea_species-{names(dr)[i]}"))
+    # saveRDS(
+    #   disconnectCumImpact[[i]], 
+    #   here::here(out, glue::glue("cea_species-{names(dr)[i]}.rds"))
+    # )
   }
 }
