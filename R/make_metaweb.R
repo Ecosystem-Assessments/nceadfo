@@ -2,13 +2,69 @@
 #'
 #' @export
 make_metaweb <- function() {
-  # Load interactions catalog & species list
-  dat <- importdat(c("d8094d1b","893b37e8","7c150fc3"))
-  S0_catalog <- dat[["species_interactions_catalog-d8094d1b.csv"]] |>
-    dplyr::rename(
-      nonconsumer = non.consumer,
-      nonresource = non.resource
-    )
+  # Load required data 
+  dat <- importdat(c("d8094d1b","893b37e8","7c150fc3","7a5323bb"))
+
+  # Format and combine interactions catalogs
+  ## St. Lawrence original
+  stl_sp <- dat[["species_interactions_catalog-d8094d1b.csv"]] |>
+            dplyr::select(taxon, taxonomy)
+
+  stl_int <- dat[["species_interactions_catalog-d8094d1b.csv"]] |>
+             dplyr::select(taxon, consumer, resource) 
+  
+  df_int <- function(dat, field) {
+    temp <- lapply(dat[,"consumer"], function(x) stringr::str_split(x, " \\| "))
+    for(i in 1:length(temp)) {
+      temp[[i]] <- data.frame(
+        V1 = dat$taxon[i],
+        V2 = temp[[i]][[1]]
+      )
+    } 
+    temp <- purrr::discard(temp, function(x) all(x == "")) |>
+            dplyr::bind_rows() |>
+            dplyr::filter(V2 != "")
+  }
+  
+  stl_preyof <- df_int(stl_int, "consumer") |> dplyr::rename(predator = V2, prey = V1)
+  stl_predof <- df_int(stl_int, "resource") |> dplyr::rename(predator = V1, prey = V2)
+  stl_int <- dplyr::bind_rows(stl_predof, stl_preyof)
+             
+  ## Atlantic update
+  atl_int <- dat[["rglobi_atlantic-7a5323bb-interactions.csv"]]
+  atl_sp <- dat[["rglobi_atlantic-7a5323bb-species.csv"]] |>
+            dplyr::select(-aphiaID, -ScientificName) |>
+            dplyr::rename(taxon = species)
+  taxonomy <- dplyr::select(atl_sp, Kingdom, Phylum, Class, Order, Family, Genus, Species)
+
+  # Column with taxonomy separated by "|"
+  taxo <- function(tx) {
+    as.character(tx) |>
+      paste(collapse = " | ")
+  }
+  atl_sp <- dplyr::select(atl_sp, taxon) |>
+            dplyr::mutate(taxonomy = apply(taxonomy, 1, taxo))
+  
+  # ------
+  # Combine species  
+  species <- dplyr::bind_rows(stl_sp, atl_sp) |>
+             dplyr::distinct()
+  
+  # Combine interactions 
+  int <- dplyr::bind_rows(stl_int, atl_int) |>
+         dplyr::distinct()
+  res <- dplyr::group_by(int, predator) |>
+         dplyr::summarize(resource = paste0(prey, collapse = " | "))
+  con <- dplyr::group_by(int, prey) |>
+         dplyr::summarize(consumer = paste0(predator, collapse = " | "))
+         
+  # Catalogue
+  S0_catalog <- species |>
+                dplyr::left_join(res, by = c("taxon" = "predator"))
+                dplyr::left_join(con, by = c("taxon" = "prey"))
+  
+  # ------------------------------------------------------------
+  # Prepare species lists
   species <- dat[["species_list_nw_atlantic-893b37e8.csv"]] |>
     dplyr::rename(taxon = SPEC) |>
     dplyr::select(-Freq, -ScientificName)
@@ -41,9 +97,7 @@ make_metaweb <- function() {
     taxon = species$taxon[uid],
     taxonomy = species$taxonomy[uid],
     resource = "",
-    nonresource = "",
     consumer = "",
-    nonconsumer = "",
     row.names = species$taxon[uid],
     stringsAsFactors = F
   ) |>
