@@ -1,0 +1,27 @@
+pipeline:
+  pipeline_id: 7a5323bb
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2023-02-02'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_rglobi_atlantic-7a5323bb.R
+description:
+  name: Catalog of trophic interactions for the Scotian Shelf from the Global Biotic
+    Interactions (GLoBI) data portal
+  description: Global Biotic Interactions (GloBI) provides open access to finding
+    species interaction data (e.g., predator-prey, pollinator-plant, pathogen-host,
+    parasite-host) by combining existing open datasets using open source software.
+  access_date: '2023-02-10'
+  citekey:
+  - poelen2014
+  - poelen2022
+  url: https://www.globalbioticinteractions.org/
+  uuid: .na.character
+  availability: open

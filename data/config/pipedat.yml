@@ -54,6 +54,7 @@ pipedat:
     # - "21f8a758" # DFO Research Vessel Survey Spring
     # - "3348d162" # DFO Research Vessel Survey Summer
     # - "d8094d1b" # Species interactions catalog
+    # - "7a5323bb" # Updated interaction catalog (will not work without integration run first...)
     # - "1386850b" # Species-specific sensitivities
     # - "0b902b1e" # Species trophic sensitivities
     # - "084860fd" # CARMs checklist
@@ -68,7 +69,7 @@ pipedat:
     # - "99bb2d51" # Direct human impact
     # # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
     # - "84b6ea0b" # Invasive species environmental stressor
-    - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
+    # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
     # - "3992e1a6" # Sea surface temperature anomalies intensity
     # - "041a30d2" # Watershed activity index
     # ------------------------------------------------------------------------
