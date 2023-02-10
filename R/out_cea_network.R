@@ -1,7 +1,6 @@
 #' Function to export cumulative drivers and species (richness)
 #'
 #' @export
-
 out_cea_network <- function() {
   library(tidyverse)
   library(magrittr)
@@ -12,7 +11,8 @@ out_cea_network <- function() {
   dat <- dir(modules, full.names = TRUE)
   for(i in dat) load(i)
   names(biotic) <- txNames
-
+  nTx <- length(txNames)
+  
   # Output 
   output <- here::here("output","cea_network")
   chk_create(output)
@@ -50,8 +50,7 @@ out_cea_network <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Impact for connected species - from Compute Canada outputs
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  # for(k in 1:length(dr_all)) {
-  k=1
+  for(k in 1:length(dr_all)) {
     dr <- dr_all[[k]]
     output_cell <- here::here(output[k], "cell_cea")
     chk_create(output_cell)
@@ -242,15 +241,15 @@ out_cea_network <- function() {
     chk_create(outfold)
 
     # # Cumulative effects
-    # out <- network_metric(output[k], "impact")
+    # out <- cea_metric(output[k], "impact")
     # out <- sum(out, na.rm = TRUE)
     # values(out)[!idBiotic] <- NA
     # export_raster(out, outfold, glue::glue("cea_network-{per[k]}"))
     
     # Cumulative effects normalizd
-    out <- network_metric(output[k], "impact_normalized")
+    out <- cea_metric(output[k], "cea")
     out <- sum(out, na.rm = TRUE)
     values(out)[!idBiotic] <- NA
     export_raster(out, outfold, glue::glue("cea_network-{per[k]}"))
-  # } #k
+  } #k
 }
