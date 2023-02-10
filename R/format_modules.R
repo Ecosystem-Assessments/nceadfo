@@ -121,7 +121,6 @@ format_modules <- function() {
   species_sensitivity <- dplyr::mutate(
     species_sensitivity,
     PopulationDensity = DirectHumanImpact,
-    SBT = NegativeSBT
   )
 
   # Add phytoplankton and zooplankton with no vulnerability

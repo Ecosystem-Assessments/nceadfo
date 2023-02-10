@@ -51,7 +51,8 @@ make_drivers <- function() {
   period_2010_2015 <- list(
     cbn_dat(dat, name, "3992e1a6","negative",2010:2015, "sum"), # SST anomalies -
     cbn_dat(dat, name, "3992e1a6","positive",2010:2015, "sum"), # SST anomalies +
-    cbn_dat(dat, name, "6dba9a9f","bottomValues",2010:2015, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "6dba9a9f","negative",2010:2015, "mean"), # SBT anomalies - 
+    cbn_dat(dat, name, "6dba9a9f","positive",2010:2015, "mean"), # SBT anomalies +
     cbn_dat(dat, name, "e2b7e6c4","DD",2010:2015, "mean"), # fisheries DD
     cbn_dat(dat, name, "e2b7e6c4","DNH",2010:2015, "mean"), # fisheries DNH
     cbn_dat(dat, name, "e2b7e6c4","DNL",2010:2015, "mean"), # fisheries DNL
@@ -69,7 +70,8 @@ make_drivers <- function() {
   period_2016_2021 <- list(
     cbn_dat(dat, name, "3992e1a6","negative",2016:2021, "sum"), # SST anomalies -
     cbn_dat(dat, name, "3992e1a6","positive",2016:2021, "sum"), # SST anomalies +
-    cbn_dat(dat, name, "6dba9a9f","bottomValues",2016:2019, "mean"), # SBT anomalies
+    cbn_dat(dat, name, "6dba9a9f","negative",2016:2019, "mean"), # SBT anomalies -
+    cbn_dat(dat, name, "6dba9a9f","positive",2016:2019, "mean"), # SBT anomalies +
     cbn_dat(dat, name, "e2b7e6c4","DD",2016:2020, "mean"), # fisheries DD
     cbn_dat(dat, name, "e2b7e6c4","DNH",2016:2020, "mean"), # fisheries DNH
     cbn_dat(dat, name, "e2b7e6c4","DNL",2016:2020, "mean"), # fisheries DNL
@@ -146,7 +148,8 @@ make_drivers <- function() {
   # Change names of drivers, and add group of drivers (for exported drivers list) 
   mod <- data.frame(
     from = c(
-      "bottom_water_temperature_anomalies_atlantic.6dba9a9f.bottomValues.tif",
+      "bottom_water_temperature_anomalies_atlantic.6dba9a9f.negative.tif",
+      "bottom_water_temperature_anomalies_atlantic.6dba9a9f.positive.tif",
       "direct_human_impact.99bb2d51.tif",
       "fisheries_intensity.e2b7e6c4.DD.tif",
       "fisheries_intensity.e2b7e6c4.DNH.tif",
@@ -164,7 +167,8 @@ make_drivers <- function() {
       "watershed_activity_index.041a30d2.SummedRasters_PopDensity.tif"
     ),
     to = c(
-      "SBT",
+      "NegativeSBT",
+      "PositiveSBT",
       "DirectHumanImpact",
       "FisheriesDD",
       "FisheriesDNH",
@@ -183,6 +187,7 @@ make_drivers <- function() {
     ),
     group = c(
       "Climate",
+      "Climate",
       "Coastal",
       "Fisheries",
       "Fisheries",
@@ -200,7 +205,8 @@ make_drivers <- function() {
       "Coastal"
     ),
     description = c(
-      "Sea bottom temperature anomalies",
+      "Negative sea bottom temperature anomalies",
+      "Positive sea bottom temperature anomalies",
       "Direct human impact",
       "Demersal, destructive",
       "Demersal, non-destructive, high-bycatch",
