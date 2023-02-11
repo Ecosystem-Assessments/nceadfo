@@ -47,8 +47,11 @@ make_metaweb <- function() {
   
   # ------
   # Combine species  
+  # Remove stl taxa from atl 
+  atl_sp <- atl_sp[!atl_sp$taxon %in% stl_sp$taxon,]
   species <- dplyr::bind_rows(stl_sp, atl_sp) |>
-             dplyr::distinct()
+             dplyr::distinct() |>
+             dplyr::arrange(taxon)
   
   # Combine interactions 
   int <- dplyr::bind_rows(stl_int, atl_int) |>
@@ -60,8 +63,17 @@ make_metaweb <- function() {
          
   # Catalogue
   S0_catalog <- species |>
-                dplyr::left_join(res, by = c("taxon" = "predator"))
-                dplyr::left_join(con, by = c("taxon" = "prey"))
+                dplyr::left_join(res, by = c("taxon" = "predator")) |>
+                dplyr::left_join(con, by = c("taxon" = "prey")) 
+  
+  # Last bit of clean up: remove species that have no consumer or resource
+  iid <- apply(S0_catalog[, c("consumer","resource")], 1, function(x) all(is.na(x)))
+  S0_catalog <- S0_catalog[!iid,]
+  
+  # Change NAs for ""
+  S0_catalog <- S0_catalog |>
+                dplyr::mutate(consumer = ifelse(is.na(consumer), "", consumer)) |>
+                dplyr::mutate(resource = ifelse(is.na(resource), "", resource)) 
   
   # ------------------------------------------------------------
   # Prepare species lists

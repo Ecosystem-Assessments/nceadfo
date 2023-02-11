@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=def-benthos
-#SBATCH --mem=100GB
+#SBATCH --mem=20GB
 #SBATCH --time=30:00:00
 #SBATCH --array=1-205
 #SBATCH --mail-user=david.beauchesne@hotmail.com
