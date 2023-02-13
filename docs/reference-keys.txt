@@ -7,6 +7,8 @@ tab:abiotic
 tab:datamm
 tab:distmm
 tab:distbirds
+tab:sptraits
+tab:spsensitivity
 background
 scope-and-objectives-of-the-assessment
 objectives

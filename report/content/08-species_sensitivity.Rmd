@@ -1,0 +1,315 @@
+## Species-specific sensitivity {#sssmodule}
+
+We evaluated the relative species-specific sensitivity of all 205 taxa considered in the assessment to each stressor using a trait-matching approach, as in @beauchesne2020c. For each driver considered, @beauchesne2020c identified traits that were known or suspected to influence the sensitivity of a species to the direct effects of that particular driver. For instance, the feeding strategy of on an organism can affect its sensitivity to certain stressors. Traits were categorized to reflect their relative contribution to the sensitivity of a taxa to the effects of a stressor and allow for a comparison between taxa. For example, suspension feeders are generally more affected by nutrients and metals than deposit feeders [@ellis2017]. 
+
+@beauchesne2020c documented the body composition, the maximal body size, the type of marine environment in which species are found, the feeding mode, the mobility and the phylum of 391 taxa from the St. Lawrence. Traits data were extracted from the World Register of Marine Species [WoRMS; @wormseditorialboard2017], FishBase [@froese2019], SeaLifeBase [@palomares2019], the Encyclopedia of Life [EoL; @encyclopediaoflife2020] and the Global Biotic Interaction (GloBI) database [@poelen2014; @poelen2019].  We used the `taxize` [@chamberlain2013; @chamberlain2019], `worrms` [@chamberlain2020] and `rfishbase` [@boettiger2012] R packages to extract traits data. Manual searches, mainly on the WoRMS and EoL web portals, were performed and documented when programatic extractions were unavailable. The traits dataset from @beauchesne2020c was updated for this assessment by using the same approach and resources to consider species of the Scotian Shelf, and to include species of marine mammals and sea birds that were not considered in @beauchesne2020c (Table \@ref(tab:sptraits)). Species that were targeted or caught as bycatch on the Scotian Shelf were also identified using the fisheries logbook data from DFO [@dfo2021b]. The code associated with traits extraction is available at [https://github.com/Ecosystem-Assessments/Species_Traits](https://github.com/Ecosystem-Assessments/Species_Traits).
+
+For each trait and taxa combination, traits were given a weight between 0 and 1 to reflect the relative contribution of that trait to a species' sensitivity to a stressor. A weight of 0 means that a taxa possessing that trait is insensitive to a stressor, whereas a weight of 1 means that that trait renders a taxa highly sensitive to the effect of a stressor. In instances when a taxa had more than one trait (*e.g.* crawler and swimmer), the trait with the maximal sensitivity weight was retained. The sensitivity assessment was informed by expert knowledge and bibliographic research. Trait-matching rules and weights for each trait-stressor combination are available in Table \@ref(tab:spsensitivity). The relative sensitivity of each taxon was evaluated as the product of the weight given to all traits considered to assess the sensitivity of a given stressor. This process yielded a relative sensitivity assessment ranging between 0 and 1. The code to evaluate the relative sensitivity of taxa on the Scotian Shelf is available at [https://github.com/Ecosystem-Assessments/Species_direct_sensitivity](https://github.com/Ecosystem-Assessments/Species_direct_sensitivity).
+
+```{r sptraits_sensitibity}
+# -----
+body <- data.frame(
+  drivers = "",
+  traits = "",
+  categories = c(
+    "Biogenic silica",
+    "Bone",
+    "Cartilaginous",
+    "Chitinous",
+    "Non-calcifying",
+    "Soft-bodied, aragonite",
+    "Soft-bodied, calcite",
+    "Soft-bodied, calcium phosphate",
+    "Soft-bodied, calcium sulfate",
+    "Skeleton, aragonite",
+    "Skeleton, calcite",
+    "Skeleton, calcium phosphate",
+    "Skeleton, high-magnesium calcite",
+    "Skeleton, phosphatic",
+    "Skeleton, gorgonin"
+  ),
+  description = c(
+    "Organism with skeleton formed by microscopic particles of silica",
+    "Organism with solid skeleton made of bones",
+    "Organism with solid skeleton made of cartilage",
+    "Organism with solid skeleton made of chitin",
+    "Organism devoid of calcifying skeleton",
+    "Organism with aragonite in soft tissues",
+    "Organism with calcite in soft tissues",
+    "Organism with calcium phosphate in soft tissues",
+    "Organism with calcium sulfate in soft tissues",
+    "Organism with solid skeleton made of or containing aragonite",
+    "Organism with solid skeleton made of or containing calcite",
+    "Organism with solid skeleton made of or containing calcium phosphate",
+    "Organism with solid skeleton made of or containing high-magnesium calcite",
+    "Organism with solid skeleton made of or containing phosphates",
+    "Organism with solid skeleton made of or containing gorgonin"
+  ), 
+  s1 = c(0,0,0,0,0,0,0,0,0,0.9,0.8,0.8,1,0,0.8)
+)
+body$traits[1] <- "Body composition"
+
+# -----
+environment <- data.frame(
+  drivers = "",
+  traits = "",
+  categories = c(
+    "Bathydemersal",
+    "Bathypelagic",
+    "Benthic",
+    "Benthopelagic",
+    "Demersal",
+    "Pelagic",
+    "Coastal",
+    "Terrestrial"
+  ),
+  description = c(
+    "Living and/or feeding on or near the bottom, below 200 m",
+    "Occurring mainly in open water below 200 m, not feeding on benthic organisms",
+    "Living and feeding on the bottom",
+    "Living and/or feeding on or near the bottom, as well as in midwater, between 0 and 200 m",
+    "Living and/or feeding on or near the bottom, between 0 and 200 m",
+    "Occurring mainly on the surface or in the water column between 0 and 200 m, not feeding on benthic organisms",
+    "Occurring mainly along the coast, specific to sea birds",
+    "Occurring mainly on land, specific to sea birds"
+  ), 
+  s1 = c(1,0,1,.5,1,0,0,0),
+  s2 = c(0,0,0,.5,0,1,.5,.25)
+)
+environment$traits[1] <- "Environment"
+
+# -----
+feeding <- data.frame(
+  drivers = "",
+  traits = "",
+  categories = c(
+    "Deposit feeder",
+    "Selective filter feeder",
+    "Grazer",
+    "Parasite",
+    "Plankton",
+    "Predator",
+    "Scavenger",
+    "Suspension feeder",
+    "Xylophagous"
+  ),
+  description = c(
+    "Organism that lives on or in the sediments and consumes organic material on the sea floor",
+    "Organism that actively and selectively filters waters to consume plankton or nutrients suspended in the water",
+    "Organism that feeds on plants",
+    "Organism that lives in or on another organism, benefiting at the other organism’s expense",
+    "Organism feeding exclusively on plankton",
+    "Organism that actively hunts prey",
+    "Organism that feeds on dead plant or animal material, or refuse",
+    "Organism that captures and consumes particules suspended in the water, such as plankton, bacteria, detritus and particulate organic matter",
+    "Organism feeding on or boring into wood"
+  ),
+  s1 = c(1,0,1,0,.5,.5,.5,1,.5),
+  s2 = c(.75,0,0,0,0,0,.5,1,0)
+)
+feeding$traits[1] <- "Feeding type"
+
+# -----
+size <- data.frame(
+  drivers = "",
+  traits = "",
+  categories = c(
+    "0-100 cm",
+    "100-200 cm",
+    "200-300 cm",
+    "300+ cm"
+  ),
+  description = c(
+    "Body length between 0 and 100 cm",
+    "Body length between 100 and 200 cm",
+    "Body length between 200 and 300 cm",
+    "Body length greater than 300 cm"
+  ),
+  s1 = c(.25,.5,.75,1),
+  s2 = c(0,.5,.75,1)
+)
+size$traits[1] <- "Size"
+
+# -----
+fish <- data.frame(
+  drivers = "",
+  traits = "",
+  categories = c(
+    "Targeted species",
+    "Bycatch",
+    "Others"
+  ),
+  description = c(
+    "Applicable to fisheries only. Taxa targeted by fishing activities.",
+    "Applicable to fisheries only. Taxa bycatch by fishing activities.",
+    "Applicable to fisheries only. Taxa not targeted or caught by fishing activities"
+  ),
+  s1 = c(1,.75,.25),
+  s2 = c(1,.75,0)
+)
+fish$traits[1] <- "Fisheries landings"
+
+# -----
+mobility <- data.frame(
+  drivers = "",
+  traits = "",
+  categories = c(
+    "Burrower",
+    "Crawler",
+    "Mobile",
+    "Sessile",
+    "Swimmer",
+    "Flying"
+  ),
+  description = c(
+    "Organism that lives in a burrow dug in the sediments",
+    "Organism that crawls slowly on the bottom",
+    "Free-ranging organism",
+    "Immobile or fixed organism",
+    "Organism with limited swimming ability",
+    "Flying organisms"
+  ),
+  s1 = c(.75,.75,.25,1,.75,0),
+  s2 = c(.75,.75,.5,1,.75,.25)
+)
+mobility$traits[1] <- "Mobility"
+
+# -----
+phylum <- data.frame(
+  drivers = "",
+  traits = "",
+  categories = c(
+    "Annelida",
+    "Arthropoda",
+    "Brachiopoda",
+    "Bryozoa",
+    "Chlorophyta",
+    "Chordata",
+    "Cnidaria",
+    "Ctenophora",
+    "Echinodermata",
+    "Echiura",
+    "Mollusca",
+    "Ochrophyta",
+    "Porifera",
+    "Rhodophyta",
+    "Sipuncula",
+    "Tracheophyta"
+  ),
+  description = "-",
+  s1 = c(0.0,0.5,0.5,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0)
+)
+phylum$traits[1] <- "Phylum"
+
+# ----- Stressors 
+iid <- c("drivers","traits","categories")
+acid <- rbind(
+  environment[,c(iid,"s1")],
+  mobility[,c(iid,"s1")],
+  body[,c(iid,"s1")],
+  phylum[,c(iid,"s1")]
+)
+acid[1,1] <- "Ocean acidification"
+
+# -----
+dat <- rbind(
+  environment[,c(iid,"s1")],
+  mobility[,c(iid,"s1")],
+  feeding[,c(iid,"s1")]
+)
+sbt <- hyp <- dat 
+sbt[1,1] <- "Bottom-water temperature anomalies"
+hyp[1,1] <- "Hypoxia"
+
+# -----
+env <- dplyr::select(environment, -s1) |>
+       dplyr::rename(s1 = s2)
+dat <- rbind(
+  env[,c(iid,"s1")],
+  mobility[,c(iid,"s1")],
+  feeding[,c(iid,"s1")]
+)
+sst <- dat 
+sst[1,1] <- "Surface-water temperature anomalies"
+
+# -----
+mob <- dplyr::select(mobility, -s1) |>
+       dplyr::rename(s1 = s2)
+dat <- rbind(
+  mob[,c(iid,"s1")],
+  size[,c(iid,"s1")]  
+)
+cd <- dhi <- dat
+cd[1,1] <- "Coastal development"
+dhi[1,1] <- "Direct human impact"
+
+# -----
+feed <- dplyr::select(feeding, -s1) |>
+       dplyr::rename(s1 = s2)
+dat <- rbind(
+  feed[,c(iid,"s1")],
+  mobility[,c(iid,"s1")]
+)
+inorg <- nutrient <- org <- marpol <- dat
+inorg[1,1] <- "Inorganic pollution"
+nutrient[1,1] <- "Nutrient input"
+org[1,1] <- "Organic pollution"
+marpol[1,1] <- "Marine pollution"
+
+# -----
+dat <- rbind(
+  fish[,c(iid,"s1")],
+  environment[,c(iid,"s1")],
+  mobility[,c(iid,"s1")]
+)
+dd <- dat
+dd[1,1] <- "Demersal destructive fisheries"
+dd[4,1] <- "For Others only"
+
+# -----
+fh <- dplyr::select(fish, -s1) |>
+       dplyr::rename(s1 = s2)
+dat <- rbind(
+  fh[,c(iid,"s1")]
+)
+dnh <- dnl <- phb <- plb <- dat
+dnh[1,1] <- "Demersal non-destructive high-bycatch fisheries"
+dnl[1,1] <- "Demersal non-destructive low-bycatch fisheries"
+phb[1,1] <- "Pelagic high-bycatch fisheries"
+plb[1,1] <- "Pelagic low-bycatch fisheries"
+
+# -----
+dat <- rbind(
+  environment[,c(iid,"s2")],
+  size[,c(iid,"s2")]  
+)
+ship <- dplyr::rename(dat, s1 = s2)
+ship[1,1] <- "Shipping"
+```
+
+<br>
+
+```{r sptraits}
+iid <- c("traits","categories","description")
+dplyr::bind_rows(body[,iid], environment[,iid], feeding[,iid], fish[,iid], mobility[,iid], phylum[,iid], size[,iid])|>
+  knitr::kable(
+    col.names = c("Traits", "Categories", "Description"),
+    row.names = FALSE,
+    caption = "List of traits used to evaluate the relative sensitivity of taxa to the effects of environmental drivers. Adapted from @beauchesne2020c."
+  ) #%>%
+
+```
+
+<br>
+
+```{r spsensitivity}
+dplyr::bind_rows(
+  acid,sbt,sst,hyp,cd,dhi,inorg,nutrient,org,dd,dnh,dnl,phb,plb,marpol,ship
+  ) |>
+  knitr::kable(
+    col.names = c("Drivers","Traits", "Categories", "Sensitivity"),
+    row.names = FALSE,
+    caption = "Relative species-specific sensitivity weights for each environmental driver. Adapted from @beauchesne2020c."
+  ) #%>%
+
+```

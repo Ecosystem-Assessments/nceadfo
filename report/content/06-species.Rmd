@@ -33,7 +33,7 @@ dplyr::arrange(SPEC) |>
 
 #### Abiotic data
 
-We used environmental data characterizing the bottom-water and surface-water conditions on the Scotian Shelf using data from Bio-ORACLE, which provides geophysical, biotic and environmental data layers for surface and benthic marine environments [@bosch2022; @tyberghein2012; @assis2018], the General Bathymetric Chart of the Oceans (GEBCO) offering a global terrain model for ocean and land, providing elevation data, in meters, on a 15 arc-second interval grid [@gebco], and the Bedford Institute of Oceanography North Atlantic Model (BNAM) averaged over the 1990 to 2015 period for monthly temperatures and salinities at the bottome and at the surface [@wang2018; @wang2018a; @wang2018b]. See table \ref(tab:abiotic) for more details.
+We used environmental data characterizing the bottom-water and surface-water conditions on the Scotian Shelf using data from Bio-ORACLE, which provides geophysical, biotic and environmental data layers for surface and benthic marine environments [@bosch2022; @tyberghein2012; @assis2018], the General Bathymetric Chart of the Oceans (GEBCO) offering a global terrain model for ocean and land, providing elevation data, in meters, on a 15 arc-second interval grid [@gebco2021], and the Bedford Institute of Oceanography North Atlantic Model (BNAM) averaged over the 1990 to 2015 period for monthly temperatures and salinities at the bottome and at the surface [@wang2018; @wang2018a; @wang2018b]. See table \ref(tab:abiotic) for more details.
 
 ```{r abiotic}
 dplyr::select(abiotic, name, cite) |>
@@ -149,7 +149,7 @@ dplyr::mutate(common = stringr::str_to_sentence(gsub("_"," ", common))) |>
 ### Sea birds {#seabirds}
 
 
-The distribution of sea birds was obtained through vessel-based and aerial-based surveys and available through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @eccc2022b].
+The distribution of sea birds was obtained through vessel-based and aerial-based surveys and available through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @cws2022].
 All sightings of individual bird species or bird groups from the vessel and aerial surveys between 2006 and 2022 were combined to evaluate the distribution of birds in the area of interest. A total of `r nrow(bird)` bird species / groups were obtained (Table \@ref(tab:distbirds)).
 
 <br> 
@@ -159,7 +159,7 @@ dplyr::select(bird, Alpha, aphiaID, species, observations) |>
   knitr::kable(
     col.names = c("Alpha", "Aphia ID", "Scientific name", "Observations (n)"),
     row.names = FALSE,
-    caption = "List of sea birds obtained through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @eccc2022b]."
+    caption = "List of sea birds obtained through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @cws2022]."
   ) #%>%
   #kableExtra::row_spec(uid, extra_css = "border-bottom: 2px solid")
 ```
