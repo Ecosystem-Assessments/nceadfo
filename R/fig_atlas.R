@@ -8,6 +8,7 @@ figures <- function() {
   out$biotic_bin <- here::here(out$out,"biotic","binary")
   out$abiotic <- here::here(out$out, "abiotic")
   out$drivers <- here::here(out$out,"drivers")
+  out$cea_species <- here::here(out$out,"cea_species")
   lapply(out, chk_create)
   
   # ---
@@ -58,6 +59,30 @@ figures <- function() {
     dir(full.names = TRUE, pattern = ".tif$") |>
     lapply(stars::read_stars) |>
     lapply(plotDat, out$drivers)
+  }
+
+  # Species-scale cumulative effects assessment
+  dr <- here::here("output","cea_species")
+  per <- dir(dr)
+  outsp <- here::here(out$cea_species, per)
+  lapply(outsp, chk_create)
+  for(i in 1:length(per)) {
+    here::here(dr, per[i]) |>
+    dir(full.names = TRUE, pattern = ".tif$") |>
+    lapply(stars::read_stars) |>
+    lapply(plotDat, outsp[i])
+  }
+  
+  # # Network-scale cumulative effects assessment
+  dr <- here::here("output","cea_network")
+  per <- dir(dr)
+  outsp <- here::here(out$cea_network, per)
+  lapply(outsp, chk_create)
+  for(i in 1:length(per)) {
+    here::here(dr, per[i]) |>
+    dir(full.names = TRUE, pattern = ".tif$") |>
+    lapply(stars::read_stars) |>
+    lapply(plotDat, outsp[i])
   }
 }
 
