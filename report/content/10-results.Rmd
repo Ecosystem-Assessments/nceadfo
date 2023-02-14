@@ -19,7 +19,7 @@ knitr::include_graphics(glue::glue("{urls}footprint/species_richness.png?raw=tru
 <br/>
 
 
-## Species-scale cumulative effects 
+## Species-scale cumulative effects {#ceaspresults}
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center'}
 urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
