@@ -9,6 +9,7 @@ figures <- function() {
   out$abiotic <- here::here(out$out, "abiotic")
   out$drivers <- here::here(out$out,"drivers")
   out$cea_species <- here::here(out$out,"cea_species")
+  out$cea_network <- here::here(out$out,"cea_network")
   lapply(out, chk_create)
   
   # ---
@@ -79,7 +80,7 @@ figures <- function() {
   outsp <- here::here(out$cea_network, per)
   lapply(outsp, chk_create)
   for(i in 1:length(per)) {
-    here::here(dr, per[i]) |>
+    here::here(dr, per[i], "cea") |>
     dir(full.names = TRUE, pattern = ".tif$") |>
     lapply(stars::read_stars) |>
     lapply(plotDat, outsp[i])
