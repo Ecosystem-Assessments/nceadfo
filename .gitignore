@@ -32,8 +32,5 @@ raw/
 *.rds
 
 # Specific folders
-figures/abiotic/
-figures/biotic/
-figures/drivers/
-figures/cea_species/
-figures/cea_network/
+figures/*
+!figures/atlas/

@@ -1,1 +1,38 @@
 # Results {#results}
+
+## Cumulative drivers 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}footprint/cumulative_drivers.png?raw=true"))
+```
+
+<br/>
+
+## Species richness
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}footprint/species_richness.png?raw=true"))
+```
+
+<br/>
+
+
+## Species-scale cumulative effects 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}cea/cea_species.png?raw=true"))
+```
+
+<br/>
+
+## Network-scale cumulative effects 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}cea/cea_network.png?raw=true"))
+```
+
+<br/>

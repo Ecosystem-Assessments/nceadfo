@@ -51,6 +51,10 @@ metamodule
 sssmodule
 trsmodule
 results
+cumulative-drivers
+species-richness
+species-scale-cumulative-effects
+network-scale-cumulative-effects
 eDrivers
 atlas
 stratlas
