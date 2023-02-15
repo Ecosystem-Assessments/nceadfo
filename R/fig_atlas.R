@@ -314,7 +314,7 @@ fig_atlas <- function(type = c("footprint","cea","species","drivers")) {
   
       # Add text       
       img <- nm_title(img, nm$group[uid1])
-      img <- nm_sub(img, nm$description[uid1])
+      img <- nm_sub(img, nm$fullname[uid1])
       img <- nm_sub2(img, nm$period2[uid1], t1_1)
       img <- nm_sub2(img, nm$period2[uid2], t2_1)
   

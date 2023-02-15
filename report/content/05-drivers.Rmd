@@ -15,10 +15,10 @@ nMt <- sum(dr$group == "Marine traffic")
 We characterized the distribution and intensity of `r nrow(dr)` environmental drivers on the Scotian Shelf during two distinct periods, *i.e.* 2010 to 2015 and 2016 to 2021. Temporal data was unavailable for certain drivers; in such instances, we used the same data for both periods (*e.g.* shipping). Drivers are divided in 4 groups: [climate](drclimate) (n = `r nCl`), [land-based / coastal](drcoastal) (n = `r nCo`), [fisheries](drfisheries) (n = `r nFs`) and [marine traffic](drmarinetraffic) (n = `r nMt`; Table \@ref(tab:drnm)). Drivers were log-transformed to avoid underestimating intermediate intensity values. All drivers were also scaled between 0 and 1 to obtain relative intensities and allow driver comparisons. Scaling was performed using the 99th quantile of intensity distribution as the upper bound to control for extreme values. For more details, see @beauchesne2020 and @halpern2019. The following subsections describes the approach used to evaluate the distribution and the intensity of each driver considered for the cumulative effects assessment. 
 
 ```{r drnm}
-dplyr::select(dr, group, description) |>
-dplyr::arrange(group, description) |>
+dplyr::select(dr, group, fullname, spatres, tempres, years, units, source) |>
+dplyr::arrange(group, fullname) |>
   knitr::kable(
-    col.names = c("Groups", "Drivers"),
+    col.names = c("Groups", "Drivers","Spatial resolution","Temporal resolution","Years","Units","Source"),
     row.names = FALSE,
     caption = "List of environmental drivers considered for the cumulative effects assessment of global changes on the ecological communities of the Scotian Shelf."
   ) 

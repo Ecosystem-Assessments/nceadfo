@@ -204,7 +204,7 @@ make_drivers <- function() {
       "Coastal",
       "Coastal"
     ),
-    description = c(
+    fullname = c(
       "Negative sea bottom temperature anomalies",
       "Positive sea bottom temperature anomalies",
       "Direct human impact",
@@ -222,6 +222,101 @@ make_drivers <- function() {
       "Inorganic pollution",
       "Nutrient input",
       "Population density"
+    ),
+    spatres = c(
+      "0.2 degree",
+      "0.2 degree",
+      "< 1 to > 40000 $km^2$",
+      "Lat/Lon",
+      "Lat/Lon",
+      "Lat/Lon",
+      "Lat/Lon",
+      "Lat/Lon",
+      "0.01 degree",
+      "15 arcsecond",
+      "~2 $km^2$",
+      "~2 $km^2$",
+      "0.1 degree",
+      "Modeled $100 $m^2$",
+      "Modeled $100 $m^2$",
+      "Modeled $100 $m^2$",
+      "Modeled $100 $m^2$"
+    ),   
+    tempres = c(
+      "Annual",
+      "Annual",
+      "Annual",
+      "Event based",
+      "Event based",
+      "Event based",
+      "Event based",
+      "Event based",
+      "Annual",
+      "Annual",
+      "Monthly",
+      "Monthly",
+      "Monthly",
+      "-",
+      "-",
+      "-",
+      "-"
+    ),
+    years = c(
+      "2010-2019",
+      "2010-2019",
+      "2016,2021",
+      "2010-2020",
+      "2010-2020",
+      "2010-2020",
+      "2010-2020",
+      "2010-2020",
+      "-",
+      "2012-2021",
+      "2010-2021",
+      "2010-2021",
+      "2017-2020",
+      "Betwen 2010 and 2019",
+      "Betwen 2010 and 2019",
+      "Betwen 2010 and 2019",
+      "2015,2019"
+    ),
+    units = c(
+      "negative anomalies",
+      "positive anomalies",
+      "population count",
+      "$kg$",
+      "$kg$",
+      "$kg$",
+      "$kg$",
+      "$kg$",
+      "$n$ species",
+      "$nanoWatts$ $cm^{−2}$ $sr^{−1}$",
+      "negative anomalies",
+      "positive anomalies",
+      "$n$ ship lanes",
+      "% cover impervious surface",
+      "% cover agriculture land",
+      "$kg$ $N$ $yr^{-1}$",
+      "person $ha^{-1}$"
+    ),
+    source = c(
+      "@dfo2022a",
+      "@dfo2022a",
+      "@statisticscanada2016a; @statisticscanada2016b; @statisticscanada2017; @statisticscanada2022; @statisticscanada2022a; @statisticscanada2022b",
+      "@dfo2021b",
+      "@dfo2021b",
+      "@dfo2021b",
+      "@dfo2021b",
+      "@dfo2021b",
+      "@lyons2020",
+      "@elvidge2021",
+      "@dfo2021b",
+      "@dfo2021b",
+      "@gfw2022",
+      "@guijarro-sabaniel2022",
+      "@guijarro-sabaniel2022",
+      "@kelly2021a; @guijarro-sabaniel2022",
+      "@guijarro-sabaniel2022"
     )
   )
 
@@ -256,7 +351,7 @@ make_drivers <- function() {
   stringr::str_split("-") |>
   lapply(function(x) data.frame(drivers = x[1], period = x[2])) |>
   dplyr::bind_rows() |>
-  dplyr::left_join(mod[,c("to","group","description")], by = c("drivers" = "to")) |>
+  dplyr::left_join(mod, by = c("drivers" = "to")) |>
   dplyr::arrange(group, drivers, period) |>
   write.csv(file = here::here("data","cea_modules","drivers_list.csv"), row.names = FALSE)
 }
