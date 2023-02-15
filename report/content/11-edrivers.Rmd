@@ -12,7 +12,7 @@ As part of this assessment, we updated *eDrivers* to include the environmental d
 
 ```{r edrivers, out.width = "100%"}
 knitr::include_app(
-  "https://david-beauchesne.shinyapps.io/edriversapp/",
+  "https://david-beauchesne.shinyapps.io/edriversapp_dev/",
   height = "900px"
 )
 ```

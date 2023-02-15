@@ -14,7 +14,7 @@ make_eDrivers <- function() {
   #                                IMPORT & FORMAT DATA
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Grid
-  cellsize <- 1000
+  cellsize <- 2000
   grd <- sf::st_read("data/aoi/aoi.gpkg") |>
          sf::st_transform(3857) |>
          stars::st_rasterize(dx = cellsize, dy = cellsize)
