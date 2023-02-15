@@ -114,7 +114,7 @@ make_eDrivers <- function() {
 
   # Create list with all data 
   drivers_ss <- list(
-    rawDrivers = rawDrivers,
+    # rawDrivers = rawDrivers,
     drivers = drivers,
     hotspots = hotspots,
     dr = dr,
