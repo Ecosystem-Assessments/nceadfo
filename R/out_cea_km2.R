@@ -47,139 +47,89 @@ out_cea_km2 <- function() {
     # Import cumulative metrics
     # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
     # ----------------------
-    # Normalized cumulative effects - normalized by number of interactions
+    # Species-scale cea
+    out <- cea_metric(output_sp, '')
+    dat <- numeric(nTx)
+    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
+    cekm$cea_species <- dat / cekm$area
+
+    # ----------------------
+    # Network-scale cea - normalized by number of interactions
     out <- cea_metric(output_cea, 'cea')
     dat <- numeric(nTx)
     for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
     cekm$cea_network <- dat / cekm$area
 
     # ----------------------
-    # Disconnected impacts
-    out <- cea_metric(output_sp, 'Impact_Disconnect')
+    # Network-scale cea - direct effects
+    out <- cea_metric(output_cea, 'cea_direct')
     dat <- numeric(nTx)
     for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$impactDisconnect <- dat / cekm$area
+    cekm$cea_network_direct <- dat / cekm$area
 
     # ----------------------
-    # Intensity total
-    out <- cea_metric('Intensity_Total')
+    # Network-scale cea - indirect effects
+    out <- cea_metric(output_cea, 'cea_indirect')
     dat <- numeric(nTx)
     for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$intensity_total <- dat / cekm$area
+    cekm$cea_network_indirect <- dat / cekm$area
 
-    # ----------------------
-    # Intensity direct
-    out <- cea_metric('Intensity_Direct')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$intensity_direct <- dat / cekm$area
-
-    # ----------------------
-    # Intensity indirect
-    out <- cea_metric('Intensity_Indirect')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$intensity_indirect <- dat / cekm$area
-
-    # ----------------------
-    # Intensity indirect
-    out <- cea_metric('Trophic_Position')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$trophic_position <- dat / cekm$area
-
-    # ----------------------
-    # Trophic sensitivity
-    out <- cea_metric('Trophic_Sensitivity')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$trophic_sensitivity <- dat / cekm$area
-
+    # # ----------------------
+    # # Trophic position
+    # out <- cea_metric('trophic_position')
+    # dat <- numeric(nTx)
+    # for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
+    # cekm$trophic_position <- dat / cekm$area
+    # 
+    # # ----------------------
+    # # Trophic sensitivity
+    # out <- cea_metric('trophic_sensitivity')
+    # dat <- numeric(nTx)
+    # for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
+    # cekm$trophic_sensitivity <- dat / cekm$area
 
     # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # Import stressors intensity
+    # Stressors effects
     # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
     # ----------------------
-    # Total intensity
-    fold <- dir('./Data/Results/Stressor_Total/')
-    metrics <- paste0('Stressor_Total/',fold)
-    for(j in 1:length(metrics)) {
-      out <- cea_metric(metrics[j])
+    # Total
+    path <- here::here(output_cea, "cea_drivers")
+    dr <- dir(path)
+    for(j in 1:length(dr)) {
+      out <- cea_metric(path, dr[j])
       dat <- numeric(nTx)
       for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(fold[j], '_Total')
+      cName <- paste0(dr[j], '_Total_Effect')
       cekm[, cName] <- dat / cekm$area
     }
 
     # ----------------------
-    # Direct intensity
-    fold <- dir('./Data/Results/Stressor_Direct/')
-    metrics <- paste0('Stressor_Direct/',fold)
-    for(j in 1:length(metrics)) {
-      out <- cea_metric(metrics[j])
+    # Direct
+    path <- here::here(output_cea, "cea_drivers_direct")
+    dr <- dir(path)
+    for(j in 1:length(dr)) {
+      out <- cea_metric(path, dr[j])
       dat <- numeric(nTx)
       for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(fold[j], '_Direct')
+      cName <- paste0(dr[j], '_Direct_Effect')
       cekm[, cName] <- dat / cekm$area
     }
 
     # ----------------------
-    # Indirect intensity
-    fold <- dir('./Data/Results/Stressor_Indirect/')
-    metrics <- paste0('Stressor_Indirect/',fold)
-    for(j in 1:length(metrics)) {
-      out <- cea_metric(metrics[j])
+    # Indirect
+    path <- here::here(output_cea, "cea_drivers_indirect")
+    dr <- dir(path)
+    for(j in 1:length(dr)) {
+      out <- cea_metric(path, dr[j])
       dat <- numeric(nTx)
       for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(fold[j], '_Indirect')
+      cName <- paste0(dr[j], '_Indirect_Effect')
       cekm[, cName] <- dat / cekm$area
     }
-
-
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # Import stressors effects
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # ----------------------
-    # Total intensity
-    fold <- dir('./Data/Results/Stressor_Total_Effect/')
-    metrics <- paste0('Stressor_Total_Effect/',fold)
-    for(j in 1:length(metrics)) {
-      out <- cea_metric(metrics[j])
-      dat <- numeric(nTx)
-      for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(fold[j], '_Total_Effect')
-      cekm[, cName] <- dat / cekm$area
-    }
-
-    # ----------------------
-    # Direct intensity
-    fold <- dir('./Data/Results/Stressor_Direct_Effect/')
-    metrics <- paste0('Stressor_Direct_Effect/',fold)
-    for(j in 1:length(metrics)) {
-      out <- cea_metric(metrics[j])
-      dat <- numeric(nTx)
-      for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(fold[j], '_Direct_Effect')
-      cekm[, cName] <- dat / cekm$area
-    }
-
-    # ----------------------
-    # Indirect intensity
-    fold <- dir('./Data/Results/Stressor_Indirect_Effect/')
-    metrics <- paste0('Stressor_Indirect_Effect/',fold)
-    for(j in 1:length(metrics)) {
-      out <- cea_metric(metrics[j])
-      dat <- numeric(nTx)
-      for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(fold[j], '_Indirect_Effect')
-      cekm[, cName] <- dat / cekm$area
-    }
-
 
     # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
     # Export
     # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    saveRDS(cekm, './Data/Results/Cumulative_Effects/CumulativeEffects_Area.rds')
-    write.csv(cekm, here::here(out_per[k]))    
+    write.csv(cekm, here::here(output, glue::glue("cea_km2-{per[k]}.csv")), row.names = FALSE)
   } #k
 }

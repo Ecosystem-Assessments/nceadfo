@@ -251,5 +251,17 @@ out_cea_network <- function() {
     out <- sum(out, na.rm = TRUE)
     values(out)[!idBiotic] <- NA
     export_raster(out, outfold, glue::glue("cea_network-{per[k]}"))
+    
+    # Cumulative effects direct effects
+    out <- cea_metric(output[k], "cea_direct")
+    out <- sum(out, na.rm = TRUE)
+    values(out)[!idBiotic] <- NA
+    export_raster(out, outfold, glue::glue("cea_network_direct-{per[k]}"))
+
+    # Cumulative effects indirect effects
+    out <- cea_metric(output[k], "cea_indirect")
+    out <- sum(out, na.rm = TRUE)
+    values(out)[!idBiotic] <- NA
+    export_raster(out, outfold, glue::glue("cea_network_indirect-{per[k]}"))
   } #k
 }

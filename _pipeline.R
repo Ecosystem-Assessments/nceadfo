@@ -41,6 +41,7 @@ pipeline <- function() {
   out_exposure()
   out_cea_species()
   out_cea_network()
+  out_cea_km2()
   
   # Figures 
   figures()
