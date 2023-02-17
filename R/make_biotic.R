@@ -568,12 +568,40 @@ make_biotic <- function() {
   file.copy(dir(bd, full.names = TRUE), out, overwrite = TRUE)
   
   # Species list 
-  dir(out) |>
-  tools::file_path_sans_ext() |>
-  stringr::str_split("-") |>
-  lapply(function(x) data.frame(shortname = x[1], aphiaID = x[2])) |>
-  dplyr::bind_rows() |>
-  dplyr::mutate(scientific_name = gsub("_", " ", shortname)) |>
-  dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
+  sp <- dir(out) |>
+         tools::file_path_sans_ext() |>
+         stringr::str_split("-") |>
+         lapply(function(x) data.frame(shortname = x[1], aphiaID = x[2])) |>
+         dplyr::bind_rows() |>
+         dplyr::mutate(scientific_name = gsub("_", " ", shortname)) |>
+         dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
+         dplyr::mutate(aphiaID = as.numeric(aphiaID))
+
+  # Add taxonomic groups (for figures later on)
+  taxo <- importdat(c("893b37e8","7c150fc3"))
+  taxo <- dplyr::bind_rows(taxo[c(1,3)]) |>
+          dplyr::select(aphiaID, Phylum, Class) |>
+          dplyr::distinct()
+  sp <- dplyr::left_join(sp, taxo, by = "aphiaID") |>
+         dplyr::mutate(
+           gr1 = ifelse(Phylum == 'Chordata', 'Vertebrates', 'Invertebrates'),
+           gr2 = NA,
+           gr3 = "X"
+         )
+         
+  uid <- sp$Phylum %in% c('Annelida','Brachiopoda','Bryozoa','Ctenophora','Porifera')
+  sp$gr2[uid] <- 'Others'
+  sp$gr2[!uid] <- sp$Phylum[!uid]
+  sp$gr2[sp$Phylum == 'Chordata'] <- sp$Class[sp$Phylum == 'Chordata']
+  sp$gr2[sp$Class %in% c('Ascidiacea','Myxini','Elasmobranchii','Petromyzonti')] <- 'Others2'
+  sp$gr3[sp$Class == 'Asteroidea'] <- 'Asteroidea'
+  sp$gr3[sp$Class == 'Holothuroidea'] <- 'Holothuroidea'
+  sp$gr3[sp$Class == 'Ophiuroidea'] <- 'Ophiuroidea'
+  sp$gr3[sp$Class == 'Bivalvia'] <- 'Bivalvia'
+  sp$gr3[sp$Class == 'Cephalopoda'] <- 'Cephalopoda'
+  sp$gr3[sp$Class == 'Gastropoda'] <- 'Gastropoda'
+  sp$gr3[sp$Class == 'Echinoidea'] <- 'Echinoidea'
+
+  dplyr::select(sp, -Phylum, -Class) |>
   write.csv(file = here::here("data","cea_modules","species_list.csv"), row.names = FALSE)
 }
