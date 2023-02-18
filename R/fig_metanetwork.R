@@ -1,7 +1,26 @@
 #' Export figures for metanetwork
 #'
+#' @describeIn fig_metanetwork metanetwork per period
 #' @export
-fig_metanetwork <- function() {
+fig_metanetwork_ <- function() {
+  # 2010-2015
+  cekm <- read.csv(here::here("output","cea_km2","cea_km2-2010_2015.csv"))
+  fig_metanetwork(cekm, "2010_2015", "Total")
+  fig_metanetwork(cekm, "2010_2015", "Direct")
+  fig_metanetwork(cekm, "2010_2015", "Indirect")
+  
+  # 2016-2021
+  cekm <- read.csv(here::here("output","cea_km2","cea_km2-2016_2021.csv"))
+  fig_metanetwork(cekm, "2016_2021", "Total")
+  fig_metanetwork(cekm, "2016_2021", "Direct")
+  fig_metanetwork(cekm, "2016_2021", "Indirect")
+}
+
+#' Export figures for metanetwork
+#'
+#' @describeIn fig_metanetwork metanetwork figure
+#' @export
+fig_metanetwork <- function(cekm, period, type) {
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Libraries
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
@@ -17,7 +36,7 @@ fig_metanetwork <- function() {
   gg_color_hue <- function(n) {
     hues = seq(15, 375, length = n + 1)
     col <- hcl(h = hues, l = 65, c = 100, alpha = .5)[1:n] |> 
-           lapply(graphicsutils::darken, percentage = 10) |>
+           lapply(graphicsutils::darken, percentage = 30) |>
            unlist() 
     glue::glue("{col}80")
   }
@@ -27,11 +46,57 @@ fig_metanetwork <- function() {
   colVer <- '#6a5024'
   
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  # Data
+  # Function to add transparent nodes for spacing between each node groups
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  # Effects per km2
-  cekm <- read.csv(here::here("output","cea_km2","cea_km2-2010_2015.csv"))
+  randomString <- function() paste0(letters[runif(20,1,26)], collapse = '')
+  insertRow <- function(dat, group, network) {
+    # New row to add 
+    newrow <- data.frame(
+      group = group, 
+      network = network, 
+      name = randomString(), 
+      cex = 0, 
+      cols = '#00000000'
+    )
+    
+    # ID in data.frame where to add rows
+    uid <- which(dat$network == network) |>
+           sort(decreasing = TRUE)
+    
+    # Add rows
+    for(i in uid) {
+      dat <- dplyr::add_row(dat, newrow, .after = i)
+      dat <- dplyr::add_row(dat, newrow, .before = i)
+    }
+
+    # Return 
+    dat    
+  }
   
+  insertRow_ <- function(dat, group, network, nrep) {
+    for(i in 1:nrep) {
+      dat <- insertRow(dat, group, network)    
+    }  
+    dat
+  }
+  
+  
+  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
+  # Plotting function
+  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#  
+  arctext2 <- function(var1, l1, l2, cl = TRUE, cx = .6) {
+    uid <- metanetwork$networkGroup$Var1 == var1
+    middle <- mean(c(metanetwork$networkGroup$lower[uid],
+                     metanetwork$networkGroup$upper[uid]))
+    plotrix::arctext(x = as.character(l1),radius = rad2-.02, middle = middle, 
+                     col = "#ffffff", clockwise = cl, font = 2, cex = cx)
+    plotrix::arctext(x = as.character(l2), radius = rad1+.02, middle = middle, 
+                     col = "#ffffff", clockwise = cl, font = 2, cex = cx)  
+  }
+
+  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
+  # Data
+  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#  
   # Drivers list
   drList <- read.csv(here::here("data","cea_modules","drivers_list.csv")) |>
             dplyr::select(-period) |>
@@ -118,9 +183,9 @@ fig_metanetwork <- function() {
   # Link and nodes for drivers
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Identify columns with total effects per stressor
-  uid <- stringr::str_detect(colnames(cekm), 'Total_Effect')
+  uid <- stringr::str_detect(colnames(cekm), glue::glue("{type}_Effect"))
   dat <- cekm[, uid]
-  colnames(dat) <- gsub('_Total_Effect','', colnames(dat))
+  colnames(dat) <- gsub(glue::glue("_{type}_Effect"),'', colnames(dat))
   dat <- round(dat, 2)
 
   # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
@@ -144,7 +209,7 @@ fig_metanetwork <- function() {
   # Node size
   cexDr <- data.frame(
     drivers = colnames(dat), 
-    cex = log(colMeans(dat, na.rm = TRUE)+1)*10+.4
+    cex = log(colMeans(dat, na.rm = TRUE)+1)*5+.4
   )
 
   nodesDr <- dplyr::select(
@@ -157,27 +222,15 @@ fig_metanetwork <- function() {
   dplyr::left_join(cexDr, by = c("name" = "drivers")) |>
   dplyr::select(group, network, name, cex, cols)
   
-  # # Add transparent nodes for spacing
-  # randomString <- function() paste0(letters[runif(20,1,26)], collapse = '')
-  # # Marine traffic
-  # x <- data.frame(group = 'Stressors', network = 'Marine traffic', name = randomString(), cex = 0, cols = '#00000000', stringsAsFactors = FALSE)
-  # y <- nodesDr
-  # nodesDr <- rbind(y[1:16,], x, x, y[17,], x, x, x, x, x, y[18, ], x, x)
-  # 
-  # # Fisheries
-  # x <- data.frame(group = 'Stressors', network = 'Fisheries', name = randomString(), cex = 0, cols = '#00000000', stringsAsFactors = FALSE)
-  # y <- nodesDr
-  # nodesDr <- rbind(y[1:11,], y[12,], x, x, y[13, ], x, x, y[14, ], x, x, y[15, ], x, x, y[16, ], y[17:nrow(nodesDr), ])
-  # 
-  # # Coastal
-  # x <- data.frame(group = 'Stressors', network = 'Coastal', name = randomString(), cex = 0, cols = '#00000000', stringsAsFactors = FALSE)
-  # y <- nodesDr
-  # nodesDr <- rbind(y[1:6,], y[7,], x, x, y[8, ], x, x, y[9, ], x, x, y[10, ], x, x, y[11, ], y[12:nrow(nodesDr), ])
-  # 
-  # # Climate
-  # x <- data.frame(group = 'Stressors', network = 'Climate', name = randomString(), cex = 0, cols = '#00000000', stringsAsFactors = FALSE)
-  # y <- nodesDr
-  # nodesDr <- rbind(y[1,], x, x, y[2,], x, x, y[3, ], x, x, y[4, ], x, x, y[5, ], x, x, y[6, ], y[7:nrow(nodesDr), ])
+  # Add transparent nodes for spacing
+  nodesDr <- insertRow_(nodesDr, "Stressors", "Marine traffic", 2)
+  nodesDr <- insertRow_(nodesDr, "Stressors", "Fisheries", 1)
+  nodesDr <- insertRow_(nodesDr, "Stressors", "Coastal", 1)
+  nodesDr <- insertRow_(nodesDr, "Stressors", "Climate", 1)
+    
+  # Remove last line if empty
+  ll <- nrow(nodesDr)
+  if (is.na(nodesDr$group[ll])) nodesDr <- nodesDr[-ll, ]
 
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Combine
@@ -186,7 +239,7 @@ fig_metanetwork <- function() {
   metanetwork <- vector('list', 0)
   metanetwork$nodes <- rbind(nodesDr, nodesTx)
   metanetwork$links <- rbind(linksTx, linksDr)
-
+    
 
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Graph elements
@@ -213,22 +266,36 @@ fig_metanetwork <- function() {
   rad1 = .925
   rad2 = 1
   shadowEdge = TRUE
-
+  
+  # Output
   out <- here::here("figures","metanetwork")
   chk_create(out)
-  png(here::here(out,"metanetwork.png"), res = 300, width = 300, height = 300 ,units = "mm")
+  
+  png(
+    here::here(out,glue::glue("metanetwork-{type}-{period}.png")), 
+    res = 300, 
+    width = 300, 
+    height = 300,
+    units = "mm"
+  )
+  
   # Plot
   par(mar = c(2,2,2,2))
   plot0(x = c(-1.1, 1.1))
 
-  metanetwork$networkGroup$Var1[12] <- 'Others'
+  # Adjust some group names
+  uid <- metanetwork$networkGroup$Var1 == "Others2"
+  metanetwork$networkGroup$Var1[uid] <- 'Others'
+  uid <- metanetwork$networkGroup$Var1 == "Marine traffic"
+  metanetwork$networkGroup$Var1[uid] <- '.'
   boxGroup(metanetwork,
            rad1 = rad1,
            colBox = metanetwork$networkGroup$cols,
-           colNames = metanetwork$networkGroup$colNames,
+           colNames = "#ffffff",
            border = 'transparent',
            # border = '#000000',
            cexNetwork = .75)
+  arctext2(".", "Marine", "traffic")
 
   plotLinks(metanetwork, col = metanetwork$links$cols)
 
@@ -246,17 +313,6 @@ fig_metanetwork <- function() {
          cex = (metanetwork$nodes$cex * 3),
          col = metanetwork$nodes$cols)
 
-  # dev.off()
-
-
-
-  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  # Extra elements to graph
-  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Add Vertebrates, Invertebrates and Stressors
   metanetwork$nodes$network <- metanetwork$nodes$group
   metanetwork$networkGroup <- bound(metanetwork, order = unique(metanetwork$nodes$network))
@@ -267,9 +323,6 @@ fig_metanetwork <- function() {
            colBox = '#00000000', colNames = '#000000',
            border = '#000000',
            cexNetwork = 1.1)
-
-  # Letter
-  text(x = -1.1, y = 1.065, labels = 'b', cex = 1.5, font = 2)
 
   dev.off()
 }

@@ -45,6 +45,7 @@ pipeline <- function() {
   
   # Figures 
   figures()
+  fig_metanetwork_()
   fig_atlas()
   
   # Report 

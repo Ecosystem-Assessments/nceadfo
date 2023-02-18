@@ -589,7 +589,7 @@ make_biotic <- function() {
            gr3 = "X"
          )
          
-  uid <- sp$Phylum %in% c('Annelida','Brachiopoda','Bryozoa','Ctenophora','Porifera')
+  uid <- sp$Phylum %in% c('Annelida','Brachiopoda','Bryozoa','Ctenophora','Porifera','Ochrophyta')
   sp$gr2[uid] <- 'Others'
   sp$gr2[!uid] <- sp$Phylum[!uid]
   sp$gr2[sp$Phylum == 'Chordata'] <- sp$Class[sp$Phylum == 'Chordata']
