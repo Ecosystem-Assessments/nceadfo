@@ -7,7 +7,7 @@
 \usage{
 fig_metanetwork_()
 
-fig_metanetwork(cekm, period)
+fig_metanetwork(cekm, period, type)
 }
 \description{
 Export figures for metanetwork
