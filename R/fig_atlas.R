@@ -1,7 +1,7 @@
 #' Export figures for atlas
 #'
 #' @export
-fig_atlas <- function(type = c("footprint","cea","difference","metanetwork","contribution","species","drivers")) {
+fig_atlas <- function(type = c("aoi","footprint","cea","difference","metanetwork","contribution","species","drivers")) {
   # Parameters 
   hts <- 300
   img_resize <- "30%x30%"
@@ -76,6 +76,26 @@ fig_atlas <- function(type = c("footprint","cea","difference","metanetwork","con
     )
   }
 
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  if ("aoi" %in% type) {
+    out <- list()
+    out$figs <- here::here("figures","aoi")
+    out$atlas <- here::here("figures","atlas","aoi")
+    chk <- file.exists(out$figs)
+    stopifnot(chk)
+    chk_create(out$atlas)
+    
+    # Simply copy figure
+    file.copy(
+      from = here::here(out$figs,"aoi.png")
+      to = here::here(out$atlas,"aoi.png")
+    )
+  }
+
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
   # ----------------------------------------------------------------------------------------
   if ("footprint" %in% type) {
     out <- list()

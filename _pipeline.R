@@ -44,8 +44,10 @@ pipeline <- function() {
   out_cea_km2()
   
   # Figures 
+  fig_aoi()
   figures()
   fig_metanetwork_()
+  fig_contribution_()
   fig_atlas()
   
   # Report 
