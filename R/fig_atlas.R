@@ -1,7 +1,7 @@
 #' Export figures for atlas
 #'
 #' @export
-fig_atlas <- function(type = c("footprint","cea","species","drivers")) {
+fig_atlas <- function(type = c("footprint","cea","difference","metanetwork","contribution","species","drivers")) {
   # Parameters 
   hts <- 300
   img_resize <- "30%x30%"
@@ -132,6 +132,8 @@ fig_atlas <- function(type = c("footprint","cea","species","drivers")) {
   }
   
   # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
   if ("cea" %in% type) {
     out <- list()
     out$figs <- here::here("figures","cea")
@@ -190,6 +192,156 @@ fig_atlas <- function(type = c("footprint","cea","species","drivers")) {
     gc()
   }
   
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  if ("difference" %in% type) {
+    out <- list()
+    out$figs <- here::here("figures","cea_difference")
+    out$atlas <- here::here("figures","atlas","difference")
+    chk <- file.exists(out$figs)
+    stopifnot(chk)
+    chk_create(out$atlas)
+    figs <- dir(out$figs, full.names = TRUE)
+    
+    # -----------------
+    # Species-scale cea
+    img <- magick::image_read(here::here(out$figs, "cea_species_difference.png"))
+
+    # Add border 
+    ht <- magick::image_info(img)$height 
+    img <- magick::image_border(img, glue::glue("0x{hts}"), color = "#ffffff") |>
+           magick::image_crop(glue::glue("0x{ht+hts}")) 
+
+    # Add text       
+    img <- nm_title(img, "Species-scale cumulative effects")
+    img <- nm_sub(img, "Difference between 2016-2021 and 2010-2015")
+
+    # Resize 
+    img <- magick::image_resize(img, img_resize)
+
+    # Export  
+    img_write(img, here::here(out$atlas, "cea_species_difference.png"))
+    rm(img)
+    gc()
+    
+    # -----------------
+    # Network-scale cea
+    img <- magick::image_read(here::here(out$figs, "cea_network_difference.png"))
+
+    # Add border 
+    ht <- magick::image_info(img)$height 
+    img <- magick::image_border(img, glue::glue("0x{hts}"), color = "#ffffff") |>
+           magick::image_crop(glue::glue("0x{ht+hts}")) 
+
+    # Add text       
+    img <- nm_title(img, "Network-scale cumulative effects")
+    img <- nm_sub(img, "Difference between 2016-2021 and 2010-2015")
+
+    # Resize 
+    img <- magick::image_resize(img, img_resize)
+
+    # Export  
+    img_write(img, here::here(out$atlas, "cea_network_difference.png"))
+    rm(img)
+    gc()
+  }
+  
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  if ("metanetwork" %in% type) {
+    out <- list()
+    out$figs <- here::here("figures","metanetwork")
+    out$atlas <- here::here("figures","atlas","metanetwork")
+    chk <- file.exists(out$figs)
+    stopifnot(chk)
+    chk_create(out$atlas)
+    figs <- dir(out$figs, full.names = TRUE)
+    
+    # -----------------
+    i1 <- magick::image_read(here::here(out$figs, "metanetwork-Total-2010_2015.png"))
+    i2 <- magick::image_read(here::here(out$figs, "metanetwork-Total-2016_2021.png"))
+    img <- magick::image_append(c(i1,i2))
+
+    # Add border 
+    ht <- magick::image_info(img)$height 
+    img <- magick::image_border(img, glue::glue("0x{hts}"), color = "#ffffff") |>
+           magick::image_crop(glue::glue("0x{ht+hts}")) 
+
+    # Add text       
+    img <- nm_title(img, "Metanetwork")
+    img <- nm_sub2(img, "2010-2015", t1_1)
+    img <- nm_sub2(img, "2016-2021", t2_1)
+
+    # Resize 
+    img <- magick::image_resize(img, img_resize)
+
+    # Export  
+    img_write(img, here::here(out$atlas, "metanetwork.png"))
+    rm(img)
+    gc()
+    
+    # Also copy individual ones, they are most likely to be in the report indivudally
+    file.copy(
+      from = here::here(out$figs, "metanetwork-Total-2010_2015.png"), 
+      to = here::here(out$atlas, "metanetwork-2010_2015.png")
+    )
+    file.copy(
+      from = here::here(out$figs, "metanetwork-Total-2016_2021.png"), 
+      to = here::here(out$atlas, "metanetwork-2016_2021.png")
+    )
+  }
+  
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
+  if ("contribution" %in% type) {
+    out <- list()
+    out$figs <- here::here("figures","contribution")
+    out$atlas <- here::here("figures","atlas","contribution")
+    chk <- file.exists(out$figs)
+    stopifnot(chk)
+    chk_create(out$atlas)
+    figs <- dir(out$figs, full.names = TRUE)
+    
+    # -----------------
+    i1 <- magick::image_read(here::here(out$figs, "contribution_group-2010_2015.png"))
+    i2 <- magick::image_read(here::here(out$figs, "contribution_group-2016_2021.png"))
+    img <- magick::image_append(c(i1,i2))
+
+    # Add border 
+    ht <- magick::image_info(img)$height 
+    img <- magick::image_border(img, glue::glue("0x{hts}"), color = "#ffffff") |>
+           magick::image_crop(glue::glue("0x{ht+hts}")) 
+
+    # Add text       
+    img <- nm_title(img, "Contribution of drivers to cumulative effects")
+    img <- nm_sub(img, "Mean contribution across taxa")
+    img <- nm_sub2(img, "2010-2015", t1_1)
+    img <- nm_sub2(img, "2016-2021", t2_1)
+
+    # Resize 
+    img <- magick::image_resize(img, img_resize)
+
+    # Export  
+    img_write(img, here::here(out$atlas, "contribution.png"))
+    rm(img)
+    gc()
+    
+    # Also copy individual ones, they are most likely to be in the report indivudally
+    file.copy(
+      from = here::here(out$figs, "contribution_group-2010_2015.png"), 
+      to = here::here(out$atlas, "contribution_group-2010_2015.png")
+    )
+    file.copy(
+      from = here::here(out$figs, "contribution_group-2016_2021.png"), 
+      to = here::here(out$atlas, "contribution_group-2016_2021.png")
+    )
+  }
+  
+  # ----------------------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------------------
   # ----------------------------------------------------------------------------------------
   if ("species" %in% type) {
     # Species 
