@@ -28,11 +28,44 @@ knitr::include_graphics(glue::glue("{urls}cea/cea_species.png?raw=true"))
 
 <br/>
 
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}difference/cea_species_difference.png?raw=true"))
+```
+
+<br/>
+
+
 ## Network-scale cumulative effects 
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center'}
 urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
 knitr::include_graphics(glue::glue("{urls}cea/cea_network.png?raw=true"))
+```
+
+<br/>
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}difference/cea_network_difference.png?raw=true"))
+```
+
+
+## Metanetwork 
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}metanetwork/metanetwork-2016_2021.png?raw=true"))
+```
+
+<br/>
+
+
+## Driver contribution
+
+```{r out.width = "90%", echo=FALSE, fig.align='center'}
+urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
+knitr::include_graphics(glue::glue("{urls}contribution/contribution_group-2016_2021.png?raw=true"))
 ```
 
 <br/>
