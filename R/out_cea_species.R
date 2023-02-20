@@ -127,9 +127,15 @@ out_cea_species <- function() {
   chk_create(out)
   for(i in 1:length(disconnectCumImpact)) {
     export_raster(disconnectCumImpact[[i]], out, glue::glue("cea_species-{names(dr)[i]}"))
-    # saveRDS(
-    #   disconnectCumImpact[[i]], 
-    #   here::here(out, glue::glue("cea_species-{names(dr)[i]}.rds"))
-    # )
   }
+  
+  # Evaluate difference between periods
+  cea <- dir(out, pattern = "cea_species", full.names = TRUE) |>
+         lapply(stars::read_stars)
+  diff <- cea[[2]]-cea[[1]]
+  
+  # Export 
+  out <- here::here("output","cea_difference")
+  chk_create(out)
+  stars::write_stars(diff, here::here(out, "cea_species_difference.tif"))
 }

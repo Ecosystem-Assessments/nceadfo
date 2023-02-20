@@ -13,10 +13,11 @@ figures <- function() {
   out$cea <- here::here(out$out, "cea")
   out$footprint <- here::here(out$out, "footprint")
   out$exposure <- here::here(out$out, "exposure")
+  out$diff <- here::here(out$out, "cea_difference")
   lapply(out, chk_create)
   
   # ---
-  plotDat <- function(dat, out, suffix = "") {
+  plotDat <- function(dat, out, suffix = "", type = "regular") {
     nm <- tools::file_path_sans_ext(names(dat))
     png(
       here::here(out, glue::glue("{nm}{suffix}.png")), 
@@ -26,7 +27,8 @@ figures <- function() {
       units = "mm", 
       pointsize = param$figures$pointsize
     )
-    plot_nceadfo(dat)
+    if (type == "regular") plot_nceadfo(dat)
+    if( type == "dual") plot_nceadfo_dual(dat)
     dev.off()
   }
   
@@ -105,4 +107,9 @@ figures <- function() {
   lapply(stars::read_stars) |>
   lapply(plotDat, out$cea)
   
+  # Period differences for both assessments
+  dr <- here::here("output","cea_difference")
+  dir(dr, full.names = TRUE) |>
+  lapply(stars::read_stars) |>
+  lapply(plotDat, out$diff, type = "dual")  
 }

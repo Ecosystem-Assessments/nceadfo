@@ -3,11 +3,14 @@
 \name{plot_nceadfo}
 \alias{plot_nceadfo}
 \alias{plot_nceadfo.stars}
+\alias{plot_nceadfo_dual}
 \title{plot nceadfo data maps}
 \usage{
 plot_nceadfo(dat, ...)
 
 \method{plot_nceadfo}{stars}(dat)
+
+plot_nceadfo_dual(dat)
 }
 \arguments{
 \item{dat}{object of class stars}
@@ -31,6 +34,11 @@ plot_nceadfo(dat, ...)
 \description{
 base plot functions for nceadfo project
 }
+\section{Functions}{
+\itemize{
+\item \code{plot_nceadfo_dual}: plot with dual legend color centered on 0
+}}
+
 \examples{
  load_integrated("navigation")
  plot_nceadfo(navigation[,10], "Navigation", "Recherche gouvernementale")

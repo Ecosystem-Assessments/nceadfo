@@ -264,4 +264,30 @@ out_cea_network <- function() {
     values(out)[!idBiotic] <- NA
     export_raster(out, outfold, glue::glue("cea_network_indirect-{per[k]}"))
   } #k
+  
+  # Evaluate difference between periods
+  out <- here::here("output","cea_difference")
+  chk_create(out)
+
+  # Total
+  cea <- here::here("output","cea")
+  dat <- dir(cea, pattern = "cea_network-", full.names = TRUE) |>
+         lapply(stars::read_stars)
+  diff <- dat[[2]]-dat[[1]]
+  stars::write_stars(diff, here::here(out, "cea_network_difference.tif"))
+
+  # Direct
+  cea <- here::here("output","cea")
+  dat <- dir(cea, pattern = "cea_network_direct", full.names = TRUE) |>
+         lapply(stars::read_stars)
+  diff <- dat[[2]]-dat[[1]]
+  stars::write_stars(diff, here::here(out, "cea_network_direct_difference.tif"))
+
+  # Indirect
+  cea <- here::here("output","cea")
+  dat <- dir(cea, pattern = "cea_network_indirect", full.names = TRUE) |>
+         lapply(stars::read_stars)
+  diff <- dat[[2]]-dat[[1]]
+  stars::write_stars(diff, here::here(out, "cea_network_indirect_difference.tif"))
+
 }

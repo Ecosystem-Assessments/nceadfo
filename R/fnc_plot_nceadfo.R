@@ -50,6 +50,44 @@ plot_nceadfo.stars <- function(dat) {
   plot(sf::st_geometry(usa), lwd = .5, col = param$col$coastline, add = TRUE)
   box()
 }
+
+
+#' Plot to show differences with dual legend color centered on 0
+#' @describeIn plot_nceadfo plot with dual legend color centered on 0
+#' @export
+plot_nceadfo_dual <- function(dat) {
+  # pdf(glue('./figures/figures-format/{data_id}.pdf'), width = 7, height = 5, pointsize = 12)
+  # png(glue('./figures/delete.png'), res = param$figures$resolution, width = param$figures$width, height = param$figures$height, units = "mm", pointsize = param$figures$pointsize)
+  
+  # ------------------
+  aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE)
+  can <- sf::st_read("data/basemap/canada.gpkg", quiet = TRUE)
+  usa <- sf::st_read("data/basemap/usa.gpkg", quiet = TRUE)    
+
+
+  # ------------------
+  global_parameters()
+  bbox <- param$bbox
+  red <- "#744242"
+  blue <- "#036e95"
+  pal1 <- colorRampPalette(c(graphicsutils::lighten(red,80), graphicsutils::darken(red,50)))
+  pal2 <- colorRampPalette(c(graphicsutils::lighten(blue,80), graphicsutils::darken(blue,50)))
+  
+  # ------------------
+  names(dat) <- "diff"
+  plus <- dat |> dplyr::mutate(diff = ifelse(diff < 0, NA, diff))
+  minus <- dat |> dplyr::mutate(diff = ifelse(diff > 0, NA, -diff))
+
+  # ------------------
+  par(family = 'serif', mar = c(.5, .5, .5, .5))
+  graphicsutils::plot0(x = c(bbox$xmin, bbox$xmax), y = c(bbox$ymin, bbox$ymax))
+  image(plus, col = pal1(100))
+  image(minus, col = pal2(100), add = TRUE)
+  plot(sf::st_geometry(aoi), lwd = .5, border = param$col$aoi, add = TRUE)
+  plot(sf::st_geometry(can), lwd = .5, col = param$col$coastline, add = TRUE)
+  plot(sf::st_geometry(usa), lwd = .5, col = param$col$coastline, add = TRUE)
+  box()
+}
 # 
 # 
 #   # ------------------
