@@ -1,3 +1,4 @@
+fig:aoi
 fig:icfig
 tab:drnm
 tab:fishCat

@@ -89,7 +89,7 @@ fig_atlas <- function(type = c("aoi","footprint","cea","difference","metanetwork
     
     # Simply copy figure
     file.copy(
-      from = here::here(out$figs,"aoi.png")
+      from = here::here(out$figs,"aoi.png"),
       to = here::here(out$atlas,"aoi.png")
     )
   }
