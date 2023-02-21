@@ -14,7 +14,7 @@ This method proposes the calculation of a relative indicator of cumulative effec
 
 <br/>
 
-```{r icfig, fig.cap = "A fictitious example of spatial assessment of cumulative effects using the methodology suggested by [@halpern2008a]. The assessment begins by delineating a study area of interest (**A**). A picture of the study area is then made by characterizing the distribution of environmental stressors (**B**) and the valued components (**C**) allowing the assessment objectives to be reached. The summation of all the environmental stressors allows us to identify the environments that are most exposed to cumulative stress, *i.e.* cumulative exposure (**D**). The sum of valued components, on the other hand, allows us to identify the environments in the study area where a higher number of valued components overlap (**E**). By combining the distribution of environmental stressors and valued components along with the vulnerability of the valued components to the environmental stressors, a relative assessment of individual effects is obtained (**F**). It is possible to assess the impact of all the environmental stressors on a single valued component (**G**); similarly, it is possible to assess the impact of a single environmental stressor on all valued components (**H**). Finding the sum of all the individual impacts provides the relative assessment of cumulative effects incorporating all combinations of environmental stressors and valued components (**I**).", out.width = '100%'}
+```{r icfig, fig.cap = "A fictitious example of spatial assessment of cumulative effects using the methodology suggested by [@halpern2008a]. The assessment begins by delineating a study area of interest (**A**). A picture of the study area is then made by characterizing the distribution of environmental stressors (**B**) and the valued components (**C**) allowing the assessment objectives to be reached. The summation of all the environmental stressors allows us to identify the environments that are most exposed to cumulative stress, *i.e.* cumulative exposure (**D**). The sum of valued components, on the other hand, allows us to identify the environments in the study area where a higher number of valued components overlap (**E**). By combining the distribution of environmental stressors and valued components along with the vulnerability of the valued components to the environmental stressors, a relative assessment of individual effects is obtained (**F**). It is possible to assess the impact of all the environmental stressors on a single valued component (**G**); similarly, it is possible to assess the impact of a single environmental stressor on all valued components (**H**). Finding the sum of all the individual impacts provides the relative assessment of cumulative effects incorporating all combinations of environmental stressors and valued components (**I**).", out.width = '80%'}
 knitr::include_graphics("Figures/IC.png")
 ```
 
@@ -51,50 +51,8 @@ The full model for network-scale cumulative effects assessment is thus:
 $$C_N = \sum_i \frac{1}{|M_i|} \sum_{m_{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j} \label{eq6}$$
 
 
+## Data requirements {#datareq}
 
-## Partial models
-
-The general cumulative effects assessment model can easily be broken down into partial models to explore simplified portions of the assessment. We therefore present three additional indicators allowing the results of the assessment to be explored. 
-
-### Cumulative stressors and hotspots {#strcummethod}
-
-Considering only the spatial distribution and relative intensity of the environmental stressors considered ($S_j$) provides an assessment of the cumulative stressors $E_{S,x}$ [@beauchesne2020], which corresponds to the total of all the environmental stressors $S$ in each cell $x$ considered for the assessment:
-
-$$E_{S_x} = \sum_{j=1}^m S_{j,x} \label{eq2}$$
-
-The cumulative stressor assessment of environmental stressors identifies the sites that are most exposed to the potential effects of the environmental stressors considered for the cumulative effects assessment. It does not provide an effects assessment, since it only considers the stressors, and their intensity and distribution. However, it does allow us to assess the environments that are most likely to be affected by the stressors in our study area. 
-
-In order to limit an over-representation of stressors composed of several subcategories, it is also possible to normalize the intensity values of a stressor category by the number of sub-categories that compose it. For example, a stressor consisting of 10 categories would have a higher weight than a stressor consisting of only one category. To normalize the intensity values, the intensity of these subcategories need only be divided by the number of subcategories, *e.g.* for a category composed of 10 subcategories, the intensity is divided by 10. 
-
-Using the cumulative stressor assessment, it is also possible to obtain an assessment of cumulative stressor hotspots, which identify environments where environmental stressors co-occur at high relative intensities [@beauchesne2020]. The cumulative hotspots $E_{H_x}$ is calculated in each cell of the study grid and corresponds to the sum of stressors whose intensity is contained in their respective $80th$ percentile: 
-
-$$E_{H_x} = \sum_{j=1}^m \mathbb{1} (S_{j,x} \; \epsilon \; P_{80, S_j})$$
-
-where $P_{80, S_j}$ is the $80th$ percentile of stressor $j$. The results of normalized and non-normalized cumulative stressors and cumulative hotspots are presented in section \@ref(strcumresult).
-
-
-#### Cumulative valued components {#cvcummethod}
-
-Considering only the mapped presence or absence of the valued components considered ($CV_i$) provides an assessment of the cumulative stressors $E_{S,x}$, which corresponds to the total of all environmental stressors $CV$ in each cell $x$:
-
-$$E_{CV_x} = \sum_{i=1}^n CV_{i,x} \label{eq3}$$
-
-The cumulative footprint assessment identifies the environments with the highest content of valued components. As with the cumulative stressor assessment, it does not provide an effects assessment, since it only considers the valued components. However, it does allow us to assess the environments that are most important for the valued components in our study area. The presence of valued components can also be normalized by the number of valued component categories to avoid over-representation of valued components composed of multiple categories (see section \@ref(strcummethod)). The results of normalized and non-normalized valued components are presented in section \@ref(cvcumresult).
-
-
-#### Cumulative exposure {#cumexpmethod}
-
-The intersection of the assessment of the stressors and the cumulative valued components provide the third partial model that we are presenting in addition to the overall model, *i.e.* cumulative exposure. The cumulative exposure $E_{E,x}$ is the product of the intensity of the environmental stressors $S_{j,x}$ and the presence of the valued components $CV_{i,x}$ in each cell $x$:
-
-$$E_{E_x} = \sum_{i=1}^n \sum_{j=1}^m CV_{i,x} * S_{j,x} \label{eq4}$$
-
-Cumulative exposure provides an assessment of environments where there is greater overlap of valued components and environmental stressors. Although this metric does not predict the effect of stressors on valued components, it does identify environments where the valued components are most likely to be subjected to the effects of the environmental stressors considered. Cumulative exposure also makes it possible to delimit all the environments where cumulative effects could occur, since stressors and valued components must overlap in order to detect an effect; as such, this metric captures a significant portion of cumulative effects even though it does not incorporate the vulnerability of valued components to stressors. As with the cumulative valued components and stressors, cumulative exposure can be normalized by the number of stressor and valued component categories to avoid over-representation of valued components composed of multiple categories (see section \@ref(strcummethod)). The results of normalized and non-normalized cumulative exposure are presented in section \@ref(cumexpresult).
-
-## Data requirements 
-
-
-<!-- ADD THIS TO THE TEXT AND REFER TO THE MODULE SECTIONS -->
- Modules {#modules}
 
 Assessing cumulative using the described general models requires 5 independent data modules: 
 
@@ -104,3 +62,33 @@ Assessing cumulative using the described general models requires 5 independent d
 - Species-specific sensitivity
 - Trophic sensitivity
 
+<!-- Much of the limitations and assumptions of our approach are representative of a general lack of knowledge and data for the application of holistic environmental approaches. Once available, knowledge and data could be accommodated to improve the individual components that make up the assessment, that is the distribution and intensity of stressors, the distribution of species, the metaweb of species interactions, species-specific sensitivities to stressors, and trophic sensitivities. These individual components are flexible, grounded in theory and data-oriented; the expanding corpus of openly available environmental knowledge and computational capabilities can thus be leveraged to independently and incrementally improve their quality and, in doing so, enhance the quality of cumulative effects assessments.
+
+
+
+Finalement, l’approche proposée est construite à partir d’une série de modules
+qui caractérisent un système d’étude et des attributs biologiques : la distribution et
+l’intensité des stresseurs, la distribution des espèces, le méta-réseau d’interactions
+écologiques, les réponses spécifiques aux espèces aux stresseurs, et la sensibilité
+trophique. Ces modules sont flexibles, basés sur des fondements théoriques et guidés par
+les données ; la quantité grandissante de connaissances et de données environnementales
+accessibles ouvertement et le développement des capacités computationnelles pourront
+être mis à profit pour améliorer la qualité des modules individuels et de l’évaluation
+des effets cumulatifs. Ces modules sont également largement discutés au sein de la
+littérature scientifique et de nouvelles approches sont régulièrement publiées. Les
+modèles de distributions des espèces sont activement développés (Norberg et al.,
+2019) ; des méthodes quantitatives pour prédire les interactions écologiques et atténuer
+les difficultés logistiques de leur échantillonnage in situ sont de plus en plus disponibles
+(Morales-Castilla et al., 2015; Beauchesne et al., 2016; Albouy et al., 2019; Poisot
+et al., 2020) ; les connaissances sur la sensibilité spécifique des espèces aux stresseurs
+environnementaux sont explorés grâce à des exercices de modélisation (Lindmark
+et al., 2019; Dee et al., 2020; Otto et al., 2020) et des manipulations expérimentales
+(Pillet et al., 2016; Lange et Marshall, 2017). De plus, des initiatives de science ouverte
+fournissent une quantité croissante de données sur lesquelles l’approche proposée au
+chapitre 5 repose : la distribution et l’intensité des stresseurs (Halpern et al., 2015a;
+Beauchesne et al., 2020b), l’occurrence d’espèces (GBIF, 2020; OBIS, 2020), les traits
+fonctionnels (WoRMS Editorial Board, 2017; Froese et Pauly, 2019; Palomares et
+Pauly, 2019; Encyclopedia of Life, 2020), les interactions écologiques (Poelen et al.,
+2014; Poisot et al., 2016) et les données abiotiques (Assis et al., 2018). Il semble ainsi
+raisonnable de croire que les limites présentées s’atténueront et que l’applicabilité de
+la méthode proposée s’accentuera progressivement. -->

@@ -5,8 +5,8 @@
 \title{Export figures for atlas}
 \usage{
 fig_atlas(
-  type = c("footprint", "cea", "difference", "metanetwork", "contribution", "species",
-    "drivers")
+  type = c("aoi", "footprint", "cea", "difference", "metanetwork", "contribution",
+    "species", "drivers")
 )
 }
 \description{

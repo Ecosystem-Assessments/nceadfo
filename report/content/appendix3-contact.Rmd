@@ -1,0 +1,15 @@
+# Appendix 3 {.unnumbered #appendix3}
+
+```{r contactapp}
+contact <- read.csv(here::here("data","metadata","contacts.csv")) |>
+           dplyr::mutate(
+             name = glue::glue("[{first_name} {last_name}](mailto:{email})")
+           ) |>
+           dplyr::select(contact_id, name, organization)
+contact |>
+knitr::kable(
+  col.names = c("UID", "Name","Organization"),
+  row.names = FALSE,
+  caption = "List of organizations and exports for raw data used for the cumulative effects assessment of global changes on the ecological communities of the Scotian Shelf."
+) 
+```

@@ -23,14 +23,14 @@
 <meta name="author" content="David Beauchesne, Cindy Grant, Philippe Archambault" />
 
 
-<meta name="date" content="2023-02-20" />
+<meta name="date" content="2023-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="appendix.html"/>
+<link rel="prev" href="appendix2.html"/>
 <link rel="next" href="bibliography.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -175,11 +175,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.1.1" data-path="method.html"><a href="method.html#speciesmethod"><i class="fa fa-check"></i><b>4.1.1</b> Species-scale assessment<span></span></a></li>
 <li class="chapter" data-level="4.1.2" data-path="method.html"><a href="method.html#networkmethod"><i class="fa fa-check"></i><b>4.1.2</b> Network-scale assessment<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="method.html"><a href="method.html#partial-models"><i class="fa fa-check"></i><b>4.2</b> Partial models<span></span></a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="method.html"><a href="method.html#strcummethod"><i class="fa fa-check"></i><b>4.2.1</b> Cumulative stressors and hotspots<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="method.html"><a href="method.html#data-requirements"><i class="fa fa-check"></i><b>4.3</b> Data requirements<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="method.html"><a href="method.html#datareq"><i class="fa fa-check"></i><b>4.2</b> Data requirements<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="nceadfo.html"><a href="nceadfo.html"><i class="fa fa-check"></i><b>5</b> Reproducibility and data management<span></span></a></li>
 <li class="chapter" data-level="6" data-path="modules.html"><a href="modules.html"><i class="fa fa-check"></i><b>6</b> Modules<span></span></a>
@@ -228,7 +224,7 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li><a href="appendix1.html#appendix1">Appendix 1<span></span></a></li>
-<li><a href="appendix.html#appendix">Appendix 2<span></span></a></li>
+<li><a href="appendix2.html#appendix2">Appendix 2<span></span></a></li>
 <li><a href="appendix3.html#appendix3">Appendix 3<span></span></a></li>
 <li><a href="bibliography.html#bibliography">Bibliography<span></span></a></li>
 <li class="divider"></li>
@@ -253,85 +249,181 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="appendix3" class="section level1 unnumbered hasAnchor">
 <h1>Appendix 3<a href="appendix3.html#appendix3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Description of the research compendium prepared to structure the cumulative effects assessment of marine vessel activities in the St. Lawrence and the river Saguenay.</p>
-<div id="ceanav" class="section level4 unnumbered hasAnchor">
-<h4>ceanav <a href='https://github.com/EffetsCumulatifsNavigation/ceanav'><img src='./figures/logo.png' align="right" height="175" /></a><a href="appendix3.html#ceanav" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<!-- ```{r logoannexe3, out.width = '30%', fig.link = "https://github.com/EffetsCumulatifsNavigation/ceanav"}
-knitr::include_graphics("./figures/logo.png")
-``` -->
-<p><a href="https://www.tidyverse.org/lifecycle/#preliminary"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle" /></a>
-<img src="https://img.shields.io/badge/status-preliminary-blue.svg" /></p>
-<p>This repository contains the research compendium for the pilot project on the cumulative effects assessment of marine vessel activities in the St. Lawrence and the river Saguenay. It contains all the code to import, format, and integrate the datasets, and to run the analyses, create the figures, and render the assessment report.</p>
-<p>Since the data are not included in the research compendium, the whole pipeline must be executed to reproduce the cumulative effects assessment. It must however be noted that not all data are openly available or accessible through open-data portals due to some data sharing agreements. It is therefore necessary to contact us or the contacts identified to obtain the necessary data.</p>
-</div>
-<div id="how-to-cite" class="section level4 unnumbered hasAnchor">
-<h4>How to cite<a href="appendix3.html#how-to-cite" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Cite the research compendium as follows:</p>
-<blockquote>
-<p>Beauchesne D (2022) Research compendium for the pilot project on the cumulative effects assessment of marine vessel activities in the St. Lawrence and the river Saguenay. Consulted on [AAAA-MM-JJ]. <a href="https://github.com/EffetsCumulatifsNavigation/ceanav" class="uri">https://github.com/EffetsCumulatifsNavigation/ceanav</a>.</p>
-</blockquote>
-</div>
-<div id="content" class="section level4 unnumbered hasAnchor">
-<h4>Content<a href="appendix3.html#content" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>This research compendium is structure as follows:</p>
-<ul>
-<li><p><a href="https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/data"><strong>data/</strong></a>:
-contains all the data. Note that the majority of the data are not included in the repository, but the metadata are available for all data presented.</p>
-<ul>
-<li><em>data-basemap/</em>: contains spatial data used to generate project figures</li>
-<li><em>data-contact/</em>: contains data on organizations and resource persons for the project</li>
-<li><em>data-format/</em>: contains the formatted data</li>
-<li><em>data-integrated/</em>: contains the integrated datasets</li>
-<li><em>data-metadata/</em>: contains the metadata for the raw data and integrated data</li>
-<li><em>data-output/</em>: contains the assessment results</li>
-<li><em>data-param/</em>: contains the general parameters used for the project (<em>i.e.</em> spatial projection, spatial extents, color palettes, nomenclature, etc.)</li>
-<li><em>data-raw/</em>: contains the raw data; <em>warning</em> : all the data are not available due to data sharing agreements. Refer to metadata for more information on specific datasets</li>
-<li><em>data-vulnerability/</em>: contains the data for the vulnerability of valued components to environmental stressors</li>
-</ul></li>
-<li><p><a href="https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/docs"><strong>docs/</strong></a>: contains the web page for the research compendium generated by <a href="https://pkgdown.r-lib.org/"><code>pkgdown</code></a></p></li>
-<li><p><a href="https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/figures"><strong>figures/</strong></a>: contains the project figures</p>
-<ul>
-<li><em>figures-integrated</em>: figures of integrated data for each category of environmental stressor and valued component</li>
-<li><em>figures-output</em>: figures of assessment results</li>
-</ul></li>
-<li><p><a href="https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/inst/templates"><strong>inst/templates</strong></a>: presentation templates used to present data</p></li>
-<li><p><a href="https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/man"><strong>man/</strong></a>: contains the documentation of R functions built for the project</p></li>
-<li><p><a href="https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/R"><strong>R/</strong></a>: contains all the R function developed for the project</p>
-<ul>
-<li><code>00-pipeline.R</code>: contains a function that executes the whole project pipeline, <em>i.e.</em> accessing, formatting and integrating the raw data, run the analyses, generate the tables and figures, and render the assessment reports. <em>Warning</em> : this function, if executed in its entirety, will take a long time to run.</li>
-<li><code>ana_nom.R</code>: contains analyses scripts</li>
-<li><code>dataXXXX-nom.R</code>: contains the routines to access and format raw data</li>
-<li><code>fig_nom.R</code>: contains scripts to generate figures</li>
-<li><code>fnc_nom.R</code>: contains R function developed for the project</li>
-<li><code>int-cv_nom.R</code>: contains the routines to integrate valued components</li>
-<li><code>int-st_nom.R</code>: contains the routines to integrate environmental stressors</li>
-<li><code>rep_nom.R</code>: contain code to generate portions of the reports</li>
-<li><code>vuln_nom.R</code>: contains the routines to integrated the data on the vulnerability of valued components to environmental stressors</li>
-</ul></li>
-<li><p><a href="https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/report"><strong>report/</strong></a>: contains the report</p></li>
-<li><p><code>_pkgdown.yml</code>: metadata to generate the research compendium web page</p></li>
-<li><p><code>DESCRIPTION</code>: project metadata</p></li>
-<li><p><code>README.Rmd</code>: research compendium description</p></li>
-</ul>
-</div>
-<div id="how-to-use" class="section level4 unnumbered hasAnchor">
-<h4>How to use<a href="appendix3.html#how-to-use" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Clone and execute the following commands in your terminal:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="appendix3.html#cb1-1" aria-hidden="true" tabindex="-1"></a>R <span class="sc">-</span>e <span class="st">&#39;library(devtools);document()&#39;</span></span>
-<span id="cb1-2"><a href="appendix3.html#cb1-2" aria-hidden="true" tabindex="-1"></a>R CMD INSTALL .</span>
-<span id="cb1-3"><a href="appendix3.html#cb1-3" aria-hidden="true" tabindex="-1"></a>R</span>
-<span id="cb1-4"><a href="appendix3.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ceanav)</span>
-<span id="cb1-5"><a href="appendix3.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pipeline</span>()</span></code></pre></div>
-<p><em>Warning</em> : this research compendium is not fully reproducible due to data sharing agreements imposing restrictions on sharing certain datasets.</p>
+<table>
+<caption><span id="tab:contactapp">Table 9.2: </span>List of organizations and exports for raw data used for the cumulative effects assessment of global changes on the ecological communities of the Scotian Shelf.</caption>
+<thead>
+<tr class="header">
+<th align="right">UID</th>
+<th align="left">Name</th>
+<th align="left">Organization</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left"><a href="mailto:david.beauchesne@hotmail.com">David Beauchesne</a></td>
+<td align="left">Universite Laval</td>
+</tr>
+<tr class="even">
+<td align="right">17</td>
+<td align="left"><a href="mailto:Grace.Murphy@dfo-mpo.gc.ca">Grace Murphy</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">18</td>
+<td align="left"><a href="mailto:Noreen.Kelly@dfo-mpo.gc.ca">Noreen Kelly</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="even">
+<td align="right">22</td>
+<td align="left"><a href="mailto:sarah.wong2@canada.ca">Sarah Wong</a></td>
+<td align="left">Environment and Climate Change Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="left"><a href="mailto:gavin.manson@canada.ca">Gavin K Manson</a></td>
+<td align="left">Natural Resources Canada</td>
+</tr>
+<tr class="even">
+<td align="right">26</td>
+<td align="left"><a href="mailto:nicole.couture@canada.ca">Nicole J Couture</a></td>
+<td align="left">Natural Resources Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">27</td>
+<td align="left"><a href="mailto:thomas.james@canada.ca">Thomas James</a></td>
+<td align="left">Natural Resources Canada</td>
+</tr>
+<tr class="even">
+<td align="right">28</td>
+<td align="left"><a href="mailto:nrcan.gsc-geosciencedata-donneesgeoscience-cgc.rncan@canada.ca"></a></td>
+<td align="left">Natural Resources Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">34</td>
+<td align="left"><a href="mailto:Denis.Bernier@dfo-mpo.gc.ca">Denis Bernier</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="even">
+<td align="right">35</td>
+<td align="left"><a href="mailto:gddaiss-dmsaisb.XLAU@dfo-mpo.gc.ca"></a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">36</td>
+<td align="left"><a href="mailto:Brian.Boivin@dfo-mpo.gc.ca">Brian Boivin</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="even">
+<td align="right">37</td>
+<td align="left"><a href="mailto:DFO.NCRMPCGIS-PCMSIGNCR.MPO@dfo-mpo.gc.ca"></a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">40</td>
+<td align="left"><a href="mailto:info@marinespecies.org"></a></td>
+<td align="left">World Register of Marine Species</td>
+</tr>
+<tr class="even">
+<td align="right">41</td>
+<td align="left"><a href="mailto:celvidge@mines.edu">Christopher Elvidge</a></td>
+<td align="left">Colorado School of Mines</td>
+</tr>
+<tr class="odd">
+<td align="right">42</td>
+<td align="left"><a href="mailto:tyler@globalfishingwatch.org">Tyler Clavelle</a></td>
+<td align="left">Global Fishing Watch</td>
+</tr>
+<tr class="even">
+<td align="right">43</td>
+<td align="left"><a href="mailto:STATCAN.infostats-infostats.STATCAN@canada.ca"></a></td>
+<td align="left">Statistics Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">44</td>
+<td align="left"><a href="mailto:infostats@statcan.gc.ca"></a></td>
+<td align="left">Statistics Canada</td>
+</tr>
+<tr class="even">
+<td align="right">45</td>
+<td align="left"><a href="mailto:Peter.Galbraith@dfo-mpo.gc.ca">Peter S. Galbraith</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">46</td>
+<td align="left"><a href="mailto:halpern@bren.ucsb.edu">Benjamin S. Halpern</a></td>
+<td align="left">University of California</td>
+</tr>
+<tr class="even">
+<td align="right">47</td>
+<td align="left"><a href="mailto:acosandeygodin@WWFCanada.org">Aurélie Cosandey-Godin</a></td>
+<td align="left">WWF-Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">48</td>
+<td align="left"><a href="mailto:sgiroux@romm.ca">Sonia Giroux</a></td>
+<td align="left">Réseau d’observation de mammifères marins</td>
+</tr>
+<tr class="even">
+<td align="right">49</td>
+<td align="left"><a href="mailto:zeliang.wang@dfo-mpo.gc.ca">Zeliang Wang</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="left"><a href="mailto:gdacc@seabed2030.org"></a></td>
+<td align="left">General Bathymetric Chart of the Oceans (GEBCO)</td>
+</tr>
+<tr class="even">
+<td align="right">51</td>
+<td align="left"><a href="mailto:Claudio.DiBacco@dfo-mpo.gc.ca">Claudio DiBacco</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">52</td>
+<td align="left"><a href="mailto:DFO.MAR-PED-Data-Request-Demande-de-donnes-DEP-MAR.MPO@dfo-mpo.gc.ca"></a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="even">
+<td align="right">59</td>
+<td align="left"><a href="mailto:Chantelle.Layton@dfo-mpo.gc.ca">Chantelle Layton</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="odd">
+<td align="right">60</td>
+<td align="left"><a href="mailto:David.Hebert@dfo-mpo.gc.ca">David Hebert</a></td>
+<td align="left">Fisheries and Oceans Canada</td>
+</tr>
+<tr class="even">
+<td align="right">69</td>
+<td align="left"><a href="mailto:lennert.tyberghein@vliz.be">Lennert Tyberghein</a></td>
+<td align="left">Flanders Marine Institute</td>
+</tr>
+<tr class="odd">
+<td align="right">70</td>
+<td align="left"><a href="mailto:mail@samuelbosch.com">Samuel Bosch</a></td>
+<td align="left">Institute for Agricultural and Fisheries Research</td>
+</tr>
+<tr class="even">
+<td align="right">71</td>
+<td align="left"><a href="mailto:salvafern@pm.me">Salvador Fernandez</a></td>
+<td align="left">Flanders Marine Institute</td>
+</tr>
+<tr class="odd">
+<td align="right">73</td>
+<td align="left"><a href="mailto:Carina.Gjerdrum@ec.gc.ca">Carina Gjerdrum</a></td>
+<td align="left">Environment and Climate Change Canada</td>
+</tr>
+</tbody>
+</table>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="appendix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -363,7 +455,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/content/appendix3-compendium.Rmd",
+"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/content/appendix3-contact.Rmd",
 "text": "Edit"
 },
 "history": {

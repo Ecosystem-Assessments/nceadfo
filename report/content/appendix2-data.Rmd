@@ -1,0 +1,15 @@
+# Appendix 2 {.unnumbered #appendix2}
+
+```{r dataapp}
+meta <- read.csv(here::here("data","metadata","metadata.csv")) |>
+        dplyr::mutate(
+          uid = glue::glue("[{uid}]({uid_url})"),
+          name = glue::glue("[{name}]({url})")
+        )
+dplyr::select(meta, uid, name, description, timespan, access, contact, source) |>
+knitr::kable(
+  col.names = c("UID", "Name","Description","Timespan","Access date","Contacts","Source"),
+  row.names = FALSE,
+  caption = "List of data used for the cumulative effects assessment of global changes on the ecological communities of the Scotian Shelf."
+) 
+```

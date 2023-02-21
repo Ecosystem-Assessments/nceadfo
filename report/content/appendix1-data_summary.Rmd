@@ -1,3 +1,0 @@
-# Appendix 1 {.unnumbered #appendix1} 
-
-- Automatically generate data table from pipedat workflow

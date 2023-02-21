@@ -10,6 +10,8 @@ tab:distmm
 tab:distbirds
 tab:sptraits
 tab:spsensitivity
+tab:dataapp
+tab:contactapp
 background
 scope-and-objectives-of-the-assessment
 objectives
@@ -19,11 +21,7 @@ method
 ceamethod
 speciesmethod
 networkmethod
-partial-models
-strcummethod
-cvcummethod
-cumexpmethod
-data-requirements
+datareq
 nceadfo
 modules
 drmodule

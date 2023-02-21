@@ -24,65 +24,63 @@ pipedat:
       - 2021
   # ==========================================================================
   data_pipelines:
-    # # ------------------------------------------------------------------------
-    # # Environmental stressors
-    # - "f2109e69" # Commercial fisheries logbooks
-    # - "35608fef" # CanCoast - Coastal Materials Version 2.0
-    # # - "8509eeb1" # Nighttime Ligths    
-    # - "8449dee0" # AIS global shipping data
-    # - "c676dc2b" # Census cartographic boundary files 2016
-    # - "b9024b04" # Census cartographic boundary files 2021
-    # - "d147406d" # Census population 2016
-    # - "d96dec16" # Census population 2021
-    # - "4f84f0e3" # Global cumulative human impacts assessments (Halpern)
-    # - "7c8c4da1" # Invasive species distribution models
-    # - "fdd796d7" # Summer Groundfish Interpolated Results Scotian Shelf
-    # - "9d64101c" # Sea surface temperature anomalies
-    # - "57121439" # Watershed activity index
-    # # ------------------------------------------------------------------------
-    # # Abiotic data 
-    # - "71944efd" # Monthly temperature climatology	
-    # - "0d61380a" # Monthly salinity climatology
-    # - "906f1155" # Monthly currents climatology
-    # - "e775900b" # The GEBCO_2021 Grid Bathymetry
-    # - "4d4292ca" # Bio-ORACLE
-    # # ------------------------------------------------------------------------
-    # # Biotic data 
-    # - "3d1bfb8e" # Marine mammals WWF-ROMM
-    # - "2aafec74" # DFO Research Vessel Survey 4VSW
-    # - "90e90110" # DFO Research Vessel Survey Fall
-    # - "21f8a758" # DFO Research Vessel Survey Spring
-    # - "3348d162" # DFO Research Vessel Survey Summer
-    # - "d8094d1b" # Species interactions catalog
-    # - "7a5323bb" # Updated interaction catalog (will not work without integration run first...)
-    # - "1386850b" # Species-specific sensitivities
-    # - "0b902b1e" # Species trophic sensitivities
-    # - "084860fd" # CARMs checklist
-    # - "08e94a14" # ECSAS sea bird survey
-  # ==========================================================================
-  data_integration:
-    # # ------------------------------------------------------------------------
-    # # Environmental stressors
-    # - "e2b7e6c4" # Fisheries intensity
-    # - "72312316" # Shipping intensity
-    # - "aba5e90a" # Night lights
-    # - "99bb2d51" # Direct human impact
-    # # - "16c0d3ad" # Global cumulative human impacts assessments (Halpern)
-    # - "84b6ea0b" # Invasive species environmental stressor
-    # - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
-    # - "3992e1a6" # Sea surface temperature anomalies intensity
-    # - "041a30d2" # Watershed activity index
+    # ------------------------------------------------------------------------
+    # Environmental stressors
+    - "f2109e69" # Commercial fisheries logbooks
+    - "35608fef" # CanCoast - Coastal Materials Version 2.0
+    - "8509eeb1" # Nighttime Ligths    
+    - "8449dee0" # AIS global shipping data
+    - "c676dc2b" # Census cartographic boundary files 2016
+    - "b9024b04" # Census cartographic boundary files 2021
+    - "d147406d" # Census population 2016
+    - "d96dec16" # Census population 2021
+    - "7c8c4da1" # Invasive species distribution models
+    - "fdd796d7" # Summer Groundfish Interpolated Results Scotian Shelf
+    - "9d64101c" # Sea surface temperature anomalies
+    - "57121439" # Watershed activity index
     # ------------------------------------------------------------------------
     # Abiotic data 
-    # - "c055366b" # Monthly temperature climatology
-    # - "608c7f2f" # Monthly salinity climatology
-    # - "62753cdf" # Monthly currents climatology
-    # - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
+    - "71944efd" # Monthly temperature climatology	
+    - "0d61380a" # Monthly salinity climatology
+    - "906f1155" # Monthly currents climatology
+    - "e775900b" # The GEBCO_2021 Grid Bathymetry
+    - "4d4292ca" # Bio-ORACLE
     # ------------------------------------------------------------------------
     # Biotic data 
-    # - "893b37e8" # Species list North West Atlantic
-    # - "18869625" # Species occurrences North West Atlantic
-    # - "7c150fc3" # Marine mammals and birds in eastern Canada
+    - "3d1bfb8e" # Marine mammals WWF-ROMM
+    - "2aafec74" # DFO Research Vessel Survey 4VSW
+    - "90e90110" # DFO Research Vessel Survey Fall
+    - "21f8a758" # DFO Research Vessel Survey Spring
+    - "3348d162" # DFO Research Vessel Survey Summer
+    - "d8094d1b" # Species interactions catalog
+    - "7a5323bb" # Updated interaction catalog (will not work without integration run first...)
+    - "1386850b" # Species-specific sensitivities
+    - "0b902b1e" # Species trophic sensitivities
+    - "084860fd" # CARMs checklist
+    - "08e94a14" # ECSAS sea bird survey
+  # ==========================================================================
+  data_integration:
+    # ------------------------------------------------------------------------
+    # Environmental stressors
+    - "e2b7e6c4" # Fisheries intensity
+    - "72312316" # Shipping intensity
+    - "aba5e90a" # Night lights
+    - "99bb2d51" # Direct human impact
+    - "84b6ea0b" # Invasive species environmental stressor
+    - "6dba9a9f" # Bottom water temperature anomalies in the Atlantic
+    - "3992e1a6" # Sea surface temperature anomalies intensity
+    - "041a30d2" # Watershed activity index
+    # ------------------------------------------------------------------------
+    # Abiotic data 
+    - "c055366b" # Monthly temperature climatology
+    - "608c7f2f" # Monthly salinity climatology
+    - "62753cdf" # Monthly currents climatology
+    - "ee0dd36a" # The GEBCO_2021 Grid Bathymetry
+    # ------------------------------------------------------------------------
+    # Biotic data 
+    - "893b37e8" # Species list North West Atlantic
+    - "18869625" # Species occurrences North West Atlantic
+    - "7c150fc3" # Marine mammals and birds in eastern Canada
   # ==========================================================================
   params:
     halpern_layers:

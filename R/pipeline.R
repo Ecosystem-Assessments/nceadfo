@@ -1,5 +1,6 @@
-library(devtools)
-load_all()
+#' Pipeline to execute full cumulative effects assessment.
+#'
+#' @export
 
 pipeline <- function() {
   # Update global parameters
@@ -12,7 +13,8 @@ pipeline <- function() {
   # Integrate data 
   pipedat::pipeflow("./data/config/pipedat.yml")
   
-  # Get bibliographies
+  # Get metadata & bibliographies
+  gather_meta()
   gather_bib()
   
   # Prepare assessment data modules 
