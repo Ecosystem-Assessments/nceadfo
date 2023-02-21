@@ -8,11 +8,8 @@
 [![License: GPL (&gt;=
 2)](https://img.shields.io/badge/License-GPL%20%28%3E%3D%202%29-blue.svg)](https://choosealicense.com/licenses/gpl-2.0/)
 [![LifeCycle](https://img.shields.io/badge/lifecycle-experimental-orange)](https://lifecycle.r-lib.org/articles/stages.html#preliminary)
-[![Dependencies](https://img.shields.io/badge/dependencies-2/70-green?style=flat)](#)
-<!-- badges: end -->
-
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#preliminary)
 ![](https://img.shields.io/badge/status-preliminary-blue.svg)
+<!-- badges: end -->
 
 This repository contains the *research compendium* for ther project
 *“Evaluating the cumulative effects of global changes on the ecological
@@ -93,9 +90,8 @@ This research compendium is structured as follows:
         species-scale and network-scale assessments
     -   *cea\_difference/*: difference in cumulative effects between the
         temporal periods considered for the assessment
-    -   *cea\_km2/*: assessment of cumulative effects per
-        ![km^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;km%5E2 "km^2")
-        for all taxa considered
+    -   *cea\_km2/*: assessment of cumulative effects per km^2 for all
+        taxa considered
     -   *cea\_network/*: results for the network-scale cumulative
         effects assessment for all taxa
     -   *cea\_species/*: results for the species-scale cumulative
@@ -151,7 +147,3 @@ R CMD INSTALL .
 R
 source("_pipeline.R")
 ```
-
-:warning: ce compendium de recherche n’est pas entièrement reproductible
-dû à des restriction imposées au partage de certaines des données
-utilisées pour l’évaluation.

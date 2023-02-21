@@ -1,80 +1,89 @@
 # Appendix 1 {.unnumbered #appendix1} 
 
-Description of the research compendium prepared to structure the cumulative effects assessment of marine vessel activities in the St. Lawrence and the river Saguenay.
+Description of the research compendium for the cumulative effects assessment of global changes on the ecological communities of the Scotian Shelf Bioregion
 
-#### ceanav <a href='https://github.com/EffetsCumulatifsNavigation/ceanav'><img src='./figures/logo.png' align="right" height="175" /></a> {.unnumbered}
+#### nceadfo <a href='https://github.com/Ecosystem-Assessments/nceadfo'><img src='https://github.com/Ecosystem-Assessments/nceadfo/blob/main/man/figures/logo.png?raw=true' align="right" height="175" /></a> {.unnumbered}
 
-<!-- ```{r logoannexe3, out.width = '30%', fig.link = "https://github.com/EffetsCumulatifsNavigation/ceanav"}
-knitr::include_graphics("./figures/logo.png")
-``` -->
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#preliminary)
+<!-- badges: start -->
+[![License: GPL (>= 2)](https://img.shields.io/badge/License-GPL%20%28%3E%3D%202%29-blue.svg)](https://choosealicense.com/licenses/gpl-2.0/)
+[![LifeCycle](https://img.shields.io/badge/lifecycle-experimental-orange)](https://lifecycle.r-lib.org/articles/stages.html#preliminary)
 ![](https://img.shields.io/badge/status-preliminary-blue.svg)
+<!-- badges: end -->
 
-This repository contains the research compendium for the pilot project on the cumulative effects assessment of marine vessel activities in the St. Lawrence and the river Saguenay. It contains all the code to import, format, and integrate the datasets, and to run the analyses, create the figures, and render the assessment report. 
+This repository contains the *research compendium* for ther project *"Evaluating the cumulative effects of global changes on the ecological communities of the Scotian Shelf Bioregion"*. It contains all the code required to import, format, and integrate the data needed for the assessment, as well as the code used to perform the analyses, figures, and the project report. 
 
-Since the data are not included in the research compendium, the whole pipeline must be executed to reproduce the cumulative effects assessment. It must however be noted that not all data are openly available or accessible through open-data portals due to some data sharing agreements. It is therefore necessary to contact us or the contacts identified to obtain the necessary data.
+Since data should not be stored on GitHub, no data are found on this repository; the code structuring all steps of the assessment must therefore be executed to replicate the assessment. It should however be noted that certain datasets are not accessible online due to data sharing agreements, such as the fisheries data from the Department of Fisheries and Oceans Canada. It is therefore necessary to contact us or the data holders to obtain these  data. Metadata and bibliographic files associated with every dataset used are however available.
 
 
 #### How to cite {-}
 
-Cite the research compendium as follows: 
+Please cite this research compendium as follows:
 
-> Beauchesne D (2022) Research compendium for the pilot project on the cumulative effects assessment of marine vessel activities in the St. Lawrence and the river Saguenay. Consulted on [AAAA-MM-JJ]. https://github.com/EffetsCumulatifsNavigation/ceanav.
+> Beauchesne D (2023) Research compendium for the assessment of cumulative effects of global changes on the ecological communities of the Scotian Shelf Bioregion. Consulted on [AAAA-MM-JJ]. https://github.com/Ecosystem-Assessments/nceadfo.
 
 #### Content {-}
 
-This research compendium is structure as follows:
+This research compendium is structured as follows: 
 
-- [**data/**](https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/data): 
-contains all the data. Note that the majority of the data are not included in the repository, but the metadata are available for all data presented.
-  - *data-basemap/*: contains spatial data used to generate project figures
-  - *data-contact/*: contains data on organizations and resource persons for the project
-  - *data-format/*: contains the formatted data
-  - *data-integrated/*: contains the integrated datasets
-  - *data-metadata/*: contains the metadata for the raw data and integrated data
-  - *data-output/*: contains the assessment results
-  - *data-param/*: contains the general parameters used for the project (*i.e.* spatial projection, spatial extents, color palettes, nomenclature, etc.)
-  - *data-raw/*: contains the raw data; *warning* : all the data are not available due to data sharing agreements. Refer to metadata for more information on specific datasets
-  - *data-vulnerability/*: contains the data for the vulnerability of valued components to environmental stressors
+- [**data/**](https://github.com/Ecosystem-Assessments/nceadfo/tree/main/data): contains the data for the assessment.
+  - *aoi/*: spatial data on the area of interest
+  - *basemap/*: spatial data used to generate the maps of the assessment
+  - *cea_modules/*: formatted data used to perform the cumulative effects assessment
+  - *config/*: configuration files used to access and format raw data and parameters used throughout the project (*e.g.* spatial projection, colors, bounding box, etc.)
+  - *data-abiotic/*: formatted abiotic data used for species distribution modelling
+  - *data-biotic/*: data on species distribution in the area of interest
+  - *data-integrated/*: integrated datasets 
+  - *data-metaweb/*: metaweb of species interactions in the area of interest
+  - *data-raw/*: raw data used for the cumulative effects assessment
+  - *drivers/*: formatted data on environmental drivers in the area of interest
+  - *eDrivers/*: formatted data used for the [*eDrivers*](https://david-beauchesne.shinyapps.io/edriversapp/) platform
+  - *format_modules/*: formatted data used to perform the cumulative effects assessment as `.RData` files for ease of execution
+  - *grid/*: study grid for the cumulative effects assessment
+  - *metadata/*: metadata and contacts for the raw data used for the cumulative effects assessment
 
-- [**docs/**](https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/docs): contains the web page for the research compendium generated by [`pkgdown`](https://pkgdown.r-lib.org/)
 
-- [**figures/**](https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/figures): contains the project figures
-  - *figures-integrated*: figures of integrated data for each category of environmental stressor and valued component
-  - *figures-output*: figures of assessment results
+- [**docs/**](https://github.com/Ecosystem-Assessments/nceadfo/tree/main/docs): contains the html version of the report of the cumulative effects assessment
 
-- [**inst/templates**](https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/inst/templates): presentation templates used to present data
+- [**figures/**](https://github.com/Ecosystem-Assessments/nceadfo/tree/main/figures): contains all the figures generated for the cumulative effects assessment 
 
-- [**man/**](https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/man): contains the documentation of R functions built for the project
+- [**man/**](https://github.com/Ecosystem-Assessments/nceadfo/tree/main/man): contains the documentation for all R functions that are part of the research compendium
 
-- [**R/**](https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/R): contains all the R function developed for the project
-  - `00-pipeline.R`: contains a function that executes the whole project pipeline, *i.e.* accessing, formatting and integrating the raw data, run the analyses, generate the tables and figures, and render the assessment reports. *Warning* : this function, if executed in its entirety, will take a long time to run.
-  - `ana_nom.R`: contains analyses scripts
-  - `dataXXXX-nom.R`: contains the routines to access and format raw data
-  - `fig_nom.R`: contains scripts to generate figures
-  - `fnc_nom.R`: contains R function developed for the project
-  - `int-cv_nom.R`: contains the routines to integrate valued components
-  - `int-st_nom.R`: contains the routines to integrate environmental stressors
-  - `rep_nom.R`: contain code to generate portions of the reports 
-  - `vuln_nom.R`: contains the routines to integrated the data on the vulnerability of valued components to environmental stressors
+- [**output/**](https://github.com/Ecosystem-Assessments/nceadfo/tree/main/output): contains all the outputs from the cumulative effects assessment 
+  - *cea/*: community-aggregated cumulative effects assessment for species-scale and network-scale assessments
+  - *cea_difference/*: difference in cumulative effects between the temporal periods considered for the assessment
+  - *cea_km2/*: assessment of cumulative effects per km^2 for all taxa considered
+  - *cea_network/*: results for the network-scale cumulative effects assessment for all taxa
+  - *cea_species/*: results for the species-scale cumulative effects assessment for all taxa
+  - *exposure/*: exposure of taxa to cumulative effects 
+  - *footprint/*: species richness and cumulative drivers
 
-- [**report/**](https://github.com/EffetsCumulatifsNavigation/ceanav/tree/main/report): contains the report
+- [**R/**](https://github.com/Ecosystem-Assessments/nceadfo/tree/main/R): contains R functions developped for the assessment
+  - `fig_name.R`: scripts to generate figures
+  - `fnc_name.R`: generic functions used throughout the research compendium
+  - `format_modules.R`: script to prepare `.RData` files for assessmemnt
+  - `gather_name.R`: scripts to gather information on data used for the assessment
+  - `get_name.R`: scripts to access base data for the project
+  - `make_name.R` scripts to prepare the modules used for the assessment
+  - `out_name.R`: scripts to perform the assessment and extract summaries
+  - `pipeline.R`: script that executes the entirety of the assessment. *Warning* if run, this script will take multiple days to run. Also take into consideration that the network-scale cumulative effects assessment should be run on externally on clusters like those offered by Compute Canada as each taxa should take at least 10-20 hours to execute locally depending on your hardware. Furthermore, not all data are available online due to data sharing agreements.
+  - `render_report.R`: script to render the assessment report
 
-- `_pkgdown.yml`: metadata to generate the research compendium web page
-- `DESCRIPTION`: project metadata 
-- `README.Rmd`: research compendium description
+- [**report/**](https://github.com/Ecosystem-Assessments/nceadfo/tree/main/report): contains the R Markdown version of the assessment report
+
+- `DESCRIPTION`: research compendium metadata (authors, date, dependencies, etc.)
+- `README.Rmd`: description of research compendium
+
 
 #### How to use {-}
 
-Clone and execute the following commands in your terminal: 
+Clone this repo and execute the following commands to execute the whole assessment.
 
-```{r eval=FALSE, echo = TRUE}
+*Warning* execution time is very long, and not all raw data are accessible online. This research compendium is thus not fully reproducible due to hardware limitations and data sharing agreements. 
+
+```{r eval=FALSE}
 R -e 'library(devtools);document()'
 R CMD INSTALL .
 R
-library(ceanav)
-pipeline()
+source("_pipeline.R")
 ```
-
-*Warning* : this research compendium is not fully reproducible due to data sharing agreements imposing restrictions on sharing certain datasets. 
