@@ -4,7 +4,7 @@
 
 ### Species-scale assessment {#speciesmethod}
 
-The method developed by @halpern2008a uses 3 types of data: 1) the mapped presence or absence of valued components, *i.e.* species in this  case ($S_i$), 2) the spatial distribution and relative intensity (*i.e.* normalized between 0 and 1) of the environmental drivers considered ($D_j$), and 3) the species-specific sensitivity of each species to each driver ($\mu_{i,j}$) These data are then incorporated into a grid made up of cells of homogeneous size characterizing the study area. 
+The method developed by @halpern2008a uses 3 types of data, which we will refer to as modules in this assessment: 1) the mapped presence or absence of valued components, *i.e.* species in this  case ($S_i$), 2) the spatial distribution and relative intensity (*i.e.* normalized between 0 and 1) of the environmental drivers considered ($D_j$), and 3) the species-specific sensitivity of each species to each driver ($\mu_{i,j}$) These data are then incorporated into a grid made up of cells of homogeneous size characterizing the study area. 
 
 Cumulative effect predictions ($C_S$) are calculated for each cell ($x$) of the grid by summing up all individual driver effects over the set of species considered:
 
@@ -20,7 +20,9 @@ knitr::include_graphics("Figures/IC.png")
 
 ### Network-scale assessment {#networkmethod}
 
-The approach developed by @beauchesne2020c builds on recent progress in theoretical ecology [@stouffer2007; @stouffer2012; @beauchesne2021] to predict the net effects of environmental drivers by considering both direct and trophically-mediated indirect effects in ecological communities. The approach focuses on sub-networks of interacting species called motifs [@milo2002]. Motifs are subsets of $p$-species interactions that, when put together, construct whole food webs and provide a mesoscale characterization of the structural properties of ecological communities [@bascompte2005; @stouffer2007; @stouffer2010; @stouffer2011; @bramonmora2018]. In a $n$-species food web ($n \geq p$), the collection of $p$-species motifs ($p \leq n$) in which species $i$ is involved in ($M_i = \{m_{i,1},m_{i,2},...,m_{i,x}\}$) forms its motif census [$M_i$; @stouffer2012; @beauchesne2021]. The motif census provides an overview of all the interactions likely to affect the propagation of environmental pressure to a focal species. Only the most abundant 3-species motifs observed in empirical food webs are considered [*i.e.* trophic food chain, omnivory, exploitative and apparent composition; @camacho2007; @stouffer2010] to assess a species motif census.
+The approach developed by @beauchesne2020c builds on recent progress in theoretical ecology [@stouffer2007; @stouffer2012; @beauchesne2021] to predict the net effects of environmental drivers by considering both direct and trophically-mediated indirect effects in ecological communities. By focusing on interactions rather than individual species, this approach provides the ability to consider how a focal species is affected by multiple environmental pressures, but also integrates how species it interacts with respond to the same pressures and how their response propagates to the species of interest. In terms of data requirements, this network-scale assessment builds on the same 3 modules as @halpern2008a, *i.e.* 1) the distribution of species ($S_i$), 2) the normalized distribution and intensity of environmental drivers ($D_j$), and 3) the species-specific sensitivity of each species to each driver ($\mu_{i,j}$); it considers 2 additional modules to complete the assessment: 4) the metaweb of species interactions, *i.e.* the network of binary biotic interactions structuring local food webs, and 5) the trophic sensitivity of species ($T_i$), *i.e.* their sensitivity to trophically-mediated indirect effects (see below for more details). 
+
+The approach focuses on sub-networks of interacting species called motifs [@milo2002] and is conceptualized through Figure \@ref(fig:networkmethod). Motifs are subsets of $p$-species interactions that, when put together, construct whole food webs and provide a mesoscale characterization of the structural properties of ecological communities [@bascompte2005; @stouffer2007; @stouffer2010; @stouffer2011; @bramonmora2018]. In a $n$-species food web ($n \geq p$), the collection of $p$-species motifs ($p \leq n$) in which species $i$ is involved in ($M_i = \{m_{i,1},m_{i,2},...,m_{i,x}\}$) forms its motif census [$M_i$; @stouffer2012; @beauchesne2021]. The motif census provides an overview of all the interactions likely to affect the propagation of environmental pressure to a focal species. Only the most abundant 3-species motifs observed in empirical food webs are considered [*i.e.* trophic food chain, omnivory, exploitative and apparent composition; @camacho2007; @stouffer2010] to assess a species motif census.
 
 For any 3-species motif $m_{i,x}$ in species $i$’s motif census ($M_i$), the net effect of all drivers on the 3 species is evaluated as the sum of their direct effects on all species involved -- that is, the sum of species-specific responses $S_{m_{i,x}}$ -- as in @halpern2008a:
 
@@ -45,50 +47,12 @@ where $C_{N_i}$ is the network-scale cumulative effects assessment on species $i
 
 $$C_N = \sum_i C_{N_i} \label{eq5}$$
 
-
 The full model for network-scale cumulative effects assessment is thus:
 
 $$C_N = \sum_i \frac{1}{|M_i|} \sum_{m_{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j} \label{eq6}$$
 
+<br>
 
-## Data requirements {#datareq}
-
-
-Assessing cumulative using the described general models requires 5 independent data modules: 
-
-- Stressors 
-- Species distribution 
-- Metaweb 
-- Species-specific sensitivity
-- Trophic sensitivity
-
-<!-- Much of the limitations and assumptions of our approach are representative of a general lack of knowledge and data for the application of holistic environmental approaches. Once available, knowledge and data could be accommodated to improve the individual components that make up the assessment, that is the distribution and intensity of stressors, the distribution of species, the metaweb of species interactions, species-specific sensitivities to stressors, and trophic sensitivities. These individual components are flexible, grounded in theory and data-oriented; the expanding corpus of openly available environmental knowledge and computational capabilities can thus be leveraged to independently and incrementally improve their quality and, in doing so, enhance the quality of cumulative effects assessments.
-
-
-
-Finalement, l’approche proposée est construite à partir d’une série de modules
-qui caractérisent un système d’étude et des attributs biologiques : la distribution et
-l’intensité des stresseurs, la distribution des espèces, le méta-réseau d’interactions
-écologiques, les réponses spécifiques aux espèces aux stresseurs, et la sensibilité
-trophique. Ces modules sont flexibles, basés sur des fondements théoriques et guidés par
-les données ; la quantité grandissante de connaissances et de données environnementales
-accessibles ouvertement et le développement des capacités computationnelles pourront
-être mis à profit pour améliorer la qualité des modules individuels et de l’évaluation
-des effets cumulatifs. Ces modules sont également largement discutés au sein de la
-littérature scientifique et de nouvelles approches sont régulièrement publiées. Les
-modèles de distributions des espèces sont activement développés (Norberg et al.,
-2019) ; des méthodes quantitatives pour prédire les interactions écologiques et atténuer
-les difficultés logistiques de leur échantillonnage in situ sont de plus en plus disponibles
-(Morales-Castilla et al., 2015; Beauchesne et al., 2016; Albouy et al., 2019; Poisot
-et al., 2020) ; les connaissances sur la sensibilité spécifique des espèces aux stresseurs
-environnementaux sont explorés grâce à des exercices de modélisation (Lindmark
-et al., 2019; Dee et al., 2020; Otto et al., 2020) et des manipulations expérimentales
-(Pillet et al., 2016; Lange et Marshall, 2017). De plus, des initiatives de science ouverte
-fournissent une quantité croissante de données sur lesquelles l’approche proposée au
-chapitre 5 repose : la distribution et l’intensité des stresseurs (Halpern et al., 2015a;
-Beauchesne et al., 2020b), l’occurrence d’espèces (GBIF, 2020; OBIS, 2020), les traits
-fonctionnels (WoRMS Editorial Board, 2017; Froese et Pauly, 2019; Palomares et
-Pauly, 2019; Encyclopedia of Life, 2020), les interactions écologiques (Poelen et al.,
-2014; Poisot et al., 2016) et les données abiotiques (Assis et al., 2018). Il semble ainsi
-raisonnable de croire que les limites présentées s’atténueront et que l’applicabilité de
-la méthode proposée s’accentuera progressivement. -->
+```{r networkmethod, fig.cap = "Conceptual representation of a network-scale cumulative effects assessment focused on a single species, as described by @beauchesne2020c. This represenation is focused on a single species embedded in a 6-species food web and affected by 3 environmental drivers. In this example, the focal species is involved in 4 motifs, *i.e.* 1 apparent competition ($M_1$), 2 food chain ($M_2$, $M_3$) and 1 omnivory ($M_4$) interactions. Through each of these interactions, the focal species will be affected differently to the effects of the 3 environmental drivers based on its own sensitivity, the sensitivity of the species it interacts with, and its position in the interaction. The mean value of the effects evaluated on each motif represents the net effects of stressors on the focal species. Figure adapted from [@beauchesne2020c].", out.width = '90%'}
+knitr::include_graphics("Figures/concept_ncea.png")
+```

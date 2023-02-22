@@ -9,11 +9,9 @@ Along with a description of the distribution and intensity of environmental driv
 
 As part of this assessment, we updated *eDrivers* to include the environmental drivers that were identified on the Scotian Shelf. For more details on *eDrivers*, you may visit the [web application](https://david-beauchesne.shinyapps.io/edriversapp_dev/) and refer to @beauchesne2020.
 
-
-```{r edrivers, out.width = "100%"}
+<!-- ```{r edrivers, out.width = "100%"}
 knitr::include_app(
   "https://david-beauchesne.shinyapps.io/edriversapp_dev/",
   height = "900px"
 )
-```
-
+``` -->

@@ -1,5 +1,8 @@
 # Atlas {#atlas}
 
+The following sections present all invididual maps created for each environmental driver and each species considered in the cumulative effects assessment, and constitutes the cartographic atlas of this assessment. 
+
+
 ## Stressors {#stratlas}
 
 ```{r}

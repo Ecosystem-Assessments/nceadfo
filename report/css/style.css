@@ -69,9 +69,9 @@ h1.title {
 .book .book-body .page-wrapper .page-inner section.normal strong {
   font-weight: 600;
 }
-.book .book-body .page-wrapper .page-inner {
+/* .book .book-body .page-wrapper .page-inner {
   max-width: 70%;
-}
+} */
 
 <style>
     #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
