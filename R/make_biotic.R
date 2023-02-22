@@ -331,7 +331,21 @@ make_biotic <- function() {
   mask(out$regression_smooth)
   mask(out$regression_binary)
   
-  
+  # Get model performance for marine species  
+  sp <- read.csv(here::here(out$out, "species_list.csv"))
+  mod <- here::here("data","data-biotic","marine_species","random_forest_regression_rsq") |>
+         dir(full.names = TRUE)
+  rsq <- data.frame(
+    shortname = tools::file_path_sans_ext(basename(mod)),
+    rsq = numeric(length(mod))
+  )
+  for(i in 1:nrow(rsq)) {
+    load(mod[i])
+    rsq$rsq[i] <- dat
+  }
+  sp <- dplyr::left_join(sp, rsq, by = "shortname")
+  write.csv(sp, here::here(out$out, "species_list.csv"), row.names = FALSE)
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load and prepare marine mammals data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -566,7 +580,7 @@ make_biotic <- function() {
   file.copy(dir(sp, full.names = TRUE), out, overwrite = TRUE)
   file.copy(dir(mm, full.names = TRUE), out, overwrite = TRUE)
   file.copy(dir(bd, full.names = TRUE), out, overwrite = TRUE)
-  
+
   # Species list 
   sp <- dir(out) |>
          tools::file_path_sans_ext() |>
@@ -575,7 +589,8 @@ make_biotic <- function() {
          dplyr::bind_rows() |>
          dplyr::mutate(scientific_name = gsub("_", " ", shortname)) |>
          dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
-         dplyr::mutate(aphiaID = as.numeric(aphiaID))
+         dplyr::mutate(aphiaID = as.numeric(aphiaID)) |>
+         dplyr::left_join(rsq, by = "shortname")
 
   # Add taxonomic groups (for figures later on)
   taxo <- importdat(c("893b37e8","7c150fc3"))

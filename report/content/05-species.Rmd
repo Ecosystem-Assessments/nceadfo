@@ -24,12 +24,13 @@ The assessment considers `r nsp` [marine](marinesp), `r nmm` [marine mammal](mar
 We used taxa occurrence data from Fisheries and Oceans Canada (DF) ecosystem spring [@dfo2020b], summer [@dfo2020c], and 4vsw [@dfo2020] surveys. These surveys collect data to monitor the distribution and abundance of fish and invertebrates through the Scotian Shelf, Bay of Fundy and Georges Bank. We formatted the list of taxa considered for the analyses by combining and removing taxa based on expert knowledge and bibliographic research (*e.g.* species of the same genus and hard to distinguish *in situ* were combined). Only taxa with at least 50 observations were considered for the assessment. This process yielded `r sum(sp$presences, na.rm = TRUE)` occurrences and `r sum(sp$absences)` absences for `r nsp` on the Scotial Shelf (Table \@ref(tab:spnm)). All species scientific names were resolved using the `taxize` R package [@chamberlain2013; @chamberlain2019].
 
 ```{r spnm}
-dplyr::select(sp, aphiaID, SPEC, presences, absences) |>
+dplyr::select(sp, aphiaID, SPEC, presences, absences, rsq) |>
+dplyr::mutate(rsq = round(rsq,2)) |>
 dplyr::arrange(SPEC) |>
   knitr::kable(
-    col.names = c("Aphia ID", "Scientific name", "Presences (n)" , "Absences (n)"),
+    col.names = c("Aphia ID", "Scientific name", "Presences (n)" , "Absences (n)", "$R^2$"),
     row.names = FALSE,
-    caption = "List of marine species obtained through Fisheries and Oceans Canada (DF) ecosystem spring [@dfo2020b], summer [@dfo2020c], and 4vsw [@dfo2020] surveys on the Scotian Shelf, Bay of Fundy and Goerges Bank."
+    caption = "List of marine species obtained through Fisheries and Oceans Canada (DF) ecosystem spring [@dfo2020b], summer [@dfo2020c], and 4vsw [@dfo2020] surveys on the Scotian Shelf, Bay of Fundy and Goerges Bank and model fit for species distribution models."
   ) #%>%
   #kableExtra::row_spec(uid, extra_css = "border-bottom: 2px solid")
 ```
@@ -52,7 +53,7 @@ dplyr::arrange(cite, name) |>
 
 #### Taxa distribution
 
-We evaluated the distribution of taxa on the Scotian Shelf using the Random Forest ensemble learner [@breiman2001]. We used the default parameters of the `randomForest` R package to classify the presence or absence of taxa: 500 trees and the number of variables in the random subset at each node set to the square root of the number of variables [@liaw2002]. All `r nab` abiotic variables (Table \@ref(tab:abiotic)) were used to model the distribution of species. The performance of each modell was evaluated using the sensitivity, specificity, accuracy and True Skilled Statistics [TSS; Table \@ref(tab:spnm); @allouche2006]. We predicted the spatial distribution of all taxa within the grid of our area of interest and performed a smoothing of predictions using a bisquare kernel smoothing approach [@dossantos2018] with a 5 km radius to avoid granular distributions; this is done to minimize the effect on the assessment of species co-occurrences ncecessary for the subsequent network-scale cumualtive effects assessment. A threshold of 0.5 was used to transform continuous predictions to binary distributions, identifying areas where taxa are most likely to be found.
+We evaluated the distribution of taxa on the Scotian Shelf using the Random Forest ensemble learner [@breiman2001]. We used the default parameters of the `randomForest` R package to classify the presence or absence of taxa: 500 trees and the number of variables in the random subset at each node set to the square root of the number of variables [@liaw2002]. All `r nab` abiotic variables (Table \@ref(tab:abiotic)) were used to model the distribution of species. The performance of each model was evaluated using the $R^2$ of each species' regression tree [Table \@ref(tab:spnm); @allouche2006]. We predicted the spatial distribution of all taxa within the grid of our area of interest and performed a smoothing of predictions using a bisquare kernel smoothing approach [@dossantos2018] with a 5 km radius to avoid granular distributions; this is done to minimize the effect on the assessment of species co-occurrences ncecessary for the subsequent network-scale cumualtive effects assessment. A threshold of 0.5 was used to transform continuous predictions to binary distributions, identifying areas where taxa are most likely to be found.
 
 ### Marine mammals {#marinemammals}
 

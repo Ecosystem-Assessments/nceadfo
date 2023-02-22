@@ -195,13 +195,14 @@ div.csl-indent {
 <h4><span class="header-section-number">6.1.1.1</span> Biotic data<a href="modules.html#biotic-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We used taxa occurrence data from Fisheries and Oceans Canada (DF) ecosystem spring <span class="citation">(<a href="bibliography.html#ref-dfo2020b" role="doc-biblioref">Fisheries and ceans Canada, 2020c</a>)</span>, summer <span class="citation">(<a href="bibliography.html#ref-dfo2020c" role="doc-biblioref">Fisheries and ceans Canada, 2020d</a>)</span>, and 4vsw <span class="citation">(<a href="bibliography.html#ref-dfo2020" role="doc-biblioref">Fisheries and ceans Canada, 2020a</a>)</span> surveys. These surveys collect data to monitor the distribution and abundance of fish and invertebrates through the Scotian Shelf, Bay of Fundy and Georges Bank. We formatted the list of taxa considered for the analyses by combining and removing taxa based on expert knowledge and bibliographic research (<em>e.g.</em> species of the same genus and hard to distinguish <em>in situ</em> were combined). Only taxa with at least 50 observations were considered for the assessment. This process yielded 65764 occurrences and 556191 absences for 172 on the Scotial Shelf (Table <a href="modules.html#tab:spnm">6.1</a>). All species scientific names were resolved using the <code>taxize</code> R package <span class="citation">(<a href="bibliography.html#ref-chamberlain2019" role="doc-biblioref">Chamberlain et al., 2019</a>; <a href="bibliography.html#ref-chamberlain2013" role="doc-biblioref">Chamberlain and Szöcs, 2013</a>)</span>.</p>
 <table>
-<caption><span id="tab:spnm">Table 6.1: </span>List of marine species obtained through Fisheries and Oceans Canada (DF) ecosystem spring <span class="citation">(<a href="bibliography.html#ref-dfo2020b" role="doc-biblioref">Fisheries and ceans Canada, 2020c</a>)</span>, summer <span class="citation">(<a href="bibliography.html#ref-dfo2020c" role="doc-biblioref">Fisheries and ceans Canada, 2020d</a>)</span>, and 4vsw <span class="citation">(<a href="bibliography.html#ref-dfo2020" role="doc-biblioref">Fisheries and ceans Canada, 2020a</a>)</span> surveys on the Scotian Shelf, Bay of Fundy and Goerges Bank.</caption>
+<caption><span id="tab:spnm">Table 6.1: </span>List of marine species obtained through Fisheries and Oceans Canada (DF) ecosystem spring <span class="citation">(<a href="bibliography.html#ref-dfo2020b" role="doc-biblioref">Fisheries and ceans Canada, 2020c</a>)</span>, summer <span class="citation">(<a href="bibliography.html#ref-dfo2020c" role="doc-biblioref">Fisheries and ceans Canada, 2020d</a>)</span>, and 4vsw <span class="citation">(<a href="bibliography.html#ref-dfo2020" role="doc-biblioref">Fisheries and ceans Canada, 2020a</a>)</span> surveys on the Scotian Shelf, Bay of Fundy and Goerges Bank and model fit for species distribution models.</caption>
 <thead>
 <tr class="header">
 <th align="right">Aphia ID</th>
 <th align="left">Scientific name</th>
 <th align="right">Presences (n)</th>
 <th align="right">Absences (n)</th>
+<th align="right"><span class="math inline">\(R^2\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -210,1032 +211,1204 @@ div.csl-indent {
 <td align="left">Aldrovandia</td>
 <td align="right">28</td>
 <td align="right">3588</td>
+<td align="right">0.75</td>
 </tr>
 <tr class="even">
 <td align="right">158667</td>
 <td align="left">Alosa aestivalis</td>
 <td align="right">501</td>
 <td align="right">3110</td>
+<td align="right">0.23</td>
 </tr>
 <tr class="odd">
 <td align="right">158669</td>
 <td align="left">Alosa pseudoharengus</td>
 <td align="right">79</td>
 <td align="right">3532</td>
+<td align="right">-0.05</td>
 </tr>
 <tr class="even">
 <td align="right">158670</td>
 <td align="left">Alosa sapidissima</td>
 <td align="right">676</td>
 <td align="right">2935</td>
+<td align="right">0.41</td>
 </tr>
 <tr class="odd">
 <td align="right">105865</td>
 <td align="left">Amblyraja radiata</td>
 <td align="right">622</td>
 <td align="right">2989</td>
+<td align="right">0.20</td>
 </tr>
 <tr class="even">
 <td align="right">125909</td>
 <td align="left">Ammodytes</td>
 <td align="right">636</td>
 <td align="right">2975</td>
+<td align="right">0.26</td>
 </tr>
 <tr class="odd">
 <td align="right">126757</td>
 <td align="left">Anarhichas denticulatus</td>
 <td align="right">7</td>
 <td align="right">3604</td>
+<td align="right">-0.08</td>
 </tr>
 <tr class="even">
 <td align="right">126758</td>
 <td align="left">Anarhichas lupus</td>
 <td align="right">261</td>
 <td align="right">3350</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">157181</td>
 <td align="left">Aphrodita hastata</td>
 <td align="right">361</td>
 <td align="right">3250</td>
+<td align="right">0.05</td>
 </tr>
 <tr class="even">
 <td align="right">105727</td>
 <td align="left">Apristurus</td>
 <td align="right">34</td>
 <td align="right">3584</td>
+<td align="right">0.71</td>
 </tr>
 <tr class="odd">
 <td align="right">138802</td>
 <td align="left">Arctica islandica</td>
 <td align="right">662</td>
 <td align="right">2949</td>
+<td align="right">0.14</td>
 </tr>
 <tr class="even">
 <td align="right">126715</td>
 <td align="left">Argentina silus</td>
 <td align="right">142</td>
 <td align="right">3469</td>
+<td align="right">0.07</td>
 </tr>
 <tr class="odd">
 <td align="right">107550</td>
 <td align="left">Argis dentata</td>
 <td align="right">272</td>
 <td align="right">3339</td>
+<td align="right">0.32</td>
 </tr>
 <tr class="even">
 <td align="right">126147</td>
 <td align="left">Artediellus</td>
 <td align="right">184</td>
 <td align="right">3431</td>
+<td align="right">0.02</td>
 </tr>
 <tr class="odd">
 <td align="right">1839</td>
 <td align="left">Ascidiacea</td>
 <td align="right">788</td>
 <td align="right">2935</td>
+<td align="right">0.31</td>
 </tr>
 <tr class="even">
 <td align="right">145541</td>
 <td align="left">Ascophyllum nodosum</td>
 <td align="right">212</td>
 <td align="right">3399</td>
+<td align="right">0.26</td>
 </tr>
 <tr class="odd">
 <td align="right">159459</td>
 <td align="left">Aspidophoroides monopterygius</td>
 <td align="right">26</td>
 <td align="right">3585</td>
+<td align="right">0.04</td>
 </tr>
 <tr class="even">
 <td align="right">137683</td>
 <td align="left">Astarte</td>
 <td align="right">79</td>
 <td align="right">3532</td>
+<td align="right">-0.13</td>
 </tr>
 <tr class="odd">
 <td align="right">123219</td>
 <td align="left">Asterias</td>
 <td align="right">1634</td>
 <td align="right">2102</td>
+<td align="right">0.18</td>
 </tr>
 <tr class="even">
 <td align="right">158490</td>
 <td align="left">Astropecten americanus</td>
 <td align="right">65</td>
 <td align="right">3546</td>
+<td align="right">0.41</td>
 </tr>
 <tr class="odd">
 <td align="right">158351</td>
 <td align="left">Atlantopandalus propinqvus</td>
 <td align="right">134</td>
 <td align="right">3477</td>
+<td align="right">-0.13</td>
 </tr>
 <tr class="even">
 <td align="right">106057</td>
 <td align="left">Balanidae</td>
 <td align="right">26</td>
 <td align="right">3585</td>
+<td align="right">-0.13</td>
 </tr>
 <tr class="odd">
 <td align="right">138265</td>
 <td align="left">Bathypolypus</td>
 <td align="right">89</td>
 <td align="right">3522</td>
+<td align="right">-0.06</td>
 </tr>
 <tr class="even">
 <td align="right">125669</td>
 <td align="left">Bathypterois</td>
 <td align="right">10</td>
 <td align="right">3601</td>
+<td align="right">0.28</td>
 </tr>
 <tr class="odd">
 <td align="right">100698</td>
 <td align="left">Bolocera</td>
 <td align="right">79</td>
 <td align="right">3532</td>
+<td align="right">-0.15</td>
 </tr>
 <tr class="even">
 <td align="right">124404</td>
 <td align="left">Brisaster fragilis</td>
 <td align="right">76</td>
 <td align="right">3535</td>
+<td align="right">0.50</td>
 </tr>
 <tr class="odd">
 <td align="right">126447</td>
 <td align="left">Brosme brosme</td>
 <td align="right">79</td>
 <td align="right">3532</td>
+<td align="right">0.07</td>
 </tr>
 <tr class="even">
 <td align="right">146142</td>
 <td align="left">Bryozoa</td>
 <td align="right">64</td>
 <td align="right">3547</td>
+<td align="right">-0.19</td>
 </tr>
 <tr class="odd">
 <td align="right">137701</td>
 <td align="left">Buccinum</td>
 <td align="right">48</td>
 <td align="right">3563</td>
+<td align="right">-0.22</td>
 </tr>
 <tr class="even">
 <td align="right">158056</td>
 <td align="left">Cancer borealis</td>
 <td align="right">407</td>
 <td align="right">3204</td>
+<td align="right">-0.03</td>
 </tr>
 <tr class="odd">
 <td align="right">158057</td>
 <td align="left">Cancer irroratus</td>
 <td align="right">1176</td>
 <td align="right">2435</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="even">
 <td align="right">105906</td>
 <td align="left">Centroscyllium fabricii</td>
 <td align="right">78</td>
 <td align="right">3533</td>
+<td align="right">0.72</td>
 </tr>
 <tr class="odd">
 <td align="right">124020</td>
 <td align="left">Ceramaster granularis</td>
 <td align="right">310</td>
 <td align="right">3301</td>
+<td align="right">0.21</td>
 </tr>
 <tr class="even">
 <td align="right">158407</td>
 <td align="left">Chaceon quinquedens</td>
 <td align="right">252</td>
 <td align="right">3359</td>
+<td align="right">-0.20</td>
 </tr>
 <tr class="odd">
 <td align="right">127338</td>
 <td align="left">Chauliodus sloani</td>
 <td align="right">89</td>
 <td align="right">3522</td>
+<td align="right">-0.14</td>
 </tr>
 <tr class="even">
 <td align="right">125956</td>
 <td align="left">Chiasmodon</td>
 <td align="right">21</td>
 <td align="right">3591</td>
+<td align="right">0.40</td>
 </tr>
 <tr class="odd">
 <td align="right">107315</td>
 <td align="left">Chionoecetes opilio</td>
 <td align="right">723</td>
 <td align="right">2888</td>
+<td align="right">0.57</td>
 </tr>
 <tr class="even">
 <td align="right">140692</td>
 <td align="left">Chlamys islandica</td>
 <td align="right">67</td>
 <td align="right">3544</td>
+<td align="right">0.03</td>
 </tr>
 <tr class="odd">
 <td align="right">126336</td>
 <td align="left">Chlorophthalmus agassizi</td>
 <td align="right">54</td>
 <td align="right">3557</td>
+<td align="right">-0.01</td>
 </tr>
 <tr class="even">
 <td align="right">158791</td>
 <td align="left">Citharichthys arctifrons</td>
 <td align="right">31</td>
 <td align="right">3580</td>
+<td align="right">-0.13</td>
 </tr>
 <tr class="odd">
 <td align="right">126417</td>
 <td align="left">Clupea harengus</td>
 <td align="right">1959</td>
 <td align="right">1652</td>
+<td align="right">0.27</td>
 </tr>
 <tr class="even">
 <td align="right">137704</td>
 <td align="left">Colus</td>
 <td align="right">684</td>
 <td align="right">2938</td>
+<td align="right">0.37</td>
 </tr>
 <tr class="odd">
 <td align="right">158960</td>
 <td align="left">Coryphaenoides rupestris</td>
 <td align="right">493</td>
 <td align="right">3118</td>
+<td align="right">0.44</td>
 </tr>
 <tr class="even">
 <td align="right">127235</td>
 <td align="left">Cottunculus microps</td>
 <td align="right">16</td>
 <td align="right">3595</td>
+<td align="right">-0.25</td>
 </tr>
 <tr class="odd">
 <td align="right">158355</td>
 <td align="left">Crangon septemspinosa</td>
 <td align="right">148</td>
 <td align="right">3463</td>
+<td align="right">0.13</td>
 </tr>
 <tr class="even">
 <td align="right">124154</td>
 <td align="left">Crossaster papposus</td>
 <td align="right">781</td>
 <td align="right">2830</td>
+<td align="right">0.41</td>
 </tr>
 <tr class="odd">
 <td align="right">159675</td>
 <td align="left">Cryptacanthodes maculatus</td>
 <td align="right">25</td>
 <td align="right">3586</td>
+<td align="right">-0.13</td>
 </tr>
 <tr class="even">
 <td align="right">123915</td>
 <td align="left">Ctenodiscus crispatus</td>
 <td align="right">361</td>
 <td align="right">3250</td>
+<td align="right">0.38</td>
 </tr>
 <tr class="odd">
 <td align="right">124612</td>
 <td align="left">Cucumaria frondosa</td>
 <td align="right">645</td>
 <td align="right">2966</td>
+<td align="right">0.46</td>
 </tr>
 <tr class="even">
 <td align="right">135301</td>
 <td align="left">Cyanea capillata</td>
 <td align="right">61</td>
 <td align="right">3550</td>
+<td align="right">0.38</td>
 </tr>
 <tr class="odd">
 <td align="right">127214</td>
 <td align="left">Cyclopterus lumpus</td>
 <td align="right">48</td>
 <td align="right">3563</td>
+<td align="right">0.05</td>
 </tr>
 <tr class="even">
 <td align="right">158356</td>
 <td align="left">Dichelopandalus leptocerus</td>
 <td align="right">351</td>
 <td align="right">3260</td>
+<td align="right">0.06</td>
 </tr>
 <tr class="odd">
 <td align="right">124128</td>
 <td align="left">Diplopteraster multipes</td>
 <td align="right">45</td>
 <td align="right">3566</td>
+<td align="right">-0.19</td>
 </tr>
 <tr class="even">
 <td align="right">158548</td>
 <td align="left">Dipturus laevis</td>
 <td align="right">68</td>
 <td align="right">3543</td>
+<td align="right">-0.15</td>
 </tr>
 <tr class="odd">
 <td align="right">158062</td>
 <td align="left">Echinarachnius parma</td>
 <td align="right">826</td>
 <td align="right">2785</td>
+<td align="right">0.32</td>
 </tr>
 <tr class="even">
 <td align="right">126450</td>
 <td align="left">Enchelyopus cimbrius</td>
 <td align="right">266</td>
 <td align="right">3345</td>
+<td align="right">0.24</td>
 </tr>
 <tr class="odd">
 <td align="right">101027</td>
 <td align="left">Epizoanthus erdmanni</td>
 <td align="right">69</td>
 <td align="right">3542</td>
+<td align="right">-0.05</td>
 </tr>
 <tr class="even">
 <td align="right">159817</td>
 <td align="left">Eumesogrammus praecisus</td>
 <td align="right">109</td>
 <td align="right">3502</td>
+<td align="right">0.02</td>
 </tr>
 <tr class="odd">
 <td align="right">127217</td>
 <td align="left">Eumicrotremus spinosus</td>
 <td align="right">41</td>
 <td align="right">3570</td>
+<td align="right">0.00</td>
 </tr>
 <tr class="even">
 <td align="right">515738</td>
 <td align="left">Eusergestes arcticus</td>
 <td align="right">19</td>
 <td align="right">3592</td>
+<td align="right">-0.17</td>
 </tr>
 <tr class="odd">
 <td align="right">135114</td>
 <td align="left">Flabellum</td>
 <td align="right">56</td>
 <td align="right">3555</td>
+<td align="right">-0.15</td>
 </tr>
 <tr class="even">
 <td align="right">111367</td>
 <td align="left">Flustra foliacea</td>
 <td align="right">116</td>
 <td align="right">3495</td>
+<td align="right">0.26</td>
 </tr>
 <tr class="odd">
 <td align="right">126436</td>
 <td align="left">Gadus morhua</td>
 <td align="right">1655</td>
 <td align="right">1956</td>
+<td align="right">0.15</td>
 </tr>
 <tr class="even">
 <td align="right">125743</td>
 <td align="left">Gaidropsarus</td>
 <td align="right">11</td>
 <td align="right">3600</td>
+<td align="right">0.27</td>
 </tr>
 <tr class="odd">
 <td align="right">156103</td>
 <td align="left">Gersemia rubiformis</td>
 <td align="right">131</td>
 <td align="right">3480</td>
+<td align="right">0.42</td>
 </tr>
 <tr class="even">
 <td align="right">127136</td>
 <td align="left">Glyptocephalus cynoglossus</td>
 <td align="right">53</td>
 <td align="right">3558</td>
+<td align="right">0.19</td>
 </tr>
 <tr class="odd">
 <td align="right">125601</td>
 <td align="left">Gonostomatidae</td>
 <td align="right">45</td>
 <td align="right">3572</td>
+<td align="right">0.60</td>
 </tr>
 <tr class="even">
 <td align="right">123586</td>
 <td align="left">Gorgonocephalus</td>
 <td align="right">287</td>
 <td align="right">3324</td>
+<td align="right">0.50</td>
 </tr>
 <tr class="odd">
 <td align="right">127251</td>
 <td align="left">Helicolenus dactylopterus</td>
 <td align="right">8</td>
 <td align="right">3603</td>
+<td align="right">-0.15</td>
 </tr>
 <tr class="even">
 <td align="right">159518</td>
 <td align="left">Hemitripterus americanus</td>
 <td align="right">455</td>
 <td align="right">3156</td>
+<td align="right">0.05</td>
 </tr>
 <tr class="odd">
 <td align="right">123276</td>
 <td align="left">Henricia</td>
 <td align="right">1337</td>
 <td align="right">2278</td>
+<td align="right">0.12</td>
 </tr>
 <tr class="even">
 <td align="right">124043</td>
 <td align="left">Hippasteria phrygiana</td>
 <td align="right">768</td>
 <td align="right">2843</td>
+<td align="right">0.25</td>
 </tr>
 <tr class="odd">
 <td align="right">158833</td>
 <td align="left">Hippoglossina oblonga</td>
 <td align="right">19</td>
 <td align="right">3592</td>
+<td align="right">-0.25</td>
 </tr>
 <tr class="even">
 <td align="right">127137</td>
 <td align="left">Hippoglossoides platessoides</td>
 <td align="right">1407</td>
 <td align="right">2204</td>
+<td align="right">0.36</td>
 </tr>
 <tr class="odd">
 <td align="right">127138</td>
 <td align="left">Hippoglossus hippoglossus</td>
 <td align="right">1689</td>
 <td align="right">1922</td>
+<td align="right">0.19</td>
 </tr>
 <tr class="even">
 <td align="right">156134</td>
 <td align="left">Homarus americanus</td>
 <td align="right">102</td>
 <td align="right">3509</td>
+<td align="right">-0.02</td>
 </tr>
 <tr class="odd">
 <td align="right">107322</td>
 <td align="left">Hyas araneus</td>
 <td align="right">421</td>
 <td align="right">3190</td>
+<td align="right">0.00</td>
 </tr>
 <tr class="even">
 <td align="right">107323</td>
 <td align="left">Hyas coarctatus</td>
 <td align="right">535</td>
 <td align="right">3076</td>
+<td align="right">0.07</td>
 </tr>
 <tr class="odd">
 <td align="right">126150</td>
 <td align="left">Icelus</td>
 <td align="right">28</td>
 <td align="right">3583</td>
+<td align="right">-0.09</td>
 </tr>
 <tr class="even">
 <td align="right">153087</td>
 <td align="left">Illex illecebrosus</td>
 <td align="right">179</td>
 <td align="right">3432</td>
+<td align="right">0.47</td>
 </tr>
 <tr class="odd">
 <td align="right">107520</td>
 <td align="left">Lebbeus groenlandicus</td>
 <td align="right">43</td>
 <td align="right">3568</td>
+<td align="right">-0.08</td>
 </tr>
 <tr class="even">
 <td align="right">107521</td>
 <td align="left">Lebbeus polaris</td>
 <td align="right">217</td>
 <td align="right">3394</td>
+<td align="right">-0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">158762</td>
 <td align="left">Lepophidium profundorum</td>
 <td align="right">25</td>
 <td align="right">3586</td>
+<td align="right">-0.05</td>
 </tr>
 <tr class="even">
 <td align="right">127191</td>
 <td align="left">Leptagonus decagonus</td>
 <td align="right">326</td>
 <td align="right">3285</td>
+<td align="right">0.60</td>
 </tr>
 <tr class="odd">
 <td align="right">123222</td>
 <td align="left">Leptasterias</td>
 <td align="right">495</td>
 <td align="right">3137</td>
+<td align="right">0.20</td>
 </tr>
 <tr class="even">
 <td align="right">158551</td>
 <td align="left">Leucoraja erinacea</td>
 <td align="right">356</td>
 <td align="right">3255</td>
+<td align="right">0.02</td>
 </tr>
 <tr class="odd">
 <td align="right">158553</td>
 <td align="left">Leucoraja ocellata</td>
 <td align="right">847</td>
 <td align="right">2764</td>
+<td align="right">0.35</td>
 </tr>
 <tr class="even">
 <td align="right">158879</td>
 <td align="left">Limanda ferruginea</td>
 <td align="right">35</td>
 <td align="right">3576</td>
+<td align="right">-0.11</td>
 </tr>
 <tr class="odd">
 <td align="right">159524</td>
 <td align="left">Liparis atlanticus</td>
 <td align="right">964</td>
 <td align="right">2647</td>
+<td align="right">0.26</td>
 </tr>
 <tr class="even">
 <td align="right">127218</td>
 <td align="left">Liparis fabricii</td>
 <td align="right">78</td>
 <td align="right">3533</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">159526</td>
 <td align="left">Liparis gibbus</td>
 <td align="right">36</td>
 <td align="right">3575</td>
+<td align="right">-0.21</td>
 </tr>
 <tr class="even">
 <td align="right">107205</td>
 <td align="left">Lithodes maja</td>
 <td align="right">331</td>
 <td align="right">3280</td>
+<td align="right">0.16</td>
 </tr>
 <tr class="odd">
 <td align="right">157025</td>
 <td align="left">Loligo pealeii</td>
 <td align="right">1523</td>
 <td align="right">2088</td>
+<td align="right">0.56</td>
 </tr>
 <tr class="even">
 <td align="right">159184</td>
 <td align="left">Lophius americanus</td>
 <td align="right">2267</td>
 <td align="right">1344</td>
+<td align="right">0.37</td>
 </tr>
 <tr class="odd">
 <td align="right">154675</td>
 <td align="left">Lumpenus lampretaeformis</td>
 <td align="right">1704</td>
 <td align="right">1907</td>
+<td align="right">0.01</td>
 </tr>
 <tr class="even">
 <td align="right">305353</td>
 <td align="left">Lumpenus maculatus</td>
 <td align="right">238</td>
 <td align="right">3373</td>
+<td align="right">0.55</td>
 </tr>
 <tr class="odd">
 <td align="right">402541</td>
 <td align="left">Lycenchelys verrilli</td>
 <td align="right">24</td>
 <td align="right">3587</td>
+<td align="right">-0.16</td>
 </tr>
 <tr class="even">
 <td align="right">127107</td>
 <td align="left">Lycodes lavalaei</td>
 <td align="right">45</td>
 <td align="right">3566</td>
+<td align="right">-0.11</td>
 </tr>
 <tr class="odd">
 <td align="right">127117</td>
 <td align="left">Lycodes terraenova</td>
 <td align="right">NA</td>
 <td align="right">3611</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="right">127118</td>
 <td align="left">Lycodes vahlii</td>
 <td align="right">5</td>
 <td align="right">3606</td>
+<td align="right">-0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">158554</td>
 <td align="left">Malacoraja senta</td>
 <td align="right">815</td>
 <td align="right">2796</td>
+<td align="right">0.22</td>
 </tr>
 <tr class="even">
 <td align="right">126735</td>
 <td align="left">Mallotus villosus</td>
 <td align="right">108</td>
 <td align="right">3503</td>
+<td align="right">0.09</td>
 </tr>
 <tr class="odd">
 <td align="right">127312</td>
 <td align="left">Maurolicus muelleri</td>
 <td align="right">25</td>
 <td align="right">3586</td>
+<td align="right">0.69</td>
 </tr>
 <tr class="even">
 <td align="right">126437</td>
 <td align="left">Melanogrammus aeglefinus</td>
 <td align="right">2629</td>
 <td align="right">982</td>
+<td align="right">0.52</td>
 </tr>
 <tr class="odd">
 <td align="right">127120</td>
 <td align="left">Melanostigma atlanticum</td>
 <td align="right">119</td>
 <td align="right">3492</td>
+<td align="right">0.22</td>
 </tr>
 <tr class="even">
 <td align="right">158748</td>
 <td align="left">Merluccius albidus</td>
 <td align="right">57</td>
 <td align="right">3554</td>
+<td align="right">0.45</td>
 </tr>
 <tr class="odd">
 <td align="right">158962</td>
 <td align="left">Merluccius bilinearis</td>
 <td align="right">36</td>
 <td align="right">3575</td>
+<td align="right">0.57</td>
 </tr>
 <tr class="even">
 <td align="right">140467</td>
 <td align="left">Modiolus modiolus</td>
 <td align="right">64</td>
 <td align="right">3547</td>
+<td align="right">-0.14</td>
 </tr>
 <tr class="odd">
 <td align="right">125498</td>
 <td align="left">Myctophidae</td>
 <td align="right">386</td>
 <td align="right">3367</td>
+<td align="right">0.61</td>
 </tr>
 <tr class="even">
 <td align="right">126152</td>
 <td align="left">Myoxocephalus</td>
 <td align="right">1582</td>
 <td align="right">2135</td>
+<td align="right">0.25</td>
 </tr>
 <tr class="odd">
 <td align="right">138228</td>
 <td align="left">Mytilus</td>
 <td align="right">234</td>
 <td align="right">3377</td>
+<td align="right">-0.05</td>
 </tr>
 <tr class="even">
 <td align="right">101170</td>
 <td align="left">Myxine glutinosa</td>
 <td align="right">369</td>
 <td align="right">3242</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">145</td>
 <td align="left">Naticidae</td>
 <td align="right">416</td>
 <td align="right">3196</td>
+<td align="right">0.35</td>
 </tr>
 <tr class="even">
 <td align="right">126306</td>
 <td align="left">Nemichthys scolopaceus</td>
 <td align="right">64</td>
 <td align="right">3547</td>
+<td align="right">0.18</td>
 </tr>
 <tr class="odd">
 <td align="right">137710</td>
 <td align="left">Neptunea</td>
 <td align="right">138</td>
 <td align="right">3473</td>
+<td align="right">-0.07</td>
 </tr>
 <tr class="even">
 <td align="right">183289</td>
 <td align="left">Nezumia bairdii</td>
 <td align="right">58</td>
 <td align="right">3553</td>
+<td align="right">-0.12</td>
 </tr>
 <tr class="odd">
 <td align="right">147037</td>
 <td align="left">Notolepis rissoi</td>
 <td align="right">270</td>
 <td align="right">3354</td>
+<td align="right">-0.10</td>
 </tr>
 <tr class="even">
 <td align="right">125125</td>
 <td align="left">Ophiopholis aculeata</td>
 <td align="right">266</td>
 <td align="right">3345</td>
+<td align="right">-0.14</td>
 </tr>
 <tr class="odd">
 <td align="right">123574</td>
 <td align="left">Ophiura</td>
 <td align="right">175</td>
 <td align="right">3436</td>
+<td align="right">-0.06</td>
 </tr>
 <tr class="even">
 <td align="right">293649</td>
 <td align="left">Osmerus mordax mordax</td>
 <td align="right">19</td>
 <td align="right">3592</td>
+<td align="right">-0.19</td>
 </tr>
 <tr class="odd">
 <td align="right">106854</td>
 <td align="left">Pagurus</td>
 <td align="right">159</td>
 <td align="right">3458</td>
+<td align="right">-0.07</td>
 </tr>
 <tr class="even">
 <td align="right">107649</td>
 <td align="left">Pandalus borealis</td>
 <td align="right">455</td>
 <td align="right">3156</td>
+<td align="right">0.38</td>
 </tr>
 <tr class="odd">
 <td align="right">107651</td>
 <td align="left">Pandalus montagui</td>
 <td align="right">1662</td>
 <td align="right">1949</td>
+<td align="right">0.16</td>
 </tr>
 <tr class="even">
 <td align="right">125418</td>
 <td align="left">Paragorgia arborea</td>
 <td align="right">45</td>
 <td align="right">3566</td>
+<td align="right">0.01</td>
 </tr>
 <tr class="odd">
 <td align="right">158826</td>
 <td align="left">Paralichthys dentatus</td>
 <td align="right">294</td>
 <td align="right">3317</td>
+<td align="right">0.12</td>
 </tr>
 <tr class="even">
 <td align="right">158868</td>
 <td align="left">Parasudis truculenta</td>
 <td align="right">23</td>
 <td align="right">3588</td>
+<td align="right">0.02</td>
 </tr>
 <tr class="odd">
 <td align="right">107676</td>
 <td align="left">Pasiphaea multidentata</td>
 <td align="right">296</td>
 <td align="right">3315</td>
+<td align="right">0.43</td>
 </tr>
 <tr class="even">
 <td align="right">128515</td>
 <td align="left">Pennatula aculeata</td>
 <td align="right">46</td>
 <td align="right">3565</td>
+<td align="right">0.53</td>
 </tr>
 <tr class="odd">
 <td align="right">159828</td>
 <td align="left">Peprilus triacanthus</td>
 <td align="right">78</td>
 <td align="right">3533</td>
+<td align="right">-0.05</td>
 </tr>
 <tr class="even">
 <td align="right">101174</td>
 <td align="left">Petromyzon marinus</td>
 <td align="right">64</td>
 <td align="right">3547</td>
+<td align="right">-0.01</td>
 </tr>
 <tr class="odd">
 <td align="right">126441</td>
 <td align="left">Pollachius virens</td>
 <td align="right">1001</td>
 <td align="right">2610</td>
+<td align="right">0.21</td>
 </tr>
 <tr class="even">
 <td align="right">158840</td>
 <td align="left">Polyipnus clarus</td>
 <td align="right">204</td>
 <td align="right">3407</td>
+<td align="right">0.28</td>
 </tr>
 <tr class="odd">
 <td align="right">939</td>
 <td align="left">Polynoidae</td>
 <td align="right">92</td>
 <td align="right">3519</td>
+<td align="right">-0.22</td>
 </tr>
 <tr class="even">
 <td align="right">107563</td>
 <td align="left">Pontophilus norvegicus</td>
 <td align="right">186</td>
 <td align="right">3425</td>
+<td align="right">0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">125166</td>
 <td align="left">Porania pulvillus</td>
 <td align="right">312</td>
 <td align="right">3299</td>
+<td align="right">0.26</td>
 </tr>
 <tr class="even">
 <td align="right">123321</td>
 <td align="left">Poraniomorpha</td>
 <td align="right">166</td>
 <td align="right">3446</td>
+<td align="right">-0.05</td>
 </tr>
 <tr class="odd">
 <td align="right">558</td>
 <td align="left">Porifera</td>
 <td align="right">2000</td>
 <td align="right">1893</td>
+<td align="right">0.23</td>
 </tr>
 <tr class="even">
 <td align="right">159571</td>
 <td align="left">Prionotus carolinus</td>
 <td align="right">34</td>
 <td align="right">3577</td>
+<td align="right">-0.14</td>
 </tr>
 <tr class="odd">
 <td align="right">124085</td>
 <td align="left">Pseudarchaster parelii</td>
 <td align="right">232</td>
 <td align="right">3383</td>
+<td align="right">0.07</td>
 </tr>
 <tr class="even">
 <td align="right">158885</td>
 <td align="left">Pseudopleuronectes americanus</td>
 <td align="right">1174</td>
 <td align="right">2437</td>
+<td align="right">0.44</td>
 </tr>
 <tr class="odd">
 <td align="right">123908</td>
 <td align="left">Psilaster andromeda</td>
 <td align="right">299</td>
 <td align="right">3312</td>
+<td align="right">0.06</td>
 </tr>
 <tr class="even">
 <td align="right">124147</td>
 <td align="left">Pteraster militaris</td>
 <td align="right">239</td>
 <td align="right">3372</td>
+<td align="right">-0.03</td>
 </tr>
 <tr class="odd">
 <td align="right">124151</td>
 <td align="left">Pteraster pulvillus</td>
 <td align="right">75</td>
 <td align="right">3536</td>
+<td align="right">-0.07</td>
 </tr>
 <tr class="even">
 <td align="right">127144</td>
 <td align="left">Reinhardtius hippoglossoides</td>
 <td align="right">775</td>
 <td align="right">2836</td>
+<td align="right">0.11</td>
 </tr>
 <tr class="odd">
 <td align="right">178806</td>
 <td align="left">Sclerasterias tanneri</td>
 <td align="right">128</td>
 <td align="right">3483</td>
+<td align="right">0.30</td>
 </tr>
 <tr class="even">
 <td align="right">107568</td>
 <td align="left">Sclerocrangon boreas</td>
 <td align="right">64</td>
 <td align="right">3547</td>
+<td align="right">0.18</td>
 </tr>
 <tr class="odd">
 <td align="right">127023</td>
 <td align="left">Scomber scombrus</td>
 <td align="right">628</td>
 <td align="right">2983</td>
+<td align="right">-0.03</td>
 </tr>
 <tr class="even">
 <td align="right">236461</td>
 <td align="left">Scomberesox saurus saurus</td>
 <td align="right">211</td>
 <td align="right">3400</td>
+<td align="right">0.57</td>
 </tr>
 <tr class="odd">
 <td align="right">127278</td>
 <td align="left">Scopelogadus beanii</td>
 <td align="right">400</td>
 <td align="right">3211</td>
+<td align="right">0.58</td>
 </tr>
 <tr class="even">
 <td align="right">158907</td>
 <td align="left">Scophthalmus aquosus</td>
 <td align="right">811</td>
 <td align="right">2800</td>
+<td align="right">0.51</td>
 </tr>
 <tr class="odd">
 <td align="right">126175</td>
 <td align="left">Sebastes</td>
 <td align="right">1526</td>
 <td align="right">2085</td>
+<td align="right">0.49</td>
 </tr>
 <tr class="even">
 <td align="right">107136</td>
 <td align="left">Sergia robusta</td>
 <td align="right">29</td>
 <td align="right">3585</td>
+<td align="right">0.34</td>
 </tr>
 <tr class="odd">
 <td align="right">126319</td>
 <td align="left">Serrivomer beanii</td>
 <td align="right">37</td>
 <td align="right">3574</td>
+<td align="right">0.83</td>
 </tr>
 <tr class="even">
 <td align="right">124160</td>
 <td align="left">Solaster endeca</td>
 <td align="right">409</td>
 <td align="right">3202</td>
+<td align="right">0.14</td>
 </tr>
 <tr class="odd">
 <td align="right">107531</td>
 <td align="left">Spirontocaris liljeborgii</td>
 <td align="right">122</td>
 <td align="right">3489</td>
+<td align="right">-0.01</td>
 </tr>
 <tr class="even">
 <td align="right">107533</td>
 <td align="left">Spirontocaris spinus</td>
 <td align="right">87</td>
 <td align="right">3524</td>
+<td align="right">-0.10</td>
 </tr>
 <tr class="odd">
 <td align="right">105923</td>
 <td align="left">Squalus acanthias</td>
 <td align="right">701</td>
 <td align="right">2910</td>
+<td align="right">0.15</td>
 </tr>
 <tr class="even">
 <td align="right">158737</td>
 <td align="left">Stomias boa ferox</td>
 <td align="right">371</td>
 <td align="right">3240</td>
+<td align="right">0.08</td>
 </tr>
 <tr class="odd">
 <td align="right">123390</td>
 <td align="left">Strongylocentrotus</td>
 <td align="right">981</td>
 <td align="right">2634</td>
+<td align="right">0.51</td>
 </tr>
 <tr class="even">
 <td align="right">159358</td>
 <td align="left">Symphurus diomedeanus</td>
 <td align="right">427</td>
 <td align="right">3184</td>
+<td align="right">-0.01</td>
 </tr>
 <tr class="odd">
 <td align="right">126328</td>
 <td align="left">Synaphobranchus kaupii</td>
 <td align="right">53</td>
 <td align="right">3558</td>
+<td align="right">0.64</td>
 </tr>
 <tr class="even">
 <td align="right">159451</td>
 <td align="left">Syngnathus fuscus</td>
 <td align="right">53</td>
 <td align="right">3558</td>
+<td align="right">-0.03</td>
 </tr>
 <tr class="odd">
 <td align="right">159785</td>
 <td align="left">Tautogolabrus adspersus</td>
 <td align="right">34</td>
 <td align="right">3577</td>
+<td align="right">-0.16</td>
 </tr>
 <tr class="even">
 <td align="right">126154</td>
 <td align="left">Triglops</td>
 <td align="right">339</td>
 <td align="right">3277</td>
+<td align="right">0.16</td>
 </tr>
 <tr class="odd">
 <td align="right">159821</td>
 <td align="left">Ulvaria subbifurcata</td>
 <td align="right">24</td>
 <td align="right">3587</td>
+<td align="right">-0.14</td>
 </tr>
 <tr class="even">
 <td align="right">123815</td>
 <td align="left">Urasterias lincki</td>
 <td align="right">53</td>
 <td align="right">3558</td>
+<td align="right">-0.09</td>
 </tr>
 <tr class="odd">
 <td align="right">301114</td>
 <td align="left">Urophycis chesteri</td>
 <td align="right">25</td>
 <td align="right">3586</td>
+<td align="right">-0.24</td>
 </tr>
 <tr class="even">
 <td align="right">126503</td>
 <td align="left">Urophycis chuss</td>
 <td align="right">1273</td>
 <td align="right">2338</td>
+<td align="right">0.32</td>
 </tr>
 <tr class="odd">
 <td align="right">126504</td>
 <td align="left">Urophycis tenuis</td>
 <td align="right">1091</td>
 <td align="right">2520</td>
+<td align="right">0.40</td>
 </tr>
 <tr class="even">
 <td align="right">172121</td>
 <td align="left">Vazella pourtalesi</td>
 <td align="right">423</td>
 <td align="right">3188</td>
+<td align="right">0.08</td>
 </tr>
 <tr class="odd">
 <td align="right">307180</td>
 <td align="left">Zenopsis ocellata</td>
 <td align="right">141</td>
 <td align="right">3470</td>
+<td align="right">0.31</td>
 </tr>
 <tr class="even">
 <td align="right">159267</td>
 <td align="left">Zoarces americanus</td>
 <td align="right">624</td>
 <td align="right">2987</td>
+<td align="right">0.06</td>
 </tr>
 </tbody>
 </table>
@@ -1349,7 +1522,7 @@ div.csl-indent {
 </div>
 <div id="taxa-distribution" class="section level4 hasAnchor" number="6.1.1.3">
 <h4><span class="header-section-number">6.1.1.3</span> Taxa distribution<a href="modules.html#taxa-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We evaluated the distribution of taxa on the Scotian Shelf using the Random Forest ensemble learner <span class="citation">(<a href="bibliography.html#ref-breiman2001" role="doc-biblioref">Breiman, 2001</a>)</span>. We used the default parameters of the <code>randomForest</code> R package to classify the presence or absence of taxa: 500 trees and the number of variables in the random subset at each node set to the square root of the number of variables <span class="citation">(<a href="bibliography.html#ref-liaw2002" role="doc-biblioref">Liaw and Wiener, 2002</a>)</span>. All 23 abiotic variables (Table <a href="modules.html#tab:abiotic">6.2</a>) were used to model the distribution of species. The performance of each modell was evaluated using the sensitivity, specificity, accuracy and True Skilled Statistics [TSS; Table <a href="modules.html#tab:spnm">6.1</a>; <span class="citation"><a href="bibliography.html#ref-allouche2006" role="doc-biblioref">Allouche et al.</a> (<a href="bibliography.html#ref-allouche2006" role="doc-biblioref">2006</a>)</span>]. We predicted the spatial distribution of all taxa within the grid of our area of interest and performed a smoothing of predictions using a bisquare kernel smoothing approach <span class="citation">(<a href="bibliography.html#ref-dossantos2018" role="doc-biblioref">Dos Santos et al., 2018</a>)</span> with a 5 km radius to avoid granular distributions; this is done to minimize the effect on the assessment of species co-occurrences ncecessary for the subsequent network-scale cumualtive effects assessment. A threshold of 0.5 was used to transform continuous predictions to binary distributions, identifying areas where taxa are most likely to be found.</p>
+<p>We evaluated the distribution of taxa on the Scotian Shelf using the Random Forest ensemble learner <span class="citation">(<a href="bibliography.html#ref-breiman2001" role="doc-biblioref">Breiman, 2001</a>)</span>. We used the default parameters of the <code>randomForest</code> R package to classify the presence or absence of taxa: 500 trees and the number of variables in the random subset at each node set to the square root of the number of variables <span class="citation">(<a href="bibliography.html#ref-liaw2002" role="doc-biblioref">Liaw and Wiener, 2002</a>)</span>. All 23 abiotic variables (Table <a href="modules.html#tab:abiotic">6.2</a>) were used to model the distribution of species. The performance of each model was evaluated using the <span class="math inline">\(R^2\)</span> of each species’ regression tree [Table <a href="modules.html#tab:spnm">6.1</a>; <span class="citation"><a href="bibliography.html#ref-allouche2006" role="doc-biblioref">Allouche et al.</a> (<a href="bibliography.html#ref-allouche2006" role="doc-biblioref">2006</a>)</span>]. We predicted the spatial distribution of all taxa within the grid of our area of interest and performed a smoothing of predictions using a bisquare kernel smoothing approach <span class="citation">(<a href="bibliography.html#ref-dossantos2018" role="doc-biblioref">Dos Santos et al., 2018</a>)</span> with a 5 km radius to avoid granular distributions; this is done to minimize the effect on the assessment of species co-occurrences ncecessary for the subsequent network-scale cumualtive effects assessment. A threshold of 0.5 was used to transform continuous predictions to binary distributions, identifying areas where taxa are most likely to be found.</p>
 </div>
 </div>
 <div id="marinemammals" class="section level3 hasAnchor" number="6.1.2">
