@@ -3,6 +3,7 @@
 \name{plot_legend_cont}
 \alias{plot_legend_cont}
 \alias{plot_legend_bin}
+\alias{plot_legend_dual}
 \title{Plot legend}
 \usage{
 plot_legend_cont(
@@ -26,6 +27,19 @@ plot_legend_bin(
   subTitle = NULL,
   colText = "#dedede"
 )
+
+plot_legend_dual(
+  rMax,
+  pal1 = NULL,
+  pal2 = NULL,
+  cexMain = 0.75,
+  cexSub = 0.5,
+  minUp = 0.055,
+  mainTitle = NULL,
+  subTitle = NULL,
+  n = 5,
+  colText = "#dedede"
+)
 }
 \arguments{
 \item{range}{numeric, vector with minimal and maximal values}
@@ -39,6 +53,10 @@ plot_legend_bin(
 \item{subTitle}{character, type of legend. Choices are 'continuous', 'binary' or 'categorical'}
 
 \item{colText}{color of text}
+
+\item{pal1}{character, vector of colors, or color palette for first palette used in dual}
+
+\item{pal2}{character, vector of colors, or color palette for second palette used in dual}
 
 \item{cex.text}{numeric, cex for legend text}
 

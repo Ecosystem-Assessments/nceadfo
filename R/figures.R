@@ -126,5 +126,5 @@ figures <- function() {
   dr <- here::here("output","cea_difference")
   dir(dr, full.names = TRUE) |>
   lapply(stars::read_stars) |>
-  lapply(plotDat, out$diff, type = "dual")  
+  lapply(plotDat, out$diff, type = "dual", sub = "Cumulative effects change")  
 }

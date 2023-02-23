@@ -10,7 +10,7 @@ plot_nceadfo(dat, ...)
 
 \method{plot_nceadfo}{stars}(dat, mainTitle = NULL, subTitle = NULL, range = NULL)
 
-plot_nceadfo_dual(dat)
+plot_nceadfo_dual(dat, mainTitle = NULL, subTitle = NULL)
 }
 \arguments{
 \item{dat}{object of class stars}
