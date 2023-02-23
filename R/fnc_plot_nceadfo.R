@@ -3,12 +3,10 @@
 #' base plot functions for nceadfo project
 #'
 #' @param dat object of class stars
-#' @param main main title
-#' @param type secondary title / data type (see metadata files)
-#' @param subtitle subtitle
+#' @param mainTitle main title
+#' @param subTitle subtitle
 #' @param unit_data units of data
 #' @param references data citation used for integrated data
-#' @param city logical, if TRUE name of cities are added to graph
 #' @param minUp numeric, minimum upper side to write as a function of bbox extent (legend)
 #' @param ... further specifications, see \link{plot} and details.
 #'
@@ -26,7 +24,7 @@ plot_nceadfo <- function(dat, ...) {
 #' @name plot_nceadfo
 #' @export
 # plot_nceadfo.stars <- function(dat, main = NULL, type = NULL, subtitle = NULL, unit_data = NULL, references = NULL, city = TRUE, ...) {
-plot_nceadfo.stars <- function(dat) {
+plot_nceadfo.stars <- function(dat, mainTitle = NULL, subTitle = NULL, range = NULL) {
   # pdf(glue('./figures/figures-format/{data_id}.pdf'), width = 7, height = 5, pointsize = 12)
   # png(glue('./figures/delete.png'), res = param$figures$resolution, width = param$figures$width, height = param$figures$height, units = "mm", pointsize = param$figures$pointsize)
   
@@ -48,10 +46,32 @@ plot_nceadfo.stars <- function(dat) {
   plot(sf::st_geometry(aoi), lwd = .5, border = param$col$aoi, add = TRUE)
   plot(sf::st_geometry(can), lwd = .5, col = param$col$coastline, add = TRUE)
   plot(sf::st_geometry(usa), lwd = .5, col = param$col$coastline, add = TRUE)
+  
+  # Legend
+  if (isBin(dat)) {
+    plot_legend_bin(
+      col = viridis::viridis(100)[50],
+      mainTitle = mainTitle,
+      subTitle = "Presence"
+    )
+  } else {
+    r <- c(floor(min(dat[[1]], na.rm = TRUE)), ceiling(max(dat[[1]], na.rm = TRUE)))
+    plot_legend_cont(
+      range = r,
+      pal = pal,
+      mainTitle = mainTitle,
+      subTitle = subTitle
+    )    
+  }
+  
+  # Box
   box()
 }
 
 
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
 #' Plot to show differences with dual legend color centered on 0
 #' @describeIn plot_nceadfo plot with dual legend color centered on 0
 #' @export
@@ -88,165 +108,201 @@ plot_nceadfo_dual <- function(dat) {
   plot(sf::st_geometry(usa), lwd = .5, col = param$col$coastline, add = TRUE)
   box()
 }
-# 
-# 
-#   # ------------------
-#   # Inserts location
-#   # rect(fluvial[1], fluvial[3], fluvial[2], fluvial[4], lty = 2, border = "#00000088")
-#   # rect(montreal[1], montreal[3], montreal[2], montreal[4], lty = 2,
-#   #      border = paste0(global_param$col$insert[1], "88"))
-#   # rect(lacstpierre[1], lacstpierre[3], lacstpierre[2], lacstpierre[4], lty = 2,
-#   #      border = paste0(global_param$col$insert[2], "88"))
-#   # rect(quebec[1], quebec[3], quebec[2], quebec[4], lty = 2,
-#   #      border = paste0(global_param$col$insert[3], "88"))
-# 
-#   # ------------------
-#   # Legend
-#   bin <- dat[,1,drop = TRUE] %>%
-#          table() %>%
-#          names()
-#   minUp <- ifelse(is.null(type), .175, .23)
-# 
-#   if (length(bin) == 2 | length(bin) == 1) {
-#     sbt <- "Presence"
-#     cols <- global_param$col$integrated$palette[4]
-#     plot_legend_bin(
-#       col = cols,
-#       subTitle = sbt,
-#       cexSub = .5,
-#       minUp = minUp,
-#       showNA = showNA
-#     )
-#   } else {
-#     maxDat <- max(dat[,1,drop = TRUE], na.rm = TRUE)
-#     cols <- pal(101)[((dat[,1,drop = TRUE] / maxDat)*100)+1]
-#     plot_legend_cont(
-#       range = range(dat[,1,drop = TRUE], na.rm = TRUE),
-#       pal = pal,
-#       subTitle = unit_data,
-#       cexSub = .4,
-#       minUp = minUp,
-#       showNA = showNA
-#     )
-#   }
-# 
-#   # ------------------
-#   # Text
-#   y <- bbox$ymax
-#   if (!is.null(main)) {
-#     y <- y - 10000
-#     text(x = bbox$xmin + 1000,
-#          y = y,
-#          labels = main,
-#          font = 2,
-#          adj = c(0,.5),
-#          cex = .8
-#        )
-#   }
-# 
-#   if (!is.null(type)) {
-#     y <- y - 30000
-#     text(
-#       x = bbox$xmin + 1000,
-#       y = y,
-#       labels = type,
-#       adj = c(0,.5),
-#       font = 1,
-#       cex = .6
-#     )
-#   }
-# 
-#   if (!is.null(subtitle)) {
-#       if (!is.null(type)) {
-#         y <- y - 25000
-#       } else {
-#         y <- y - 30000
-#       }
-#     text(
-#       x = bbox$xmin + 1000,
-#       y = y,
-#       labels = subtitle,
-#       adj = c(0,.5),
-#       font = 3,
-#       cex = .6
-#     )
-#   }
-# 
-#   # Add sources
-#   if(!is.null(references)) {
-#     refs <- stringr::str_split(references, ",") %>% unlist()
-#     txt <- glue("Raw data : {references}. Details : Appendix 1.")      
-#     mtext(text = txt,
-#           side = 1,
-#           font = 3,
-#           adj = .98,
-#           cex = .4,
-#           line = -.45)
-#   }
-# 
-# 
-#   # ------------------
-#   # Data
-#   plotDat()
-# 
-#   # ------------------
-#   # Cities
-#   if (city) {
-#     plot(st_geometry(cities), add = TRUE, pch = 21, col = "#3e3e3e", bg = "#9f9f9f", cex = .4)
-#     for(i in 1:nrow(cities)) {
-#       text(x = cities$X[i]+cities$offX[i],
-#            y = cities$Y[i]+cities$offY[i],
-#            labels = cities$city[i],
-#            cex = .35,
-#            col = global_param$col$integrated$textOff,
-#            adj = c(cities$adjX[i], .5))
-#     }
-#   }
-# 
-#   # # ------------------------------------------------------------------------
-#   # # Inserts
-#   # # Place name
-#   # name <- function(nm) {
-#   #   xmin <- par("usr")[1]
-#   #   xmax <- par("usr")[2]
-#   #   ymin <- par("usr")[3]
-#   #   ymax <- par("usr")[4]
-#   #   x <- xmin + 2500
-#   #   y <- ymax - 4000
-#   #   text(x, y, nm, adj = c(0,.5), cex = .5, col = global_param$col$integrated$textOff)
-#   # }
-#   # 
-#   # # ---------------------------
-#   # # Montreal
-#   # par(new = TRUE)
-#   # par(fig = c(.525,.68,.05,.3), mar = c(0,0,0,0))
-#   # # par(fig = c(.545,.745,.05,.25), mar = c(0,0,0,0))
-#   # plot0(x = c(montreal$xmin, montreal$xmax), y = c(montreal$ymin+5000, montreal$ymax))
-#   # box(col = paste0(global_param$col$insert[1], "88"))
-#   # plotDat()
-#   # name("Montréal")
-#   # 
-#   # # ---------------------------
-#   # # Lac St-Pierre
-#   # par(new = TRUE)
-#   # par(fig = c(.7,.965,.05,.3), mar = c(0,0,0,0))
-#   # # par(fig = c(.765,.965,.05,.25), mar = c(0,0,0,0))
-#   # plot0(x = c(lacstpierre$xmin, lacstpierre$xmax), y = c(lacstpierre$ymin, lacstpierre$ymax))
-#   # box(col = paste0(global_param$col$insert[2], "88"))
-#   # plotDat()
-#   # name("Lac St-Pierre")
-#   # 
-#   # 
-#   # # ---------------------------
-#   # # Québec
-#   # par(new = TRUE)
-#   # par(fig = c(.7,.965,.325,.575), mar = c(0,0,0,0))
-#   # # par(fig = c(.765,.965,.275,.475), mar = c(0,0,0,0))
-#   # plot0(x = c(quebec$xmin, quebec$xmax), y = c(quebec$ymin, quebec$ymax))
-#   # box(col = paste0(global_param$col$insert[3], "88"))
-#   # plotDat()
-#   # name("Québec")
-# 
-# 
-#   # dev.off()
-# }
+
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+# Function to evaluate if data is binary or continuous
+isBin <- function(dat) {
+  bin <- as.data.frame(dat) |>
+         na.omit() 
+  bin <- round(bin[,3],4) |>
+         unique()
+  ifelse(length(bin) <= 2, TRUE, FALSE)
+}
+
+
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#' Plot legend
+#'
+#' Function to create a legend
+#'
+#' @rdname plot_legend
+#'
+#' @export
+#'
+#' @param range numeric, vector with minimal and maximal values
+#' @param pal character, vector of colors, or color palette
+#' @param cex.text numeric, cex for legend text
+#' @param mainTitle character, type of legend. Choices are 'continuous', 'binary' or 'categorical'
+#' @param subTitle character, type of legend. Choices are 'continuous', 'binary' or 'categorical'
+#' @param type character, type of legend. Choices are 'continuous', 'binary' or 'categorical'
+#' @param nTick numeric, number of ticks in the legend
+#' @param minUp numeric, minimum upper side to write as a function of bbox extent
+#' @param colText color of text
+#'
+#' @return Opens a graphical interface with the plot
+#'
+#' @keywords plot, legend
+plot_legend_cont <- function(
+  range = c(0,1),
+  pal = NULL,
+  cexMain = .75,
+  cexSub = .5,
+  minUp = .055,
+  mainTitle = NULL,
+  subTitle = NULL,
+  n = 5,
+  colText = "#dedede"
+) {
+  # Legends
+  # Palette
+  if(class(pal) == 'character') {
+    pal <- colorRampPalette(pal)
+  }
+
+  # Determine plot boundaries, in units of the data
+  xmin <- par("usr")[1]
+  xmax <- par("usr")[2]
+  ymin <- par("usr")[3]
+  ymax <- par("usr")[4]
+  xR <- xmax - xmin
+  yR <- ymax - ymin
+
+  xinit <- xmin + .015*xR # minimum left side to write
+  yinit <- ymax - minUp*yR # minimum upper side to write
+  ygap <- .04*yR
+  xgap <- .014*xR
+  ybarUp <- yinit - ygap/2 - .0041*yR
+  ybarDn <- yinit - ygap -ygap/2 + .0041*yR
+
+  # Plot
+   x <- seq(from = xinit, to = xinit + .17*xR, by = .0003*xR)
+   z <- data.frame(y1 = ybarUp,
+                  y2 = ybarDn,
+                  x1 = x[1:length(x)-1],
+                  x2 = x[2:length(x)],
+                  col = pal(length(x)-1),
+                  stringsAsFactors = F)
+   for(k in 1:nrow(z)) {
+    polygon(x = c(z$x1[k],z$x2[k],z$x2[k],z$x1[k],z$x1[k]),
+            y = c(z$y1[k],z$y1[k],z$y2[k],z$y2[k],z$y1[k]),
+            col = z$col[k],
+            border = z$col[k])
+   }
+
+   # Add axis
+   x <- seq(from = xinit, to = xinit + .17*xR, length.out = n)
+   lines(x = c(xinit, xinit + .17*xR), y = rep(z$y2[1], 2), col = colText)
+   for(i in 1:n) lines(x = rep(x[i],2), y = c(z$y2[1], z$y2[1]- .003*yR), col = colText)
+
+  
+   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   # Labels
+   if(range[2] <= 5) {
+     lab <- round(seq(from = 0, to = max(range[2]), length.out = n), 2)     
+   } else {
+     lab <- round(seq(from = 0, to = max(range[2]), length.out = n))     
+   }
+   
+   text(x = x,
+        y =  rep(z$y2[1] - .01*yR, n),
+        labels = lab,
+        cex = cexSub*.75,
+        adj = c(1, 1),
+        srt = 45,
+        col = colText
+      )
+
+  # Add titles
+  yText <- ybarUp + .025*yR
+
+  # Add sub text
+  if(!is.null(subTitle)) {
+    text(x = xinit,
+         y = yText,
+         labels = latex2exp::TeX(subTitle, italic = TRUE),
+         cex = cexSub,
+         adj = c(0,1),
+         col = colText
+       )
+     yText <- yText + .035*yR
+   }
+
+  # Add main title
+  if(!is.null(mainTitle)) {
+  text(x = xinit,
+       y = yText,
+       labels = mainTitle,
+       cex = cexMain,
+       font = 2,
+       adj = c(0,1),
+       col = colText
+     )
+  }
+}
+
+# =================================================================
+#' @rdname plot_legend
+#' @export
+plot_legend_bin <- function (
+  col,
+  cexMain = .75,
+  cexSub = .5,
+  minUp = .055,
+  mainTitle = NULL,
+  subTitle = NULL,
+  colText = "#dedede"
+) {
+
+  # Determine plot boundaries, in units of the data
+  xmin <- par("usr")[1]
+  xmax <- par("usr")[2]
+  ymin <- par("usr")[3]
+  ymax <- par("usr")[4]
+  xR <- xmax - xmin
+  yR <- ymax - ymin
+
+  xinit <- xmin + .015*xR # minimum left side to write
+  yinit <- ymax - minUp*yR # minimum upper side to write
+  ygap <- .04*yR
+  xgap <- .014*xR
+  ybarUp <- yinit - ygap/2 - .0041*yR
+  ybarDn <- yinit - ygap -ygap/2 + .0041*yR
+
+
+  # Plot
+  sq <- .05
+  polygon(x = c(xinit, xinit, xinit + sq*xR, xinit + sq*xR, xinit),
+          y = c(ybarUp,ybarDn,ybarDn,ybarUp,ybarUp),
+          col = col,
+          border = "#000000")
+
+
+  # Add titles
+  yText <- ybarUp + .025*yR
+
+  # Add sub text
+  if(!is.null(subTitle)) {
+    text(x = xinit,
+         y = yText,
+         labels = latex2exp::TeX(subTitle, italic = TRUE),
+         cex = cexSub,
+         adj = c(0,1),
+         col = colText)
+     yText <- yText + .0224*yR
+   }
+
+  # Add main title
+  if(!is.null(mainTitle)) {
+  text(x = xinit,
+       y = yText,
+       labels = mainTitle,
+       cex = cexMain,
+       font = 2,
+       adj = c(0,1),
+       col = colText)
+  }
+}

@@ -17,7 +17,7 @@ figures <- function() {
   lapply(out, chk_create)
   
   # ---
-  plotDat <- function(dat, out, suffix = "", type = "regular") {
+  plotDat <- function(dat, out, suffix = "", type = "regular", main =  NULL, sub = NULL) {
     nm <- tools::file_path_sans_ext(names(dat))
     png(
       here::here(out, glue::glue("{nm}{suffix}.png")), 
@@ -27,8 +27,8 @@ figures <- function() {
       units = "mm", 
       pointsize = param$figures$pointsize
     )
-    if (type == "regular") plot_nceadfo(dat)
-    if( type == "dual") plot_nceadfo_dual(dat)
+    if (type == "regular") plot_nceadfo(dat, mainTitle = main, subTitle = sub)
+    if( type == "dual") plot_nceadfo_dual(dat, mainTitle = main, subTitle = sub)
     dev.off()
   }
   
@@ -40,21 +40,31 @@ figures <- function() {
     full.names = TRUE
   ) |>
   lapply(stars::read_stars) |>
-  lapply(plotDat, out$biotic_cnt)
+  lapply(plotDat, out$biotic_cnt, sub = "Occurrence probability")
 
   # Species distribution binary
-  dir(
+  dat <- dir(
     c("data/data-biotic/marine_mammals/binary",
       "data/data-biotic/sea_birds/binary", 
       "data/data-biotic/marine_species/random_forest_regression_binary"), 
     full.names = TRUE
   ) |>
-  lapply(stars::read_stars) |>
-  lapply(plotDat, out$biotic_bin)
+  lapply(stars::read_stars)
+  nm <- lapply(dat, names) |> unlist()
+  dat <- lapply(dat, function(x) setNames(x, "vals")) |>
+         lapply(function(x) dplyr::mutate(x, vals = ifelse(vals == 0, NA, vals)))
+  for(i in 1:length(dat)) names(dat[[i]]) <- nm[i]
+  names(dat) <- nm
+  lapply(dat, plotDat, out$biotic_bin)
 
   # Abiotic  
-  dir("data/data-abiotic", full.names = TRUE, pattern = ".tif$") |>
-  lapply(stars::read_stars) |>
+  dat <- dir("data/data-abiotic", full.names = TRUE, pattern = ".tif$") 
+  nm <- tools::file_path_sans_ext(basename(dat)) |>
+        stringr::str_replace_all("_", " ") |>
+        stringr::str_replace_all("\\.", " ") |>
+        stringr::str_to_sentence()
+  dat <- lapply(dat, stars::read_stars) 
+  for(i in 1:length(dat)) plotDat(dat[[i]], out$abiotic, sub = nm[i])
   lapply(plotDat, out$abiotic)
   
   # Drivers 
@@ -64,18 +74,23 @@ figures <- function() {
     here::here(dr, per[i]) |>
     dir(full.names = TRUE, pattern = ".tif$") |>
     lapply(stars::read_stars) |>
-    lapply(plotDat, out$drivers)
+    lapply(plotDat, out$drivers, sub = "Normalized intensity")
   }
 
-  # Footprint
-  dir(here::here("output","footprint"), full.names = TRUE) |>
+  # Cumulative stressors 
+  dir(here::here("output","footprint"), pattern = "drivers", full.names = TRUE) |>
   lapply(stars::read_stars) |>
-  lapply(plotDat, out$footprint)
+  lapply(plotDat, out$footprint, sub = "Cumulative drivers")
+
+  # Cumulative stressors 
+  dir(here::here("output","footprint"), pattern = "species", full.names = TRUE) |>
+  lapply(stars::read_stars) |>
+  lapply(plotDat, out$footprint, sub = "Species richness")
 
   # Exposure
   dir(here::here("output","exposure"), full.names = TRUE) |>
   lapply(stars::read_stars) |>
-  lapply(plotDat, out$exposure)
+  lapply(plotDat, out$exposure, sub = "Cumulative exposure")
 
   # Species-scale cumulative effects assessment - species
   dr <- here::here("output","cea_species")
@@ -86,7 +101,7 @@ figures <- function() {
     here::here(dr, per[i]) |>
     dir(full.names = TRUE, pattern = ".tif$") |>
     lapply(stars::read_stars) |>
-    lapply(plotDat, outsp[i])
+    lapply(plotDat, outsp[i], sub = "Cumulative effects score")
   }
   
   # Network-scale cumulative effects assessment - species
@@ -98,14 +113,14 @@ figures <- function() {
     here::here(dr, per[i], "cea") |>
     dir(full.names = TRUE, pattern = ".tif$") |>
     lapply(stars::read_stars) |>
-    lapply(plotDat, outsp[i])
+    lapply(plotDat, outsp[i], sub = "Cumulative effects score")
   }
   
   # Species-scale and network-scale cumulative effects assessment
   dr <- here::here("output","cea")
   dir(dr, full.names = TRUE) |>
   lapply(stars::read_stars) |>
-  lapply(plotDat, out$cea)
+  lapply(plotDat, out$cea, sub = "Cumulative effects score")
   
   # Period differences for both assessments
   dr <- here::here("output","cea_difference")

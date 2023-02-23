@@ -8,7 +8,7 @@
 \usage{
 plot_nceadfo(dat, ...)
 
-\method{plot_nceadfo}{stars}(dat)
+\method{plot_nceadfo}{stars}(dat, mainTitle = NULL, subTitle = NULL, range = NULL)
 
 plot_nceadfo_dual(dat)
 }
@@ -17,17 +17,13 @@ plot_nceadfo_dual(dat)
 
 \item{...}{further specifications, see \link{plot} and details.}
 
-\item{main}{main title}
+\item{mainTitle}{main title}
 
-\item{type}{secondary title / data type (see metadata files)}
-
-\item{subtitle}{subtitle}
+\item{subTitle}{subtitle}
 
 \item{unit_data}{units of data}
 
 \item{references}{data citation used for integrated data}
-
-\item{city}{logical, if TRUE name of cities are added to graph}
 
 \item{minUp}{numeric, minimum upper side to write as a function of bbox extent (legend)}
 }
