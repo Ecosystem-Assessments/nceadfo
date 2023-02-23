@@ -280,7 +280,7 @@ fig_metanetwork <- function(cekm, period, type) {
   )
   
   # Plot
-  par(mar = c(2,2,2,2))
+  par(mar = c(2,2,2,2), bg = "#00000000")
   plot0(x = c(-1.1, 1.1))
 
   # Adjust some group names
