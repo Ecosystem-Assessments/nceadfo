@@ -34,3 +34,6 @@ raw/
 # Specific folders
 figures/*
 !figures/atlas/
+
+# Temporary 
+webinar/

@@ -1,0 +1,61 @@
+---
+title: "Cumulative effects assessment of global changes on ecological communities of the Scotian Shelf Bioregion"
+author: "David Beauchesne, Cindy Grant, Philippe Archambault"
+output:
+  xaringan::moon_reader:
+    css: [rd.css, rd-font.css, default, "hygge"]
+    lib_dir: assets
+    seal: false
+    nature:
+      highlightStyle: dracula
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+---
+
+```{r setup, include=FALSE}
+source('_setup.R')
+# knitr::clean_cache(TRUE)
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #37abc8\"></i>",
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+# xaringanExtra::use_scribble()
+
+cols <- c('#777777','#d66666','#f0f518','#2eb8dd','#6a8868')
+```
+
+
+class: title-slide, middle
+
+
+# Cumulative effects assessment of global changes on ecological communities of the Scotian Shelf Bioregion
+
+<br>
+
+<center>
+<a href ="https://github.com/Ecosystem-Assessments/nceadfo/tree/main/pubs/report/docs/index.html"><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
+<a href =""><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
+</img></center>
+
+<center>
+<a href =""><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
+<a href ="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
+</img></center>
+
+<span class="br2"></span>
+
+<center><i>David Beauchesne, Cindy Grant & Philippe Archambault</i></center>
+
+<span class="br2"></span>
+
+<center>
+<a href="https://www.ulaval.ca/"><img src="figures/ul.png" width="100px"></img></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="figures/labo_benthos.png" width="50px"></img>
+<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="figures/Transport-Canada.png" width="10%"></img> -->
+</center>
+
