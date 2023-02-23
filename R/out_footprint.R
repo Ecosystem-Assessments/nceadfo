@@ -16,8 +16,10 @@ out_footprint <- function() {
   )
   
   # Cumulative drivers 
-  r <- lapply(r, cumul)
-  
+  aoi <- sf::st_read("data/aoi/aoi.gpkg")
+  r <- lapply(r, cumul) |>
+       lapply(function(x) x[aoi]) # Mask data
+         
   # Export 
   out <- here::here("output","footprint")
   chk_create(out)

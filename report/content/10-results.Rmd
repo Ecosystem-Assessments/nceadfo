@@ -2,7 +2,9 @@
 
 ## Cumulative drivers 
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
+fig.link = "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/aoi/aoi.png?raw=true"
+
+```{r out.width = "100%", echo=FALSE, fig.align='center', }
 urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
 knitr::include_graphics(glue::glue("{urls}footprint/cumulative_drivers.png?raw=true"))
 ```
