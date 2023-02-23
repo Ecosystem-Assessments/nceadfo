@@ -36,7 +36,7 @@ class: title-slide, middle
 <br>
 
 <center>
-<a href ="https://github.com/Ecosystem-Assessments/nceadfo/tree/main/pubs/report/docs/index.html"><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
+<a href ="report/index.html"><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
 <a href =""><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
 </img></center>
 

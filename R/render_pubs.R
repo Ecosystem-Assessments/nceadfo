@@ -13,10 +13,10 @@ render_report <- function() {
     setwd('../../')
     # file.copy("./figures/", "./report/", recursive = TRUE)
   })
-  # from <- here::here("report","docs")
-  # to <- here::here("docs")
-  # if (file.exists(to)) fs::file_delete(to)
-  # fs::file_move(from, to)
+  from <- here::here("pubs","report","docs")
+  to <- here::here("docs","report")
+  if (file.exists(to)) fs::file_delete(to)
+  fs::file_move(from, to)
 }
 
 #' Render nceadfo package
