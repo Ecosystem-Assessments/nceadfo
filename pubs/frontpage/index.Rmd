@@ -33,16 +33,16 @@ class: title-slide, middle
 
 # Cumulative effects assessment of global changes on ecological communities of the Scotian Shelf Bioregion
 
-<br>
+<span class="br2"></span>
 
 <center>
-<a href ="report/index.html"><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
-<a href =""><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
+<a href ="report/index.html"><img src="figures/report.png" width="35%"></a>
+<a href ="webinar/index.html"><img src="figures/webinar.png" width="35%"></a>
 </img></center>
 
 <center>
-<a href =""><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
-<a href ="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png" width="20%"></a>
+<a href ="https://github.com/Ecosystem-Assessments/nceadfo/"><img src="figures/nceadfo.png" width="35%"></a>
+<a href ="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="figures/eDrivers.png" width="35%"></a>
 </img></center>
 
 <span class="br2"></span>

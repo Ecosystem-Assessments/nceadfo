@@ -52,6 +52,8 @@ pipeline <- function() {
   fig_contribution_()
   fig_atlas()
   
-  # Report 
+  # Report and publications 
+  render_frontpate()
   render_report()
+  render_webinar()
 }

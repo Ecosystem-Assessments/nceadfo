@@ -31,9 +31,10 @@ raw/
 *.gpkg
 *.rds
 
-# Specific folders
+# Specific files & folders
 figures/*
 !figures/atlas/
+frontpage.svg
 
 # Temporary 
 webinar/
