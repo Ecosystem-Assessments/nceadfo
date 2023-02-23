@@ -1,21 +1,49 @@
 # Results {#results}
 
+```{r urls}
+beg <- "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/"
+fin <- ".png?raw=true"
+urls <- list()
+
+# List of links to figures
+urls$cumdrivers <- glue::glue("{beg}footprint/cumulative_drivers{fin}") 
+urls$sprich <- glue::glue("{beg}footprint/species_richness{fin}") 
+urls$ceasp <- glue::glue("{beg}cea/cea_species{fin}") 
+urls$ceaspdf <- glue::glue("{beg}difference/cea_species_difference{fin}") 
+urls$ceanet <- glue::glue("{beg}cea/cea_network{fin}") 
+urls$ceanetdf <- glue::glue("{beg}difference/cea_network_difference{fin}") 
+urls$meta <- glue::glue("{beg}metanetwork/metanetwork-2016_2021{fin}") 
+urls$cont <- glue::glue("{beg}contribution/contribution_group-2016_2021{fin}") 
+
+# List of captions to figures
+spList <- read.csv(here::here("data","cea_modules","species_list.csv"))
+nGr <- length(unique(spList$gr2))
+cap <- list()
+cap$cumdrivers <- paste("Distribution of cumulative drivers on the Scotian Shelf Bioregion in eastern Canada for the periods of 2010-2015 and 2015-2016. Cumulative drivers are evaluated as the sum of the normalized intensity (scaled between 0 and 1) of the", nDr, "drivers considered for the assessment ($E_{S_x} = \\sum_{j=1}^m S_{j,x}$); it identifies areas that are most exposed to the potential effects of the environmental drivers considered for the cumulative effects assessment. Refer to @beauchesne2020 for more details.")
+cap$sprich <- paste("Distribution of species richness, as evaluated from the", nTx, "taxa considered in the cumulative effects assessment and the results of the species distribution modeling. See section \\@ref(spmodule) for more information.")
+cap$ceasp <- paste("Species-scale cumulative effects assessment of", nDr, "drivers on", nTx, "taxa of the Scotian Shelf Bioregion in eastern Canada, using the @halpern2008a method. See section \\@ref(speciesmethod) for more details on the approach.")
+cap$ceaspdf <- "Change in species-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada."
+cap$ceanet <- paste("Network-scale cumulative effects assessment of", nDr, "drivers on", nTx, "taxa of the Scotian Shelf Bioregion in eastern Canada, using the @beauchesne2020c method explicitly considering the underlying structure of the ecological community. See section \\@ref(networkmethod) for more details on the approach.")
+cap$ceanetdf <- "Change in network-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada."
+cap$meta <- paste("Multiplex network of network-scale cumulative effects on the Scotian Shelf Bioregion presenting the metaweb of interactions between the", nTx, "taxa considered (grey connections), the presence of an effect of individual drivers on each taxa (colored connections), the overall cumulative effect on each taxon (taxa point size) and the mean effect of drivers on all taxa (driver point size)")
+cap$cont <- paste("Contribution of drivers to network-scale cumulative effects of taxa classified by taxonomic groups. Mean contribution of", nDr, "drivers to the cumulative effects ($C / km^2$) of", nTx, "taxa on the Scotian Shelf Bioregion in eastern Canada classified into", nGr, "taxonomic groups. Taxonomic groups for invertebrates (grey box) and vertebrates are divided at the phyla and classes level, respectively. For each group, the mean contribution per species was used to evaluate each driver's contribution to overall cumulative effects; this can be divided into their direct and indirect contributions to the cumulative effects on each taxon. Direct effects are those attributable to the effect of a driver on a focal species, while indirect effects are the mean effects of drivers spreading through all 3-species interactions a taxon is involved in. The total contribution to cumulative effect is the sum of the direct and indirect contributions of each driver.")
+
+# ---
+cap <- lapply(cap, function(x) glue::glue("{x} ***Click on figure to view in seperate tab.***"))
+```
+
 ## Cumulative drivers 
 
-fig.link = "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/aoi/aoi.png?raw=true"
-
-```{r out.width = "100%", echo=FALSE, fig.align='center', }
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}footprint/cumulative_drivers.png?raw=true"))
+```{r out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$cumdrivers, fig.cap=cap$cumdrivers}
+knitr::include_graphics(urls$cumdrivers)
 ```
 
 <br/>
 
 ## Species richness
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}footprint/species_richness.png?raw=true"))
+```{r out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$sprich, fig.cap=cap$sprich}
+knitr::include_graphics(urls$sprich)
 ```
 
 <br/>
@@ -23,16 +51,14 @@ knitr::include_graphics(glue::glue("{urls}footprint/species_richness.png?raw=tru
 
 ## Species-scale cumulative effects {#ceaspresults}
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}cea/cea_species.png?raw=true"))
+```{r out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceasp, fig.cap=cap$ceasp}
+knitr::include_graphics(urls$ceasp)
 ```
 
 <br/>
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}difference/cea_species_difference.png?raw=true"))
+```{r out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceaspdf, fig.cap=cap$ceaspdf}
+knitr::include_graphics(urls$ceaspdf)
 ```
 
 <br/>
@@ -40,24 +66,21 @@ knitr::include_graphics(glue::glue("{urls}difference/cea_species_difference.png?
 
 ## Network-scale cumulative effects 
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}cea/cea_network.png?raw=true"))
+```{r out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceanet, fig.cap=cap$ceanet}
+knitr::include_graphics(urls$ceanet)
 ```
 
 <br/>
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}difference/cea_network_difference.png?raw=true"))
+```{r out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceanetdf, fig.cap=cap$ceanetdf}
+knitr::include_graphics(urls$ceanetdf)
 ```
 
 
 ## Metanetwork 
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}metanetwork/metanetwork-2016_2021.png?raw=true"))
+```{r out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$meta, fig.cap=cap$meta}
+knitr::include_graphics(urls$meta)
 ```
 
 <br/>
@@ -65,9 +88,8 @@ knitr::include_graphics(glue::glue("{urls}metanetwork/metanetwork-2016_2021.png?
 
 ## Driver contribution
 
-```{r out.width = "90%", echo=FALSE, fig.align='center'}
-urls <- c("https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/")
-knitr::include_graphics(glue::glue("{urls}contribution/contribution_group-2016_2021.png?raw=true"))
+```{r out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$cont, fig.cap=cap$cont}
+knitr::include_graphics(urls$cont)
 ```
 
 <br/>

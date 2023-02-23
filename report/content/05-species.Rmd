@@ -13,9 +13,10 @@ nsp <- nrow(sp)
 nmm <- nrow(mm)
 nbd <- nrow(bird)
 nab <- nrow(abiotic)
+nTx <- nsp+nmm+nbd
 ```
 
-The assessment considers `r nsp` [marine](marinesp), `r nmm` [marine mammal](marinemammals), and `r nbd` [sea bird](seabirds) taxa, for a total of `r nsp+nmm+nbd` taxa considered. We also assumed that phytoplankton and zooplankton species were present throughout the St. Lawrence System since these taxa are missing from our dataset and are required to properly consider trophic dynamics. The following sections describe the data and approaches used to evaluate their distribution on the Scotian Shelf
+The assessment considers `r nsp` [marine](marinesp), `r nmm` [marine mammal](marinemammals), and `r nbd` [sea bird](seabirds) taxa, for a total of `r nTx` taxa considered. We also assumed that phytoplankton and zooplankton species were present throughout the St. Lawrence System since these taxa are missing from our dataset and are required to properly consider trophic dynamics. The following sections describe the data and approaches used to evaluate their distribution on the Scotian Shelf
 
 ### Marine species {#marinesp}
 
