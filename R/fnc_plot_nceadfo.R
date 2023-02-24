@@ -435,3 +435,41 @@ plot_legend_dual <- function(
      )
   }
 }
+
+#' Function for simple plots for presentations
+#' @name plot_nceadfo_simple
+#' @export
+plot_nceadfo_simple <- function(dat, legend = TRUE, mainTitle = NULL, subTitle = NULL, range = NULL) {  
+  # ------------------
+  aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE)
+
+  # ------------------
+  global_parameters()
+  bbox <- param$bbox
+  pal <- colorRampPalette(viridis::viridis(100))
+
+  # ------------------
+  par(family = 'serif', mar = c(.5, .5, .5, .5), bg = "#00000000")
+  graphicsutils::plot0(x = c(bbox$xmin, bbox$xmax), y = c(bbox$ymin, bbox$ymax))
+  image(dat, col = viridis::viridis(100))
+  plot(sf::st_geometry(aoi), lwd = .5, border = param$col$aoi, add = TRUE)
+  
+  if (legend) {
+    # Legend
+    if (isBin(dat)) {
+      plot_legend_bin(
+        col = viridis::viridis(100)[50],
+        mainTitle = mainTitle,
+        subTitle = "Presence"
+      )
+    } else {
+      r <- c(floor(min(dat[[1]], na.rm = TRUE)), ceiling(max(dat[[1]], na.rm = TRUE)))
+      plot_legend_cont(
+        range = r,
+        pal = pal,
+        mainTitle = mainTitle,
+        subTitle = subTitle
+      )    
+    }    
+  }
+}

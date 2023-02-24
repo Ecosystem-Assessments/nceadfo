@@ -34,7 +34,5 @@ raw/
 # Specific files & folders
 figures/*
 !figures/atlas/
+!figures/webinar/
 frontpage.svg
-
-# Temporary 
-webinar/
