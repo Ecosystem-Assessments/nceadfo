@@ -64,6 +64,8 @@ knitr::include_graphics(urls$cumdrivers)
 
 ## Cumulative effects {#ceares}
 
+> The methods used to perform the species-scale and network-scale cumulative effects assessments are represented in sections \@ref(speciesmethod) and \@ref(networkmethod), respectively.
+
 
 This will be important to consider when interpreting the results of the assessment: results are constrained by the data used and interpretation must be done within the bounds of the data used. 
 
