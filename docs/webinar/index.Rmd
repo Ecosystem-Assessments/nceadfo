@@ -842,11 +842,6 @@ plan(4)
 </div>
 </center>
 
-.references[
-Only data for the period 2016-2021 are presented here.
-]
-
-
 ---
 # Modules: Species-specific sensitivity  
 
