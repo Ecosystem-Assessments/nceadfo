@@ -62,7 +62,7 @@ knitr::include_graphics(urls$cumdrivers)
 
 > The methods used to perform the species-scale and network-scale cumulative effects assessments are represented in sections \@ref(speciesmethod) and \@ref(networkmethod), respectively.
 
-The main results of this assessment combine all data [modules](#modules) to assess the cumulative effects of environmental drivers on the ecological communities of the Scotian Shelf Bioregion. We present and interpret the results on the spatial distribution of cumulative effects from the species-scale (Figure \@ref(fig:spceares)) and network-scale (Figure \@ref(fig:nceares)) assessments jointly, as they identify similar spatial trends in cumulative effects. This is unsurprising, as the distribution of both assessments is driven mainly by the cooccurrence of environmental drivers and species. Considering species interactions amplifies or dampens the relative intensity of cumulative effects at the community scale, *i.e.* when all species are considered simultaneously; however, it refines the assessment for certain species such as marine mammals for which direct effects cannot properly capture the effects of drivers such as climate change that propagate through the ecological network. See sections \@ref(metares) and \@ref(contributionres) for more on the direct and indirect cumulative effects, and refer to @beauchesne2020c for more details on the network-scale assessment. 
+The main results of this assessment combine all data [modules](#modules) to assess the cumulative effects of environmental drivers on the ecological communities of the Scotian Shelf Bioregion. We present and interpret the results on the spatial distribution of cumulative effects from the species-scale (Figure \@ref(fig:spceares)) and network-scale (Figure \@ref(fig:nceares)) assessments jointly, as they identify similar spatial trends in cumulative effects. This is unsurprising, as the distribution of both assessments is driven mainly by the cooccurrence of environmental drivers and species. Considering species interactions amplifies or dampens the relative intensity of cumulative effects at the community scale, *i.e.* when all species are considered simultaneously; however, it refines the assessment for certain species such as marine mammals for which direct effects cannot properly capture the effects of drivers such as climate change that propagate through the ecological network. It should also be noted that values from the species-scale and network-scale assessments cannot be directly compared, as they are both relative to the component each consider. Hence, a cell with a greater value in the network-scale assessment cannot be interpreted as a greater impact; they can only be compared in relative form. See sections \@ref(metares) and \@ref(contributionres) for more on the direct and indirect cumulative effects, and refer to @beauchesne2020c for more details on the network-scale assessment. 
 
 The assessments of cumulative effects reveal a stark contrast between the continental shelf, including the Bay of Fundy, and the continental slope; this result is in accordance with the lower representation of species and environmental drivers that we previously discussed from the assessments of [species richness](#sprichres) and [cumulative drivers](#cumdrres). This result should therefore also be interpreted as an absence data characterizing environmental drivers in the study area and that it is unlikely that ecological communities are not under any type of environmental threats. Still, it remains undeniable that the ecological communities of the continental shelf are more at risk from the cumulative effets of environmental drivers. 
 
@@ -86,13 +86,17 @@ knitr::include_graphics(urls$ceanet)
 
 ```{r evaldiff, echo = FALSE}
 outdif <- here::here("output","cea_difference")
-spcea <- stars::read_stars(here::here(outdif,"cea_species_difference.tif"))[[1]] |>
-         mean(na.rm = TRUE)
-ncea <- stars::read_stars(here::here(outdif,"cea_network_difference.tif"))[[1]] |>
-        mean(na.rm = TRUE)
+spcea <- stars::read_stars(here::here(outdif,"cea_species_difference.tif"))[[1]] 
+spceamn <- round(mean(spcea, na.rm = TRUE),2)
+spceasd <- round(sd(spcea, na.rm = TRUE),2)
+ncea <- stars::read_stars(here::here(outdif,"cea_network_difference.tif"))[[1]]
+nceamn <- round(mean(ncea, na.rm = TRUE),2)
+nceasd <- round(sd(ncea, na.rm = TRUE),2)
 ```
 
 > ***Note***: driver standardization is currently done on a driver per period basis, *e.g.* demersal fisheries for 2010-2015 were transformed using data from that period only. This makes the chagne in cumulative effects results less reliable reliable than if standardization was made from the joint distribution of demersal fishries from 2010-2015 and 2016-2021. This should be changed accordingly so that we may be confident in the results for changes over time.
+
+The cumulative effects assessments were performed on two periods for environmental drivers when data permitted, the first spanning 2010 to 2015 and 2016 to 2021 (see section \@ref(drmodule) for more details). We thus evaluated the change in cumulative effects for the species-scale and the network-scale assessments (Figure \@ref(fig:ceadiff)). As with the cumulative effects themselves, the spatial distribution of relative change in cumulative effects is similar between both assessments. In general, there is a slight decrease in cumulative effects across the Scotiain Shelf Bioregion (species-scale assessment: `r spceamn` $\pm$ `r spceasd`; network-scale assessment: `r nceamn` $\pm$ `r nceasd`). Areas identified at higher risk of cumulative effects previously (see Section \@ref(ceares)) generally show a decrease in relative intensity, except for part of the Bay of Fundy, where a slight increase is predicted by both assessments. 
 
 
 ```{r ceadiff, out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceadf, fig.cap=cap$ceadf}
