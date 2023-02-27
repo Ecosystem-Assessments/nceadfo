@@ -15,8 +15,7 @@ fig:sprich
 fig:cumuldr
 fig:spceares
 fig:nceares
-fig:spceadiff
-fig:nceadiff
+fig:ceadiff
 fig:unnamed-chunk-2
 fig:unnamed-chunk-3
 tab:dataapp

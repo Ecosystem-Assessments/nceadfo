@@ -238,12 +238,13 @@ fig_atlas <- function(type = c("aoi","footprint","cea","difference","metanetwork
     img <- nm_sub(img, "Difference between 2016-2021 and 2010-2015")
 
     # Resize 
-    img <- magick::image_resize(img, img_resize)
+    # img <- magick::image_resize(img, img_resize)
+    img1 <- magick::image_resize(img, img_resize)
 
-    # Export  
-    img_write(img, here::here(out$atlas, "cea_species_difference.png"))
-    rm(img)
-    gc()
+    # # Export  
+    # img_write(img, here::here(out$atlas, "cea_species_difference.png"))
+    # rm(img)
+    # gc()
     
     # -----------------
     # Network-scale cea
@@ -259,10 +260,17 @@ fig_atlas <- function(type = c("aoi","footprint","cea","difference","metanetwork
     img <- nm_sub(img, "Difference between 2016-2021 and 2010-2015")
 
     # Resize 
-    img <- magick::image_resize(img, img_resize)
+    # img <- magick::image_resize(img, img_resize)
+    img2 <- magick::image_resize(img, img_resize)
 
-    # Export  
-    img_write(img, here::here(out$atlas, "cea_network_difference.png"))
+    # # Export  
+    # img_write(img, here::here(out$atlas, "cea_network_difference.png"))
+    # rm(img)
+    # gc()
+    
+    # Combine periods and export
+    img <- magick::image_append(c(img1,img2))
+    img_write(img, here::here(out$atlas, "cea_difference.png"))
     rm(img)
     gc()
   }

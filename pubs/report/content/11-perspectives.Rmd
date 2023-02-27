@@ -30,3 +30,7 @@ Pauly, 2019; Encyclopedia of Life, 2020), les interactions écologiques (Poelen 
 2014; Poisot et al., 2016) et les données abiotiques (Assis et al., 2018). Il semble ainsi
 raisonnable de croire que les limites présentées s’atténueront et que l’applicabilité de
 la méthode proposée s’accentuera progressivement. -->
+
+
+<!-- This will be important to consider when interpreting the results of the assessment: results are constrained by the data used and interpretation must be done within the bounds of the data used. 
+ -->

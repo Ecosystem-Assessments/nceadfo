@@ -11,9 +11,8 @@ urls <- list()
 urls$cumdrivers <- glue::glue("{beg}footprint/cumulative_drivers{fin}") 
 urls$sprich <- glue::glue("{beg}footprint/species_richness{fin}") 
 urls$ceasp <- glue::glue("{beg}cea/cea_species{fin}") 
-urls$ceaspdf <- glue::glue("{beg}difference/cea_species_difference{fin}") 
 urls$ceanet <- glue::glue("{beg}cea/cea_network{fin}") 
-urls$ceanetdf <- glue::glue("{beg}difference/cea_network_difference{fin}") 
+urls$ceadf <- glue::glue("{beg}difference/cea_difference{fin}") 
 urls$meta <- glue::glue("{beg}metanetwork/metanetwork-2016_2021{fin}") 
 urls$cont <- glue::glue("{beg}contribution/contribution_group-2016_2021{fin}") 
 
@@ -24,9 +23,8 @@ cap <- list()
 cap$cumdrivers <- paste("Distribution of cumulative drivers on the Scotian Shelf Bioregion in eastern Canada for the periods of 2010-2015 and 2015-2016. Cumulative drivers are evaluated as the sum of the normalized intensity (scaled between 0 and 1) of the", nDr, "drivers considered for the assessment ($E_{S_x} = \\sum_{j=1}^m S_{j,x}$); it identifies areas that are most exposed to the potential effects of the environmental drivers considered for the cumulative effects assessment. Refer to @beauchesne2020 for more details.")
 cap$sprich <- paste("Distribution of species richness, as evaluated from the", nTx, "taxa considered in the cumulative effects assessment and the results of the species distribution modeling. See section \\@ref(spmodule) for more information.")
 cap$ceasp <- paste("Species-scale cumulative effects assessment of", nDr, "drivers on", nTx, "taxa of the Scotian Shelf Bioregion in eastern Canada, using the @halpern2008a method. See section \\@ref(speciesmethod) for more details on the approach.")
-cap$ceaspdf <- "Change in species-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada."
 cap$ceanet <- paste("Network-scale cumulative effects assessment of", nDr, "drivers on", nTx, "taxa of the Scotian Shelf Bioregion in eastern Canada, using the @beauchesne2020c method explicitly considering the underlying structure of the ecological community. See section \\@ref(networkmethod) for more details on the approach.")
-cap$ceanetdf <- "Change in network-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada."
+cap$ceadf <- "Change in cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada for the species-scale and network-scale assessments."
 cap$meta <- paste("Multiplex network of network-scale cumulative effects on the Scotian Shelf Bioregion presenting the metaweb of interactions between the", nTx, "taxa considered (grey connections), the presence of an effect of individual drivers on each taxa (colored connections), the overall cumulative effect on each taxon (taxa point size) and the mean effect of drivers on all taxa (driver point size)")
 cap$cont <- paste("Contribution of drivers to network-scale cumulative effects of taxa classified by taxonomic groups. Mean contribution of", nDr, "drivers to the cumulative effects ($C / km^2$) of", nTx, "taxa on the Scotian Shelf Bioregion in eastern Canada classified into", nGr, "taxonomic groups. Taxonomic groups for invertebrates (grey box) and vertebrates are divided at the phyla and classes level, respectively. For each group, the mean contribution per species was used to evaluate each driver's contribution to overall cumulative effects; this can be divided into their direct and indirect contributions to the cumulative effects on each taxon. Direct effects are those attributable to the effect of a driver on a focal species, while indirect effects are the mean effects of drivers spreading through all 3-species interactions a taxon is involved in. The total contribution to cumulative effect is the sum of the direct and indirect contributions of each driver.")
 
@@ -60,15 +58,15 @@ knitr::include_graphics(urls$cumdrivers)
 
 <br/>
 
-
-
 ## Cumulative effects {#ceares}
 
 > The methods used to perform the species-scale and network-scale cumulative effects assessments are represented in sections \@ref(speciesmethod) and \@ref(networkmethod), respectively.
 
+The main results of this assessment combine all data [modules](#modules) to assess the cumulative effects of environmental drivers on the ecological communities of the Scotian Shelf Bioregion. We present and interpret the results on the spatial distribution of cumulative effects from the species-scale (Figure \@ref(fig:spceares)) and network-scale (Figure \@ref(fig:nceares)) assessments jointly, as they identify similar spatial trends in cumulative effects. This is unsurprising, as the distribution of both assessments is driven mainly by the cooccurrence of environmental drivers and species. Considering species interactions amplifies or dampens the relative intensity of cumulative effects at the community scale, *i.e.* when all species are considered simultaneously; however, it refines the assessment for certain species such as marine mammals for which direct effects cannot properly capture the effects of drivers such as climate change that propagate through the ecological network. See sections \@ref(metares) and \@ref(contributionres) for more on the direct and indirect cumulative effects, and refer to @beauchesne2020c for more details on the network-scale assessment. 
 
-This will be important to consider when interpreting the results of the assessment: results are constrained by the data used and interpretation must be done within the bounds of the data used. 
+The assessments of cumulative effects reveal a stark contrast between the continental shelf, including the Bay of Fundy, and the continental slope; this result is in accordance with the lower representation of species and environmental drivers that we previously discussed from the assessments of [species richness](#sprichres) and [cumulative drivers](#cumdrres). This result should therefore also be interpreted as an absence data characterizing environmental drivers in the study area and that it is unlikely that ecological communities are not under any type of environmental threats. Still, it remains undeniable that the ecological communities of the continental shelf are more at risk from the cumulative effets of environmental drivers. 
 
+On the continental shelf, the whole Bay of Fundy as well as the tip of southeastern Nova-Scotia extending offshore towards the continental slope appears to be the region most at risk from cumulative effects. The regions northeast of Sable Island, as well as the coastal areas south of Cape Breton are also at greater risk from cumulative effects. Areas of greatest cumulative effects seem to be strongly associated with regions affected by a combination of climate-related drivers, commercial fisheries and shipping (see [Atlas](@stratlas)). Meanwhile, the middle of the the continental shelf, besides a region associated with demersal destructive fisheries, as well as the northeastern corner of the study area close to the Laurential Channel seem to be less at risk from cumulative effects. 
 
 
 ```{r spceares, out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceasp, fig.cap=cap$ceasp}
@@ -86,20 +84,26 @@ knitr::include_graphics(urls$ceanet)
 
 ## Change in cumulative effects {#diffres}
 
-
-```{r spceadiff, out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceaspdf, fig.cap=cap$ceaspdf}
-knitr::include_graphics(urls$ceaspdf)
+```{r evaldiff, echo = FALSE}
+outdif <- here::here("output","cea_difference")
+spcea <- stars::read_stars(here::here(outdif,"cea_species_difference.tif"))[[1]] |>
+         mean(na.rm = TRUE)
+ncea <- stars::read_stars(here::here(outdif,"cea_network_difference.tif"))[[1]] |>
+        mean(na.rm = TRUE)
 ```
 
+> ***Note***: driver standardization is currently done on a driver per period basis, *e.g.* demersal fisheries for 2010-2015 were transformed using data from that period only. This makes the chagne in cumulative effects results less reliable reliable than if standardization was made from the joint distribution of demersal fishries from 2010-2015 and 2016-2021. This should be changed accordingly so that we may be confident in the results for changes over time.
+
+
+```{r ceadiff, out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceadf, fig.cap=cap$ceadf}
+knitr::include_graphics(urls$ceadf)
+```
 
 <br/>
 
-```{r nceadiff, out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceanetdf, fig.cap=cap$ceanetdf}
-knitr::include_graphics(urls$ceanetdf)
-```
-
-
 ## Metanetwork {#metares}
+
+Put metanetworks for direct and indirect effects as well.
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$meta, fig.cap=cap$meta}
 knitr::include_graphics(urls$meta)
