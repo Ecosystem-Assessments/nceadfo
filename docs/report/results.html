@@ -23,7 +23,7 @@
 <meta name="author" content="David Beauchesne, Cindy Grant, Philippe Archambault" />
 
 
-<meta name="date" content="2023-02-23" />
+<meta name="date" content="2023-02-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,15 +32,15 @@
   
 <link rel="prev" href="modules.html"/>
 <link rel="next" href="perspectives.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -49,9 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
 
@@ -134,15 +134,15 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>7</b> Results<span></span></a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="results.html"><a href="results.html#cumulative-drivers"><i class="fa fa-check"></i><b>7.1</b> Cumulative drivers<span></span></a></li>
-<li class="chapter" data-level="7.2" data-path="results.html"><a href="results.html#species-richness"><i class="fa fa-check"></i><b>7.2</b> Species richness<span></span></a></li>
-<li class="chapter" data-level="7.3" data-path="results.html"><a href="results.html#ceaspresults"><i class="fa fa-check"></i><b>7.3</b> Species-scale cumulative effects<span></span></a></li>
-<li class="chapter" data-level="7.4" data-path="results.html"><a href="results.html#network-scale-cumulative-effects"><i class="fa fa-check"></i><b>7.4</b> Network-scale cumulative effects<span></span></a></li>
-<li class="chapter" data-level="7.5" data-path="results.html"><a href="results.html#metanetwork"><i class="fa fa-check"></i><b>7.5</b> Metanetwork<span></span></a></li>
-<li class="chapter" data-level="7.6" data-path="results.html"><a href="results.html#driver-contribution"><i class="fa fa-check"></i><b>7.6</b> Driver contribution<span></span></a></li>
+<li class="chapter" data-level="7.1" data-path="results.html"><a href="results.html#sprichres"><i class="fa fa-check"></i><b>7.1</b> Species richness<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="results.html"><a href="results.html#cumdrres"><i class="fa fa-check"></i><b>7.2</b> Cumulative drivers<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="results.html"><a href="results.html#ceares"><i class="fa fa-check"></i><b>7.3</b> Cumulative effects<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="results.html"><a href="results.html#diffres"><i class="fa fa-check"></i><b>7.4</b> Change in cumulative effects<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="results.html"><a href="results.html#metares"><i class="fa fa-check"></i><b>7.5</b> Metanetwork<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="results.html"><a href="results.html#contributionres"><i class="fa fa-check"></i><b>7.6</b> Driver contribution<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="perspectives.html"><a href="perspectives.html"><i class="fa fa-check"></i><b>8</b> Perspectives<span></span></a></li>
-<li class="chapter" data-level="9" data-path="eDrivers.html"><a href="eDrivers.html"><i class="fa fa-check"></i><b>9</b> eDrivers<span></span></a></li>
+<li class="chapter" data-level="9" data-path="edrivers.html"><a href="edrivers.html"><i class="fa fa-check"></i><b>9</b> eDrivers<span></span></a></li>
 <li class="chapter" data-level="10" data-path="atlas.html"><a href="atlas.html"><i class="fa fa-check"></i><b>10</b> Atlas<span></span></a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="atlas.html"><a href="atlas.html#stratlas"><i class="fa fa-check"></i><b>10.1</b> Stressors<span></span></a>
@@ -185,62 +185,68 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="results" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">7</span> Results<a href="results.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="cumulative-drivers" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Cumulative drivers<a href="results.html#cumulative-drivers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/cumulative_drivers.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/cumulative_drivers.png?raw=true" alt="Distribution of cumulative drivers on the Scotian Shelf Bioregion in eastern Canada for the periods of 2010-2015 and 2015-2016. Cumulative drivers are evaluated as the sum of the normalized intensity (scaled between 0 and 1) of the 17 drivers considered for the assessment ($E_{S_x} = \sum_{j=1}^m S_{j,x}$); it identifies areas that are most exposed to the potential effects of the environmental drivers considered for the cumulative effects assessment. Refer to @beauchesne2020 for more details. ***Click on figure to view in seperate tab.***" width="100%" /></a>
-<p class="caption">
-Figure 7.1: Distribution of cumulative drivers on the Scotian Shelf Bioregion in eastern Canada for the periods of 2010-2015 and 2015-2016. Cumulative drivers are evaluated as the sum of the normalized intensity (scaled between 0 and 1) of the 17 drivers considered for the assessment (<span class="math inline">\(E_{S_x} = \sum_{j=1}^m S_{j,x}\)</span>); it identifies areas that are most exposed to the potential effects of the environmental drivers considered for the cumulative effects assessment. Refer to <span class="citation"><a href="bibliography.html#ref-beauchesne2020" role="doc-biblioref">Beauchesne et al.</a> (<a href="bibliography.html#ref-beauchesne2020" role="doc-biblioref">2020</a>)</span> for more details. <strong><em>Click on figure to view in seperate tab.</em></strong>
-</p>
-</div>
-<p><br/></p>
-</div>
-<div id="species-richness" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Species richness<a href="results.html#species-richness" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<p>The following sections present the main results of the cumulative effects assessment. We begin by presenting the combined distributions of <a href="results.html#sprichres">taxa</a> and <a href="results.html#cumdrres">environmental drivers</a> as an introduction of the assessment results. These results essentially concatenate the areas of potential cumulative effects, since effects are constrained by the cooccurrence of taxa and environmental drivers. We then discuss the <a href="results.html#ceares">spatial distribution</a> and the <a href="results.html#diffres">change in spatial distrbution</a> between the periods of 2010-2015 and 2016-2021 for the species-scale and network-scale cumulative effects in the study area. Finally, we present results specific to the network-scale cumulative effects assessment, <em>i.e.</em> the <a href="results.html#metares">metanetwork of pathways of effects</a> and the <a href="results.html#contributionres">contribution of environmental drivers to direct and indirect effects</a> predicted by the cumulative effects assessment.</p>
+<div id="sprichres" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Species richness<a href="results.html#sprichres" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section of the assessment presents an evaluation of species richness, <em>i.e.</em> the number of taxa in each cell of the study grid, from the 205 taxa considered for this assessment. It is important to mention here that the binary distribution of each taxa (<em>i.e.</em> pesence-absence) is based on observations for marine mammals and sea birds, while it is based on species distribution modeling predictions for all other marine species considered (see section <a href="modules.html#spmodule">6.1</a>). Figure <a href="results.html#fig:sprich">7.1</a> presents the assessment of species richness in the study area, and the distribution of all individual taxa may be viewed in the <a href="@#atlas">Atlas</a> of the assessment in section <a href="atlas.html#spatlas">10.2</a>.</p>
+<p>We can see that the study area can be divided in two main zones of species richess, <em>i.e.</em> the continental shelf, including the Bay of Fundy, and the continental slope. Species richness is medium to high throughout the continental shelf and the Bay of Fundy, while it is lower on the continental slope. The transition between the shelf and the slope is however characterized by a latitudinal band of higher richness. Most of the shelf shows high species richness, especially the northeast and southwest tips of Nova-Scotia. The eastern part of the Bay of Fundy also has a particularly high species richness. It is however important to mention that the data used to characterize the distribution of species in the study area characterizes the continental shelf more extensively than the continental slope. Similarly, the survey data used to characterize the distribution of marine species comes from offshore trawl surveys that do not sample coastal waters; this results in lower species richness in coastal waters that should be interpreted in terms of sampling effort and design rather than as a general decrease in species richness.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sprich"></span>
 <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" alt="Distribution of species richness, as evaluated from the 205 taxa considered in the cumulative effects assessment and the results of the species distribution modeling. See section \@ref(spmodule) for more information. ***Click on figure to view in seperate tab.***" width="70%" /></a>
 <p class="caption">
-Figure 7.2: Distribution of species richness, as evaluated from the 205 taxa considered in the cumulative effects assessment and the results of the species distribution modeling. See section <a href="modules.html#spmodule">6.1</a> for more information. <strong><em>Click on figure to view in seperate tab.</em></strong>
+Figure 7.1: Distribution of species richness, as evaluated from the 205 taxa considered in the cumulative effects assessment and the results of the species distribution modeling. See section <a href="modules.html#spmodule">6.1</a> for more information. <strong><em>Click on figure to view in seperate tab.</em></strong>
 </p>
 </div>
 <p><br/></p>
 </div>
-<div id="ceaspresults" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Species-scale cumulative effects<a href="results.html#ceaspresults" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<div id="cumdrres" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Cumulative drivers<a href="results.html#cumdrres" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section of the assessment presents an evaluation of cumulative drivers, <em>i.e.</em> the sum of the normalized intensity of the 17drivers considered in the assessment, as a means to identify sites that are most exposed to the potential effects of environmental drivers in the study area. It does not provide an effects assessment, since it only considers the drivers; still, it allows us to assess the environments that are most likely to be affected by the stressors in our study area <span class="citation">(see <a href="bibliography.html#ref-beauchesne2020" role="doc-biblioref">Beauchesne et al., 2020</a> for more information on cumulative drivers)</span>. Figure <a href="results.html#fig:cumuldr">7.2</a> presents the assessment of cumulative drivers for both periods considered, and all individual drivers may be viewed in the <a href="atlas.html#atlas">Atlas</a> of the assessment in section <a href="atlas.html#stratlas">10.1</a>. Cumulative drivers can also be explored interactively through the <a href="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><em>eDrivers</em> application</a>, which is presented in section <a href="edrivers.html#edrivers">9</a> of this assessment.</p>
+<p>As with species richness, the study area has two main zones of cumulative exposure, <em>i.e.</em> the continental shelf, including the Bay of Fundy, and the continental slope. Drivers are ubiquitous on continental shelf, which as a whole is exposed to at least medium levels of environmental drivers; the continental slope, meanwhile, is exposed to very few drivers when compared to the continental shelf. It is however important to consider that of the 17 drivers considered, only positive and negative sea surface temperature anomalies and shipping are present on the continental slope (refer to section <a href="atlas.html#stratlas">10.1</a> of the assessment atlas). Meanwhile, all drivers are found on the continental shelf and in the Bay of Fundy; offshore areas of the southwest continental shelf and the eastern end of the Bay of Fundy are slighlty more exposed to multiple drivers. The coasts of Nova-Scotia and of the whole Bay of Fundy are exposed to environmental drivers; this is true especially close to coastal towns, with Saint-John in the Bay of Fundy exhibiting the greatest values of cumulative drivers in the study area.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cumuldr"></span>
+<a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/cumulative_drivers.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/cumulative_drivers.png?raw=true" alt="Distribution of cumulative drivers on the Scotian Shelf Bioregion in eastern Canada for the periods of 2010-2015 and 2015-2016. Cumulative drivers are evaluated as the sum of the normalized intensity (scaled between 0 and 1) of the 17 drivers considered for the assessment ($E_{S_x} = \sum_{j=1}^m S_{j,x}$); it identifies areas that are most exposed to the potential effects of the environmental drivers considered for the cumulative effects assessment. Refer to @beauchesne2020 for more details. ***Click on figure to view in seperate tab.***" width="100%" /></a>
+<p class="caption">
+Figure 7.2: Distribution of cumulative drivers on the Scotian Shelf Bioregion in eastern Canada for the periods of 2010-2015 and 2015-2016. Cumulative drivers are evaluated as the sum of the normalized intensity (scaled between 0 and 1) of the 17 drivers considered for the assessment (<span class="math inline">\(E_{S_x} = \sum_{j=1}^m S_{j,x}\)</span>); it identifies areas that are most exposed to the potential effects of the environmental drivers considered for the cumulative effects assessment. Refer to <span class="citation"><a href="bibliography.html#ref-beauchesne2020" role="doc-biblioref">Beauchesne et al.</a> (<a href="bibliography.html#ref-beauchesne2020" role="doc-biblioref">2020</a>)</span> for more details. <strong><em>Click on figure to view in seperate tab.</em></strong>
+</p>
+</div>
+<p><br/></p>
+</div>
+<div id="ceares" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Cumulative effects<a href="results.html#ceares" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This will be important to consider when interpreting the results of the assessment: results are constrained by the data used and interpretation must be done within the bounds of the data used.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:spceares"></span>
 <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/cea/cea_species.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/cea/cea_species.png?raw=true" alt="Species-scale cumulative effects assessment of 17 drivers on 205 taxa of the Scotian Shelf Bioregion in eastern Canada, using the @halpern2008a method. See section \@ref(speciesmethod) for more details on the approach. ***Click on figure to view in seperate tab.***" width="100%" /></a>
 <p class="caption">
 Figure 7.3: Species-scale cumulative effects assessment of 17 drivers on 205 taxa of the Scotian Shelf Bioregion in eastern Canada, using the <span class="citation"><a href="bibliography.html#ref-halpern2008a" role="doc-biblioref">Halpern et al.</a> (<a href="bibliography.html#ref-halpern2008a" role="doc-biblioref">2008</a>)</span> method. See section <a href="method.html#speciesmethod">4.1.1</a> for more details on the approach. <strong><em>Click on figure to view in seperate tab.</em></strong>
 </p>
 </div>
 <p><br/></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/difference/cea_species_difference.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/difference/cea_species_difference.png?raw=true" alt="Change in species-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada. ***Click on figure to view in seperate tab.***" width="70%" /></a>
-<p class="caption">
-Figure 7.4: Change in species-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada. <strong><em>Click on figure to view in seperate tab.</em></strong>
-</p>
-</div>
-<p><br/></p>
-</div>
-<div id="network-scale-cumulative-effects" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Network-scale cumulative effects<a href="results.html#network-scale-cumulative-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nceares"></span>
 <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/cea/cea_network.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/cea/cea_network.png?raw=true" alt="Network-scale cumulative effects assessment of 17 drivers on 205 taxa of the Scotian Shelf Bioregion in eastern Canada, using the @beauchesne2020c method explicitly considering the underlying structure of the ecological community. See section \@ref(networkmethod) for more details on the approach. ***Click on figure to view in seperate tab.***" width="100%" /></a>
 <p class="caption">
-Figure 7.5: Network-scale cumulative effects assessment of 17 drivers on 205 taxa of the Scotian Shelf Bioregion in eastern Canada, using the <span class="citation"><a href="bibliography.html#ref-beauchesne2020c" role="doc-biblioref">Beauchesne</a> (<a href="bibliography.html#ref-beauchesne2020c" role="doc-biblioref">2020</a>)</span> method explicitly considering the underlying structure of the ecological community. See section <a href="method.html#networkmethod">4.1.2</a> for more details on the approach. <strong><em>Click on figure to view in seperate tab.</em></strong>
+Figure 7.4: Network-scale cumulative effects assessment of 17 drivers on 205 taxa of the Scotian Shelf Bioregion in eastern Canada, using the <span class="citation"><a href="bibliography.html#ref-beauchesne2020c" role="doc-biblioref">Beauchesne</a> (<a href="bibliography.html#ref-beauchesne2020c" role="doc-biblioref">2020</a>)</span> method explicitly considering the underlying structure of the ecological community. See section <a href="method.html#networkmethod">4.1.2</a> for more details on the approach. <strong><em>Click on figure to view in seperate tab.</em></strong>
 </p>
 </div>
 <p><br/></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+</div>
+<div id="diffres" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Change in cumulative effects<a href="results.html#diffres" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:spceadiff"></span>
+<a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/difference/cea_species_difference.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/difference/cea_species_difference.png?raw=true" alt="Change in species-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada. ***Click on figure to view in seperate tab.***" width="70%" /></a>
+<p class="caption">
+Figure 7.5: Change in species-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada. <strong><em>Click on figure to view in seperate tab.</em></strong>
+</p>
+</div>
+<p><br/></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nceadiff"></span>
 <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/difference/cea_network_difference.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/difference/cea_network_difference.png?raw=true" alt="Change in network-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada. ***Click on figure to view in seperate tab.***" width="70%" /></a>
 <p class="caption">
 Figure 7.6: Change in network-scale cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada. <strong><em>Click on figure to view in seperate tab.</em></strong>
 </p>
 </div>
 </div>
-<div id="metanetwork" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Metanetwork<a href="results.html#metanetwork" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<div id="metares" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Metanetwork<a href="results.html#metares" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/metanetwork/metanetwork-2016_2021.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/metanetwork/metanetwork-2016_2021.png?raw=true" alt="Multiplex network of network-scale cumulative effects on the Scotian Shelf Bioregion presenting the metaweb of interactions between the 205 taxa considered (grey connections), the presence of an effect of individual drivers on each taxa (colored connections), the overall cumulative effect on each taxon (taxa point size) and the mean effect of drivers on all taxa (driver point size) ***Click on figure to view in seperate tab.***" width="90%" /></a>
 <p class="caption">
 Figure 7.7: Multiplex network of network-scale cumulative effects on the Scotian Shelf Bioregion presenting the metaweb of interactions between the 205 taxa considered (grey connections), the presence of an effect of individual drivers on each taxa (colored connections), the overall cumulative effect on each taxon (taxa point size) and the mean effect of drivers on all taxa (driver point size) <strong><em>Click on figure to view in seperate tab.</em></strong>
@@ -248,9 +254,9 @@ Figure 7.7: Multiplex network of network-scale cumulative effects on the Scotian
 </div>
 <p><br/></p>
 </div>
-<div id="driver-contribution" class="section level2 hasAnchor" number="7.6">
-<h2><span class="header-section-number">7.6</span> Driver contribution<a href="results.html#driver-contribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<div id="contributionres" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Driver contribution<a href="results.html#contributionres" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/contribution/contribution_group-2016_2021.png?raw=true" target="_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/contribution/contribution_group-2016_2021.png?raw=true" alt="Contribution of drivers to network-scale cumulative effects of taxa classified by taxonomic groups. Mean contribution of 17 drivers to the cumulative effects ($C / km^2$) of 205 taxa on the Scotian Shelf Bioregion in eastern Canada classified into 9 taxonomic groups. Taxonomic groups for invertebrates (grey box) and vertebrates are divided at the phyla and classes level, respectively. For each group, the mean contribution per species was used to evaluate each driver's contribution to overall cumulative effects; this can be divided into their direct and indirect contributions to the cumulative effects on each taxon. Direct effects are those attributable to the effect of a driver on a focal species, while indirect effects are the mean effects of drivers spreading through all 3-species interactions a taxon is involved in. The total contribution to cumulative effect is the sum of the direct and indirect contributions of each driver. ***Click on figure to view in seperate tab.***" width="90%" /></a>
 <p class="caption">
 Figure 7.8: Contribution of drivers to network-scale cumulative effects of taxa classified by taxonomic groups. Mean contribution of 17 drivers to the cumulative effects (<span class="math inline">\(C / km^2\)</span>) of 205 taxa on the Scotian Shelf Bioregion in eastern Canada classified into 9 taxonomic groups. Taxonomic groups for invertebrates (grey box) and vertebrates are divided at the phyla and classes level, respectively. For each group, the mean contribution per species was used to evaluate each driver’s contribution to overall cumulative effects; this can be divided into their direct and indirect contributions to the cumulative effects on each taxon. Direct effects are those attributable to the effect of a driver on a focal species, while indirect effects are the mean effects of drivers spreading through all 3-species interactions a taxon is involved in. The total contribution to cumulative effect is the sum of the direct and indirect contributions of each driver. <strong><em>Click on figure to view in seperate tab.</em></strong>
@@ -269,14 +275,14 @@ Figure 7.8: Contribution of drivers to network-scale cumulative effects of taxa 
 <a href="perspectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

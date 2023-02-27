@@ -1,5 +1,7 @@
 # Results {#results}
 
+The following sections present the main results of the cumulative effects assessment. We begin by presenting the combined distributions of [taxa](#sprichres) and [environmental drivers](#cumdrres) as an introduction of the assessment results. These results essentially concatenate the areas of potential cumulative effects, since effects are constrained by the cooccurrence of taxa and environmental drivers. We then discuss the [spatial distribution](#ceares) and the [change in spatial distrbution](#diffres) between the periods of 2010-2015 and 2016-2021 for the species-scale and network-scale cumulative effects in the study area. Finally, we present results specific to the network-scale cumulative effects assessment, *i.e.* the [metanetwork of pathways of effects](#metares) and the [contribution of environmental drivers to direct and indirect effects](#contributionres) predicted by the cumulative effects assessment.
+
 ```{r urls}
 beg <- "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/"
 fin <- ".png?raw=true"
@@ -32,52 +34,70 @@ cap$cont <- paste("Contribution of drivers to network-scale cumulative effects o
 cap <- lapply(cap, function(x) glue::glue("{x} ***Click on figure to view in seperate tab.***"))
 ```
 
-## Cumulative drivers 
+## Species richness {#sprichres}
 
-```{r out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$cumdrivers, fig.cap=cap$cumdrivers}
-knitr::include_graphics(urls$cumdrivers)
-```
+This section of the assessment presents an evaluation of species richness, *i.e.* the number of taxa in each cell of the study grid, from the `r nTx` taxa considered for this assessment. It is important to mention here that the binary distribution of each taxa (*i.e.* pesence-absence) is based on observations for marine mammals and sea birds, while it is based on species distribution modeling predictions for all other marine species considered (see section \@ref(spmodule)). Figure \@ref(fig:sprich) presents the assessment of species richness in the study area, and the distribution of all individual taxa may be viewed in the [Atlas](@#atlas) of the assessment in section \@ref(spatlas).
 
-<br/>
+We can see that the study area can be divided in two main zones of species richess, *i.e.* the continental shelf, including the Bay of Fundy, and the continental slope. Species richness is medium to high throughout the continental shelf and the Bay of Fundy, while it is lower on the continental slope. The transition between the shelf and the slope is however characterized by a latitudinal band of higher richness. Most of the shelf shows high species richness, especially the northeast and southwest tips of Nova-Scotia. The eastern part of the Bay of Fundy also has a particularly high species richness. It is however important to mention that the data used to characterize the distribution of species in the study area characterizes the continental shelf more extensively than the continental slope. Similarly, the survey data used to characterize the distribution of marine species comes from offshore trawl surveys that do not sample coastal waters; this results in lower species richness in coastal waters that should be interpreted in terms of sampling effort and design rather than as a general decrease in species richness. 
 
-## Species richness
-
-```{r out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$sprich, fig.cap=cap$sprich}
+```{r sprich, out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$sprich, fig.cap=cap$sprich}
 knitr::include_graphics(urls$sprich)
 ```
 
 <br/>
 
 
-## Species-scale cumulative effects {#ceaspresults}
+## Cumulative drivers {#cumdrres}
 
-```{r out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceasp, fig.cap=cap$ceasp}
+This section of the assessment presents an evaluation of cumulative drivers, *i.e.* the sum of the normalized intensity of the `r nDr`drivers considered in the assessment, as a means to identify sites that are most exposed to the potential effects of environmental drivers in the study area. It does not provide an effects assessment, since it only considers the drivers; still, it allows us to assess the environments that are most likely to be affected by the stressors in our study area [see @beauchesne2020 for more information on cumulative drivers]. Figure \@ref(fig:cumuldr) presents the assessment of cumulative drivers for both periods considered, and all individual drivers may be viewed in the [Atlas](#atlas) of the assessment in section \@ref(stratlas). Cumulative drivers can also be explored interactively through the [*eDrivers* application](https://david-beauchesne.shinyapps.io/edriversapp_dev/), which is presented in section \@ref(edrivers) of this assessment.
+
+As with species richness, the study area has two main zones of cumulative exposure, *i.e.* the continental shelf, including the Bay of Fundy, and the continental slope. Drivers are ubiquitous on continental shelf, which as a whole is exposed to at least medium levels of environmental drivers; the continental slope, meanwhile, is exposed to very few drivers when compared to the continental shelf. It is however important to consider that of the `r nDr` drivers considered, only positive and negative sea surface temperature anomalies and shipping are present on the continental slope (refer to section \@ref(stratlas) of the assessment atlas). Meanwhile, all drivers are found on the continental shelf and in the Bay of Fundy; offshore areas of the southwest continental shelf and the eastern end of the Bay of Fundy are slighlty more exposed to multiple drivers. The coasts of Nova-Scotia and of the whole Bay of Fundy are exposed to environmental drivers; this is true especially close to coastal towns, with Saint-John in the Bay of Fundy exhibiting the greatest values of cumulative drivers in the study area. 
+
+
+```{r cumuldr, out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$cumdrivers, fig.cap=cap$cumdrivers}
+knitr::include_graphics(urls$cumdrivers)
+```
+
+<br/>
+
+
+
+## Cumulative effects {#ceares}
+
+
+This will be important to consider when interpreting the results of the assessment: results are constrained by the data used and interpretation must be done within the bounds of the data used. 
+
+
+
+```{r spceares, out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceasp, fig.cap=cap$ceasp}
 knitr::include_graphics(urls$ceasp)
 ```
 
 <br/>
 
-```{r out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceaspdf, fig.cap=cap$ceaspdf}
-knitr::include_graphics(urls$ceaspdf)
-```
-
-<br/>
-
-
-## Network-scale cumulative effects 
-
-```{r out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceanet, fig.cap=cap$ceanet}
+```{r nceares, out.width = "100%", echo=FALSE, fig.align='center', fig.link=urls$ceanet, fig.cap=cap$ceanet}
 knitr::include_graphics(urls$ceanet)
 ```
 
 <br/>
 
-```{r out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceanetdf, fig.cap=cap$ceanetdf}
+
+## Change in cumulative effects {#diffres}
+
+
+```{r spceadiff, out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceaspdf, fig.cap=cap$ceaspdf}
+knitr::include_graphics(urls$ceaspdf)
+```
+
+
+<br/>
+
+```{r nceadiff, out.width = "70%", echo=FALSE, fig.align='center', fig.link=urls$ceanetdf, fig.cap=cap$ceanetdf}
 knitr::include_graphics(urls$ceanetdf)
 ```
 
 
-## Metanetwork 
+## Metanetwork {#metares}
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$meta, fig.cap=cap$meta}
 knitr::include_graphics(urls$meta)
@@ -86,7 +106,7 @@ knitr::include_graphics(urls$meta)
 <br/>
 
 
-## Driver contribution
+## Driver contribution {#contributionres}
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$cont, fig.cap=cap$cont}
 knitr::include_graphics(urls$cont)

@@ -612,30 +612,50 @@ plan(5)
 ---
 # Results
 
+## Species richness
+
+.pull-left2[
+- Medium-high:
+  - Continental shelf
+  - Eastern & western Nova-Scotia 
+  - Eastern Bay of Fundy
+  - Transition shelf to slope
+- Lower:
+  - Coastal areas $^*$
+  - Continental slope $^*$
+]
+.pull-right2[
+<br>
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_richness.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_richness.png?raw=true)
+]
+
+.references[
+$^*$Caused by surveys sampling continental shelf more extensively and not extending to coastal areas
+]
+
+---
+# Results
+
 ## Cumulative drivers
 
 <br2>
 
 .pull-left2[
-- TBD
+- Medium-high: 
+  - Continental shelf
+  - Eastern Bay of Fundy
+  - Coastal areas & towns 
 
+- Low: 
+  - Continental slope $^*$
 ]
 .pull-right2[
 <br>
 [<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_drivers.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_drivers.png?raw=true)
 ]
 
----
-# Results
-
-## Species richness
-
-.pull-left2[
-- TBD
-]
-.pull-right2[
-<br>
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_richness.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_richness.png?raw=true)
+.references[
+$^*$Only 3 drivers extending to the continental slope
 ]
 
 ---
