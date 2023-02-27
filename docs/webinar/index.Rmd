@@ -732,14 +732,14 @@ plan(4)
       <div class="divPortraitData">
       </div>
       <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" style="width: 300px"></img>
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_species.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_species.png?raw=true" style="width: 300px"></img>
         </a>
       </div>
       <div class="divPortraitData"></div>
       <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" style="width: 300px"></img>
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_mammals.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_mammals.png?raw=true" style="width: 300px"></img>
         </a>
       </div>
     </div>
@@ -764,8 +764,8 @@ plan(4)
       <div class="divPortraitData">
       </div>
       <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" style="width: 300px"></img>
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" style="width: 300px"></img>
         </a>
       </div>
     </div>
@@ -797,14 +797,14 @@ plan(4)
       <div class="divPortraitData">
       </div>
       <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" style="width: 300px"></img>
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/climate.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/climate.png?raw=true" style="width: 300px"></img>
         </a>
       </div>
       <div class="divPortraitData"></div>
       <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" style="width: 300px"></img>
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/coastal.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/coastal.png?raw=true" style="width: 300px"></img>
         </a>
       </div>
     </div>
@@ -825,15 +825,15 @@ plan(4)
     <div class="divPortraitRow">
       <div class="divPortraitData"></div>
       <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" style="width: 300px"></img>
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/fisheries.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/fisheries.png?raw=true" style="width: 300px"></img>
         </a>      
       </div>  
       <div class="divPortraitData">
       </div>
       <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/footprint/species_richness.png?raw=true" style="width: 300px"></img>
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_traffic.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_traffic.png?raw=true" style="width: 300px"></img>
         </a>      
       </div>
     </div>
@@ -842,7 +842,9 @@ plan(4)
 </div>
 </center>
 
-
+.references[
+Only data for the period 2016-2021 are presented here.
+]
 
 
 ---
@@ -877,6 +879,7 @@ plan(5)
   - Eastern & western Nova-Scotia 
   - Eastern Bay of Fundy
   - Transition shelf to slope
+
 - Lower:
   - Coastal areas $^*$
   - Continental slope $^*$
@@ -921,7 +924,18 @@ $^*$Only 3 drivers extending to the continental slope
 ## Cumulative effects
 
 .pull-left2[
-- TBD
+- High: 
+  - Bay of Fundy
+  - Southwest Nova-Scotia
+  - Northeast Sable Island
+  - South Cape Breton
+
+- Medium: 
+  - Center shelf 
+  - Northeastern corner
+
+- Low:
+  - Continental slope
 ]
 .pull-right2[
 <br>

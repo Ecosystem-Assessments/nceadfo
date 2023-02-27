@@ -439,9 +439,11 @@ plot_legend_dual <- function(
 #' Function for simple plots for presentations
 #' @name plot_nceadfo_simple
 #' @export
-plot_nceadfo_simple <- function(dat, legend = TRUE, mainTitle = NULL, subTitle = NULL, range = NULL) {  
+plot_nceadfo_simple <- function(dat, legend = TRUE, land = TRUE, mainTitle = NULL, subTitle = NULL, range = NULL) {  
   # ------------------
   aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE)
+  can <- sf::st_read("data/basemap/canada.gpkg", quiet = TRUE)
+  usa <- sf::st_read("data/basemap/usa.gpkg", quiet = TRUE)    
 
   # ------------------
   global_parameters()
@@ -453,6 +455,10 @@ plot_nceadfo_simple <- function(dat, legend = TRUE, mainTitle = NULL, subTitle =
   graphicsutils::plot0(x = c(bbox$xmin, bbox$xmax), y = c(bbox$ymin, bbox$ymax))
   image(dat, col = viridis::viridis(100))
   plot(sf::st_geometry(aoi), lwd = .5, border = param$col$aoi, add = TRUE)
+  if (land) {
+    plot(sf::st_geometry(can), lwd = .5, col = param$col$coastline, add = TRUE)
+    plot(sf::st_geometry(usa), lwd = .5, col = param$col$coastline, add = TRUE)
+  }
   
   if (legend) {
     # Legend
