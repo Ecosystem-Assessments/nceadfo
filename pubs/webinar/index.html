@@ -838,8 +838,173 @@ class: inverse, center, middle
 ---
 # Modules: Species-specific sensitivity  
 
+.pull-left[
+## Traits
+
+- Body composition
+- Environment
+- Feeding mode
+- Mobility
+- Phylum
+- Size
+]
+
+.pull-right[
+]
+
+---
+# Modules: Species-specific sensitivity  
+
+.pull-left[
+## Traits
+
+- Body composition
+- Environment
+- Feeding mode
+- Mobility
+- Phylum
+- Size
+
+## Driver - Traits
+
+- 0 = insensitive
+- 1 = maximu sensitivity
+]
+
+.pull-right[
+]
+
+---
+# Modules: Species-specific sensitivity  
+
+.pull-left[
+## Traits
+
+- Body composition
+- Environment
+- Feeding mode
+- Mobility
+- Phylum
+- Size
+
+## Driver - Traits
+
+- 0 = insensitive
+- 1 = maximu sensitivity
+
+## Driver - Species
+
+- Product of relative sensitivity of all traits
+- Relative sensitivity [0,1]
+]
+
+.pull-right[
+]
+
+---
+# Modules: Species-specific sensitivity  
+
+.pull-left[
+## Traits
+
+- Body composition
+- Environment
+- Feeding mode
+- Mobility
+- Phylum
+- Size
+
+## Driver - Traits
+
+- 0 = insensitive
+- 1 = maximu sensitivity
+
+## Driver - Species
+
+- Product of relative sensitivity of all traits
+- Relative sensitivity [0,1]]
+
+.pull-right[
+## Shipping - Minke whale
+
+### Traits considered
+- Environment
+- Size
+
+### Whale trait value (sensitivity)
+- Pelagic (1)
+- `\(&gt;\)` 3 meters (1)
+
+### Sensitivity
+
+$$ 1 * 1 = 1$$
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 # Modules: Metaweb
+
+.pull-left[
+**Predict interations:** Unsupervised machine learning
+
+**Assumption:** Similar species consume and are consumed by similar species
+
+**Similarity criteria:** taxonomy &amp; diet
+
+**Interaction catalog:**
+
+- 183 625 pairwise interactions 
+- 14 870 taxa
+]
+
+.pull-right3[
+&lt;br/&gt;
+&lt;center&gt;&lt;img src="figures/modules/metaweb_diagram.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+]
+
+.references[
+Brose et al. 2005; Barnes et al. 2008; Kortsch et al. 2015; University of Canberra
+2016; Poelen et al., 2014, 2019; [GloBI](https://www.globalbioticinteractions.org/);
+Beauchesne et al. 2017
+]
+
+---
+# Modules: Metaweb
+
+.pull-left[
+**Predict interations:** Unsupervised machine learning
+
+**Assumption:** Similar species consume and are consumed by similar species
+
+**Similarity criteria:** taxonomy &amp; diet
+
+**Interaction catalog:**
+
+- 183 625 pairwise interactions 
+- 14 870 taxa
+]
+
+.pull-right[
+&lt;center&gt;&lt;img src="figures/modules/foodweb.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+]
+
+.references[
+Brose et al. 2005; Barnes et al. 2008; Kortsch et al. 2015; University of Canberra
+2016; Poelen et al., 2014, 2019; [GloBI](https://www.globalbioticinteractions.org/); 
+Beauchesne et al. 2017
+]
+
 
 ---
 # Modules: Trophic sensitivity
