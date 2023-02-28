@@ -96,7 +96,7 @@ fig_webinar <- function() {
     units = "mm", 
     pointsize = param$figures$pointsize
   )
-  par(mar = c(0,1,1,0), family = "serif")
+  par(mar = c(0,1,1,0), family = "serif", bg = "#00000000")
   graphicsutils::plot0(x = c(0,xlim), y = c(0,ylim))
   mtext("Environmental\ndrivers", side = 2, srt = 90, cex = 1, line = -1)
   mtext("Species", side = 3, cex = 1, line = 0)
