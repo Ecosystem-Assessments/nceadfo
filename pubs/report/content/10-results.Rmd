@@ -1,6 +1,6 @@
 # Results {#results}
 
-The following sections present the main results of the cumulative effects assessment. We begin by presenting the combined distributions of [taxa](#sprichres) and [environmental drivers](#cumdrres) as an introduction of the assessment results. These results essentially concatenate the areas of potential cumulative effects, since effects are constrained by the cooccurrence of taxa and environmental drivers. We then discuss the [spatial distribution](#ceares) and the [change in spatial distrbution](#diffres) between the periods of 2010-2015 and 2016-2021 for the species-scale and network-scale cumulative effects in the study area. Finally, we present results specific to the network-scale cumulative effects assessment, *i.e.* the [metanetwork of pathways of effects](#metares) and the [contribution of environmental drivers to direct and indirect effects](#contributionres) predicted by the cumulative effects assessment.
+The following sections present the main results of the cumulative effects assessment. We begin by presenting the combined distributions of [taxa](#sprichres) and [environmental drivers](#cumdrres) as an introduction of the assessment results. These results essentially concatenate the areas of potential cumulative effects, since effects are constrained by the cooccurrence of taxa and environmental drivers. We then discuss the [spatial distribution](#ceares) and the [change in spatial distrbution](#diffres) between the periods of 2010-2015 and 2016-2021 for the species-scale and network-scale cumulative effects in the study area. Finally, we present results specific to the network-scale cumulative effects assessment, *i.e.* the [pathways of direct and indirect effects](#metares) predicted by the cumulative effects assessment.
 
 ```{r urls}
 beg <- "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/"
@@ -14,7 +14,9 @@ urls$ceasp <- glue::glue("{beg}cea/cea_species{fin}")
 urls$ceanet <- glue::glue("{beg}cea/cea_network{fin}") 
 urls$ceadf <- glue::glue("{beg}difference/cea_difference{fin}") 
 urls$meta <- glue::glue("{beg}metanetwork/metanetwork-2016_2021{fin}") 
+urls$meta2 <- glue::glue("{beg}metanetwork/metanetwork{fin}") 
 urls$cont <- glue::glue("{beg}contribution/contribution_group-2016_2021{fin}") 
+urls$contsp <- glue::glue("{beg}contribution/contribution_taxa-2016_2021{fin}") 
 
 # List of captions to figures
 spList <- read.csv(here::here("data","cea_modules","species_list.csv"))
@@ -26,7 +28,9 @@ cap$ceasp <- paste("Species-scale cumulative effects assessment of", nDr, "drive
 cap$ceanet <- paste("Network-scale cumulative effects assessment of", nDr, "drivers on", nTx, "taxa of the Scotian Shelf Bioregion in eastern Canada, using the @beauchesne2020c method explicitly considering the underlying structure of the ecological community. See section \\@ref(networkmethod) for more details on the approach.")
 cap$ceadf <- "Change in cumulative effects between the periods of 2010-2015 and 2016-2021 on the Scotian Shelf Bioregion in eastern Canada for the species-scale and network-scale assessments."
 cap$meta <- paste("Multiplex network of network-scale cumulative effects on the Scotian Shelf Bioregion presenting the metaweb of interactions between the", nTx, "taxa considered (grey connections), the presence of an effect of individual drivers on each taxa (colored connections), the overall cumulative effect on each taxon (taxa point size) and the mean effect of drivers on all taxa (driver point size)")
-cap$cont <- paste("Contribution of drivers to network-scale cumulative effects of taxa classified by taxonomic groups. Mean contribution of", nDr, "drivers to the cumulative effects ($C / km^2$) of", nTx, "taxa on the Scotian Shelf Bioregion in eastern Canada classified into", nGr, "taxonomic groups. Taxonomic groups for invertebrates (grey box) and vertebrates are divided at the phyla and classes level, respectively. For each group, the mean contribution per species was used to evaluate each driver's contribution to overall cumulative effects; this can be divided into their direct and indirect contributions to the cumulative effects on each taxon. Direct effects are those attributable to the effect of a driver on a focal species, while indirect effects are the mean effects of drivers spreading through all 3-species interactions a taxon is involved in. The total contribution to cumulative effect is the sum of the direct and indirect contributions of each driver.")
+cap$meta2 <- paste("Multiplex network of network-scale cumulative effects on the Scotian Shelf Bioregion presenting the metaweb of interactions between the", nTx, "taxa considered (grey connections), the presence of a direct (left) or indirect (right) effect of individual drivers on each taxa (colored connections), the overall cumulative effect on each taxon (taxa point size) and the mean effect of drivers on all taxa (driver point size)")
+cap$cont <- paste("Mean contribution of", nDr, "drivers to the cumulative effects ($C / km^2$) of", nTx, "taxa on the Scotian Shelf Bioregion in eastern Canada classified into", nGr, "taxonomic groups. Taxonomic groups for invertebrates (grey box) and vertebrates are divided at the phyla and classes level, respectively. For each group, the mean contribution per species was used to evaluate each driver's contribution to overall cumulative effects; this can be divided into their direct and indirect contributions to the cumulative effects on each taxon. Direct effects are those attributable to the effect of a driver on a focal species, while indirect effects are the mean effects of drivers spreading through all 3-species interactions a taxon is involved in. The total contribution to cumulative effect is the sum of the direct and indirect contributions of each driver.")
+cap$contsp <- paste("Mean contribution of", nDr, "drivers to the cumulative effects ($C / km^2$) of", nTx, "taxa on the Scotian Shelf Bioregion in eastern Canada. Taxonomic groups for invertebrates (grey box) and vertebrates are classified at the phyla and classes level, respectively, for ease of representation and interpretation. The mean contribution for each taxon was used to evaluate each driver's contribution to overall cumulative effects; this can be divided into their direct and indirect contributions to the cumulative effects on each taxon. Direct effects are those attributable to the effect of a driver on a focal species, while indirect effects are the mean effects of drivers spreading through all 3-species interactions a taxon is involved in. The total contribution of each driver to cumulative effect is the sum of their direct and indirect contributions to cumulative effects.")
 
 # ---
 cap <- lapply(cap, function(x) glue::glue("{x} ***Click on figure to view in seperate tab.***"))
@@ -62,7 +66,7 @@ knitr::include_graphics(urls$cumdrivers)
 
 > The methods used to perform the species-scale and network-scale cumulative effects assessments are represented in sections \@ref(speciesmethod) and \@ref(networkmethod), respectively.
 
-The main results of this assessment combine all data [modules](#modules) to assess the cumulative effects of environmental drivers on the ecological communities of the Scotian Shelf Bioregion. We present and interpret the results on the spatial distribution of cumulative effects from the species-scale (Figure \@ref(fig:spceares)) and network-scale (Figure \@ref(fig:nceares)) assessments jointly, as they identify similar spatial trends in cumulative effects. This is unsurprising, as the distribution of both assessments is driven mainly by the cooccurrence of environmental drivers and species. Considering species interactions amplifies or dampens the relative intensity of cumulative effects at the community scale, *i.e.* when all species are considered simultaneously; however, it refines the assessment for certain species such as marine mammals for which direct effects cannot properly capture the effects of drivers such as climate change that propagate through the ecological network. It should also be noted that values from the species-scale and network-scale assessments cannot be directly compared, as they are both relative to the component each consider. Hence, a cell with a greater value in the network-scale assessment cannot be interpreted as a greater impact; they can only be compared in relative form. See sections \@ref(metares) and \@ref(contributionres) for more on the direct and indirect cumulative effects, and refer to @beauchesne2020c for more details on the network-scale assessment. 
+The main results of this assessment combine all data [modules](#modules) to assess the cumulative effects of environmental drivers on the ecological communities of the Scotian Shelf Bioregion. We present and interpret the results on the spatial distribution of cumulative effects from the species-scale (Figure \@ref(fig:spceares)) and network-scale (Figure \@ref(fig:nceares)) assessments jointly, as they identify similar spatial trends in cumulative effects. This is unsurprising, as the distribution of both assessments is driven mainly by the cooccurrence of environmental drivers and species. Considering species interactions amplifies or dampens the relative intensity of cumulative effects at the community scale, *i.e.* when all species are considered simultaneously; however, it refines the assessment for certain species such as marine mammals for which direct effects cannot properly capture the effects of drivers such as climate change that propagate through the ecological network. It should also be noted that values from the species-scale and network-scale assessments cannot be directly compared, as they are both relative to the component each consider. Hence, a cell with a greater value in the network-scale assessment cannot be interpreted as a greater impact; they can only be compared in relative form. See section \@ref(metares) for more on the direct and indirect cumulative effects, and refer to @beauchesne2020c for more details on the network-scale assessment. 
 
 The assessments of cumulative effects reveal a stark contrast between the continental shelf, including the Bay of Fundy, and the continental slope; this result is in accordance with the lower representation of species and environmental drivers that we previously discussed from the assessments of [species richness](#sprichres) and [cumulative drivers](#cumdrres). This result should therefore also be interpreted as an absence data characterizing environmental drivers in the study area and that it is unlikely that ecological communities are not under any type of environmental threats. Still, it remains undeniable that the ecological communities of the continental shelf are more at risk from the cumulative effets of environmental drivers. 
 
@@ -105,21 +109,65 @@ knitr::include_graphics(urls$ceadf)
 
 <br/>
 
-## Metanetwork {#metares}
+## Pathways of direct and indirect effects {#metares}
 
-Put metanetworks for direct and indirect effects as well.
+```{r}
+# Direct pathways
+ncmbn <- expand.grid(
+  1:nTx,
+  1:nDr
+) |>
+nrow()
 
-```{r out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$meta, fig.cap=cap$meta}
+# Indirect pathways
+load(here::here("data","format_modules","metaweb.RData"))
+nL <- sum(metaweb)
+nLm <- glue::glue("2^{|nL|}", .open = "|", .close = "|")
+```
+
+The species-scale and network-scale cumulative effects assessments allow for the exploration of the direct effects of all combinations of the `r nDr` drivers and `r nTx` species considered in the assessment; there are thus over `r ncmbn` possible pairs to explore. These pairs form the set of direct pathways of effect -- *i.e.* the links between drivers and their potential impacts on various aspects of an ecosystem [@dfo2020] -- that environmental drivers can take to affect species. The network-scale assessment, meanwhile, also allows the exploration of the indirect effects of all drivers on all species that arise from species interactions. The metaweb of species interactions (see section \@ref(metamodule)) consists of `r nL` predicted links structuring the `r nTx` taxa considered for the assessment; this means that there are $`r nLm`$ potential indirect pathways of effect through which the food web could be affected by environmental drivers. 
+
+Although we obviously cannot explore all of these direct and indirect pathways of effect, Figures \@ref(fig:meta), \@ref(fig:meta2) \@ref(fig:contr) and \@ref(fig:contrsp) provide a visual representation of all these combinations and of the contribution of individual drivers to the net, direct and indirect effects predicted on each taxa and groups of taxa considered. The regional effects of environmental drivers on each taxa was assessed as the mean effect over a taxa's distribution. For example, a taxa with a distribution area of 2 $km^2$ -- *i.e.* spanning two 1 $km^2$ grid cells -- affected by a single driver with intensities of 0.25 and 0.75 would have a regional cumulative effects score of 0.5 $km^{-2}$. The greater the spatial distribution of a driver, the greater its regional effect is likely to be; similarly, regional effects are likely to increase with a decrease of the distributional range of a taxa.
+
+```{r}
+cekm <- read.csv(here::here("output","cea_km2","cea_km2-2016_2021.csv"))
+direct <- cekm[, stringr::str_detect(colnames(cekm), "Direct_Effect")] |> as.matrix()
+indirect <- cekm[, stringr::str_detect(colnames(cekm), "Indirect_Effect")] |> as.matrix()
+nDir <- sum(direct > 0, na.rm = TRUE)
+mnDir <- round(mean(direct, na.rm = TRUE),2)
+sdDir <- round(sd(direct, na.rm = TRUE),2)
+nInd <- sum(indirect > 0, na.rm = TRUE)
+mnInd <- round(mean(indirect, na.rm = TRUE),2)
+sdInd <- round(sd(indirect, na.rm = TRUE),2)
+```
+
+Here, we only present the results for the 2016-2021 period, as both periods have qualitatively similar results. In total, there are `r nDir` direct pathways of effects with an average effect score of `r mnDir` $\pm$ `r sdDir`,  and `r nInd` indirect pathways of effects with an average effect score of `r mnInd` $\pm$ `r sdInd` predicted throught the network-scale assessment. Figures \@ref(fig:meta) and \@ref(fig:meta2) provide an overview of all the pathways of effects predicted between the drivers and taxa considered in the assessment. These figures should not be interpreted in detail; rather, they provide an at-a-glance view of the amount of information available and explorable through the network-scale cumulative effects assessment. Figures \@ref(fig:contr) and \@ref(fig:contrsp) complement these figures by presenting the relative contribution of each driver group to the overall direct and indirect effects predicted for taxonomic groups (Figure \@ref(fig:contr)) and individual taxa (Figure \@ref(fig:contrsp)).
+
+Together, those figure offer interesting insights into the direct and indirect effects of environmental drivers on the species of the Scotian Shelf. The drivers with the most intense direct and indirect effects across all taxa are shipping, demersal destructive high-bycatch fisheries (*e.g.* trawls and dredges), and negative sea-bottom temperature anomalies; these are essentially some of the most widely distributed drivers that were considered in the assessment. We can also see that all drivers affect all taxa indirectly, yet the same is not true for direct effects. For instance, the direct effects of shipping are mostly limited to marine mammals and a few species of fish. The same is true for certain taxa groups, with sea birds and marine mammals presenting the most stark contrasts between direct and indirect effects. A few sea bird species are exclusively affected by fisheries when considering direct effects. Similarly, marine mammals are affected solely by marine traffic and coastal drivers through direct pathways of effect. However, all sea bird and marine mammal species are affected by all driver types when indirect effects are taken into consideration. Interestingly, we also show that the overall intensity of indirect effects on vertebrates tends to be greater than that of direct effects.
+
+
+```{r meta, out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$meta, fig.cap=cap$meta}
 knitr::include_graphics(urls$meta)
 ```
 
 <br/>
 
+```{r meta2, out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$meta2, fig.cap=cap$meta2}
+knitr::include_graphics(urls$meta2)
+```
 
-## Driver contribution {#contributionres}
+<br/>
 
-```{r out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$cont, fig.cap=cap$cont}
+
+```{r contr, out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$cont, fig.cap=cap$cont}
 knitr::include_graphics(urls$cont)
 ```
 
 <br/>
+<!-- 
+{r contrsp, out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$contsp, fig.cap=cap$contsp}
+knitr::include_graphics(urls$contsp)
+-->
+
+<br/>
+

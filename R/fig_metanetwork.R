@@ -192,7 +192,7 @@ fig_metanetwork <- function(cekm, period, type) {
   # Links with taxa
   # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
   # For now, only select links > 0.05
-  uid <- which(dat > 0.05, arr.ind = T)
+  uid <- which(dat > 0.00, arr.ind = T)
   links <- matrix(nrow = nrow(uid), ncol = 2, dimnames = list(c(), c('from','to')))
   for(i in 1:nrow(uid)) {
     links[i, 'from'] <- colnames(dat)[uid[i,2]]
@@ -209,7 +209,7 @@ fig_metanetwork <- function(cekm, period, type) {
   # Node size
   cexDr <- data.frame(
     drivers = colnames(dat), 
-    cex = log(colMeans(dat, na.rm = TRUE)+1)*5+.4
+    cex = log(colMeans(dat, na.rm = TRUE)+1)*10+.2
   )
 
   nodesDr <- dplyr::select(
@@ -280,7 +280,7 @@ fig_metanetwork <- function(cekm, period, type) {
   )
   
   # Plot
-  par(mar = c(2,2,2,2), bg = "#00000000")
+  par(mar = c(2,2,2,2))#, bg = "#00000000")
   plot0(x = c(-1.1, 1.1))
 
   # Adjust some group names

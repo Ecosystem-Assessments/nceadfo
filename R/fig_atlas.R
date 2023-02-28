@@ -288,19 +288,21 @@ fig_atlas <- function(type = c("aoi","footprint","cea","difference","metanetwork
     figs <- dir(out$figs, full.names = TRUE)
     
     # -----------------
-    i1 <- magick::image_read(here::here(out$figs, "metanetwork-Total-2010_2015.png"))
-    i2 <- magick::image_read(here::here(out$figs, "metanetwork-Total-2016_2021.png"))
+    i1 <- magick::image_read(here::here(out$figs, "metanetwork-Direct-2016_2021.png"))
+    i2 <- magick::image_read(here::here(out$figs, "metanetwork-Indirect-2016_2021.png"))
+    
+    # First image
     img <- magick::image_append(c(i1,i2))
-
-    # Add border 
+    
+    # Add border
     ht <- magick::image_info(img)$height 
     img <- magick::image_border(img, glue::glue("0x{hts}"), color = "#ffffff") |>
            magick::image_crop(glue::glue("0x{ht+hts}")) 
 
     # Add text       
-    img <- nm_title(img, "Metanetwork")
-    img <- nm_sub2(img, "2010-2015", t1_1)
-    img <- nm_sub2(img, "2016-2021", t2_1)
+    img <- nm_title(img, "Metanetwork of direct & indirect effects")
+    img <- nm_sub2(img, "Direct effects - 2016-2021", t1_1)
+    img <- nm_sub2(img, "Indirect effects - 2016-2021", t2_1)
 
     # Resize 
     img <- magick::image_resize(img, img_resize)

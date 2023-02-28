@@ -16,8 +16,9 @@ fig:cumuldr
 fig:spceares
 fig:nceares
 fig:ceadiff
-fig:unnamed-chunk-2
-fig:unnamed-chunk-3
+fig:meta
+fig:meta2
+fig:contr
 tab:dataapp
 tab:contactapp
 background
@@ -62,7 +63,6 @@ cumdrres
 ceares
 diffres
 metares
-contributionres
 perspectives
 edrivers
 atlas

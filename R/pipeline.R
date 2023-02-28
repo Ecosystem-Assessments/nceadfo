@@ -51,6 +51,7 @@ pipeline <- function() {
   fig_metanetwork_()
   fig_contribution_()
   fig_atlas()
+  fig_webinar()
   
   # Report and publications 
   render_frontpate()
