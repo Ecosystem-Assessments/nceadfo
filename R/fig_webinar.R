@@ -73,12 +73,43 @@ fig_webinar <- function() {
   plotDat(co, sub = "Sum of normalized intensities")
   plotDat(fs, sub = "Sum of normalized intensities")
   plotDat(sh, sub = "Sum of normalized intensities")
-
-# ------------------------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------------------
 
   # ------------------------------------------------------------------------------------------
   # CEA 
   dat <- here::here("output","cea","cea_network-2016_2021.tif") |> stars::read_stars()
   plotDat(dat, land = FALSE, legend = FALSE)
   # ------------------------------------------------------------------------------------------
+  
+  # ------------------------------------------------------------------------------------------
+  # Species-specific sensitivities
+  out <- here::here("figures","webinar")
+  load(here::here("data","format_modules","species_sensitivity.RData"))
+  dat <- t(species_sensitivity)
+  xlim <- ncol(dat)
+  ylim <- nrow(dat)
+  png(
+    here::here(out, "species_specific_sensitivity.png"), 
+    res = param$figures$resolution, 
+    width = xlim*2, 
+    height = param$figures$height,
+    units = "mm", 
+    pointsize = param$figures$pointsize
+  )
+  par(mar = c(0,1,1,0), family = "serif")
+  graphicsutils::plot0(x = c(0,xlim), y = c(0,ylim))
+  mtext("Environmental\ndrivers", side = 2, srt = 90, cex = 1, line = -1)
+  mtext("Species", side = 3, cex = 1, line = 0)
+  for(i in 1:xlim) lines(x = c(i,i), y = c(0,ylim), lty = 2, col = "#00000033", lwd = 0.5)
+  for(i in 1:ylim) lines(x = c(0,xlim), y = c(i,i), lty = 2, col = "#00000033", lwd = 0.5)
+  for(i in 1:xlim) {
+    for(j in 1:ylim) {
+      points(x = i, y = j, pch = 21, cex = dat[j,i], col = "#00000000", bg = "#394F6877")
+    }
+  }
+  dev.off()
+  # ------------------------------------------------------------------------------------------
+  
 }
+
+

@@ -947,7 +947,10 @@ plan(4)
 $$ 1 * 1 = 1$$
 ]
 
+---
+# Modules: Species-specific sensitivity  
 
+<center><img src="figures/modules/species_specific_sensitivity.png" width="100%"></img></center>
 
 
 
