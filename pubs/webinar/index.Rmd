@@ -950,6 +950,8 @@ $$ 1 * 1 = 1$$
 ---
 # Modules: Species-specific sensitivity  
 
+<br/> 
+
 <center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_specific_sensitivity.png?raw=true" width="100%"></img></center>
 
 
