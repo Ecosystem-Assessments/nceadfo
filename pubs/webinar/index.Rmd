@@ -31,8 +31,8 @@ plan <- function(focus) {
   dat <- c(
     "### Context",
     "### Scope of assessment",
-    "### Assessment method",
     "### Data modules",
+    "### Assessment method",
     "### Results",
     "### Perspectives",
     "### Data science & reproducibility"
@@ -460,165 +460,7 @@ plan(3)
 ```
 
 ---
-# Method: species-scale CEA
-
-<center><img src="figures/method/1-species.png" width="100%"></img></center>
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
-
----
-# Method: species-scale CEA
-
-<center><img src="figures/method/2-species_single_path.png" width="100%"></img></center>
-
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: species-scale CEA
-
-<br/><br/>
-
-<center><img src="figures/method/3-map_single_path.png" width="80%"></img></center>
-
-<p style="font-size:90%;">
-$$Effect = E_i * D_j * \mu_{i,j}$$
-</p>
-
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: species-scale CEA
-
-<center><img src="figures/method/4-map_all_path.png" width="65%"></img></center>
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: species-scale CEA
-
-<center><img src="figures/method/5-halpern.png" width="100%"></img></center>
-
-<!-- <p style="font-size:75%;">
-$$C_E = \sum_i \sum_j E_i * D_j * \mu_{i,j}$$
-</p> -->
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/6-ncea.png" width="95%"></img></center>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/7-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$S_i = \sum_j D_j \;*\; \mu_{i,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/8-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/9-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/10-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/11-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/12-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$C_{N_{i,x}} = \frac{1}{|M_i|} \sum_{m _{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-<center><img src="figures/method/13-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$C_N = \sum_i \frac{1}{|M_i|} \sum_{m_{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: data modules 
+# Data modules 
 
 <center><img src="figures/datareq/1-house.png" width="100%"></img></center>
 
@@ -631,7 +473,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
 
 ---
-# Method: data modules 
+# Data modules 
 
 <center><img src="figures/datareq/2-house.png" width="100%"></img></center>
 
@@ -644,7 +486,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
 
 ---
-# Method: data modules 
+# Data modules 
 
 <center><img src="figures/datareq/3-house.png" width="100%"></img></center>
 
@@ -657,7 +499,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
 
 ---
-# Method: data modules 
+# Data modules 
 
 <center><img src="figures/datareq/4-house.png" width="100%"></img></center>
 
@@ -670,7 +512,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
 
 ---
-# Method: data modules
+# Data modules 
 
 <center><img src="figures/datareq/5-house.png" width="100%"></img></center>
 
@@ -683,7 +525,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
 
 ---
-# Method: data modules 
+# Data modules 
 
 <center><img src="figures/datareq/6-house.png" width="100%"></img></center>
 
@@ -695,17 +537,6 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
 
-
----
-class: inverse, center, middle
-
-# Cumulative effects - Scotian Shelf
-
-<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
-
-```{r, echo = FALSE, results = 'asis'}
-plan(4)
-```
 
 ---
 # Modules: Species
@@ -1009,8 +840,582 @@ Beauchesne et al. 2017
 ]
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 # Modules: Trophic sensitivity
+
+<center><img src="figures/modules/motifs/1_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Modules: Trophic sensitivity
+
+
+<center><img src="figures/modules/motifs/3_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Modules: Trophic sensitivity
+
+<center><img src="figures/modules/motifs/4_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Modules: Trophic sensitivity
+
+<center><img src="figures/modules/motifs/5_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Modules: Trophic sensitivity
+
+<center><img src="figures/modules/motifs/6_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Modules: Trophic sensitivity
+
+<center><img src="figures/modules/motifs/7_motif.png" width="90%"></img></center>
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/1_dynamic.png" width="100%"></img></center>
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/2_dynamic.png" width="100%"></img></center>
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/3_dynamic.png" width="100%"></img></center>
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/4_dynamic.png" width="100%"></img></center>
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/5_dynamic.png" width="100%"></img></center>
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/6_dynamic.png" width="100%"></img></center>
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/7_dynamic.png" width="100%"></img></center>
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/8_dynamic.png" width="100%"></img></center>
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/dynamic/9_dynamic.png" width="100%"></img></center>
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Simulations
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/simul/1_motifs.png" width="55%"></img></center>
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Simulations
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/simul/1_motifs.png" width="55%"></img></center>
+
+**Lotka-Volterra models:** $\frac{dX_i}{dt} = X_i(r_i - \alpha_{ii} X_i + \sum_j e_{ij} \alpha_{ij} X_j)$
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Simulations
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/simul/1_motifs.png" width="55%"></img></center>
+
+**Lotka-Volterra models:** $\frac{dX_i}{dt} = X_i(r_i - \alpha_{ii} X_i + \sum_j e_{ij} \alpha_{ij} X_j)$
+
+**Simulated stressors:** 1% variation of equilibrium parameters
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Simulations
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/simul/2_motifs.png" width="55%"></img></center>
+
+**Lotka-Volterra models:** $\frac{dX_i}{dt} = X_i(r_i - \alpha_{ii} X_i + \sum_j e_{ij} \alpha_{ij} X_j)$
+
+**Simulated stressors:** 1% variation of equilibrium parameters
+
+**All possible combinations simulated for each motif**
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Simulations
+
+<span class="br2"></span>
+
+<center><img src="figures/modules/simul/2_motifs.png" width="55%"></img></center>
+
+**Lotka-Volterra models:** $\frac{dX_i}{dt} = X_i(r_i - \alpha_{ii} X_i + \sum_j e_{ij} \alpha_{ij} X_j)$
+
+**Simulated stressors:** 1% variation of equilibrium parameters
+
+**All possible combinations simulated for each motif**
+
+**Mesured response:** Initial and post-stressor abundances as proxy of trophic sensitivity
+
+.references[
+Beauchesne et al. 2021
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# Cumulative effects - Scotian Shelf
+
+<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
+
+```{r, echo = FALSE, results = 'asis'}
+plan(4)
+```
+
+---
+# Method: species-scale CEA
+
+<center><img src="figures/method/1-species.png" width="100%"></img></center>
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+
+---
+# Method: species-scale CEA
+
+<center><img src="figures/method/2-species_single_path.png" width="100%"></img></center>
+
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: species-scale CEA
+
+<br/><br/>
+
+<center><img src="figures/method/3-map_single_path.png" width="80%"></img></center>
+
+<p style="font-size:90%;">
+$$Effect = E_i * D_j * \mu_{i,j}$$
+</p>
+
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: species-scale CEA
+
+<center><img src="figures/method/4-map_all_path.png" width="65%"></img></center>
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: species-scale CEA
+
+<center><img src="figures/method/5-halpern.png" width="100%"></img></center>
+
+<!-- <p style="font-size:75%;">
+$$C_E = \sum_i \sum_j E_i * D_j * \mu_{i,j}$$
+</p> -->
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/6-ncea.png" width="95%"></img></center>
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/7-ncea.png" width="95%"></img></center>
+
+<p style="font-size:75%;">
+$$S_i = \sum_j D_j \;*\; \mu_{i,j}$$
+</p>
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/8-ncea.png" width="95%"></img></center>
+
+<p style="font-size:75%;">
+$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
+</p>
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/9-ncea.png" width="95%"></img></center>
+
+<p style="font-size:75%;">
+$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
+</p>
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/10-ncea.png" width="95%"></img></center>
+
+<p style="font-size:75%;">
+$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
+</p>
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/11-ncea.png" width="95%"></img></center>
+
+<p style="font-size:75%;">
+$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
+</p>
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/12-ncea.png" width="95%"></img></center>
+
+<p style="font-size:75%;">
+$$C_{N_{i,x}} = \frac{1}{|M_i|} \sum_{m _{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
+</p>
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/method/13-ncea.png" width="95%"></img></center>
+
+<p style="font-size:75%;">
+$$C_N = \sum_i \frac{1}{|M_i|} \sum_{m_{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
+</p>
+
+.references[
+Beauchesne et al. 2020
+]
 
 
 ---
