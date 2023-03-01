@@ -20,6 +20,9 @@ fig:meta
 fig:meta2
 fig:contr
 fig:contrsp
+fig:bolocera
+fig:pagurus
+fig:minke
 tab:dataapp
 tab:contactapp
 background
