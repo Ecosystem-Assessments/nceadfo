@@ -4,7 +4,14 @@
 \alias{plot_nceadfo_simple}
 \title{Function for simple plots for presentations}
 \usage{
-plot_nceadfo_simple(dat, mainTitle = NULL, subTitle = NULL, range = NULL)
+plot_nceadfo_simple(
+  dat,
+  legend = TRUE,
+  land = TRUE,
+  mainTitle = NULL,
+  subTitle = NULL,
+  range = NULL
+)
 }
 \description{
 Function for simple plots for presentations

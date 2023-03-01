@@ -368,6 +368,14 @@ fig_atlas <- function(type = c("aoi","footprint","cea","difference","metanetwork
       from = here::here(out$figs, "contribution_group-2016_2021.png"), 
       to = here::here(out$atlas, "contribution_group-2016_2021.png")
     )
+    file.copy(
+      from = here::here(out$figs, "contribution_taxa-2010_2015.png"), 
+      to = here::here(out$atlas, "contribution_taxa-2010_2015.png")
+    )
+    file.copy(
+      from = here::here(out$figs, "contribution_taxa-2016_2021.png"), 
+      to = here::here(out$atlas, "contribution_taxa-2016_2021.png")
+    )
   }
   
   # ----------------------------------------------------------------------------------------

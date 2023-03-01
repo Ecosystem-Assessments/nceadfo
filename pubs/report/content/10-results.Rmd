@@ -164,10 +164,10 @@ knitr::include_graphics(urls$cont)
 ```
 
 <br/>
-<!-- 
-{r contrsp, out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$contsp, fig.cap=cap$contsp}
+
+```{r contrsp, out.width = "90%", echo=FALSE, fig.align='center', fig.link=urls$contsp, fig.cap=cap$contsp}
 knitr::include_graphics(urls$contsp)
--->
+```
 
 <br/>
 

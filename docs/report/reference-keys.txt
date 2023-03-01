@@ -19,6 +19,7 @@ fig:ceadiff
 fig:meta
 fig:meta2
 fig:contr
+fig:contrsp
 tab:dataapp
 tab:contactapp
 background
