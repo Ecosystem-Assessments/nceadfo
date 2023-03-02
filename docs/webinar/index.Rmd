@@ -1835,31 +1835,6 @@ plan(7)
 ]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 class: inverse, center, middle
 
@@ -1872,4 +1847,24 @@ class: inverse, center, middle
 ---
 # Acknowledgements 
 
+--
+***Collaborators and organizations that exchanged and shared with our research team*** <br>
 
+
+--
+***Department of Fisheries and Oceans*** <br>
+
+
+--
+***Tana Worchester, Caroline Longtin, Catalina Gomez*** <br>
+
+
+--
+***Jacob Dale, Andréanne Beardsell, Vincent Bellavance*** <br>
+
+---
+class: inverse, center, middle
+
+# Thank you! 
+
+<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
