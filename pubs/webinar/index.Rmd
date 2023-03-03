@@ -1560,7 +1560,11 @@ plan(6)
 ---
 # Perspectives 
 
-<!-- This project will benefit efficient, adaptive and holistic ecosystem-based management approaches that use marine spatial tools in the offshore Scotian Shelf Bioregion. Making data on drivers and ecological communities readily accessible will enhance the ability to provide efficient, consistent, and timely science guidance. This project will foster efficient and functional open science by using and further developing the fully open, transparent and replicable open knowledge platform eDrivers. This project also offers continuity and comparability between data products from the Gulf of St. Lawrence and the offshore Scotian Shelf bioregion. Comparability between ecosystems is an important aspect to support the Oceans and Climate Change Science program at DFO. Furthermore, this project creates and generates data layers that will be useful for Marine Spatial Planning purposes. -->
+## Data modules
+
+<br>
+
+<center><img src="figures/datareq/6-house.png" width="100%"></img></center>
 
 ---
 
@@ -1833,6 +1837,13 @@ plan(7)
 | &nbsp;&nbsp; Invasive species | `r ch()` | `r ch()` | `r ch()` |
 | &nbsp;&nbsp; Shipping | `r ch()` | `r ch()` | `r ch()` |
 ]
+
+---
+# Data science & reproducibility <a href='https://github.com/Ecosystem-Assessments/pipedat'><img src='https://github.com/Ecosystem-Assessments/pipedat/raw/main/man/figures/logo.png' align="right" height="150" /></a>
+
+## ***nceadfo*** + ***pipedat***
+
+<center><img src="figures/bioregions.png" width="53%"></img></center>
 
 
 ---
