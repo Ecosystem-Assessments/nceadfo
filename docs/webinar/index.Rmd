@@ -1509,7 +1509,9 @@ $^*$Only 3 drivers extending to the continental slope
 ## Change in cumulative effects
 
 .pull-left2[
-- TBD
+- Slight decrease in relative intensity
+- General decrease for areas more at risk in 2010-2015
+- Except Bay of Fundy
 ]
 .pull-right2[
 <br>
@@ -1523,9 +1525,13 @@ $^*$Only 3 drivers extending to the continental slope
 ## Pathways of effect
 
 .pull-left2[
-- TBD
-]
+- Overview of assessment 
 
+- Most impactful drivers
+  - Shipping, fisheries, climate
+
+- Invertebrates more at risk
+]
 .pull-right2[
 [<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total-2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total-2016_2021.png?raw=true)
 ]
@@ -1536,7 +1542,14 @@ $^*$Only 3 drivers extending to the continental slope
 ## Pathways of effect
 
 .pull-left2[
-- TBD
+- Overview of assessment 
+
+- Most impactful drivers
+  - Shipping, fisheries, climate
+
+- Invertebrates more at risk
+
+- Direct pathways (n = 873)
 ]
 
 .pull-right2[
@@ -1549,7 +1562,16 @@ $^*$Only 3 drivers extending to the continental slope
 ## Pathways of effect
 
 .pull-left2[
-- TBD
+- Overview of assessment 
+
+- Most impactful drivers
+  - Shipping, fisheries, climate
+
+- Invertebrates more at risk
+
+- Direct pathways (n = 873)
+
+- Indirect pathways (n = 2057)
 ]
 
 .pull-right2[
@@ -1563,13 +1585,123 @@ $^*$Only 3 drivers extending to the continental slope
 ## Direct & indirect effects
 
 .pull-left2[
-- TBD
 ]
 
 .pull-right2[
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/contribution_group-2016_2021.png?raw=true" width="90%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/contribution_group-2016_2021.png?raw=true)
+[<center><img src="figures/results/1-contribution_group.png" width="85%"></img></center>](figures/results/1-contribution_group.png)
 ]
 
+---
+# Results
+
+## Direct & indirect effects
+
+.pull-left2[
+***Direct effects***
+
+**Invertebrates**: all drivers 
+
+- Sessile species
+- More sensitive to their physico-chemical environment
+
+**Vertebrates**: shipping and fisheries
+
+- Mobile species 
+- Ability to minimize exposure to stress
+]
+
+.pull-right2[
+[<center><img src="figures/results/2-contribution_group.png" width="85%"></img></center>](figures/results/1-contribution_group.png)
+]
+
+.references[
+Kroeker et al. 2010, 2013; Sydeman et al. 2015; Stier et al. 2016
+]
+
+
+
+---
+# Results
+
+## Direct & indirect effects
+
+.pull-left2[
+***Direct effects***
+
+**Invertebrates**: all drivers 
+
+- Sessile species
+- More sensitive to their physico-chemical environment
+
+**Vertebrates**: shipping and fisheries
+
+- Mobile species 
+- Ability to minimize exposure to stress
+]
+
+.pull-right2[
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/biotic/bolocera-100698.png?raw=true" width="65%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/biotic/bolocera-100698.png?raw=true)
+]
+
+.references[
+Kroeker et al. 2010, 2013; Sydeman et al. 2015; Stier et al. 2016
+]
+
+---
+# Results
+
+## Direct & indirect effects
+
+.pull-left2[
+***Indirect effects***
+
+**Invertebrates**: all drivers 
+
+- Decreased relative intensity
+- Trophic position: resources 
+
+**Vertebrates**: all drivers
+
+- Greater relative intensity 
+- High trophic levels 
+- Sensitive to indirect effects
+]
+
+.pull-right2[
+[<center><img src="figures/results/3-contribution_group.png" width="85%"></img></center>](figures/results/1-contribution_group.png)
+]
+
+.references[
+Kroeker et al. 2010, 2013; Sydeman et al. 2015; Stier et al. 2016
+]
+
+---
+# Results
+
+## Direct & indirect effects
+
+.pull-left2[
+***Indirect effects***
+
+**Invertebrates**: all drivers 
+
+- Decreased relative intensity
+- Trophic position: resources 
+
+**Vertebrates**: all drivers
+
+- Greater relative intensity 
+- High trophic levels 
+- Sensitive to indirect effects
+]
+
+.pull-right2[
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/biotic/balaenoptera_acutorostrata-137087.png?raw=true" width="65%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/atlas/biotic/balaenoptera_acutorostrata-137087.png?raw=true)
+]
+
+.references[
+Kroeker et al. 2010, 2013; Sydeman et al. 2015; Stier et al. 2016
+]
 
 ---
 

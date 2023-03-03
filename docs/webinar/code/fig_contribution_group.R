@@ -1,22 +1,5 @@
-#' Export figures for stressor contribution to direct and indirect effects per period
-#'
-#' @describeIn fig_contribution_group contribution stacked barplot per period
-#' @export
-fig_contribution_group_ <- function() {
-  # 2010-2015
-  cekm <- read.csv(here::here("output","cea_km2","cea_km2-2010_2015.csv"))
-  fig_contribution_group(cekm, "2010_2015")
-  
-  # 2016-2021
-  cekm <- read.csv(here::here("output","cea_km2","cea_km2-2016_2021.csv"))
-  fig_contribution_group(cekm, "2016_2021")
-}
-
-#' Export figures for stressor contribution to direct and indirect effects
-#'
-#' @describeIn fig_contribution_group contribution stacked barplot
-#' @export
-fig_contribution_group <- function(cekm, period) {
+# source("pubs/webinar/code/fig_contribution_group.R")
+contribution_webinar <- function(cekm, suffix = "", type = NULL) {
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Libraries
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
@@ -161,12 +144,12 @@ fig_contribution_group <- function(cekm, period) {
   # Graph
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Output
-  out <- here::here("figures","contribution")
+  out <- here::here("pubs","webinar","figures","results")
   chk_create(out)
 
   bg <- "#00000000"
   png(
-    here::here(out,glue::glue("contribution_group-{period}.png")), 
+    here::here(out,glue::glue("{suffix}-contribution_group.png")), 
     res = 300, 
     width = 200, 
     height = 225, 
@@ -206,18 +189,22 @@ fig_contribution_group <- function(cekm, period) {
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # axis(1);axis(2)
   # Direct effect
-  for(i in 1:nrow(di)) {
-      x <- c(di$xmin[i],di$xmax[i],di$xmax[i],di$xmin[i])
-      y <- c(rep(di$ymin[i],2), rep(di$ymax[i],2))
-      polygon(x = x, y = y, border = '#00000000', col = di$cols[i])
+  if ("direct" %in% type) {
+    for(i in 1:nrow(di)) {
+        x <- c(di$xmin[i],di$xmax[i],di$xmax[i],di$xmin[i])
+        y <- c(rep(di$ymin[i],2), rep(di$ymax[i],2))
+        polygon(x = x, y = y, border = '#00000000', col = di$cols[i])
+    }    
   }
+  
   # Indirect effect
-  for(i in 1:nrow(ind)) {
-      x <- c(ind$xmin[i],ind$xmax[i],ind$xmax[i],ind$xmin[i])
-      y <- c(rep(ind$ymin[i],2), rep(ind$ymax[i],2))
-      polygon(x = x, y = y, border = '#00000000', col = di$cols[i])
+  if ("indirect" %in% type) {
+    for(i in 1:nrow(ind)) {
+        x <- c(ind$xmin[i],ind$xmax[i],ind$xmax[i],ind$xmin[i])
+        y <- c(rep(ind$ymin[i],2), rep(ind$ymax[i],2))
+        polygon(x = x, y = y, border = '#00000000', col = di$cols[i])
+    }    
   }
-
 
   #<=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
   # Taxonomic groups
@@ -256,3 +243,8 @@ fig_contribution_group <- function(cekm, period) {
   }
   dev.off()
 }
+
+cekm <- read.csv(here::here("output","cea_km2","cea_km2-2016_2021.csv"))
+contribution_webinar(cekm, "1")
+contribution_webinar(cekm, "2", "direct")
+contribution_webinar(cekm, "3", c("direct","indirect"))
