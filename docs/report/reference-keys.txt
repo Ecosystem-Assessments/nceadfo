@@ -31,7 +31,6 @@ objectives
 scope
 ceasection
 method
-ceamethod
 speciesmethod
 networkmethod
 nceadfo
@@ -67,8 +66,8 @@ cumdrres
 ceares
 diffres
 metares
-perspectives
 edrivers
+perspectives
 atlas
 stratlas
 climate
