@@ -1447,7 +1447,7 @@ plan(5)
 ]
 .pull-right2[
 <br>
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_richness.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_richness.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species.png?raw=true)
 ]
 
 .references[
@@ -1472,7 +1472,7 @@ $^*$Caused by surveys sampling continental shelf more extensively and not extend
 ]
 .pull-right2[
 <br>
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_drivers.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_drivers.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/drivers.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/drivers.png?raw=true)
 ]
 
 .references[
@@ -1500,7 +1500,7 @@ $^*$Only 3 drivers extending to the continental slope
 ]
 .pull-right2[
 <br>
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_effects-2021-2016.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_effects-2021-2016.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_effects-2021-2016full.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_effects-2021-2016full.png?raw=true)
 ]
 
 ---
@@ -1513,7 +1513,7 @@ $^*$Only 3 drivers extending to the continental slope
 ]
 .pull-right2[
 <br>
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_effects_difference.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cumulative_effects_difference.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network_difference.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network_difference.png?raw=true)
 ]
 
 
@@ -1527,7 +1527,7 @@ $^*$Only 3 drivers extending to the continental slope
 ]
 
 .pull-right2[
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total-2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total-2016_2021.png?raw=true)
 ]
 
 
@@ -1541,7 +1541,7 @@ $^*$Only 3 drivers extending to the continental slope
 ]
 
 .pull-right2[
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/contribution.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/contribution.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/contribution_group-2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/contribution_group-2016_2021.png?raw=true)
 ]
 
 

@@ -12,6 +12,7 @@ fig_metanetwork_ <- function() {
   # 2016-2021
   cekm <- read.csv(here::here("output","cea_km2","cea_km2-2016_2021.csv"))
   fig_metanetwork(cekm, "2016_2021", "Total")
+  fig_metanetwork(cekm, "2016_2021", "Total", bg = "#00000000", out = here::here("figures","webinar"))
   fig_metanetwork(cekm, "2016_2021", "Direct")
   fig_metanetwork(cekm, "2016_2021", "Indirect")
 }
@@ -20,7 +21,7 @@ fig_metanetwork_ <- function() {
 #'
 #' @describeIn fig_metanetwork metanetwork figure
 #' @export
-fig_metanetwork <- function(cekm, period, type) {
+fig_metanetwork <- function(cekm, period, type, bg = "#ffffff", out = here::here("figures","metanetwork")) {
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Libraries
   #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
@@ -268,7 +269,6 @@ fig_metanetwork <- function(cekm, period, type) {
   shadowEdge = TRUE
   
   # Output
-  out <- here::here("figures","metanetwork")
   chk_create(out)
   
   png(
@@ -280,7 +280,7 @@ fig_metanetwork <- function(cekm, period, type) {
   )
   
   # Plot
-  par(mar = c(2,2,2,2))#, bg = "#00000000")
+  par(mar = c(2,2,2,2), bg = bg)
   plot0(x = c(-1.1, 1.1))
 
   # Adjust some group names

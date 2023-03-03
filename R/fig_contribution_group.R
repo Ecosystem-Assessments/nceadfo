@@ -10,6 +10,12 @@ fig_contribution_group_ <- function() {
   # 2016-2021
   cekm <- read.csv(here::here("output","cea_km2","cea_km2-2016_2021.csv"))
   fig_contribution_group(cekm, "2016_2021")
+  
+  # For webinar
+  file.copy(
+    from = here::here("figures","contribution","contribution_group-2016_2021.png"),
+    to = here::here("figures","webinar","contribution_group-2016_2021.png")
+  )
 }
 
 #' Export figures for stressor contribution to direct and indirect effects
@@ -164,6 +170,7 @@ fig_contribution_group <- function(cekm, period) {
   out <- here::here("figures","contribution")
   chk_create(out)
 
+  bg <- "#00000000"
   png(
     here::here(out,glue::glue("contribution_group-{period}.png")), 
     res = 300, 
@@ -172,7 +179,7 @@ fig_contribution_group <- function(cekm, period) {
     units = "mm"
   )
   layout(matrix(1:2, nrow = 2), heights = c(.88,.12))
-  par(family = 'serif')
+  par(family = 'serif', bg = bg)
   par(mar = c(0,1,1,0))
 
   yMax <- 1.11
@@ -237,7 +244,7 @@ fig_contribution_group <- function(cekm, period) {
   #<=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
   # Drivers legend
   yG = .3
-  par(mar = c(.5,0,0,0))
+  par(mar = c(.5,0,0,0), bg = bg)
   plot0(x = c(1,7), y = c(0.2,-6.5))
   # Groups names
   x = c(1,2.9,3.95,6.05)

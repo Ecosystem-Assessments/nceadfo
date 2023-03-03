@@ -16,7 +16,7 @@ fig_webinar <- function() {
       pointsize = param$figures$pointsize
     )
     if (type == "regular") plot_nceadfo_simple(dat, mainTitle = main, subTitle = sub, land = land, legend = legend)
-    if( type == "dual") plot_nceadfo_dual_simple(dat, mainTitle = main, subTitle = sub, land = land, legend = legend)
+    if( type == "dual") plot_nceadfo_dual_simple(dat, mainTitle = main, subTitle = sub)
     dev.off()
   }
   
@@ -40,12 +40,15 @@ fig_webinar <- function() {
   mm <- foot(here::here("data","data-biotic","marine_mammals","binary"))
   ms <- foot(here::here("data","data-biotic","marine_species","random_forest_regression_binary"))
   sb <- foot(here::here("data","data-biotic","sea_birds","binary"))
+  sp <- foot(here::here("data","cea_modules","species"))
   names(mm) <- "marine_mammals"
   names(ms) <- "marine_species"
   names(sb) <- "sea_birds"
+  names(sp) <- "species"
   plotDat(mm, sub = "Number of species")
   plotDat(ms, sub = "Number of species")
   plotDat(sb, sub = "Number of species")
+  plotDat(sp, sub = "Number of species")
   # ------------------------------------------------------------------------------------------
 
   # ------------------------------------------------------------------------------------------
@@ -60,25 +63,34 @@ fig_webinar <- function() {
   nm <- dir(out) |>
         stringr::str_replace("-2016_2021.tif","")
   
-  
   cl <- foot2(files[nm %in% drList$drivers[drList$group == "Climate"]])
   co <- foot2(files[nm %in% drList$drivers[drList$group == "Coastal"]])
   fs <- foot2(files[nm %in% drList$drivers[drList$group == "Fisheries"]])
   sh <- foot2(files[nm %in% drList$drivers[drList$group == "Marine traffic"]])
+  dr <- foot2(files)
   names(cl) <- "climate"
   names(co) <- "coastal"
   names(fs) <- "fisheries"
   names(sh) <- "marine_traffic"
+  names(dr) <- "drivers"
   plotDat(cl, sub = "Sum of normalized intensities")
   plotDat(co, sub = "Sum of normalized intensities")
   plotDat(fs, sub = "Sum of normalized intensities")
   plotDat(sh, sub = "Sum of normalized intensities")
+  plotDat(dr, sub = "Sum of normalized intensities")
   # ------------------------------------------------------------------------------------------
 
   # ------------------------------------------------------------------------------------------
-  # CEA 
+  # CEA simple & complete
   dat <- here::here("output","cea","cea_network-2016_2021.tif") |> stars::read_stars()
   plotDat(dat, land = FALSE, legend = FALSE)
+  plotDat(dat, suffix = "full", sub = "Cumulative effects score")
+  # ------------------------------------------------------------------------------------------
+
+  # ------------------------------------------------------------------------------------------
+  # Change in CEA
+  dat <- here::here("output","cea_difference","cea_network_difference.tif") |> stars::read_stars()
+  plotDat(dat, type = "dual", sub = "Cumulative effects change")
   # ------------------------------------------------------------------------------------------
   
   # ------------------------------------------------------------------------------------------
