@@ -1,2 +1,85 @@
 # Summary {-}
 
+```{r summary}
+# Species
+sp <- read.csv(here::here("data","data-biotic","marine_species","species_list.csv")) 
+mm <- read.csv(here::here("data","data-biotic","marine_mammals","mm_list.csv")) 
+bird <- read.csv(here::here("data","data-biotic","sea_birds","bird_list.csv")) 
+nsp <- nrow(sp)
+nmm <- nrow(mm)
+nbd <- nrow(bird)
+nTx <- nsp+nmm+nbd
+
+# Drivers
+dr <- read.csv(here::here("data","cea_modules","drivers_list.csv")) |>
+      dplyr::select(-period) |>
+      dplyr::distinct() 
+nDr <- nrow(dr)
+nCl <- sum(dr$group == "Climate")
+nCo <- sum(dr$group == "Coastal")
+nFs <- sum(dr$group == "Fisheries")
+nMt <- sum(dr$group == "Marine traffic")
+
+# Metaweb
+load(here::here("data","format_modules","metaweb.RData"))
+nL <- sum(metaweb)
+```
+
+In 2016, Fisheries and Oceans Canada renewed its research capacity to better understand the nature and extent of multiple anthropogenic stressors in the marine environment, in order to provide a foundation for policies and practices that protect the health of Canada’s oceans for future generations. In en effort to improve our understanding of how multiple drivers interact to affect the integrity of ecosystems at different temporal and spatial scales, and to improve evaluation of the vulnerability of biological communities to multiple drivers the current project project was developed. The [objective](#objectives) of this project was to assess the cumulative effects of global change on the ecological communities of the [Scotian Shelf Bioregion in eastern Canada](#scope). We also divided the assessment into [two periods](#scope), *i.e.* from 2010 to 2015, and from 2016 to 2021.
+
+The [methods](#method) selected to assess the [cumulative effects](#ceasection) of global changes on ecological communities come from @halpern2008a and @beauchesne2020c. The former, refered to as the [species-scale assessment](#speciesmethod), focuses on direct effects of environmental drivers on species; the latter, referred to as the [network-scale assessment](#networkmethod), further considers the indirect effects of drivers propagating through species interactions. Both approaches rely on a series of [data modules](#modules) that characterize an area of interest: 1) the [distribution of species](#spmodule), 2) the spatial distribution and relative intensity of [environmental drivers](#drmodule), 3) the [species-specific sensitivity](#sssmodule) -- *i.e.* the sensitivity to direct effects -- of each species to each driver, 4) the [metaweb](#metamodule) of species interactions, and 5) the [trophic sensitivity](#trsmodule) of species to trophically-mediated indirect effects. The @halpern2008a uses modules 1-3, while @beauchesne2020c uses all data modules. Both assessments predict a spatially explicit relative score of cumulative effects that is akin to a risk assessment. 
+
+All data modules were described for the Scotian Shelf Bioregion as part of this assessment. The distribution and intensity of `r nDr` [environmental drivers](#drmodule) (climate: `r nCl`; coastal: `r nCo`, fisheries: `r nFs`; marine traffic: `r nMt`) was described for the study region. These drivers can be visualized in the [atlas](#stratlas) of this report, and explored interactively using the [*eDrivers*](https://david-beauchesne.shinyapps.io/edriversapp_dev/) application (see section \@ref(edrivers)). Characterizing the ecological network of the Scotian Shelf Bioregion yielded distributional maps for `r nTx` taxa (marine species: `r nsp`, marine mammals: `r nmm`, `r nbd`), and a [metanetwork](#metamodule) structured by `r nL` ecological interactions. Individual species distribution and cumulative effects assessment can be visualized in the [atlas](@spatlas) of this report.
+
+In an effort to foster [transparent and reproducible](#nceadfo) ecosystem-scale assessments, this project was built using version control and programming tools; these offer great flexibility and ensure that the whole assessment, from raw data formatting to rendering the assessment report, can be repeated and/or updated efficiently with the appropriate computational skills. A public research compendium called <a href="https://github.com/Ecosystem-Assessments/nceadfo" target="_blank"><i>nceadfo</i></a> was thus created for the assessment. This research compendium contains the collection of all parts of the research project including text, figures, data, and code that ensures the reproducibility of the assessment.  
+
+Here, we detail the general observations that arise from the cumulative effects assessment as bullet points. Additional observations are presented in the [results](#results) section of the report; we also invite the reader to explore the [results](#results) the [atlas](#atlas) sections of the report for more information, and in particular to explore the figures provided.
+
+
+<br/>
+
+- **Distribution of species richness**
+  - Areas of medium to high species are the continental shelf, eastern and western Nova-Scotia, the eastern part of the Bay of Fundy, and the transition from the continental shelf to the continental slope;
+  - Areas of lower species richness are coastal areas and the continental slope, but this is likely caused, at least in part, by surveys sampling continental shelf more extensively and not extending to coastal areas.
+  
+<br/>
+
+- **Distribution and intensity of environmental drivers**
+  - Areas of medium to high driver intensity are the continental shelf, the eastern part of the Bay of Fundy, and coastal areas, particularly close to coastal cities;
+  - The continental slope exhibits low driver intensity in general, but this may be because only sea surface temperature anomalies and shipping extend to that region.  
+
+<br/>
+
+- **Distribution of cumulative effects**
+  - The whole continental shelf is affected by the cumulative effects of global changes at varying levels of intensity;
+  - Cumulative effects are particularly intense in the Bay of Fundy, Southwest Nova-Scotia, Northeast Sble Island, and the south of Cape Breton;
+  - The center shelf and northeastern corner of the Scotian Shelf Bioregion close to the Laurentian Channel are generally affected by medium levels of cumulative effects
+  - Cumulative effects are very low on the continental slope.
+
+<br/>
+
+- **Changes in cumulative effects**
+  - There was a slight decrease in the relative intensity of cumulative effects throughout the Scotian Shelf Bioregion between the 2010-2015 and the 2016-2021 periods;
+  - Areas that are most at risk from cumulative effects are consistent between both periods, but are less intensite from 2016 to 2021;
+  - The only notable exception is the Bay of Fundy, where a slight increase in relative intensity was predicted from 2016 to 2021.
+  
+<br/>
+
+- **Pathways of effets**
+  - Environmental drivers with the most intense predicted effects are shipping, demersal destructive fisheries (*e.g.* trawls and dredges), and negative sea-bottom temperature anomalies; these drivers are some of the most widely distributed drivers that were considered in the assessment;
+  - Invertebrates appear more at risk from the cumulative effects of all drivers than vertebrates.
+  - Indirect pathways of effects outnumber direct pathways of effects and are not symetrically distributed among taxa considered
+
+<br/>
+
+- **Direct effects**
+  - Invertebrates, which are predominantly composed of benthic species with limited mobility are generally more susceptible to climate drivers, are directly affected by all drivers considered;
+  - Vertebrates, which are generally more mobile and able to minimize their exposure to drivers, are less directly affected by drivers, expect shipping for marine mammals and fisheries for fish species. Most birds appear unaffected by the direct effects of drivers.
+
+<br/>
+
+- **Indirect effects**
+  - Invertebrates are indirectly affected by all drivers considered, at a relative intensity generally similar to that of direct effects;
+  - There is a stark contrast between indirect and direct effects to vertebrates, as all sea bird, marine mammal and fish species are greatly affected by the indirected effects of all drivers, and at greater relative intensity that that of direct effects.
+
+<br/>

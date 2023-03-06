@@ -1657,7 +1657,7 @@ Kroeker et al. 2010, 2013; Sydeman et al. 2015; Stier et al. 2016
 
 **Invertebrates**: all drivers 
 
-- Decreased relative intensity
+- Similar relative intensity
 - Trophic position: resources 
 
 **Vertebrates**: all drivers

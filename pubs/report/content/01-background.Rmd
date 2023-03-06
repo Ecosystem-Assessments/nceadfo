@@ -18,7 +18,7 @@ This project will benefit efficient, adaptive and holistic ecosystem-based manag
 
 ## Objectives {#objectives}
 
-The specific objectives of this project were to: 
+The overarching objective of this project was to assess the cumulative effects of global change on the ecological communities of the Scotian Shelf Bioregion in eastern Canada. The specific objectives of this project were to: 
 
 1. provide a systematic characterization of the distribution and intensity of environmental drivers;
 2. assess the spatial structure of biological communities;
