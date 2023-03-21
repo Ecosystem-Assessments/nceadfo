@@ -1513,116 +1513,6 @@ plan(7)
 ---
 # Data science & reproducibility
 
-## Knowledge management
-
-### Example: [***eDrivers***](https://david-beauchesne.shinyapps.io/edriversapp_dev/)
-
-<span class="br2"></span>
-
-.pull-left2[
-
-- Initiative to share knowledge on stressors
-
-- Objective:
-
-.font80[
-> Create a community of experts dedicated to structuring, sharing and standardizing knowledge on environmental stressors
-]
-]
-
-.pull-right2[
-<center><a href="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="figures/reproducibility/edrivers.png" width="100%"></img></a></center>
-]
-
----
-# Data science & reproducibility
-
-## Knowledge management
-
-<center><img src="figures/reproducibility/data.png" width="50%"></img></center>
-
----
-# Data science & reproducibility
-
-## Reproducible workflows
-
-<center><img src="figures/reproducibility/data2.png" width="50%"></img></center>
-
-
----
-# Data science & reproducibility
-
-## Reproducible workflows
-
-.pull-left[
-- Transparency & reproducibility
-  - `r rp()` &nbsp; &nbsp; `r gh()`
-- All code associated with:
-  - Accessing raw data 
-  - Formatting data 
-  - Analyses
-  - Figures and tables
-  - Report
-  - This presentation
-]
-
-.pull-right[
-<center><img src="figures/reproducibility/workflow1.png" width="100%"></img></center>
-]
-
----
-# Data science & reproducibility
-
-## Reproducible workflows
-
-.pull-left[
-- Transparency & reproducibility
-  - `r rp()` &nbsp; &nbsp; `r gh()`
-- All code associated with:
-  - Accessing raw data 
-  - Formatting data 
-  - Analyses
-  - Figures and tables
-  - Report
-  - This presentation
-]
-
-.pull-right[
-<center><img src="figures/reproducibility/workflow2.png" width="100%"></img></center>
-]
-
----
-# Data science & reproducibility
-
-## Reproducible workflows
-
-.pull-left[
-- Transparency & reproducibility 
-  - `r rp()` &nbsp; &nbsp; `r gh()`
-- All code associated with:
-  - Accessing raw data 
-  - Formatting data 
-  - Analyses
-  - Figures and tables
-  - Report
-  - This presentation
-]
-
-.pull-right[
-<center><img src="figures/reproducibility/workflow3.png" width="100%"></img></center>
-]
-
----
-# Data science & reproducibility <a href='https://github.com/Ecosystem-Assessments/nceadfo'><img src='https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png' align="right" height="150" /></a>
-
-## Research compendium: ***nceadfo***
-
-<center><a href="https://github.com/Ecosystem-Assessments/nceadfo"><img src="figures/reproducibility/nceadfo.png" width="90%"></img></a></center>
-
-
----
-# Data science & reproducibility
-
 ## Management - Assessment - Knowledge
 
 <span class="br2"></span>
@@ -1658,23 +1548,149 @@ plan(7)
 ---
 # Data science & reproducibility
 
+### Example: [***eDrivers***](https://david-beauchesne.shinyapps.io/edriversapp_dev/)
+
+<span class="br2"></span>
+
+.pull-left2[
+
+- Initiative to share knowledge on stressors
+
+- Objective:
+
+.font80[
+> Create a community of experts dedicated to structuring, sharing and standardizing knowledge on environmental stressors
+]
+]
+
+.pull-right2[
+<center><a href="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="figures/reproducibility/edrivers.png" width="100%"></img></a></center>
+]
+
+---
+# Data science & reproducibility
+
+.pull-left[
+## The era of data supermarkets!
+
+- Data archiving
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/data.png" width="100%"></img></center>
+]
+
+---
+# Data science & reproducibility
+
+.pull-left[
 ## The era of data supermarkets!
 
 - Data archiving
 
---
-
 ## Where is Ricardo?
 
-- Reproducible analytical pipelines 
-  
---
+- Reproducible analytical pipelines
+]
 
-## Advantages
+.pull-right[
+<center><img src="figures/reproducibility/data2.png" width="100%"></img></center>
+]
 
-- Structured, reproducible and transparent process 
-- Reuse workflows across projects
-- Increased efficiency (weeks to minutes)
+---
+# Data science & reproducibility
+
+## Reproducible workflows
+
+.pull-left[
+- ***Transparency & reproducibility***
+  - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***All code associated with:***
+  - Accessing raw data 
+  - Formatting data 
+  - Analyses
+  - Figures and tables
+  - Report
+  - This presentation
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow1.png" width="100%"></img></center>
+]
+
+---
+# Data science & reproducibility
+
+## Reproducible workflows
+
+.pull-left[
+- ***Transparency & reproducibility***
+  - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***All code associated with:***
+  - Accessing raw data 
+  - Formatting data 
+  - Analyses
+  - Figures and tables
+  - Report
+  - This presentation
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow2.png" width="100%"></img></center>
+]
+
+---
+# Data science & reproducibility
+
+## Reproducible workflows
+
+.pull-left[
+- ***Transparency & reproducibility***
+  - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***All code associated with:***
+  - Accessing raw data 
+  - Formatting data 
+  - Analyses
+  - Figures and tables
+  - Report
+  - This presentation
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow3.png" width="100%"></img></center>
+]
+
+---
+# Data science & reproducibility
+
+## Reproducible workflows
+
+.pull-left[
+- ***Transparency & reproducibility***
+  - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***All code associated with:***
+  - Accessing raw data 
+  - Formatting data 
+  - Analyses
+  - Figures and tables
+  - Report
+  - This presentation
+- ***Advantages***
+  - Structured, reproducible and transparent process 
+  - Reuse workflows across projects
+  - Increased efficiency (weeks to minutes)
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow3.png" width="100%"></img></center>
+]
+
+---
+# Data science & reproducibility <a href='https://github.com/Ecosystem-Assessments/nceadfo'><img src='https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png' align="right" height="150" /></a>
+
+## Research compendium: ***nceadfo***
+
+<center><a href="https://github.com/Ecosystem-Assessments/nceadfo"><img src="figures/reproducibility/nceadfo.png" width="90%"></img></a></center>
 
 
 ---
