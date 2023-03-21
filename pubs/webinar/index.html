@@ -95,8 +95,8 @@ class: inverse, center, middle
 
 #### Context
 ### Scope of assessment
-### Data modules
 ### Assessment method
+### Data modules
 ### Results
 ### Perspectives
 ### Data science &amp; reproducibility
@@ -372,8 +372,8 @@ class: inverse, center, middle
 
 ### Context
 #### Scope of assessment
-### Data modules
 ### Assessment method
+### Data modules
 ### Results
 ### Perspectives
 ### Data science &amp; reproducibility
@@ -442,8 +442,181 @@ class: inverse, center, middle
 
 ### Context
 ### Scope of assessment
-#### Data modules
+#### Assessment method
+### Data modules
+### Results
+### Perspectives
+### Data science &amp; reproducibility
+
+---
+# Method: species-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/1-species.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+
+---
+# Method: species-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/2-species_single_path.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: species-scale CEA
+
+&lt;br/&gt;&lt;br/&gt;
+
+&lt;center&gt;&lt;img src="figures/method/3-map_single_path.png" width="80%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:90%;"&gt;
+`$$Effect = E_i * D_j * \mu_{i,j}$$`
+&lt;/p&gt;
+
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: species-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/4-map_all_path.png" width="65%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: species-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/5-halpern.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;!-- &lt;p style="font-size:75%;"&gt;
+`$$C_E = \sum_i \sum_j E_i * D_j * \mu_{i,j}$$`
+&lt;/p&gt; --&gt;
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/6-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/7-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:75%;"&gt;
+`$$S_i = \sum_j D_j * \mu_{i,j}$$`
+&lt;/p&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/8-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:75%;"&gt;
+`$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
+&lt;/p&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/9-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:75%;"&gt;
+`$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
+&lt;/p&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/10-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:75%;"&gt;
+`$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
+&lt;/p&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/11-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:75%;"&gt;
+`$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
+&lt;/p&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/12-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:75%;"&gt;
+`$$C_{N_{i,x}} = \frac{1}{|M_i|} \sum_{m _{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
+&lt;/p&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+# Method: network-scale CEA
+
+&lt;center&gt;&lt;img src="figures/method/13-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+&lt;p style="font-size:75%;"&gt;
+`$$C_N = \sum_i \frac{1}{|M_i|} \sum_{m_{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
+&lt;/p&gt;
+
+.references[
+Beauchesne et al. 2020
+]
+
+---
+class: inverse, center, middle
+
+# Cumulative effects - Scotian Shelf
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px&gt;&lt;/html&gt;
+
+### Context
+### Scope of assessment
 ### Assessment method
+#### Data modules
 ### Results
 ### Perspectives
 ### Data science &amp; reproducibility
@@ -829,91 +1002,6 @@ Beauchesne et al. 2017
 ]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 # Modules: Trophic sensitivity
 
@@ -960,141 +1048,8 @@ Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et 
 Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
 ]
 
----
-# Modules: Trophic sensitivity
 
-&lt;center&gt;&lt;img src="figures/modules/motifs/7_motif.png" width="90%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/1_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/2_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/3_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/4_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/5_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-**Trophic sensitivity**: proxy of sensitivity to environmental drivers
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/6_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-**Trophic sensitivity**: proxy of sensitivity to environmental drivers
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/7_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-**Trophic sensitivity**: proxy of sensitivity to environmental drivers
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/8_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-**Trophic sensitivity**: proxy of sensitivity to environmental drivers
-
-.references[
-Beauchesne et al. 2021
-]
-
----
-# Modules: Trophic sensitivity
-
-## Omnivory dynamic (beluga-cod-capelin)
-
-&lt;span class="br2"&gt;&lt;/span&gt;
-
-&lt;center&gt;&lt;img src="figures/modules/dynamic/9_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-**Trophic sensitivity**: proxy of sensitivity to environmental drivers
-
-.references[
-Beauchesne et al. 2021
-]
+&lt;!-- Dynamics here if incorporated --&gt;
 
 ---
 # Modules: Trophic sensitivity
@@ -1181,62 +1136,6 @@ Beauchesne et al. 2021
 Beauchesne et al. 2021
 ]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 class: inverse, center, middle
 
@@ -1246,182 +1145,8 @@ class: inverse, center, middle
 
 ### Context
 ### Scope of assessment
-### Data modules
-#### Assessment method
-### Results
-### Perspectives
-### Data science &amp; reproducibility
-
----
-# Method: species-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/1-species.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
-
----
-# Method: species-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/2-species_single_path.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: species-scale CEA
-
-&lt;br/&gt;&lt;br/&gt;
-
-&lt;center&gt;&lt;img src="figures/method/3-map_single_path.png" width="80%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:90%;"&gt;
-`$$Effect = E_i * D_j * \mu_{i,j}$$`
-&lt;/p&gt;
-
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: species-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/4-map_all_path.png" width="65%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: species-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/5-halpern.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;!-- &lt;p style="font-size:75%;"&gt;
-`$$C_E = \sum_i \sum_j E_i * D_j * \mu_{i,j}$$`
-&lt;/p&gt; --&gt;
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/6-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/7-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:75%;"&gt;
-`$$S_i = \sum_j D_j \;*\; \mu_{i,j}$$`
-&lt;/p&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/8-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:75%;"&gt;
-`$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
-&lt;/p&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/9-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:75%;"&gt;
-`$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
-&lt;/p&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/10-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:75%;"&gt;
-`$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
-&lt;/p&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/11-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:75%;"&gt;
-`$$C_{i,m_{i,x}} = T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
-&lt;/p&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/12-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:75%;"&gt;
-`$$C_{N_{i,x}} = \frac{1}{|M_i|} \sum_{m _{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
-&lt;/p&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
-&lt;center&gt;&lt;img src="figures/method/13-ncea.png" width="95%"&gt;&lt;/img&gt;&lt;/center&gt;
-
-&lt;p style="font-size:75%;"&gt;
-`$$C_N = \sum_i \frac{1}{|M_i|} \sum_{m_{i,x} \in M_i} T_{i,m_{i,x}} * \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$`
-&lt;/p&gt;
-
-.references[
-Beauchesne et al. 2020
-]
-
-
----
-class: inverse, center, middle
-
-# Cumulative effects - Scotian Shelf
-
-&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px&gt;&lt;/html&gt;
-
-### Context
-### Scope of assessment
-### Data modules
 ### Assessment method
+### Data modules
 #### Results
 ### Perspectives
 ### Data science &amp; reproducibility
@@ -1710,8 +1435,8 @@ class: inverse, center, middle
 
 ### Context
 ### Scope of assessment
-### Data modules
 ### Assessment method
+### Data modules
 ### Results
 #### Perspectives
 ### Data science &amp; reproducibility
@@ -1735,8 +1460,8 @@ class: inverse, center, middle
 
 ### Context
 ### Scope of assessment
-### Data modules
 ### Assessment method
+### Data modules
 ### Results
 ### Perspectives
 #### Data science &amp; reproducibility
@@ -2042,6 +1767,152 @@ class: inverse, center, middle
 # Thank you! 
 
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px&gt;&lt;/html&gt;
+
+---
+
+
+---
+class: inverse, center, middle
+
+# Additional slides
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px&gt;&lt;/html&gt;
+
+---
+# Modules: Trophic sensitivity
+
+&lt;center&gt;&lt;img src="figures/modules/motifs/7_motif.png" width="90%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/1_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/2_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/3_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/4_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/5_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/6_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/7_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/8_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
+
+---
+# Modules: Trophic sensitivity
+
+## Omnivory dynamic (beluga-cod-capelin)
+
+&lt;span class="br2"&gt;&lt;/span&gt;
+
+&lt;center&gt;&lt;img src="figures/modules/dynamic/9_dynamic.png" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;
+
+**Trophic sensitivity**: proxy of sensitivity to environmental drivers
+
+.references[
+Beauchesne et al. 2021
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
