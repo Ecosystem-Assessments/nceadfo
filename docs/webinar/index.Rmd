@@ -533,6 +533,53 @@ Beauchesne et al. 2020
 ---
 # Method: network-scale CEA
 
+<center><img src="figures/modules/motifs/1_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Method: network-scale CEA
+
+
+<center><img src="figures/modules/motifs/3_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/modules/motifs/4_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/modules/motifs/5_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+---
+# Method: network-scale CEA
+
+<center><img src="figures/modules/motifs/6_motif.png" width="90%"></img></center>
+
+.references[
+Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
+]
+
+
+---
+# Method: network-scale CEA
+
 <center><img src="figures/method/7-ncea.png" width="95%"></img></center>
 
 <p style="font-size:75%;">
@@ -1012,56 +1059,6 @@ Brose et al. 2005; Barnes et al. 2008; Kortsch et al. 2015; University of Canber
 Beauchesne et al. 2017
 ]
 
-
----
-# Modules: Trophic sensitivity
-
-<center><img src="figures/modules/motifs/1_motif.png" width="90%"></img></center>
-
-.references[
-Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
-]
-
----
-# Modules: Trophic sensitivity
-
-
-<center><img src="figures/modules/motifs/3_motif.png" width="90%"></img></center>
-
-.references[
-Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
-]
-
----
-# Modules: Trophic sensitivity
-
-<center><img src="figures/modules/motifs/4_motif.png" width="90%"></img></center>
-
-.references[
-Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
-]
-
----
-# Modules: Trophic sensitivity
-
-<center><img src="figures/modules/motifs/5_motif.png" width="90%"></img></center>
-
-.references[
-Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
-]
-
----
-# Modules: Trophic sensitivity
-
-<center><img src="figures/modules/motifs/6_motif.png" width="90%"></img></center>
-
-.references[
-Milo et al. 2002; Stouffer et al. 2007; Stouffer et Bascompte 2010, Stouffer et al. 2012
-]
-
-
-<!-- Dynamics here if incorporated -->
-
 ---
 # Modules: Trophic sensitivity
 
@@ -1231,22 +1228,6 @@ $^*$Only 3 drivers extending to the continental slope
 <br>
 [<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021full.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021full.png?raw=true)
 ]
-
----
-# Results
-
-## Change in cumulative effects
-
-.pull-left2[
-- Slight decrease in relative intensity
-- General decrease for areas more at risk in 2010-2015
-- Except Bay of Fundy
-]
-.pull-right2[
-<br>
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network_difference.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network_difference.png?raw=true)
-]
-
 
 ---
 # Results
@@ -1961,4 +1942,20 @@ Beauchesne et al. 2021
 
 .references[
 Beauchesne et al. 2021
+]
+
+
+---
+# Results
+
+## Change in cumulative effects
+
+.pull-left2[
+- Slight decrease in relative intensity
+- General decrease for areas more at risk in 2010-2015
+- Except Bay of Fundy
+]
+.pull-right2[
+<br>
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network_difference.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network_difference.png?raw=true)
 ]
