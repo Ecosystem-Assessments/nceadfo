@@ -417,7 +417,7 @@ make_biotic <- function() {
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Load and prepare sea bird data
+  # Load and prepare seabird data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   out <- list() 
   out$out <- here::here("data","data-biotic","sea_birds")

@@ -90,24 +90,28 @@ class: inverse, center, middle
   <div class="divTableBody">
     <div class="divTableRow">
       <div class="divTableCell">
-        <img src="figures/david2.png" style="width: 250px">
+        <a href="mailto:david.beauchesne@hotmail.com"><img src="figures/david2.png" style="width: 250px"></a>
       </div>
       <div class="divTableCell">
-        <img src="figures/cindy.jpeg" style="width: 250px">
+        <a href="mailto:cindy.grant@bio.ulaval.ca"><img src="figures/cindy.jpeg" style="width: 250px"></a>
       </div>
       <div class="divTableCell">
-        <img src="figures/phil.png" style="width: 250px">
+        <a href="mailto:philippe.archambault@bio.ulaval.ca"><img src="figures/phil.png" style="width: 250px"></a>
       </div>
     </div>
     <div class="divTableRow">
-      <div class="divTableCell"><b>David Beauchesne</b></div>
-      <div class="divTableCell"><b>Cindy Grant</b></div>
-      <div class="divTableCell"><b>Philippe Archambault</b></div>
+      <div class="divTableCell"><b><a href="mailto:david.beauchesne@hotmail.com">David Beauchesne</b></a></div>
+      <div class="divTableCell"><b><a href="mailto:cindy.grant@bio.ulaval.ca">Cindy Grant</b></a></div>
+      <div class="divTableCell"><b><a href="mailto:philippe.archambault@bio.ulaval.ca">Philippe Archambault</b></a></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell"><a href="mailto:david.beauchesne@hotmail.com"><p style="font-size: small">david.beauchesne@hotmail.com</p></a></div>
+      <div class="divTableCell"><a href="mailto:cindy.grant@bio.ulaval.ca"><p style="font-size: small">cindy.grant@bio.ulaval.ca</p></a></div>
+      <div class="divTableCell"><a href="mailto:philippe.archambault@bio.ulaval.ca"><p style="font-size: small">philippe.archambault@bio.ulaval.ca</p></a></div>
     </div>
   </div>
 </div>
 </center>
-
 
 ---
 class: inverse, center, middle
@@ -755,7 +759,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
     <div class="divPortraitRow">
       <div class="divPortraitCell"></div>
       <div class="divPortraitTitle">
-        <b>Sea birds</b> (25) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#seabirds" target="_blank">`r bk()`</a>
+        <b>Seabirds</b> (25) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#seabirds" target="_blank">`r bk()`</a>
       </div>
     </div>
     
@@ -1163,7 +1167,7 @@ plan(5)
 - Medium-high:
   - Continental shelf
   - Eastern & western Nova-Scotia 
-  - Eastern Bay of Fundy
+  - Western Bay of Fundy
   - Transition shelf to slope
 
 - Lower:
@@ -1721,7 +1725,7 @@ plan(7)
 | **Biotic data** | | | |
 | &nbsp;&nbsp; Marine species | `r ch()` | | |
 | &nbsp;&nbsp; Marine mammals | `r ch()` | `r ch()` | `r ch()` |
-| &nbsp;&nbsp; Sea birds | `r ch()` | `r ch()` | `r ch()` |
+| &nbsp;&nbsp; Seabirds | `r ch()` | `r ch()` | `r ch()` |
 | **Abiotic data** (23) | `r ch()` | `r ch()` | `r ch()` |
 | **Drivers** | | | |
 | &nbsp;&nbsp; Surface-water temperature anomalies (2) | `r ch()` | `r ch()` | `r ch()` |
@@ -1778,6 +1782,40 @@ class: inverse, center, middle
 # Thank you! 
 
 <html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
+
+---
+# Reach out for any questions/comments!
+
+<br/>
+
+<center>
+<div class="divTable team">
+  <div class="divTableBody">
+    <div class="divTableRow">
+      <div class="divTableCell">
+        <a href="mailto:david.beauchesne@hotmail.com"><img src="figures/david2.png" style="width: 250px"></a>
+      </div>
+      <div class="divTableCell">
+        <a href="mailto:cindy.grant@bio.ulaval.ca"><img src="figures/cindy.jpeg" style="width: 250px"></a>
+      </div>
+      <div class="divTableCell">
+        <a href="mailto:philippe.archambault@bio.ulaval.ca"><img src="figures/phil.png" style="width: 250px"></a>
+      </div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell"><b><a href="mailto:david.beauchesne@hotmail.com">David Beauchesne</b></a></div>
+      <div class="divTableCell"><b><a href="mailto:cindy.grant@bio.ulaval.ca">Cindy Grant</b></a></div>
+      <div class="divTableCell"><b><a href="mailto:philippe.archambault@bio.ulaval.ca">Philippe Archambault</b></a></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell"><a href="mailto:david.beauchesne@hotmail.com"><p style="font-size: small">david.beauchesne@hotmail.com</p></a></div>
+      <div class="divTableCell"><a href="mailto:cindy.grant@bio.ulaval.ca"><p style="font-size: small">cindy.grant@bio.ulaval.ca</p></a></div>
+      <div class="divTableCell"><a href="mailto:philippe.archambault@bio.ulaval.ca"><p style="font-size: small">philippe.archambault@bio.ulaval.ca</p></a></div>
+    </div>
+  </div>
+</div>
+</center>
+
 
 ---
 

@@ -75,7 +75,7 @@ paths <- glue::glue("{urls[1]}{atlas[uid]}{urls[2]}")
 knitr::include_graphics(paths)
 ```
 
-### Sea birds 
+### Seabirds 
 
 ```{r out.width = "90%", echo=FALSE, fig.align='center'}
 uid <- atlas %in% glue::glue("{sb$shortname}.png")

@@ -77,4 +77,4 @@ marine-traffic
 spatlas
 marine-species
 marine-mammals
-sea-birds
+seabirds-1

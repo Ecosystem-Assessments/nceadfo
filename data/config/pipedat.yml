@@ -57,7 +57,7 @@ pipedat:
     - "1386850b" # Species-specific sensitivities
     - "0b902b1e" # Species trophic sensitivities
     - "084860fd" # CARMs checklist
-    - "08e94a14" # ECSAS sea bird survey
+    - "08e94a14" # ECSAS seabird survey
   # ==========================================================================
   data_integration:
     # ------------------------------------------------------------------------

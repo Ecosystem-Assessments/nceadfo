@@ -8,7 +8,7 @@ From a policy, legislative, and regulatory standpoint, however, cumulative effec
 
 > *“[...] the cumulative environmental effects [of a project] that are likely to result from the project in combination with other projects or activities”*.
 
-Assessments are thus usually undertaken at the scale of individual projects rather than through a systematic lense. Regional and systematic approaches to cumulative effects assessments are however gaining support [*e.g.* @dube2003; @duinker2006; @jones2016; @sinclair2017]. According to @sinclair2017, a regional cumulative effects assessment can be defined as follows:
+Assessments are thus usually undertaken at the scale of individual projects rather than through a systematic lens. Regional and systematic approaches to cumulative effects assessments are however gaining support [*e.g.* @dube2003; @duinker2006; @jones2016; @sinclair2017]. According to @sinclair2017, a regional cumulative effects assessment can be defined as follows:
 
 > *”[A Regional Effects Assessment (REA)] is an [environmental assessment] whose primary or sole defining feature is its regional scope and its focus on understanding the interactions between human activities and the natural world. This means that in just about all aspects other than its spatial limitations, an REA should be comprehensive and integrated.”*
 

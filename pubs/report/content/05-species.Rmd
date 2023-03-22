@@ -1,6 +1,6 @@
 # Modules {#modules}
 
-The following sections present the data and approaches used to prepare the data modules to perform both a [species-scale cumulative effects assessment](#speciesmethod) and a [network-scale cumulative effects assessment](#networkmethod), *i.e.* 1) the distribution of species ($S_i$), 2) the normalized distribution and intensity of environmental drivers ($D_j$), and 3) the species-specific sensitivity of each species to each driver ($\mu_{i,j}$); it further adds 2 modules to complete the assessment: 4) the metaweb of species interactions, *i.e.* the network of binary biotic interactions structuring local food webs, and 5) the trophic sensitivity of species ($T_i$), *i.e.* their sensitivity to trophically-mediated indirect effects (see below for more details), 
+The following sections present the data and approaches used to prepare the data modules to perform both a [species-scale cumulative effects assessment](#speciesmethod) and a [network-scale cumulative effects assessment](#networkmethod), *i.e.* 1) the distribution of species ($S_i$), 2) the normalized distribution and intensity of environmental drivers ($D_j$), and 3) the species-specific sensitivity of each species to each driver ($\mu_{i,j}$); it further adds 2 modules to complete the assessment: 4) the metaweb of species interactions, *i.e.* the network of binary biotic interactions structuring local food webs, and 5) the trophic sensitivity of species ($T_i$), *i.e.* their sensitivity to trophically-mediated indirect effects (see below for more details). 
 
 ## Species {#spmodule}
 
@@ -16,13 +16,13 @@ nab <- nrow(abiotic)
 nTx <- nsp+nmm+nbd
 ```
 
-The assessment considers `r nsp` [marine](marinesp), `r nmm` [marine mammal](marinemammals), and `r nbd` [sea bird](seabirds) taxa, for a total of `r nTx` taxa considered. We also assumed that phytoplankton and zooplankton species were present throughout the St. Lawrence System since these taxa are missing from our dataset and are required to properly consider trophic dynamics. The following sections describe the data and approaches used to evaluate their distribution on the Scotian Shelf
+The assessment considers `r nsp` [marine](marinesp), `r nmm` [marine mammal](marinemammals), and `r nbd` [seabird](seabirds) taxa, for a total of `r nTx` taxa considered. We also assumed that phytoplankton and zooplankton species were present throughout the St. Lawrence System since these taxa are missing from our dataset and are required to properly consider trophic dynamics. The following sections describe the data and approaches used to evaluate their distribution on the Scotian Shelf.
 
 ### Marine species {#marinesp}
 
 #### Biotic data
 
-We used taxa occurrence data from Fisheries and Oceans Canada (DF) ecosystem spring [@dfo2020b], summer [@dfo2020c], and 4vsw [@dfo2020] surveys. These surveys collect data to monitor the distribution and abundance of fish and invertebrates through the Scotian Shelf, Bay of Fundy and Georges Bank. We formatted the list of taxa considered for the analyses by combining and removing taxa based on expert knowledge and bibliographic research (*e.g.* species of the same genus and hard to distinguish *in situ* were combined). Only taxa with at least 50 observations were considered for the assessment. This process yielded `r sum(sp$presences, na.rm = TRUE)` occurrences and `r sum(sp$absences)` absences for `r nsp` on the Scotian Shelf (Table \@ref(tab:spnm)). All species scientific names were resolved using the `taxize` R package [@chamberlain2013; @chamberlain2019].
+We used taxa occurrence data from Fisheries and Oceans Canada (DFO) ecosystem spring [@dfo2020b], summer [@dfo2020c], and 4vsw [@dfo2020] surveys. These surveys collect data to monitor the distribution and abundance of fish and invertebrates through the Scotian Shelf, Bay of Fundy and Georges Bank. We formatted the list of taxa considered for the analyses by combining and removing taxa based on expert knowledge and bibliographic research (*e.g.* species of the same genus and hard to distinguish *in situ* were combined). Only taxa with at least 50 observations were considered for the assessment. This process yielded `r sum(sp$presences, na.rm = TRUE)` occurrences and `r sum(sp$absences)` absences for `r nsp` on the Scotian Shelf (Table \@ref(tab:spnm)). All species scientific names were resolved using the `taxize` R package [@chamberlain2013; @chamberlain2019].
 
 ```{r spnm}
 dplyr::select(sp, aphiaID, SPEC, presences, absences, rsq) |>
@@ -66,7 +66,7 @@ The distribution of marine mammals in the area of interest comes from the second
 
 The distribution of each marine mammal was assessed through the integration of 14 datasets from scientific and opportunistic surveys between 2010-2015 (Table \@ref(tab:datamm); @wwfromm2021c). The area of interest covered by the guide covers the geographic boundaries of $40^o$ to $55^o$ N and -72$^o$ to -48$^o$ W.  The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ grid and the number of sightings recorded in the 14 available databases was calculated for each species considered. A Gaussian smoothing -- *i.e.* an interpolation method based on a normal distribution -- of 0.2$^o$ was then applied to the grid. Values in each grid cell were then normalized by the total number of sightings for a species and log-transformed to minimize the effect of extreme values. 
 
-The caveats that accompany these maps in the guide and are reported *verbatim* in this report:
+The caveats that accompany these maps in the guide are reported *verbatim* in this report:
 
 > - Sighting effort was not quantified and varies considerably in time and space. The data represent the relative occurrence of reported sightings rather than the actual density or abundance of the species.
 
@@ -151,10 +151,10 @@ dplyr::mutate(common = stringr::str_to_sentence(gsub("_"," ", common))) |>
 <br/>
 
 
-### Sea birds {#seabirds}
+### Seabirds {#seabirds}
 
 
-The distribution of sea birds was obtained through vessel-based and aerial-based surveys and available through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @cws2022]. All sightings of individual bird species or bird groups from the vessel and aerial surveys between 2006 and 2022 were combined to evaluate the distribution of birds in the area of interest. A total of `r nrow(bird)` bird species / groups were obtained (Table \@ref(tab:distbirds)).
+The distribution of seabirds was obtained through vessel-based and aerial-based surveys and available through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @cws2022]. All sightings of individual bird species or bird functional groups from the vessel and aerial surveys between 2006 and 2022 were combined to evaluate the distribution of birds in the area of interest. A total of `r nrow(bird)` bird species / groups were obtained (Table \@ref(tab:distbirds)).
 
 <br> 
 
@@ -163,11 +163,11 @@ dplyr::select(bird, Alpha, aphiaID, species, observations) |>
   knitr::kable(
     col.names = c("Alpha", "Aphia ID", "Scientific name", "Observations (n)"),
     row.names = FALSE,
-    caption = "List of sea birds obtained through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @cws2022]."
+    caption = "List of seabirds obtained through the Eastern Canada Seabirds at Sea (ECSAS) database [@gjerdrum2012; @cws2022]."
   ) #%>%
   #kableExtra::row_spec(uid, extra_css = "border-bottom: 2px solid")
 ```
 
 <br> 
 
-To evaluate the distribution of birds, a similar approach to that used for marine mammals was used. The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ degrees grid. For each species or species group, the number of sightings recorded in the ECSAS database was evaluated in each grid cell. A Gaussian smoothing - *i.e.* an interpolation method based on a normal distribution - of 20 $km$ was then applied to the grid. A log transformation was then applied to minimize the effect of extreme values on the resulting maps. Cell values were then normalized between 0 and 1 by dividing by the maximum value observed for each bird across the area of interest. All cells with values greater than 0 were used to identify the binary distribution of sea birds.
+To evaluate the distribution of birds, a similar approach to that used for marine mammals was used. The area of interest was divided into a regular 0.05$^o$ x 0.05$^o$ degrees grid. For each species or species group, the number of sightings recorded in the ECSAS database was evaluated in each grid cell. A Gaussian smoothing - *i.e.* an interpolation method based on a normal distribution - of 20 $km$ was then applied to the grid. A log transformation was then applied to minimize the effect of extreme values on the resulting maps. Cell values were then normalized between 0 and 1 by dividing by the maximum value observed for each bird across the area of interest. All cells with values greater than 0 were used to identify the binary distribution of seabirds.
