@@ -30,7 +30,7 @@ cols <- c('#777777','#d66666','#f0f518','#2eb8dd','#6a8868')
 plan <- function(focus) {
   dat <- c(
     "### Context",
-    "### Scope of assessment",
+    #"### Scope of assessment",
     "### Assessment method",
     "### Data modules",
     "### Results",
@@ -380,24 +380,14 @@ Wootton 2002; Bascompte 2009; Montoya et al. 2009; O’Gorman et Emmerson 2009; 
 
 <br>
 
-<center><img src="figures/context/beauchesne2023.png" width="100%"></img></center>
+<center><img src="figures/context/beauchesne2023.png" width="75%"></img></center>
 
 .references[
 Beauchesne 2020
 ]
 
 ---
-class: inverse, center, middle
-
-# Cumulative effects - Scotian Shelf
-
-<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
-
-```{r, echo = FALSE, results = 'asis'}
-plan(2)
-```
----
-# Scope of assessment
+# Context
 
 ## General objective
 
@@ -417,11 +407,11 @@ plan(2)
 - Assess the vulnerability of species to environmental drivers;
 
 --
-- Assess the cumulative effects of the environmental drivers on species.
+- Assess the cumulative effects of environmental drivers on species.
 
 
 ---
-# Scope of assessment
+# Context
 
 ## Spatial and temporal scope <!-- &nbsp;&nbsp; <a href="maps/sa.html" target="_blank">`r mp()`</a> -->
 
@@ -460,7 +450,7 @@ class: inverse, center, middle
 <html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
 
 ```{r, echo = FALSE, results = 'asis'}
-plan(3)
+plan(2)
 ```
 
 ---
@@ -593,19 +583,6 @@ Beauchesne et al. 2020
 ---
 # Method: network-scale CEA
 
-<center><img src="figures/method/8-ncea.png" width="95%"></img></center>
-
-<p style="font-size:75%;">
-$$S_{m_{i,x}} = \sum_{k=1}^3 \sum_j D_j * \mu_{k,j}$$
-</p>
-
-.references[
-Beauchesne et al. 2020
-]
-
----
-# Method: network-scale CEA
-
 <center><img src="figures/method/9-ncea.png" width="95%"></img></center>
 
 <p style="font-size:75%;">
@@ -676,7 +653,7 @@ class: inverse, center, middle
 <html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
 
 ```{r, echo = FALSE, results = 'asis'}
-plan(4)
+plan(3)
 ```
 
 ---
@@ -704,125 +681,6 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 .references[
 Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
-
----
-# Data modules 
-
-<center><img src="figures/datareq/3-house.png" width="100%"></img></center>
-
-***Pale grey:*** data necessary for species-scale assessment
-
-***Dark grey:*** data necessary for network-scale assessment
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
-]
-
----
-# Data modules 
-
-<center><img src="figures/datareq/4-house.png" width="100%"></img></center>
-
-***Pale grey:*** data necessary for species-scale assessment
-
-***Dark grey:*** data necessary for network-scale assessment
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
-]
-
----
-# Data modules 
-
-<center><img src="figures/datareq/5-house.png" width="100%"></img></center>
-
-***Pale grey:*** data necessary for species-scale assessment
-
-***Dark grey:*** data necessary for network-scale assessment
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
-]
-
----
-# Data modules 
-
-<center><img src="figures/datareq/6-house.png" width="100%"></img></center>
-
-***Pale grey:*** data necessary for species-scale assessment
-
-***Dark grey:*** data necessary for network-scale assessment
-
-.references[
-Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
-]
-
-
----
-# Modules: Species
-<!-- .font70[(77 sous-catégories)] -->
-
-<center>
-<div class="divPortrait">
-  <div class="divPortraitBody">
-  
-    <!-- Row 1 : text -->
-    <div class="divPortraitRow">
-      <div class="divPortraitCell"></div>
-      <div class="divPortraitTitle">
-        <b>Marine species</b> (172) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#marinesp" target="_blank">`r bk()`</a>
-      </div>
-      <div class="divPortraitCell"></div>
-      <div class="divPortraitTitle">
-        <b>Marine mammals</b> (8) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#marinemammals" target="_blank">`r bk()`</a>
-      </div>
-    </div>
-    
-    <!-- Row 2: figures -->
-    <div class="divPortraitRow">
-      <div class="divPortraitData">
-      </div>
-      <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_species.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_species.png?raw=true" style="width: 300px"></img>
-        </a>
-      </div>
-      <div class="divPortraitData"></div>
-      <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_mammals.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_mammals.png?raw=true" style="width: 300px"></img>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-</center>
-
-<center>
-<div class="divPortrait">
-  <div class="divPortraitBody">
-  
-    <!-- Row 1 : text -->
-    <div class="divPortraitRow">
-      <div class="divPortraitCell"></div>
-      <div class="divPortraitTitle">
-        <b>Seabirds</b> (25) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#seabirds" target="_blank">`r bk()`</a>
-      </div>
-    </div>
-    
-    <!-- Row 2: figures -->
-    <div class="divPortraitRow">
-      <div class="divPortraitData">
-      </div>
-      <div class="divPortraitCell">
-        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" target="_blank">
-          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" style="width: 300px"></img>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-</center>
 
 ---
 # Modules: Environmental drivers
@@ -894,6 +752,98 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 </center>
 
 ---
+# Data modules 
+
+<center><img src="figures/datareq/3-house.png" width="100%"></img></center>
+
+***Pale grey:*** data necessary for species-scale assessment
+
+***Dark grey:*** data necessary for network-scale assessment
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
+]
+
+---
+# Modules: Species
+<!-- .font70[(77 sous-catégories)] -->
+
+<center>
+<div class="divPortrait">
+  <div class="divPortraitBody">
+  
+    <!-- Row 1 : text -->
+    <div class="divPortraitRow">
+      <div class="divPortraitCell"></div>
+      <div class="divPortraitTitle">
+        <b>Marine species</b> (172) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#marinesp" target="_blank">`r bk()`</a>
+      </div>
+      <div class="divPortraitCell"></div>
+      <div class="divPortraitTitle">
+        <b>Marine mammals</b> (8) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#marinemammals" target="_blank">`r bk()`</a>
+      </div>
+    </div>
+    
+    <!-- Row 2: figures -->
+    <div class="divPortraitRow">
+      <div class="divPortraitData">
+      </div>
+      <div class="divPortraitCell">
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_species.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_species.png?raw=true" style="width: 300px"></img>
+        </a>
+      </div>
+      <div class="divPortraitData"></div>
+      <div class="divPortraitCell">
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_mammals.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/marine_mammals.png?raw=true" style="width: 300px"></img>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+
+<center>
+<div class="divPortrait">
+  <div class="divPortraitBody">
+  
+    <!-- Row 1 : text -->
+    <div class="divPortraitRow">
+      <div class="divPortraitCell"></div>
+      <div class="divPortraitTitle">
+        <b>Seabirds</b> (25) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#seabirds" target="_blank">`r bk()`</a>
+      </div>
+    </div>
+    
+    <!-- Row 2: figures -->
+    <div class="divPortraitRow">
+      <div class="divPortraitData">
+      </div>
+      <div class="divPortraitCell">
+        <a href="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" target="_blank">
+          <img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" style="width: 300px"></img>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+
+---
+# Data modules 
+
+<center><img src="figures/datareq/4-house.png" width="100%"></img></center>
+
+***Pale grey:*** data necessary for species-scale assessment
+
+***Dark grey:*** data necessary for network-scale assessment
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
+]
+
+---
 # Modules: Species-specific sensitivity  
 
 .pull-left[
@@ -926,7 +876,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ## Driver - Traits
 
 - 0 = insensitive
-- 1 = maximu sensitivity
+- 1 = maximum sensitivity
 ]
 
 .pull-right[
@@ -948,7 +898,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ## Driver - Traits
 
 - 0 = insensitive
-- 1 = maximu sensitivity
+- 1 = maximum sensitivity
 
 ## Driver - Species
 
@@ -975,7 +925,7 @@ Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ## Driver - Traits
 
 - 0 = insensitive
-- 1 = maximu sensitivity
+- 1 = maximum sensitivity
 
 ## Driver - Species
 
@@ -1005,6 +955,18 @@ $$ 1 * 1 = 1$$
 
 <center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/species_specific_sensitivity.png?raw=true" width="100%"></img></center>
 
+---
+# Data modules 
+
+<center><img src="figures/datareq/5-house.png" width="100%"></img></center>
+
+***Pale grey:*** data necessary for species-scale assessment
+
+***Dark grey:*** data necessary for network-scale assessment
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
+]
 
 ---
 # Modules: Metaweb
@@ -1033,30 +995,18 @@ Brose et al. 2005; Barnes et al. 2008; Kortsch et al. 2015; University of Canber
 Beauchesne et al. 2017
 ]
 
+
 ---
-# Modules: Metaweb
+# Data modules 
 
-.pull-left[
-**Predict interations:** Unsupervised machine learning
+<center><img src="figures/datareq/6-house.png" width="100%"></img></center>
 
-**Assumption:** Similar species consume and are consumed by similar species
+***Pale grey:*** data necessary for species-scale assessment
 
-**Similarity criteria:** taxonomy & diet
-
-**Interaction catalog:**
-
-- 183 625 pairwise interactions 
-- 14 870 taxa
-]
-
-.pull-right[
-<center><img src="figures/modules/foodweb.png" width="95%"></img></center>
-]
+***Dark grey:*** data necessary for network-scale assessment
 
 .references[
-Brose et al. 2005; Barnes et al. 2008; Kortsch et al. 2015; University of Canberra
-2016; Poelen et al., 2014, 2019; [GloBI](https://www.globalbioticinteractions.org/); 
-Beauchesne et al. 2017
+Halpern et al. 2008; Halpern et al. 2015; Beauchesne et al. 2020
 ]
 
 ---
@@ -1152,7 +1102,7 @@ class: inverse, center, middle
 <html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
 
 ```{r, echo = FALSE, results = 'asis'}
-plan(5)
+plan(4)
 ```
 
 ---
@@ -1366,7 +1316,7 @@ Kroeker et al. 2010, 2013; Sydeman et al. 2015; Stier et al. 2016
 
 **Invertebrates**: all drivers 
 
-- Decreased relative intensity
+- Similar relative intensity
 - Trophic position: resources 
 
 **Vertebrates**: all drivers
@@ -1393,7 +1343,7 @@ class: inverse, center, middle
 <html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
 
 ```{r, echo = FALSE, results = 'asis'}
-plan(6)
+plan(5)
 ```
 
 ---
@@ -1414,7 +1364,7 @@ class: inverse, center, middle
 <html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
 
 ```{r, echo = FALSE, results = 'asis'}
-plan(7)
+plan(6)
 ```
 
 ---
@@ -1727,13 +1677,6 @@ class: inverse, center, middle
 
 --
 ***Jacob Dale, Andréanne Beardsell, Vincent Bellavance*** <br>
-
----
-class: inverse, center, middle
-
-# Thank you! 
-
-<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
 
 ---
 # Reach out for any questions/comments!
