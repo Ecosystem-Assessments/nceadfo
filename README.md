@@ -132,6 +132,43 @@ This research compendium is structured as follows:
 
 -   `README.Rmd`: description of research compendium
 
+## pipedat
+
+The nceadfo assessment heavily relies on the
+[`pipedat`](https://github.com/Ecosystem-Assessments/pipedat) package.
+As stated in the package description:
+
+> *pipedat* is a R package that provides analytical pipelines to access,
+> load, and format a variety of data from multiple sources
+> programatically. The goal of *pipedat* is to enhance the capacity
+> scientists, planners and the wider public to prepare and perform
+> complex and reproducible ecosystem-scale assessments requiring the
+> integration of multiple spatial datasets such as cumulative effects
+> assessments in the context of ecosystem-based management, and Marxan
+> analyses for the establishment of individual and networks of MPAs. In
+> its current format, *pipedat* is strictly experimental and in
+> development. We are however hoping to further develop this initiative
+> in the hopes of greatly enhancing the efficiency, transparency and
+> reproducibility of large-scale environmental assessments.
+
+The development of `pipedat` was first thought off through nceadfo, yet
+it is not a part of it. Now that I have seen the potential usability of
+`pipedat`, and how it could be formalized, there is a desire to continue
+building it and making it better and simpler with the lessons learned
+through the nceadfo assessment. As such, there is a [`pipedat` release
+(v0.0.1-nceadfo)](https://github.com/Ecosystem-Assessments/pipedat/releases/tag/v0.0.1-nceadfo)
+that provides the specific version of the package that was used for the
+nceadfo assessment. There is also a static version of the package
+available directly in the nceadfo research compendium in
+`data/pipedat-package/`, which means that a user could clone this
+research compendium and install the package directly, like this (for
+iOS):
+
+``` bash
+cd ./data/pipedat-package
+R CMD INSTALL .
+```
+
 ## How to use
 
 Clone this repo and execute the following commands to execute the whole
