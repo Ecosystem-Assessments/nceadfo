@@ -2,11 +2,10 @@
 #'
 #' @export
 network_risk <- function(focusID,
-                           biotic,
-                           drivers,
-                           vulnerability,
-                           sensitivity) {
-
+                         biotic,
+                         drivers,
+                         vulnerability,
+                         sensitivity) {
   # Add focal species to cell
   biotic[focusID] <- TRUE
 
@@ -14,7 +13,7 @@ network_risk <- function(focusID,
   idsp <- which(biotic)
 
   # Select triads involving species found in cell j
-  uid <- triads$i %in% idsp & triads$j %in% idsp & triads$j %in% idsp
+  uid <- triads$i %in% idsp & triads$j %in% idsp & triads$j %in% idsp # !!! the third is a k, no?
   dat <- triads[uid, ]
 
   # Identify species of interest
@@ -41,22 +40,23 @@ network_risk <- function(focusID,
     )
 
     # Cumulative risk and return
-    return(list(Cumulative_risk = risk[[1]][focusID, ],
-                Intensity_Total = risk[[2]][focusID, ],
-                Intensity_Direct = risk[[3]][focusID, ],
-                Intensity_Indirect = risk[[4]][focusID, ],
-                Effect_total = risk[[5]][focusID, ],
-                Effect_direct = risk[[6]][focusID, ],
-                Effect_indirect = risk[[7]][focusID, ]#,
-                # Contribution_Intensity = NULL,
-                # Contribution_Effect = NULL
-              ))
+    return(list(
+      Cumulative_risk = risk[[1]][focusID, ],
+      Intensity_Total = risk[[2]][focusID, ],
+      Intensity_Direct = risk[[3]][focusID, ],
+      Intensity_Indirect = risk[[4]][focusID, ],
+      Effect_total = risk[[5]][focusID, ],
+      Effect_direct = risk[[6]][focusID, ],
+      Effect_indirect = risk[[7]][focusID, ] # ,
+      # Contribution_Intensity = NULL,
+      # Contribution_Effect = NULL
+    ))
   } else {
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # Vulnerability of species * Drivers intensity in cell j
     # Function to evaluate the relative intensity of all drivers (as a sum of
     # relative intensities) on each species involved in all triads.
-    intensity <- sweep(vulnerability, MARGIN=2, drivers, `*`)
+    intensity <- sweep(vulnerability, MARGIN = 2, drivers, `*`)
 
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # Cumulative risk
@@ -68,7 +68,7 @@ network_risk <- function(focusID,
     dat$intensity_k <- intensityCumulative[dat$k]
 
     # Relative intensity of integrative pathways of effect (G)
-    dat$intensity_total <- rowSums(dat[, c('intensity_i','intensity_j','intensity_k')])
+    dat$intensity_total <- rowSums(dat[, c("intensity_i", "intensity_j", "intensity_k")])
 
     # Direct intensity
     dat$intensity_direct <- rep(intensityCumulative[focusID], nrow(dat))
@@ -98,18 +98,23 @@ network_risk <- function(focusID,
 
     # Identify pathways of effect
     dat <- dat %>%
-           mutate(pi = pi * intensity_i_logic,
-                  pj = pj * intensity_j_logic,
-                  pk = pk * intensity_k_logic,
-                  nSp = intensity_i_logic + intensity_j_logic + intensity_k_logic,
-                  path = nSp * (pi+pj+pk))
+      mutate(
+        pi = pi * intensity_i_logic,
+        pj = pj * intensity_j_logic,
+        pk = pk * intensity_k_logic,
+        nSp = intensity_i_logic + intensity_j_logic + intensity_k_logic,
+        path = nSp * (pi + pj + pk)
+      )
 
     # Individual id per pathway, including motif and position of interest
     dat <- left_join(dat, sensitivity,
-                     by = c("sum_pos" = "motifID",
-                            "focus" = "speciesID",
-                            "path" = "pathID"))
-                            
+      by = c(
+        "sum_pos" = "motifID",
+        "focus" = "speciesID",
+        "path" = "pathID"
+      )
+    )
+
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # cumulative_risk(species may not be present)
     dat$risk_total <- dat$intensity_total * dat$Sensitivity
@@ -123,18 +128,18 @@ network_risk <- function(focusID,
     effect_indirect <- intensity_indirect * dat$Sensitivity
 
     # # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    # WARNING: Adjust following code to get species contribution at some point 
-    # NOTE: Species are duplicated rownames at the moment, i.e. they have added numbers, 
-    #       e.g. alta.corda.1, alta.corda.2, for each interaction considered. 
-    #       To be able to sum on taxa name, it would mean that the name of the taxa 
+    # WARNING: Adjust following code to get species contribution at some point
+    # NOTE: Species are duplicated rownames at the moment, i.e. they have added numbers,
+    #       e.g. alta.corda.1, alta.corda.2, for each interaction considered.
+    #       To be able to sum on taxa name, it would mean that the name of the taxa
     #       would have to be considered as an extra column to allow use of group_by()
-    #       This will likely add considerable extraction time to an analysis that is 
-    #       already very long. To keep in mind! 
+    #       This will likely add considerable extraction time to an analysis that is
+    #       already very long. To keep in mind!
     # # Species contribution to indirect effects
     # cont_i <- i %>% as.data.frame() %>% mutate(Taxa = rownames(i))
     # cont_j <- j %>% as.data.frame() %>% mutate(Taxa = rownames(j))
     # cont_k <- k %>% as.data.frame() %>% mutate(Taxa = rownames(k))
-    # 
+    #
     # # Indirect intensity
     # contribution_intensity <- rbind(cont_i,cont_j,cont_k) %>%
     #                           gather('Stressor', 'Intensity', -Taxa) %>%
@@ -143,7 +148,7 @@ network_risk <- function(focusID,
     #                           spread('Stressor', 'Intensity', fill = 0) %>%
     #                           filter(Taxa != names(biotic[focusID])) %>%
     #                           as.data.frame(stringsAsFactors = FALSE)
-    # 
+    #
     # # Indirect effect
     # cont_i <- i * dat$Sensitivity
     # cont_j <- j * dat$Sensitivity
@@ -151,7 +156,7 @@ network_risk <- function(focusID,
     # cont_i <- as.data.frame(cont_i) %>% mutate(Taxa = rownames(i))
     # cont_j <- as.data.frame(cont_j) %>% mutate(Taxa = rownames(j))
     # cont_k <- as.data.frame(cont_k) %>% mutate(Taxa = rownames(k))
-    # 
+    #
     # contribution_effect <- rbind(cont_i,cont_j,cont_k) %>%
     #                        gather('Stressor', 'Intensity', -Taxa) %>%
     #                        group_by(Taxa, Stressor) %>%
@@ -173,7 +178,7 @@ network_risk <- function(focusID,
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     # Cumulative risk
     risk <- data.frame(
-      risk_total = sum(dat$risk_total),                       
+      risk_total = sum(dat$risk_total),
       risk_direct = sum(dat$risk_direct),
       risk_indirect = sum(dat$risk_indirect),
       intensity_total = sum(dat$intensity_total),
@@ -195,11 +200,11 @@ network_risk <- function(focusID,
       Intensity_Indirect = intensity_indirect,
       Effect_total = effect_total,
       Effect_direct = effect_direct,
-      Effect_indirect = effect_indirect#,
+      Effect_indirect = effect_indirect # ,
       # Contribution_Intensity = contribution_intensity, # Species contribution
       # Contribution_Effect = contribution_effect # Species contribution
     ))
- }
+  }
 }
 
 
@@ -207,13 +212,12 @@ network_risk <- function(focusID,
 #'
 #' @export
 network_risk_disconnect <- function(drivers,
-                           vulnerability,
-                           sensitivity) {
-
+                                    vulnerability,
+                                    sensitivity) {
   # Vulnerability of species * Drivers intensity in cell j
   # Function to evaluate the relative intensity of all drivers (as a sum of
   # relative intensities) on each species involved in all triads.
-  intensity <- sweep(vulnerability, MARGIN=2, drivers, `*`)
+  intensity <- sweep(vulnerability, MARGIN = 2, drivers, `*`)
 
   intensity_direct <- intensity
   intensity_indirect <- intensity
@@ -236,29 +240,32 @@ network_risk_disconnect <- function(drivers,
   px <- as.numeric(as.logical(intensityCumulative))
 
   # Risk
-  risk <- data.frame(risk_total = cumulativeRisk,
-                     risk_direct = cumulativeRisk,
-                     risk_indirect = 0,
-                     intensity_total = intensityCumulative,
-                     intensity_direct = intensityCumulative,
-                     intensity_indirect = 0,
-                     sensitivity = sensitivity,
-                     count = 1,
-                     px = px,
-                     py = 0,
-                     pz = 0,
-                     focus = 1)
+  risk <- data.frame(
+    risk_total = cumulativeRisk,
+    risk_direct = cumulativeRisk,
+    risk_indirect = 0,
+    intensity_total = intensityCumulative,
+    intensity_direct = intensityCumulative,
+    intensity_indirect = 0,
+    sensitivity = sensitivity,
+    count = 1,
+    px = px,
+    py = 0,
+    pz = 0,
+    focus = 1
+  )
 
   # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   # Return
-  return(list(Cumulative_risk = risk,
-              Intensity_Total = intensity,
-              Intensity_Direct = intensity_direct,
-              Intensity_Indirect = intensity_indirect,
-              Effect_Total = effect_total,
-              Effect_Direct = effect_direct,
-              Effect_Indirect = effect_indirect#,
-              #Contribution_Intensity = NULL,
-              #Contribution_Effect = NULL
-            ))
+  return(list(
+    Cumulative_risk = risk,
+    Intensity_Total = intensity,
+    Intensity_Direct = intensity_direct,
+    Intensity_Indirect = intensity_indirect,
+    Effect_Total = effect_total,
+    Effect_Direct = effect_direct,
+    Effect_Indirect = effect_indirect # ,
+    # Contribution_Intensity = NULL,
+    # Contribution_Effect = NULL
+  ))
 }
