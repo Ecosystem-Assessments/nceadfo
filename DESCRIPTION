@@ -41,3 +41,5 @@ Imports:
     vroom,
     whisker,
     yaml
+Remotes:
+    Ecosystem-Assessments/rcea
