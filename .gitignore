@@ -30,6 +30,7 @@ raw/
 *.RData
 *.gpkg
 *.rds
+*.sh
 
 # Specific files & folders
 figures/*

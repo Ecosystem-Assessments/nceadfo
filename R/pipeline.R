@@ -24,23 +24,13 @@ pipeline <- function() {
   make_metaweb()
   make_species_sensitivity()
   make_trophic_sensitivity()
-
-  # ------------------------------------------------------------------------------------------------
-  # WARNING
-  # For the sake of efficiency at this point, I'm taking the scripts from my thesis.
-  # These scripts use `raster` rather than `stars`
-  # This should be corrected later on in the process
-  # The following script essentially creates a list of RData that are then used for the assessment
-  # https://github.com/Ecosystem-Assessments/nceadfo/issues/3
-  # format_modules() # WARNING function not working, but code does...
-  # Update 2024:
-  # - Uses stars objects
-  # - Uses the rcea package
   format_data()
-  # ------------------------------------------------------------------------------------------------
 
-  # Data for eDrivers
-  make_eDrivers() # WARNING function not working, but code does...
+
+  # Assessment
+  cea()
+  # source("R/.ncea_species_2010_2015.R") # Run on compute canada
+  # source("R/.ncea_species_2016_2021.R") # Run on compute canada
 
   # Outputs
   out_footprint()
@@ -61,4 +51,7 @@ pipeline <- function() {
   render_frontpate()
   render_report()
   render_webinar()
+
+  # Data for eDrivers
+  make_eDrivers()
 }

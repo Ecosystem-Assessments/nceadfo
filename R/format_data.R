@@ -187,10 +187,11 @@ format_data <- function() {
   drivers <- lapply(
     drivers,
     function(x) {
-      stars::st_as_stars(drivers) |>
+      stars::st_as_stars(x) |>
         split()
     }
   )
+  names(drivers) <- per
 
   # Export
   save(dr, file = here::here(out, "drivers.RData"))
