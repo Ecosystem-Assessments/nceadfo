@@ -28,8 +28,23 @@ format_data <- function() {
   # Biotic data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   biotic <- here::here(modules, "species", sp$file) |>
-    lapply(raster::raster) |>
-    raster::stack()
+    lapply(raster::raster)
+
+  # Check if some distributions are empty
+  # It should not happen, but if it does I want to catch it and remove the species from the list
+  uid <- lapply(biotic, function(x) {
+    all(raster::values(x) == 0, na.rm = TRUE)
+  }) |>
+    unlist()
+  biotic <- biotic[!uid]
+
+  # Update species list
+  sp <- sp[!uid, ]
+  save(sp, file = here::here(out, "SpeciesList.RData"))
+
+  # Create raster stack
+  biotic <- raster::stack(biotic)
+  names(biotic) <- sp$shortname
 
   # Taxa names
   txNames <- names(biotic) |>
