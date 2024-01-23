@@ -34,6 +34,7 @@ raw/
 
 # Specific files & folders
 figures/*
+figures2/*
 !figures/atlas/
 !figures/webinar/
 frontpage.svg

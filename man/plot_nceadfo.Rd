@@ -4,6 +4,7 @@
 \alias{plot_nceadfo}
 \alias{plot_nceadfo.stars}
 \alias{plot_nceadfo_dual}
+\alias{plot_nceadfo_dual_simple}
 \title{plot nceadfo data maps}
 \usage{
 plot_nceadfo(dat, ...)
@@ -11,6 +12,8 @@ plot_nceadfo(dat, ...)
 \method{plot_nceadfo}{stars}(dat, mainTitle = NULL, subTitle = NULL, range = NULL)
 
 plot_nceadfo_dual(dat, mainTitle = NULL, subTitle = NULL)
+
+plot_nceadfo_dual_simple(dat, mainTitle = NULL, subTitle = NULL)
 }
 \arguments{
 \item{dat}{object of class stars}
@@ -32,9 +35,11 @@ base plot functions for nceadfo project
 }
 \section{Functions}{
 \itemize{
-\item \code{plot_nceadfo_dual}: plot with dual legend color centered on 0
-}}
+\item \code{plot_nceadfo_dual()}: plot with dual legend color centered on 0
 
+\item \code{plot_nceadfo_dual_simple()}: plot with dual legend color centered on 0
+
+}}
 \examples{
  load_integrated("navigation")
  plot_nceadfo(navigation[,10], "Navigation", "Recherche gouvernementale")

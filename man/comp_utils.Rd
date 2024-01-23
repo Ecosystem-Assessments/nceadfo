@@ -18,6 +18,6 @@ Utility functions for the research compendium
 }
 \section{Functions}{
 \itemize{
-\item \code{global_parameters}: load research compendium global parameters and add as \code{global_param} object in global environment
-}}
+\item \code{global_parameters()}: load research compendium global parameters and add as \code{global_param} object in global environment
 
+}}

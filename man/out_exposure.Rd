@@ -2,10 +2,10 @@
 % Please edit documentation in R/out_exposure.R
 \name{out_exposure}
 \alias{out_exposure}
-\title{Function to export cumulative drivers and species (richness)}
+\title{Function to export cumulative exposure (drivers * species)}
 \usage{
 out_exposure()
 }
 \description{
-Function to export cumulative drivers and species (richness)
+Function to export cumulative exposure (drivers * species)
 }

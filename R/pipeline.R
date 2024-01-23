@@ -35,9 +35,10 @@ pipeline <- function() {
   # Outputs
   out_footprint()
   out_exposure()
-  out_cea_species()
-  out_cea_network()
+  out_cea_full()
   out_cea_km2()
+  out_difference()
+
 
   # Figures
   fig_aoi()

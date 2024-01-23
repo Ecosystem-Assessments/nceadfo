@@ -7,7 +7,13 @@
 \usage{
 fig_metanetwork_()
 
-fig_metanetwork(cekm, period, type)
+fig_metanetwork(
+  cekm,
+  period,
+  type,
+  bg = "#ffffff",
+  out = here::here("figures", "metanetwork")
+)
 }
 \description{
 Export figures for metanetwork
@@ -16,8 +22,8 @@ Export figures for metanetwork
 }
 \section{Functions}{
 \itemize{
-\item \code{fig_metanetwork_}: metanetwork per period
+\item \code{fig_metanetwork_()}: metanetwork per period
 
-\item \code{fig_metanetwork}: metanetwork figure
+\item \code{fig_metanetwork()}: metanetwork figure
+
 }}
-

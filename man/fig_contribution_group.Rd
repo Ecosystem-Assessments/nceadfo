@@ -16,8 +16,8 @@ Export figures for stressor contribution to direct and indirect effects
 }
 \section{Functions}{
 \itemize{
-\item \code{fig_contribution_group_}: contribution stacked barplot per period
+\item \code{fig_contribution_group_()}: contribution stacked barplot per period
 
-\item \code{fig_contribution_group}: contribution stacked barplot
+\item \code{fig_contribution_group()}: contribution stacked barplot
+
 }}
-

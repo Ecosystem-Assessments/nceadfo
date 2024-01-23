@@ -29,8 +29,8 @@ cea <- function() {
   # Specify and create output folder
   per <- names(drivers)
   output <- list(
-    here::here("output", per[1], "cea"),
-    here::here("output", per[2], "cea")
+    here::here("output", "cea_species", per[1]),
+    here::here("output", "cea_species", per[2])
   )
   # output <- "~/scratch/output/cea/"
   lapply(output, rcea::chk_create)
