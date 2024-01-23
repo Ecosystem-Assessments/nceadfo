@@ -29,45 +29,45 @@ fig_metanetwork_ <- function() {
 
   # 2016-2021
   # Net
-  cekm <- read.csv(here::here("output", "cea_km2", "ncea_km2_2016-2021.csv"))
+  cekm <- read.csv(here::here("output", "cea_km2", "ncea_km2_2016_2021.csv"))
   fig_metanetwork(
     cekm = cekm,
     out = out,
-    nm = "metanetwork-Total_2016-2021.png"
+    nm = "metanetwork-Total_2016_2021.png"
   )
   fig_metanetwork(
     cekm = cekm,
-    bg = "#00000000"
-    out = here::here("figures","webinar"),
-    nm = "metanetwork-Total_2016-2021.png"
+    bg = "#00000000",
+    out = here::here("figures", "webinar"),
+    nm = "metanetwork-Total_2016_2021.png"
   )
 
   # Direct
-  cekm <- read.csv(here::here("output", "cea_km2", "ncea_direct_km2_2016-2021.csv"))
+  cekm <- read.csv(here::here("output", "cea_km2", "ncea_direct_km2_2016_2021.csv"))
   fig_metanetwork(
     cekm = cekm,
     out = out,
-    nm = "metanetwork-Direct_2016-2021.png"
+    nm = "metanetwork-Direct_2016_2021.png"
   )
   fig_metanetwork(
     cekm = cekm,
-    bg = "#00000000"
-    out = here::here("figures","webinar"),
-    nm = "metanetwork-Direct_2016-2021.png"
+    bg = "#00000000",
+    out = here::here("figures", "webinar"),
+    nm = "metanetwork-Direct_2016_2021.png"
   )
 
   # Indirect
-  cekm <- read.csv(here::here("output", "cea_km2", "ncea_indirect_km2_2016-2021.csv"))
+  cekm <- read.csv(here::here("output", "cea_km2", "ncea_indirect_km2_2016_2021.csv"))
   fig_metanetwork(
     cekm = cekm,
     out = out,
-    nm = "metanetwork-Indirect_2016-2021.png"
+    nm = "metanetwork-Indirect_2016_2021.png"
   )
   fig_metanetwork(
     cekm = cekm,
-    bg = "#00000000"
-    out = here::here("figures","webinar"),
-    nm = "metanetwork-Indirect_2016-2021.png"
+    bg = "#00000000",
+    out = here::here("figures", "webinar"),
+    nm = "metanetwork-Indirect_2016_2021.png"
   )
 }
 
@@ -96,6 +96,8 @@ fig_metanetwork <- function(cekm, bg = "#ffffff", out = here::here("figures", "m
       dplyr::across(!species),
       na.rm = TRUE
     )) |>
+    # dplyr::mutate(ncea = ncea / max(ncea)) |>
+    dplyr::mutate(ncea = log(ncea + 1) * .5 + .1) |>
     dplyr::rename(Taxa = species) |>
     dplyr::mutate(Taxa = tools::file_path_sans_ext(Taxa))
 
@@ -286,7 +288,7 @@ fig_metanetwork <- function(cekm, bg = "#ffffff", out = here::here("figures", "m
   # Node size
   cexDr <- data.frame(
     drivers = colnames(dat),
-    cex = log(colMeans(dat, na.rm = TRUE) + 1) * 10 + .2
+    cex = log(colMeans(dat, na.rm = TRUE) + 1) * 1 + .2
   )
 
   nodesDr <- dplyr::select(
@@ -356,7 +358,7 @@ fig_metanetwork <- function(cekm, bg = "#ffffff", out = here::here("figures", "m
   )
 
   # Plot
-  par(mar = c(2, 2, 2, 2), bg = "#ffffff")
+  par(mar = c(2, 2, 2, 2), bg = bg)
   plot0(x = c(-1.1, 1.1))
 
   # Adjust some group names
@@ -380,7 +382,7 @@ fig_metanetwork <- function(cekm, bg = "#ffffff", out = here::here("figures", "m
     points(metanetwork$nodes$x,
       metanetwork$nodes$y,
       pch = 20,
-      cex = (metanetwork$nodes$cex * 5),
+      cex = (metanetwork$nodes$cex * 3),
       col = "#d7d7d7"
     )
   }
@@ -388,7 +390,7 @@ fig_metanetwork <- function(cekm, bg = "#ffffff", out = here::here("figures", "m
   points(metanetwork$nodes$x,
     metanetwork$nodes$y,
     pch = 20,
-    cex = (metanetwork$nodes$cex * 3),
+    cex = (metanetwork$nodes$cex * 2),
     col = metanetwork$nodes$cols
   )
 

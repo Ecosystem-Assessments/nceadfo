@@ -9,10 +9,9 @@ fig_metanetwork_()
 
 fig_metanetwork(
   cekm,
-  period,
-  type,
   bg = "#ffffff",
-  out = here::here("figures", "metanetwork")
+  out = here::here("figures", "metanetwork"),
+  nm = "metanetwork.png"
 )
 }
 \description{

@@ -54,12 +54,12 @@ out_cea_km2 <- function() {
     direct <- stringr::str_detect(files, "_direct.csv")
     indirect <- stringr::str_detect(files, "_indirect.csv")
 
-    # Load & retransform in cea/km2, as it is currently in cea/m2
+    # Load & retransform in cea/km2, as it is currently in degrees
     loaddat <- function(uid) {
       lapply(files[uid], read.csv) |>
         data.table::rbindlist() |>
         dplyr::mutate(
-          dplyr::across(dplyr::where(is.numeric), ~ .x * 1e6)
+          dplyr::across(dplyr::where(is.numeric), ~ .x * 0.01)
         ) |>
         dplyr::rename(species = vc)
     }
