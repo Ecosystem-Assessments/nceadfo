@@ -7,7 +7,12 @@
 \usage{
 fig_contribution_group_()
 
-fig_contribution_group(cekm, period)
+fig_contribution_group(
+  direct,
+  indirect,
+  period,
+  out = here::here("figures", "contribution")
+)
 }
 \description{
 Export figures for stressor contribution to direct and indirect effects per period
