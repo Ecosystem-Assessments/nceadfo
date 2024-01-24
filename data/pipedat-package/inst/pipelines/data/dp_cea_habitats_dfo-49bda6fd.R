@@ -83,6 +83,12 @@ dp_49bda6fd <- function(bbox = NULL, bbox_crs = NULL, timespan = NULL, ...) {
       quiet = TRUE
     )
 
+    # Habitat list
+    hab_list <- readxl::read_excel(
+      here::here(out, "HabitatLayerMaritimesSummary_April2023.xlsx")
+    ) |>
+      dplyr::select(HabitatCODE, Habitat, Definition)
+
     # Delete files from disk
     unlink(out, recursive = TRUE)
     # _________________________________________________________________________________________ #
@@ -118,6 +124,7 @@ dp_49bda6fd <- function(bbox = NULL, bbox_crs = NULL, timespan = NULL, ...) {
     masterwrite(stressors, glue::glue("{fm}-stressors"))
     masterwrite(vsscores, glue::glue("{fm}-habitat_sensitivity"))
     masterwrite(fishsev, glue::glue("{fm}-fishing_severity"))
+    masterwrite(hab_list, glue::glue("{fm}-habitat_list"))
 
     # Metadata & bibtex
     mt <- here::here(path, nm)
