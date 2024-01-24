@@ -11,8 +11,8 @@
     <link href="assets/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
     <script src="assets/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #37abc8\"><\/i>","error":"Press Ctrl+C to Copy"})</script>
-    <link href="assets/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="assets/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="assets/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="assets/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="rd.css" type="text/css" />
     <link rel="stylesheet" href="rd-font.css" type="text/css" />
   </head>
@@ -28,7 +28,7 @@ class: title-slide, middle
 
 # Cumulative effects assessment of global changes on ecological communities of the Scotian Shelf Bioregion
 
-&lt;center&gt;&lt;img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021.png?raw=true" width="55%"&gt;&lt;/img&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/ncea_2016_2021.png?raw=true" width="55%"&gt;&lt;/img&gt;&lt;/center&gt;
 
 &lt;center&gt;&lt;i&gt;David Beauchesne, Cindy Grant &amp; Philippe Archambault&lt;/i&gt;&lt;/center&gt;
 
@@ -1165,7 +1165,7 @@ class: inverse, center, middle
 ]
 .pull-right2[
 &lt;br&gt;
-[&lt;center&gt;&lt;img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021full.png?raw=true" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021full.png?raw=true)
+[&lt;center&gt;&lt;img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/ncea_2016_2021full.png?raw=true" width="100%"&gt;&lt;/img&gt;&lt;/center&gt;](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/ncea_2016_2021full.png?raw=true)
 ]
 
 ---
@@ -1915,6 +1915,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

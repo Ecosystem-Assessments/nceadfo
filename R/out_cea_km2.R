@@ -1,135 +1,75 @@
-#' Function to export cumulative drivers and species (richness)
+#' Script to extract cumulative effects scores / km2 for each species from the species and network-scale assessments
 #'
 #' @export
+
 out_cea_km2 <- function() {
-  library(tidyverse)
-  library(magrittr)
-  library(raster)
+  # Output
+  out <- here::here("output", "cea_km2")
+  rcea::chk_create(out)
+  per <- dir(here::here("output", "cea_species"))
+  nper <- length(per)
 
-  # Load files
-  modules <- here::here("data","format_modules")
-  dat <- dir(modules, full.names = TRUE)
-  for(i in dat) load(i)
-  names(biotic) <- txNames
-  nTx <- length(txNames)
-  
-  # Output 
-  output <- here::here("output","cea_km2")
-  chk_create(output)
-  
-  # There are multiple periods for this analysis
-  # Divide drivers data into the periods, will make things easier
-  dr_all <- dr 
-  per <- names(dr_all)
-  # shortnames <- glue::glue("{tools::file_path_sans_ext(sp$file)}.rds")
-  # shortnamestif <- glue::glue("{tools::file_path_sans_ext(sp$file)}")
-  
-  for(k in 1:length(dr_all)) {
-    dr <- dr_all[[k]]
-    output_cea <- here::here("output","cea_network", per[k])
-    output_sp <- here::here("output","cea_species", per[k])
-    
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-    # Evaluate metrics per km2
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #    
-    # Setup data.frame
-    cekm <- data.frame(Taxa = txNames, stringsAsFactors = FALSE)
+  # Species distributions
+  load(here::here("data", "FormatData", "bt.RData"))
+  hr <- data.frame(
+    species = colnames(bt),
+    area = colSums(bt, na.rm = TRUE)
+  )
+  rownames(hr) <- NULL
 
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # Use biotic data for area 
-    # Assuming 1km2 grid cells
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(biotic)) dat[i] <- sum(values(biotic[[i]]), na.rm = TRUE)
-    cekm$area <- dat
+  # Species-scale cumulative effects assessment
+  for (i in seq_len(nper)) {
+    folder <- here::here("output", "cea_species", per[i])
+    files <- dir(folder, full.names = TRUE)
+    nm <- basename(files) |>
+      stringr::str_replace(".tif", "")
 
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # Import cumulative metrics
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # ----------------------
-    # Species-scale cea
-    out <- cea_metric(output_sp, '')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$cea_species <- dat / cekm$area
+    dat <- lapply(files, function(x) {
+      stars::read_stars(x) |>
+        split() |>
+        as.data.frame() |>
+        dplyr::select(-x, -y) |>
+        # colSums(na.rm = TRUE)
+        colSums(na.rm = TRUE)
+    }) |>
+      dplyr::bind_rows() |>
+      dplyr::mutate(species = nm)
 
-    # ----------------------
-    # Network-scale cea - normalized by number of interactions
-    out <- cea_metric(output_cea, 'cea')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$cea_network <- dat / cekm$area
+    # Join together and divide by area
+    cekm <- dplyr::left_join(hr, dat, by = "species") |>
+      dplyr::mutate(dplyr::across(dplyr::where(is.numeric), ~ .x / area)) |>
+      dplyr::select(-area)
 
-    # ----------------------
-    # Network-scale cea - direct effects
-    out <- cea_metric(output_cea, 'cea_direct')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$cea_network_direct <- dat / cekm$area
-
-    # ----------------------
-    # Network-scale cea - indirect effects
-    out <- cea_metric(output_cea, 'cea_indirect')
-    dat <- numeric(nTx)
-    for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    cekm$cea_network_indirect <- dat / cekm$area
-
-    # # ----------------------
-    # # Trophic position
-    # out <- cea_metric('trophic_position')
-    # dat <- numeric(nTx)
-    # for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    # cekm$trophic_position <- dat / cekm$area
-    # 
-    # # ----------------------
-    # # Trophic sensitivity
-    # out <- cea_metric('trophic_sensitivity')
-    # dat <- numeric(nTx)
-    # for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-    # cekm$trophic_sensitivity <- dat / cekm$area
-
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # Stressors effects
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    # ----------------------
-    # Total
-    path <- here::here(output_cea, "cea_drivers")
-    dr <- dir(path)
-    for(j in 1:length(dr)) {
-      out <- cea_metric(path, dr[j])
-      dat <- numeric(nTx)
-      for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(dr[j], '_Total_Effect')
-      cekm[, cName] <- dat / cekm$area
-    }
-
-    # ----------------------
-    # Direct
-    path <- here::here(output_cea, "cea_drivers_direct")
-    dr <- dir(path)
-    for(j in 1:length(dr)) {
-      out <- cea_metric(path, dr[j])
-      dat <- numeric(nTx)
-      for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(dr[j], '_Direct_Effect')
-      cekm[, cName] <- dat / cekm$area
-    }
-
-    # ----------------------
-    # Indirect
-    path <- here::here(output_cea, "cea_drivers_indirect")
-    dr <- dir(path)
-    for(j in 1:length(dr)) {
-      out <- cea_metric(path, dr[j])
-      dat <- numeric(nTx)
-      for(i in 1:nlayers(out)) dat[i] <- sum(values(out[[i]]), na.rm = TRUE)
-      cName <- paste0(dr[j], '_Indirect_Effect')
-      cekm[, cName] <- dat / cekm$area
-    }
-
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
     # Export
-    # <=~-.-~=><=~-.-~=><=~-.-~=><=~-.-~=>
-    write.csv(cekm, here::here(output, glue::glue("cea_km2-{per[k]}.csv")), row.names = FALSE)
-  } #k
+    write.csv(cekm, file = here::here(out, glue::glue("cea_km2_{per[i]}.csv")), row.names = FALSE)
+  }
+
+
+  # NOTE: The network-scale assessment performed with `rcea::ncea` already provides these results.
+  #       We only need to reformat and export them
+  for (i in seq_len(nper)) {
+    folder <- here::here("output", "ncea", per[i], "cekm") # WARNING: Rename once folder name is ok
+    files <- dir(folder, full.names = TRUE)
+    net <- stringr::str_detect(files, "_net.csv")
+    direct <- stringr::str_detect(files, "_direct.csv")
+    indirect <- stringr::str_detect(files, "_indirect.csv")
+
+    # Load & retransform in cea/km2, as it is currently in degrees
+    loaddat <- function(uid) {
+      lapply(files[uid], read.csv) |>
+        data.table::rbindlist() |>
+        dplyr::mutate(
+          dplyr::across(dplyr::where(is.numeric), ~ .x * 0.01)
+        ) |>
+        dplyr::rename(species = vc)
+    }
+    net <- loaddat(net)
+    direct <- loaddat(direct)
+    indirect <- loaddat(indirect)
+
+    # Export
+    write.csv(net, file = here::here(out, glue::glue("ncea_km2_{per[i]}.csv")), row.names = FALSE)
+    write.csv(direct, file = here::here(out, glue::glue("ncea_direct_km2_{per[i]}.csv")), row.names = FALSE)
+    write.csv(indirect, file = here::here(out, glue::glue("ncea_indirect_km2_{per[i]}.csv")), row.names = FALSE)
+  }
 }

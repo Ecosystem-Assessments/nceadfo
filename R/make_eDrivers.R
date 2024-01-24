@@ -16,40 +16,40 @@ make_eDrivers <- function() {
   # Grid
   cellsize <- 2000
   grd <- sf::st_read("data/aoi/aoi.gpkg") |>
-         sf::st_transform(3857) |>
-         stars::st_rasterize(dx = cellsize, dy = cellsize)
-  
-  # Get raw drivers 
+    sf::st_transform(3857) |>
+    stars::st_rasterize(dx = cellsize, dy = cellsize)
+
+  # Get raw drivers
   rawDrivers <- dir("data/drivers/raw/2016_2021", full.names = TRUE) |>
-                lapply(stars::read_stars) |>
-                lapply(stars::st_warp, dest = grd) |>
-                lapply(function(x) round(x,4))
-         
-  # Get transformed drivers 
+    lapply(stars::read_stars) |>
+    lapply(stars::st_warp, dest = grd) |>
+    lapply(function(x) round(x, 4))
+
+  # Get transformed drivers
   drivers <- dir("data/drivers/transformed/2016_2021", full.names = TRUE) |>
-             lapply(stars::read_stars) |>
-             lapply(stars::st_warp, dest = grd) |>
-             lapply(function(x) round(x,4))
-  
+    lapply(stars::read_stars) |>
+    lapply(stars::st_warp, dest = grd) |>
+    lapply(function(x) round(x, 4))
+
   # Hotspots
   hotspots <- lapply(
-    drivers, 
+    drivers,
     function(x) {
       dat <- as.data.frame(x)
-      dat[,3] <- ifelse(dat[,3] <= 0, NA, dat[,3])
-      th <- quantile(dat[,3], probs = .8, na.rm = TRUE)
-      dat[,3] <- ifelse(dat[,3] > th, 1, NA)
+      dat[, 3] <- ifelse(dat[, 3] <= 0, NA, dat[, 3])
+      th <- quantile(dat[, 3], probs = .8, na.rm = TRUE)
+      dat[, 3] <- ifelse(dat[, 3] > th, 1, NA)
       dat <- stars::st_as_stars(dat)
       sf::st_crs(dat) <- sf::st_crs(3857)
       dat
     }
   )
-  
-  
-  # Stressor names 
+
+
+  # Stressor names
   nm <- lapply(drivers, names) |>
-        unlist() |>
-        tools::file_path_sans_ext() 
+    unlist() |>
+    tools::file_path_sans_ext()
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   #                                   RASTER STACKS
@@ -57,13 +57,13 @@ make_eDrivers <- function() {
   rawDrivers <- lapply(rawDrivers, as, "Raster")
   drivers <- lapply(drivers, as, "Raster")
   hotspots <- lapply(hotspots, as, "Raster")
-  
+
   # Transform into raster stacks
   rawDrivers <- raster::stack(rawDrivers)
   drivers <- raster::stack(drivers)
   hotspots <- raster::stack(hotspots)
 
-  # Names 
+  # Names
   names(rawDrivers) <- names(drivers) <- names(hotspots) <- nm
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,29 +90,29 @@ make_eDrivers <- function() {
   # Drivers data as matrix and remove NAs
   library(magrittr)
   library(raster)
-  dr <- as.matrix(drivers)
+  dr <- raster::as.matrix(drivers)
   id0 <- apply(dr, 1, function(x) !all(is.na(x)))
   dr <- dr[id0, ]
   dr <- dr %>%
-        '*'(1000) %>%
-        round() %>%
-        ifelse(. == 0, NA, .) %>%
-        as.data.frame()
+    "*"(1000) %>%
+    round() %>%
+    ifelse(. == 0, NA, .) %>%
+    as.data.frame()
 
-  save(dr, file = here::here(out,'dr.RData'))
+  save(dr, file = here::here(out, "dr.RData"))
 
   # Hotspots data as matrix and remove NAs
-  hot <- as.matrix(hotspots)
+  hot <- raster::as.matrix(hotspots)
   id0 <- apply(hot, 1, function(x) !all(is.na(x)))
   hot <- hot[id0, ]
   hot <- hot %>%
-         ifelse(. == 0, NA, .) %>%
-         as.data.frame()
+    ifelse(. == 0, NA, .) %>%
+    as.data.frame()
   hot <- as.data.frame(hot)
 
-  save(hot, file = here::here(out,'hot.RData'))
+  save(hot, file = here::here(out, "hot.RData"))
 
-  # Create list with all data 
+  # Create list with all data
   drivers_ss <- list(
     # rawDrivers = rawDrivers,
     drivers = drivers,

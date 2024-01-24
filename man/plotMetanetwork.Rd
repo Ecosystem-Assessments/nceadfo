@@ -2,7 +2,7 @@
 % Please edit documentation in R/fnc_metanetwork.R
 \name{plotMetanetwork}
 \alias{plotMetanetwork}
-\title{Function to plot metanetwork using hierarchical edge bundling}
+\title{Functions to generate a hierarchical edge bundling metanetwork}
 \usage{
 plotMetanetwork(
   metanetwork,
@@ -19,5 +19,5 @@ plotMetanetwork(
 )
 }
 \description{
-Function to plot metanetwork using hierarchical edge bundling
+Functions to generate a hierarchical edge bundling metanetwork
 }

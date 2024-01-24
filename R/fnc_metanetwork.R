@@ -1,5 +1,8 @@
+#' Functions to generate a hierarchical edge bundling metanetwork
+#'
+#' @export
+
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-#' Function to plot metanetwork using hierarchical edge bundling 
 plotMetanetwork <- function(metanetwork,
                             rad1 = .925,
                             rad2 = 1,
@@ -63,9 +66,8 @@ plotMetanetwork <- function(metanetwork,
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
 
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-#' Let's begin by creating a function that will give us the x and y coordinates
-#' of the outside of a circle given a certain radius
-
+# Let's begin by creating a function that will give us the x and y coordinates
+# of the outside of a circle given a certain radius
 coordCircle <- function(theta = NULL, radius = 1) {
   data.frame(x = radius * cos(theta),
              y = radius * sin(theta))
@@ -74,7 +76,6 @@ coordCircle <- function(theta = NULL, radius = 1) {
 
 
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-
 bound <- function(metanetwork, order = NULL, gap = .05, addGap = T) {
   # Metanetwork list composed of "nodes" and "links"
   # Size of gap between groups on the graph
@@ -98,9 +99,7 @@ bound <- function(metanetwork, order = NULL, gap = .05, addGap = T) {
 # plot0()
 # points(metanetwork$nodes$x, metanetwork$nodes$y, pch = 20, cex = 2)
 # points(metanetwork$networkGroup$x, metanetwork$networkGroup$y, pch = 20, cex = 2)
-
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-
 nodePos <- function(metanetwork, edgeRad = 0.975, groupRad = 0.5, gapEdge = 0.1, addGap = T) {
     # Add x and y columns to nodes and networkGroup data
       metanetwork$nodes$y <- metanetwork$nodes$x <- 0
@@ -138,7 +137,6 @@ nodePos <- function(metanetwork, edgeRad = 0.975, groupRad = 0.5, gapEdge = 0.1,
 
 
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-
 boxGroup <- function(metanetwork, rad1 = .95, rad2 = 1, colBox = NULL, names = NULL, colNames = NULL, addNames = T, cexNetwork = 1, ...) {
   # metanetwork = data list composed of 'nodes', 'links' & 'networkGroup'
   # rad1 = lower boundary for polygons
@@ -185,7 +183,6 @@ boxGroup <- function(metanetwork, rad1 = .95, rad2 = 1, colBox = NULL, names = N
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
 
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-
 boxGroup2 <- function(metanetwork, rad1 = .95, rad2 = 1, colBox = NULL, names = NULL, colNames = NULL, addNames = T, cexNetwork = 1, ...) {
   # metanetwork = data list composed of 'nodes', 'links' & 'networkGroup'
   # rad1 = lower boundary for polygons
@@ -235,7 +232,6 @@ boxGroup2 <- function(metanetwork, rad1 = .95, rad2 = 1, colBox = NULL, names = 
 
 
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-
 plotLinks <- function(metanetwork, cols = NULL, ...) {
     if (!is.null(cols) & length(cols) == 1) {
       cols <- rep(cols, nrow(metanetwork$links))
@@ -264,7 +260,6 @@ plotLinks <- function(metanetwork, cols = NULL, ...) {
   }
 
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-
 colGroups <- function(metanetwork, colPal = pal_insileco) {
   # Group colors
     metanetwork$networkGroup$cols <- colPal[1:nrow(metanetwork$networkGroup)]
@@ -294,7 +289,6 @@ colGroups <- function(metanetwork, colPal = pal_insileco) {
 
 
 #=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-
 linkCol <- function(metanetwork, type = 'all', focus = NULL, colLinks = '#876b40', colShadow = '#f4f4f4') {
   # metanetwork = list composed of 'nodes', 'links' and 'networkGroup'
   # type        = type of colors:

@@ -2,10 +2,10 @@
 % Please edit documentation in R/out_cea_km2.R
 \name{out_cea_km2}
 \alias{out_cea_km2}
-\title{Function to export cumulative drivers and species (richness)}
+\title{Script to extract cumulative effects scores / km2 for each species from the species and network-scale assessments}
 \usage{
 out_cea_km2()
 }
 \description{
-Function to export cumulative drivers and species (richness)
+Script to extract cumulative effects scores / km2 for each species from the species and network-scale assessments
 }

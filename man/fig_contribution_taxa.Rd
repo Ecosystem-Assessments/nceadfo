@@ -7,7 +7,12 @@
 \usage{
 fig_contribution_taxa_()
 
-fig_contribution_taxa(cekm, period)
+fig_contribution_taxa(
+  direct,
+  indirect,
+  period,
+  out = here::here("figures", "contribution")
+)
 }
 \description{
 Export figures for stressor contribution to direct and indirect effects per period
@@ -16,8 +21,8 @@ Export figures for stressor contribution to direct and indirect effects
 }
 \section{Functions}{
 \itemize{
-\item \code{fig_contribution_taxa_}: contribution stacked barplot per period
+\item \code{fig_contribution_taxa_()}: contribution stacked barplot per period
 
-\item \code{fig_contribution_taxa}: contribution stacked barplot
+\item \code{fig_contribution_taxa()}: contribution stacked barplot
+
 }}
-
