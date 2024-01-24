@@ -44,7 +44,8 @@ pipeline <- function() {
   fig_aoi()
   figures()
   fig_metanetwork_()
-  fig_contribution_()
+  fig_contribution_group_()
+  fig_contribution_taxa_()
   fig_atlas()
   fig_webinar()
 

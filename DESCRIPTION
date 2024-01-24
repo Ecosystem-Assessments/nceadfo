@@ -40,6 +40,10 @@ Imports:
     units,
     vroom,
     whisker,
-    yaml
+    yaml,
+    xaringan,
+    xaringanExtra
 Remotes:
     Ecosystem-Assessments/rcea
+    mitchelloharawild/icons
+

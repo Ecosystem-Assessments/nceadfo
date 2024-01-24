@@ -172,7 +172,7 @@ fig_contribution_group <- function(direct, indirect, period, out = here::here("f
   # Output
   chk_create(out)
 
-  bg <- "#ffffff"
+  bg <- "#ffffff00"
   png(
     here::here(out, glue::glue("contribution_group-{period}.png")),
     res = 300,

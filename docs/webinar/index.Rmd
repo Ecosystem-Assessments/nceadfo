@@ -14,7 +14,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-source('_setup.R')
+source("_setup.R")
 # knitr::clean_cache(TRUE)
 htmltools::tagList(
   xaringanExtra::use_clipboard(
@@ -25,12 +25,12 @@ htmltools::tagList(
 )
 # xaringanExtra::use_scribble()
 
-cols <- c('#777777','#d66666','#f0f518','#2eb8dd','#6a8868')
+cols <- c("#777777", "#d66666", "#f0f518", "#2eb8dd", "#6a8868")
 
 plan <- function(focus) {
   dat <- c(
     "### Context",
-    #"### Scope of assessment",
+    # "### Scope of assessment",
     "### Assessment method",
     "### Data modules",
     "### Results",
@@ -38,7 +38,7 @@ plan <- function(focus) {
     "### Data science & reproducibility"
   )
   dat[focus] <- glue::glue("#{dat[focus]}")
-  for(i in 1:length(dat)) {
+  for (i in 1:length(dat)) {
     cat(dat[[i]])
     cat("\n")
   }
@@ -51,7 +51,7 @@ class: title-slide, middle
 
 # Cumulative effects assessment of global changes on ecological communities of the Scotian Shelf Bioregion
 
-<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021.png?raw=true" width="55%"></img></center>
+<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/ncea_2016_2021.png?raw=true" width="55%"></img></center>
 
 <center><i>David Beauchesne, Cindy Grant & Philippe Archambault</i></center>
 
@@ -1176,7 +1176,7 @@ $^*$Only 3 drivers extending to the continental slope
 ]
 .pull-right2[
 <br>
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021full.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/cea_network-2016_2021full.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/ncea_2016_2021full.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/ncea_2016_2021full.png?raw=true)
 ]
 
 ---

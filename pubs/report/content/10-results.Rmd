@@ -134,7 +134,7 @@ The species-scale and network-scale cumulative effects assessments allow for the
 Although we obviously cannot explore all of these direct and indirect pathways of effect, Figures \@ref(fig:meta), \@ref(fig:meta2) \@ref(fig:contr) and \@ref(fig:contrsp) provide a visual representation of all these combinations and of the contribution of individual drivers to the net, direct and indirect effects predicted on each taxa and groups of taxa considered. The regional effects of environmental drivers on each taxa was assessed as the mean effect over a taxa's distribution. For example, a taxa with a distribution area of 2 $km^2$ -- *i.e.* spanning two 1 $km^2$ grid cells -- affected by a single driver with intensities of 0.25 and 0.75 would have a regional cumulative effects score of 0.5 $km^{-2}$. The greater the spatial distribution of a driver, the greater its regional effect is likely to be; similarly, regional effects are likely to increase with a decrease of the distributional range of a taxa.
 
 ```{r}
-cekm <- read.csv(here::here("output","cea_km2","cea_km2-2016_2021.csv"))
+cekm <- read.csv(here::here("output","cea_km2","cea_km2_2016_2021.csv"))
 direct <- cekm[, stringr::str_detect(colnames(cekm), "Direct_Effect")] |> as.matrix()
 indirect <- cekm[, stringr::str_detect(colnames(cekm), "Indirect_Effect")] |> as.matrix()
 nDir <- sum(direct > 0, na.rm = TRUE)
