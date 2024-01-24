@@ -1193,7 +1193,7 @@ $^*$Only 3 drivers extending to the continental slope
 - Invertebrates more at risk
 ]
 .pull-right2[
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total-2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total-2016_2021.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total_2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total_2016_2021.png?raw=true)
 ]
 
 ---
@@ -1213,7 +1213,7 @@ $^*$Only 3 drivers extending to the continental slope
 ]
 
 .pull-right2[
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Direct-2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Direct-2016_2021.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Direct_2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Direct_2016_2021.png?raw=true)
 ]
 
 ---
@@ -1235,7 +1235,7 @@ $^*$Only 3 drivers extending to the continental slope
 ]
 
 .pull-right2[
-[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Indirect-2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Indirect-2016_2021.png?raw=true)
+[<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Indirect_2016_2021.png?raw=true" width="100%"></img></center>](https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Indirect_2016_2021.png?raw=true)
 ]
 
 
@@ -1470,7 +1470,7 @@ plan(6)
 ]
 
 .pull-right2[
-<center><a href="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="figures/reproducibility/edrivers.png" width="100%"></img></a></center>
+<center><a href="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="figures/reproducibility/eDrivers.png" width="100%"></img></a></center>
 ]
 
 ---
