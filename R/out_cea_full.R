@@ -14,6 +14,10 @@ out_cea_full <- function() {
     cea <- fnc_cumul(here::here("output", "cea_species", per[i]))
     stars::write_stars(cea, here::here(out, glue::glue("cea_{per[i]}.tif")))
 
+    # Habitat-scale cumulative effects assessment
+    cea <- fnc_cumul(here::here("output", "cea_habitats", per[i]))
+    stars::write_stars(cea, here::here(out, glue::glue("cea_habitats_{per[i]}.tif")))
+
     # Network-scale cumulative effects assessment - net effets
     ncea_net <- fnc_cumul(here::here("output", "ncea", per[i], "net"))
     stars::write_stars(ncea_net, here::here(out, glue::glue("ncea_{per[i]}.tif")))

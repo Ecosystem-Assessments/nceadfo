@@ -24,13 +24,16 @@ pipeline <- function() {
   make_metaweb()
   make_species_sensitivity()
   make_trophic_sensitivity()
+  make_habitats()
+  make_habitats_sensitivity()
+  make_overlap()
   format_data()
 
-
   # Assessment
-  cea()
-  # source("R/.ncea_species_2010_2015.R") # Run on compute canada
-  # source("R/.ncea_species_2016_2021.R") # Run on compute canada
+  cea() # Species-scale assessment
+  hcea() # Habitat-scale assessment
+  # source("R/.ncea_species_2010_2015.R") # Run on compute canada # Network-scale assessment
+  # source("R/.ncea_species_2016_2021.R") # Run on compute canada # Network-scale assessment
 
   # Outputs
   out_footprint()
@@ -56,4 +59,10 @@ pipeline <- function() {
 
   # Data for eDrivers
   make_eDrivers()
+  # --------------------------------------------------------------------
+
+  # --------------------------------------------------------------------
+  # Habitats-scale assessment
+
+  # --------------------------------------------------------------------
 }

@@ -262,4 +262,45 @@ format_data <- function() {
   #
   # # Export
   # save(triads, file = './Data/FormatData/triads.RData')
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+  # Habitat list
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+  hab <- vroom::vroom(here::here(modules, "habitats_list.csv")) |>
+    dplyr::rename(habitats = HabitatCODE) |>
+    dplyr::mutate(file = glue::glue("{habitats}.tif")) |>
+    as.data.frame()
+  save(hab, file = here::here(out, "HabitatsList.RData"))
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+  # Habitats
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+  habitats <- dir(here::here(modules, "habitats"), full.names = TRUE) |>
+    lapply(raster::raster) |>
+    raster::stack() |>
+    stars::st_as_stars() |>
+    split()
+  save(habitats, file = here::here(out, "habitats.RData"))
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+  # Habitats sensitivity
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+  habitats_sensitivity <- vroom::vroom(
+    here::here(modules, "habitats_sensitivity", "habitats_sensitivity.csv")
+  ) |>
+    as.data.frame()
+  rownames(habitats_sensitivity) <- habitats_sensitivity$habitats
+  habitats_sensitivity <- dplyr::select(habitats_sensitivity, -habitats)
+
+  # Check habitats
+  stopifnot(hab$habitats %in% rownames(habitats_sensitivity))
+
+  # Check drivers
+  nm <- names(drivers)
+  stopifnot(all(nm %in% colnames(habitats_sensitivity)))
+  habitats_sensitivity <- habitats_sensitivity[, nm]
+  stopifnot(all(colnames(habitats_sensitivity) %in% nm))
+
+  # Export
+  save(habitats_sensitivity, file = here::here(out, "habitats_sensitivity.RData"))
 }
