@@ -1,0 +1,30 @@
+pipeline:
+  pipeline_id: 30aa4bda
+  pipeline_type: integration
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2024-02-05'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_marine_mammals_wsdb_dfo-30aa4bda.R
+description:
+  name: Integration of marine mammals density (WSDB)
+  description: Integration of marine mammals density based on whale sightings (WSDB))
+    in study grid
+  access_date: '2024-02-06'
+  contacts:
+  - contact_id: 74
+    first_name: Laura
+    last_name: Feyrer
+    organization: Fisheries and Oceans Canada
+    department: Bedford Institute of Oceanography
+    role: Researcher
+    email: Laura.Feyrer@dfo-mpo.gc.ca
+    phone: ''
+  citekey: []
+  integration_data: a5b97616
