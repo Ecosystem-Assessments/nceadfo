@@ -78,7 +78,7 @@ dp_a5b97616 <- function(bbox = NULL, bbox_crs = NULL, timespan = NULL, ...) {
         "WHALE-SPERM_sights_KDE"
       ),
       to = c(
-        "leucopleurus_acutus-1571853",
+        "lagenorhynchus_acutus-137100",
         "delphinus_delphis-137094",
         "lagenorhynchus_albirostris-137101",
         "phocoena_phocoena-137117",
