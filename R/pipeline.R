@@ -26,6 +26,11 @@ pipeline <- function() {
   make_trophic_sensitivity()
   format_data()
 
+  # NCEAMM
+  format_data("nceamm_pam")
+  format_data("nceamm_wsdb")
+  format_data("nceamm_pam_wsdb")
+
 
   # Assessment
   cea()
