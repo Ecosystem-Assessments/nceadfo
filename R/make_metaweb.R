@@ -254,5 +254,5 @@ make_metaweb <- function() {
   # Export in modules as well
   out <- here::here("data", "cea_modules", "metaweb")
   chk_create(out)
-  file.copy(here::here(path, "metaweb_update.csv"), here::here(out, "metaweb_update.csv"), overwrite = TRUE)
+  file.copy(here::here(path, "metaweb_nceamm2024.csv"), here::here(out, "metaweb_nceamm2024.csv"), overwrite = TRUE)
 }
