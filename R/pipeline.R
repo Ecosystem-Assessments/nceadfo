@@ -34,8 +34,8 @@ pipeline <- function() {
 
   # Assessment
   cea()
-  # source("R/.ncea_species_2010_2015.R") # Run on compute canada
-  # source("R/.ncea_species_2016_2021.R") # Run on compute canada
+  # source("R/batch/.ncea_species_2010_2015.R") # Run on compute canada
+  # source("R/batch/.ncea_species_2016_2021.R") # Run on compute canada
 
   # Outputs
   out_footprint()
