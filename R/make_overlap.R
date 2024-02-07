@@ -3,7 +3,8 @@
 #' @export
 make_overlap <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Load data
+  # Load spatial data
+  library(raster)
   input <- here::here("data", "cea_modules")
   habitats <- dir(here::here(input, "habitats"), pattern = ".tif", full.names = TRUE) |>
     lapply(raster::raster) |>
@@ -14,6 +15,59 @@ make_overlap <- function() {
     raster::stack() |>
     as.data.frame()
 
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Traits data
+  env <- here::here("data", "data-raw", "species_traits-c86f711c", "species_traits-c86f711c.csv") |>
+    vroom::vroom() |>
+    dplyr::mutate(bathydemersal = as.numeric(as.logical(benthic) + as.logical(demersal))) |>
+    dplyr::select(species, bathydemersal, pelagic)
+
+  # Join with species
+  sp <- vroom::vroom(here::here(input, "species_list.csv")) |>
+    dplyr::select(shortname, aphiaID, scientific_name) |>
+    dplyr::left_join(env, by = c("scientific_name" = "species")) |>
+    dplyr::rename(bathydemersal_sp = bathydemersal, pelagic_sp = pelagic) |>
+    dplyr::mutate(species = glue::glue("{shortname}.{aphiaID}"))
+  stopifnot(all(sp$scientific_name %in% env$species))
+  stopifnot(all(sp$species %in% names(biotic)))
+  sp <- dplyr::select(sp, species, bathydemersal_sp, pelagic_sp)
+
+  # Classify habitats
+  classify <- data.frame(
+    habitats = c(
+      "BITDL",
+      "MFITDL",
+      "RITDL",
+      "SSHLW",
+      "HSHLW",
+      "MSHLW",
+      "SSHLF",
+      "HSHLF",
+      "MSHLF",
+      "CYN",
+      "SDEEP",
+      "HDEEP",
+      "MDEEP",
+      "SALTMARSH",
+      "SEAG",
+      "ALGAL",
+      "KELP",
+      "HMUSSEL",
+      "DPBIO",
+      "SPELAGIC",
+      "DPELAGIC"
+    ),
+    bathydemersal_hab = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
+    pelagic_hab = c(1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1)
+  )
+
+  # Habitats
+  hab <- vroom::vroom(here::here(input, "habitats_list.csv")) |>
+    # dplyr::select(HabitatCODE, Habitat) |> # For habitat short names
+    dplyr::select(habitats = HabitatCODE) |>
+    dplyr::left_join(classify, by = "habitats")
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Overlap
   dat <- expand.grid(names(habitats), names(biotic), stringsAsFactors = FALSE) |>
     dplyr::rename(habitats = Var1, species = Var2) |>
@@ -25,6 +79,20 @@ make_overlap <- function() {
       na.rm = TRUE
     )
   }
+
+  # Add environment traits for species and habitats and set overlap value to 0 if no correspondance
+  dat <- dplyr::left_join(dat, hab, by = "habitats") |>
+    dplyr::left_join(sp, by = "species") |>
+    dplyr::mutate(
+      environment =
+        (bathydemersal_sp == 1 & bathydemersal_hab == 1) |
+          (pelagic_sp == 1 & pelagic_hab == 1),
+      overlap = overlap * environment
+    ) |>
+    dplyr::select(habitats, species, overlap)
+
+
+
 
   # Percent overlap?
   # WARNING: species may be in more than one habitat per cell
