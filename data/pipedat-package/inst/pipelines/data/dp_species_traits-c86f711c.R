@@ -69,7 +69,7 @@ dp_c86f711c <- function(bbox = NULL, bbox_crs = NULL, timespan = NULL, ...) {
     # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
     # Formatted data
     fm <- here::here(path, glue::glue("{nm}"))
-    masterwrite(vulnerability, fm)
+    masterwrite(environment, fm)
 
     # Metadata & bibtex
     mt <- here::here(path, nm)
