@@ -1,0 +1,23 @@
+pipeline:
+  pipeline_id: c86f711c
+  pipeline_type: data
+  creators:
+  - contact_id: 1
+    first_name: David
+    last_name: Beauchesne
+    organization: Universite Laval
+    department: Department of Biology
+    role: Postdoctoral researcher
+    email: david.beauchesne@hotmail.com
+    phone: 1-514-553-4974
+  date_created: '2024-02-07'
+  url: https://github.com/Ecosystem-Assessments/pipedat/blob/main/R/dp_species_traits-c86f711c.R
+description:
+  name: Marine species traits
+  description: Characterization of species traits from the St. Lawrence and the Scotian
+    Shelf
+  access_date: '2024-02-07'
+  citekey: beauchesne2020c
+  url: https://github.com/Ecosystem-Assessments/Species_direct_sensitivity/raw/master/Data/SpeciesTraits/Environment.RData
+  uuid: .na.character
+  availability: open
