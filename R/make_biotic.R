@@ -737,8 +737,8 @@ make_biotic <- function() {
   names_pam <- names(pam)
   names_wsdb <- names(wsdb)
 
-  # Data available only in pam | swdb
-  pam_only <- pam[names_pam[!names_pam %in% names_wsdb]]
+  # Data available only in wsdb
+  # pam_only <- pam[names_pam[!names_pam %in% names_wsdb]]
   wsdb_only <- wsdb[names_wsdb[!names_wsdb %in% names_pam]]
 
   # Data available in pam & wsdb
@@ -750,7 +750,7 @@ make_biotic <- function() {
   }
 
   # Export
-  export_ras(pam_only, out$pam_wsdb)
+  # export_ras(pam_only, out$pam_wsdb)
   export_ras(wsdb_only, out$pam_wsdb)
   export_ras(pam_and_wsdb, out$pam_wsdb)
 
@@ -781,10 +781,10 @@ make_biotic <- function() {
 
   # WSDB
   export_ras(wsdb, out$wsdb)
-  export_ras(pam_only, out$wsdb)
+  # export_ras(pam_only, out$wsdb)
 
   # PAM & WSDB
-  export_ras(pam_only, out$pam_wsdb)
+  # export_ras(pam_only, out$pam_wsdb)
   export_ras(wsdb_only, out$pam_wsdb)
   export_ras(pam_and_wsdb, out$pam_wsdb)
 

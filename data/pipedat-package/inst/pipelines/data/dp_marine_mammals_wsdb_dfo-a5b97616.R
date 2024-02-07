@@ -75,7 +75,9 @@ dp_a5b97616 <- function(bbox = NULL, bbox_crs = NULL, timespan = NULL, ...) {
         "WHALE-LONG-FINNED PILOT_sights_KDE",
         "WHALE-MINKE_sights_KDE",
         "WHALE-SEI_sights_KDE",
-        "WHALE-SPERM_sights_KDE"
+        "WHALE-SPERM_sights_KDE",
+        "WHALE-NORTHERN BOTTLENOSE_sights_KDE",
+        "WHALE-SOWERBY'S BEAKED_sights_KDE"
       ),
       to = c(
         "lagenorhynchus_acutus-137100",
@@ -90,11 +92,13 @@ dp_a5b97616 <- function(bbox = NULL, bbox_crs = NULL, timespan = NULL, ...) {
         "globicephala_melas-137097",
         "balaenoptera_acutorostrata-137087",
         "balaenoptera_borealis-137088",
-        "physeter_macrocephalus-137119"
+        "physeter_macrocephalus-137119",
+        "hyperoodon_ampullatus-343899",
+        "mesoplodon_bidens-137121"
       )
     )
     name <- dplyr::left_join(name, modif, by = "name")
-    stopifnot(!any(is.na(name$modif)))
+    stopifnot(!any(is.na(name$to)))
     for (i in seq_len(length(dat))) names(dat[[i]]) <- name$to[i]
 
     # _________________________________________________________________________________________ #
