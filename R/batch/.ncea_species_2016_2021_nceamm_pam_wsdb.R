@@ -42,5 +42,6 @@ rcea::ncea_species(
   trophic_sensitivity,
   w_d = 0.5,
   w_i = 0.25,
-  output = output
+  output = output,
+  output_format = "COG"
 )
