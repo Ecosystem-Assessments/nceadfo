@@ -4,16 +4,15 @@
 make_overlap <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load spatial data
-  library(raster)
   input <- here::here("data", "cea_modules")
   habitats <- dir(here::here(input, "habitats"), pattern = ".tif", full.names = TRUE) |>
     lapply(raster::raster) |>
     raster::stack() |>
-    as.data.frame()
+    raster::as.data.frame()
   biotic <- dir(here::here(input, "species"), pattern = ".tif", full.names = TRUE) |>
     lapply(raster::raster) |>
     raster::stack() |>
-    as.data.frame()
+    raster::as.data.frame()
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Traits data
@@ -30,7 +29,8 @@ make_overlap <- function() {
     dplyr::mutate(species = glue::glue("{shortname}.{aphiaID}"))
   stopifnot(all(sp$scientific_name %in% env$species))
   stopifnot(all(sp$species %in% names(biotic)))
-  sp <- dplyr::select(sp, species, bathydemersal_sp, pelagic_sp)
+  names(biotic) <- sp$shortname
+  sp <- dplyr::select(sp, species = shortname, bathydemersal_sp, pelagic_sp)
 
   # Classify habitats
   classify <- data.frame(
@@ -91,20 +91,34 @@ make_overlap <- function() {
     ) |>
     dplyr::select(habitats, species, overlap)
 
-
-
-
   # Percent overlap?
   # WARNING: species may be in more than one habitat per cell
-  # WARNING: it would be relevant to consider habitat use in the water column, because at the moment benthic species will be considered in pelagic habitats
   dat <- dat |>
     dplyr::group_by(species) |>
     dplyr::mutate(percent_overlap = overlap / max(overlap)) |>
     dplyr::ungroup()
+
+  # Potential habitat use
+  potential_hab <- expand.grid(names(habitats), names(biotic), stringsAsFactors = FALSE) |>
+    dplyr::rename(habitats = Var1, species = Var2) |>
+    dplyr::left_join(hab, by = "habitats") |>
+    dplyr::left_join(sp, by = "species") |>
+    dplyr::mutate(
+      potential_habitat =
+        (bathydemersal_sp == 1 & bathydemersal_hab == 1) |
+          (pelagic_sp == 1 & pelagic_hab == 1),
+      potential_habitat = as.numeric(potential_habitat)
+    ) |>
+    dplyr::select(species, habitats, potential_habitat) |>
+    tidyr::pivot_wider(names_from = "habitats", values_from = "potential_habitat")
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Export
   modules <- here::here("data", "cea_modules", "species_habitats_overlap")
   chk_create(modules)
   write.csv(dat, file = here::here(modules, "species_habitats_overlap.csv"), row.names = FALSE)
+
+  modules <- here::here("data", "cea_modules", "species_habitats")
+  chk_create(modules)
+  write.csv(potential_hab, file = here::here(modules, "species_habitats_potential.csv"), row.names = FALSE)
 }

@@ -42,7 +42,6 @@ pipeline <- function() {
   out_cea_km2()
   out_difference()
 
-
   # Figures
   fig_aoi()
   figures()
