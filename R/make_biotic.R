@@ -745,7 +745,11 @@ make_biotic <- function() {
   uid <- names_pam[names_pam %in% names_wsdb]
   pam_and_wsdb <- list()
   for (i in seq_len(length(uid))) {
-    tmp <- pam[[uid[i]]] + wsdb[[uid[i]]]
+    nm <- names(pam[[uid[i]]])
+    tmp <- c(pam[[uid[i]]], wsdb[[uid[i]]]) |>
+      merge() |>
+      stars::st_apply(1:2, sum, na.rm = TRUE)
+    names(tmp) <- nm
     pam_and_wsdb[[i]] <- tmp / tmp
   }
 
