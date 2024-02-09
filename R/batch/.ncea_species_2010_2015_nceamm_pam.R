@@ -5,14 +5,17 @@
 # #   "sf",
 # #   "stars",
 # #   "vroom",
-# #   "here"
+# #   "here",
+# #   "units",
+# #   "terra"
 # # ))
 # # devtools::install_github("ecosystem-assessments/motifcensus")
 # # devtools::install_github("ecosystem-assessments/rcea")
-# library(rcea)
-# library(dplyr)
-# library(tidyr)
-# library(stars)
+library(rcea)
+library(dplyr)
+library(tidyr)
+library(stars)
+library(terra)
 
 # Specify and create output folder
 per <- "2010_2015"

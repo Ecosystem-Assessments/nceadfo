@@ -1,18 +1,21 @@
-# install.packages(c(
-#   "devtools",
-#   "dplyr",
-#   "tidyr",
-#   "sf",
-#   "stars"
-#   "vroom",
-#   "here"
-# ))
-# devtools::install_github("ecosystem-assessments/motifcensus")
-# devtools::install_github("ecosystem-assessments/rcea")
+# # install.packages(c(
+# #   "devtools",
+# #   "dplyr",
+# #   "tidyr",
+# #   "sf",
+# #   "stars",
+# #   "vroom",
+# #   "here",
+# #   "units",
+# #   "terra"
+# # ))
+# # devtools::install_github("ecosystem-assessments/motifcensus")
+# # devtools::install_github("ecosystem-assessments/rcea")
 library(rcea)
 library(dplyr)
 library(tidyr)
 library(stars)
+library(terra)
 
 # Specify and create output folder
 per <- "2016_2021"
