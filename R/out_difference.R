@@ -11,11 +11,17 @@ out_difference <- function() {
   chk_create(out)
 
   # Evaluate difference between periods
-  # CEA
-  cea <- dir(input, pattern = "^cea_", full.names = TRUE) |>
+  # CEA species
+  cea <- dir(input, pattern = "^cea_2", full.names = TRUE) |>
     lapply(stars::read_stars)
   diff <- cea[[2]] - cea[[1]]
   stars::write_stars(diff, here::here(out, "cea_species_difference.tif"))
+
+  # CEA habitats
+  cea <- dir(input, pattern = "^cea_hab", full.names = TRUE) |>
+    lapply(stars::read_stars)
+  diff <- cea[[2]] - cea[[1]]
+  stars::write_stars(diff, here::here(out, "cea_habitats_difference.tif"))
 
   # NCEA
   # Net
@@ -35,4 +41,23 @@ out_difference <- function() {
     lapply(stars::read_stars)
   diff <- dat[[2]] - dat[[1]]
   stars::write_stars(diff, here::here(out, "cea_network_indirect_difference.tif"))
+
+  # NCEAHAB
+  # Indirect habitats
+  dat <- dir(input, pattern = "^nceahab_indirect", full.names = TRUE) |>
+    lapply(stars::read_stars)
+  diff <- dat[[2]] - dat[[1]]
+  stars::write_stars(diff, here::here(out, "nceahab_indirect_habitats_difference.tif"))
+
+  # Joint
+  dat <- dir(input, pattern = "^nceahab_2", full.names = TRUE) |>
+    lapply(stars::read_stars)
+  diff <- dat[[2]] - dat[[1]]
+  stars::write_stars(diff, here::here(out, "nceahab_difference.tif"))
+
+  # Joint normalized
+  dat <- dir(input, pattern = "^nceahab_norm", full.names = TRUE) |>
+    lapply(stars::read_stars)
+  diff <- dat[[2]] - dat[[1]]
+  stars::write_stars(diff, here::here(out, "nceahab_normalized_difference.tif"))
 }
