@@ -38,6 +38,9 @@ pipeline <- function() {
   # Outputs
   out_footprint()
   out_exposure()
+  out_indirect_species_habitats_()
+  out_nceahab_species()
+  out_nceahab()
   out_cea_full()
   out_cea_km2()
   out_difference()

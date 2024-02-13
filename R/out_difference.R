@@ -11,11 +11,17 @@ out_difference <- function() {
   chk_create(out)
 
   # Evaluate difference between periods
-  # CEA
-  cea <- dir(input, pattern = "^cea_", full.names = TRUE) |>
+  # CEA species
+  cea <- dir(input, pattern = "^cea_2", full.names = TRUE) |>
     lapply(stars::read_stars)
   diff <- cea[[2]] - cea[[1]]
   stars::write_stars(diff, here::here(out, "cea_species_difference.tif"))
+
+  # CEA habitats
+  cea <- dir(input, pattern = "^cea_hab", full.names = TRUE) |>
+    lapply(stars::read_stars)
+  diff <- cea[[2]] - cea[[1]]
+  stars::write_stars(diff, here::here(out, "cea_habitats_difference.tif"))
 
   # NCEA
   # Net

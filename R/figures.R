@@ -10,6 +10,7 @@ figures <- function() {
   out$drivers <- here::here(out$out, "drivers")
   out$cea_species <- here::here(out$out, "cea_species")
   out$cea_network <- here::here(out$out, "cea_network")
+  out$cea_habitats <- here::here(out$out, "cea_habitats")
   out$cea <- here::here(out$out, "cea")
   out$footprint <- here::here(out$out, "footprint")
   out$exposure <- here::here(out$out, "exposure")
@@ -126,8 +127,8 @@ figures <- function() {
     })
     for (j in seq_len(length(dat))) {
       sf::st_crs(dat[[j]]) <- sf::st_crs(aoi)
-      dat[[j]] <- stars::st_set_dimensions(dat[[j]], which = 1,  point = FALSE)
-      dat[[j]] <- stars::st_set_dimensions(dat[[j]], which = 2,  point = FALSE)
+      dat[[j]] <- stars::st_set_dimensions(dat[[j]], which = 1, point = FALSE)
+      dat[[j]] <- stars::st_set_dimensions(dat[[j]], which = 2, point = FALSE)
       names(dat[[j]]) <- nm[j]
     }
     lapply(dat, plotDat, outsp[i], sub = "Cumulative effects score")
@@ -150,6 +151,31 @@ figures <- function() {
         stars::st_apply(c(1, 2), sum, na.rm = TRUE)
     })
     for (j in seq_len(length(dat))) names(dat[[j]]) <- nm[j]
+    lapply(dat, plotDat, outsp[i], sub = "Cumulative effects score")
+  }
+
+  # Habitat-scale cumulative effects assessment - habitats
+  dr <- here::here("output", "cea_habitats")
+  per <- dir(dr)
+  outsp <- here::here(out$cea_habitats, per)
+  lapply(outsp, chk_create)
+  for (i in 1:length(per)) {
+    dat <- here::here(dr, per[i]) |>
+      dir(full.names = TRUE, pattern = ".tif$") |>
+      lapply(stars::read_stars)
+    nm <- lapply(dat, names) |>
+      unlist() |>
+      tools::file_path_sans_ext()
+    dat <- lapply(dat, function(x) {
+      stars::st_redimension(x) |>
+        stars::st_apply(c(1, 2), sum, na.rm = TRUE)
+    })
+    for (j in seq_len(length(dat))) {
+      sf::st_crs(dat[[j]]) <- sf::st_crs(aoi)
+      dat[[j]] <- stars::st_set_dimensions(dat[[j]], which = 1, point = FALSE)
+      dat[[j]] <- stars::st_set_dimensions(dat[[j]], which = 2, point = FALSE)
+      names(dat[[j]]) <- nm[j]
+    }
     lapply(dat, plotDat, outsp[i], sub = "Cumulative effects score")
   }
 

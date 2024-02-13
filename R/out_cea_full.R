@@ -26,9 +26,20 @@ out_cea_full <- function() {
     ncea_direct <- fnc_cumul(here::here("output", "ncea", per[i], "direct"))
     stars::write_stars(ncea_direct, here::here(out, glue::glue("ncea_direct_{per[i]}.tif")))
 
-    # Network-scale cumulative effects assessment - indirect effets
+    # Network-scale cumulative effects assessment - indirect effets from species
     ncea_indirect <- fnc_cumul(here::here("output", "ncea", per[i], "indirect"))
     stars::write_stars(ncea_indirect, here::here(out, glue::glue("ncea_indirect_{per[i]}.tif")))
+
+    # Joint cumulative effects assessment - indirect effets from habitats
+    nceahab_indirect <- fnc_cumul(here::here("output", "cea_indirect_habitats", per[i]))
+    stars::write_stars(nceahab_indirect, here::here(out, glue::glue("nceahab_indirect_habitats_{per[i]}.tif")))
+
+    # Joint cumulative effects assessment - full effects on species (ncea + indirect_habitats)
+    nceahab_species <- fnc_cumul(here::here("output", "nceahab_species", per[i]))
+    stars::write_stars(nceahab_species, here::here(out, glue::glue("nceahab_species_{per[i]}.tif")))
+
+    # Joint cumulative effects assessment - full effects on species + effects on habitats (VCs: species & habitats)
+    # See `out_nceahab.R`
   }
 }
 
