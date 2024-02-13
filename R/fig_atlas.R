@@ -210,6 +210,30 @@ fig_atlas <- function(type = c("aoi", "footprint", "cea", "difference", "metanet
     img_write(img, here::here(out$atlas, "cea_network.png"))
     rm(img)
     gc()
+
+    # -----------------
+    # Habitat-scale cea
+    i1 <- magick::image_read(here::here(out$figs, "cea_habitats_2010_2015.png"))
+    i2 <- magick::image_read(here::here(out$figs, "cea_habitats_2016_2021.png"))
+    img <- magick::image_append(c(i1, i2))
+
+    # Add border
+    ht <- magick::image_info(img)$height
+    img <- magick::image_border(img, glue::glue("0x{hts}"), color = "#ffffff") |>
+      magick::image_crop(glue::glue("0x{ht+hts}"))
+
+    # Add text
+    img <- nm_title(img, "Habitat-scale cumulative effects")
+    img <- nm_sub2(img, "2010-2015", t1_1)
+    img <- nm_sub2(img, "2016-2021", t2_1)
+
+    # Resize
+    img <- magick::image_resize(img, img_resize)
+
+    # Export
+    img_write(img, here::here(out$atlas, "cea_habitats.png"))
+    rm(img)
+    gc()
   }
 
   # ----------------------------------------------------------------------------------------
@@ -419,7 +443,7 @@ fig_atlas <- function(type = c("aoi", "footprint", "cea", "difference", "metanet
         setNames("species") |>
         dplyr::mutate(species = gsub("_", " ", species)) |>
         dplyr::mutate(species = stringr::str_to_sentence(species))
-      
+
       tmp <- basename(dat) |>
         tools::file_path_sans_ext() |>
         stringr::str_split("-", simplify = TRUE) |>

@@ -53,6 +53,7 @@ pipeline <- function() {
   fig_contribution_taxa_()
   fig_atlas()
   fig_webinar()
+  fig_report_nceahab()
 
   # Report and publications
   render_frontpate()

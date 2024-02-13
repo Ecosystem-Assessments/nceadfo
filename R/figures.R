@@ -11,6 +11,7 @@ figures <- function() {
   out$cea_species <- here::here(out$out, "cea_species")
   out$cea_network <- here::here(out$out, "cea_network")
   out$cea_habitats <- here::here(out$out, "cea_habitats")
+  out$nceahab_species <- here::here(out$out, "nceahab_species")
   out$cea <- here::here(out$out, "cea")
   out$footprint <- here::here(out$out, "footprint")
   out$exposure <- here::here(out$out, "exposure")
@@ -24,7 +25,7 @@ figures <- function() {
   aoi$val_ras <- 1
   aoi <- stars::st_rasterize(aoi["val_ras"], template = tmp)
 
-  # ---
+  # ---------------------------------------------------------------------------
   plotDat <- function(dat, out, suffix = "", type = "regular", main = NULL, sub = NULL) {
     nm <- tools::file_path_sans_ext(names(dat))
     png(
@@ -45,6 +46,7 @@ figures <- function() {
     dev.off()
   }
 
+  # ---------------------------------------------------------------------------
   # Species distribution continuous
   dir(
     c(
@@ -57,6 +59,7 @@ figures <- function() {
     lapply(stars::read_stars) |>
     lapply(plotDat, out$biotic_cnt, sub = "Occurrence probability")
 
+  # ---------------------------------------------------------------------------
   # Species distribution binary
   dat <- dir(
     c(
@@ -74,6 +77,7 @@ figures <- function() {
   names(dat) <- nm
   lapply(dat, plotDat, out$biotic_bin)
 
+  # ---------------------------------------------------------------------------
   # Abiotic
   dat <- dir("data/data-abiotic", full.names = TRUE, pattern = ".tif$")
   nm <- tools::file_path_sans_ext(basename(dat)) |>
@@ -84,6 +88,7 @@ figures <- function() {
   for (i in 1:length(dat)) plotDat(dat[[i]], out$abiotic, sub = nm[i])
   # lapply(plotDat, out$abiotic)
 
+  # ---------------------------------------------------------------------------
   # Drivers
   dr <- here::here("data", "cea_modules", "drivers")
   per <- dir(dr)
@@ -94,21 +99,25 @@ figures <- function() {
       lapply(plotDat, out$drivers, sub = "Normalized intensity")
   }
 
+  # ---------------------------------------------------------------------------
   # Cumulative stressors
   dir(here::here("output", "footprint"), pattern = "drivers", full.names = TRUE) |>
     lapply(stars::read_stars) |>
     lapply(plotDat, out$footprint, sub = "Cumulative drivers")
 
+  # ---------------------------------------------------------------------------
   # Cumulative stressors
   dir(here::here("output", "footprint"), pattern = "species", full.names = TRUE) |>
     lapply(stars::read_stars) |>
     lapply(plotDat, out$footprint, sub = "Species richness")
 
+  # ---------------------------------------------------------------------------
   # Exposure
   dir(here::here("output", "exposure"), full.names = TRUE) |>
     lapply(stars::read_stars) |>
     lapply(plotDat, out$exposure, sub = "Cumulative exposure")
 
+  # ---------------------------------------------------------------------------
   # Species-scale cumulative effects assessment - species
   dr <- here::here("output", "cea_species")
   per <- dir(dr)
@@ -134,6 +143,7 @@ figures <- function() {
     lapply(dat, plotDat, outsp[i], sub = "Cumulative effects score")
   }
 
+  # ---------------------------------------------------------------------------
   # Network-scale cumulative effects assessment - network
   dr <- here::here("output", "ncea")
   per <- dir(dr)
@@ -154,6 +164,7 @@ figures <- function() {
     lapply(dat, plotDat, outsp[i], sub = "Cumulative effects score")
   }
 
+  # ---------------------------------------------------------------------------
   # Habitat-scale cumulative effects assessment - habitats
   dr <- here::here("output", "cea_habitats")
   per <- dir(dr)
@@ -179,12 +190,28 @@ figures <- function() {
     lapply(dat, plotDat, outsp[i], sub = "Cumulative effects score")
   }
 
+  # ---------------------------------------------------------------------------
+  # NCEAHAB species
+  dr <- here::here("output", "nceahab_species")
+  per <- dir(dr)
+  outsp <- here::here(out$nceahab_species, per)
+  lapply(outsp, chk_create)
+
+  for (i in 1:length(per)) {
+    here::here(dr, per[i]) |>
+      dir(full.names = TRUE, pattern = ".tif$") |>
+      lapply(stars::read_stars) |>
+      lapply(plotDat, outsp[i], sub = "Cumulative effects score")
+  }
+
+  # ---------------------------------------------------------------------------
   # Species-scale and network-scale cumulative effects assessment
   dr <- here::here("output", "cea_full")
   dir(dr, full.names = TRUE) |>
     lapply(stars::read_stars) |>
     lapply(plotDat, out$cea, sub = "Cumulative effects score")
 
+  # ---------------------------------------------------------------------------
   # Period differences for both assessments
   dr <- here::here("output", "cea_difference")
   dat <- dir(dr, full.names = TRUE) |>
