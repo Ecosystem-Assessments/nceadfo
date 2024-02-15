@@ -90,15 +90,15 @@ fig_metanetwork <- function(cekm, bg = "#ffffff", out = here::here("figures", "m
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Impacts per km2
   cekm <- cekm |>
-    dplyr::filter(!species %in% c("phytoplankton", "zooplankton")) |>
+    dplyr::filter(!name %in% c("phytoplankton", "zooplankton")) |>
     dplyr::rowwise() |>
     dplyr::mutate(ncea = sum(
-      dplyr::across(!species),
+      dplyr::across(!name),
       na.rm = TRUE
     )) |>
     # dplyr::mutate(ncea = ncea / max(ncea)) |>
     dplyr::mutate(ncea = log(ncea + 1) * .5 + .1) |>
-    dplyr::rename(Taxa = species) |>
+    dplyr::rename(Taxa = name) |>
     dplyr::mutate(Taxa = tools::file_path_sans_ext(Taxa))
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#

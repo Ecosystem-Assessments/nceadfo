@@ -29,7 +29,7 @@ out_cea_km2 <- function() {
   ceakm2 <- function(cea_input, area) {
     files <- dir(cea_input, full.names = TRUE)
     nm <- basename(files) |>
-      stringr::str_replace(".tif", "")
+      stringr::str_replace("\\.tif", "")
 
     dat <- lapply(files, function(x) {
       stars::read_stars(x) |>
@@ -46,6 +46,32 @@ out_cea_km2 <- function() {
       dplyr::mutate(dplyr::across(dplyr::where(is.numeric), ~ .x / area_km2)) |>
       dplyr::select(-area_km2)
   }
+
+  # Function to assess cea per km2 - again, I know
+  ceakm2_2 <- function(cea_input, area) {
+    files <- dir(cea_input, full.names = TRUE)
+    nm <- basename(files) |>
+      stringr::str_replace("\\.tif", "")
+
+    dat <- lapply(files, function(x) {
+      stars::read_stars(x) |>
+        # split() |>
+        as.data.frame() |>
+        dplyr::select(-x, -y) |>
+        colSums(na.rm = TRUE)
+    })
+    dat <- data.frame(
+      name = nm,
+      nceahab = unlist(dat),
+      row.names = NULL
+    )
+
+    # Join together and divide by area
+    cekm <- dplyr::left_join(area, dat, by = "name") |>
+      dplyr::mutate(dplyr::across(dplyr::where(is.numeric), ~ .x / area_km2)) |>
+      dplyr::select(-area_km2)
+  }
+
 
   # Species and habitats area
   load(here::here("data", "FormatData", "biotic.RData"))
@@ -82,6 +108,16 @@ out_cea_km2 <- function() {
     ) |>
       write.csv(
         file = here::here(out, glue::glue("cea_indirect_habitats_km2_{per[i]}.csv")),
+        row.names = FALSE
+      )
+
+    # NCEAHAB
+    ceakm2_2(
+      cea_input = here::here("output", "nceahab_species", per[i]),
+      area = biotic
+    ) |>
+      write.csv(
+        file = here::here(out, glue::glue("nceahab_species_km2_{per[i]}.csv")),
         row.names = FALSE
       )
   }
