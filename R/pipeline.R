@@ -49,8 +49,10 @@ pipeline <- function() {
   fig_aoi()
   figures()
   fig_metanetwork_()
+  fig_metanetwork_nceahab()
   fig_contribution_group_()
   fig_contribution_taxa_()
+  fig_contribution_nceahab()
   fig_atlas()
   fig_webinar()
   fig_report_nceahab()
@@ -62,10 +64,4 @@ pipeline <- function() {
 
   # Data for eDrivers
   make_eDrivers()
-  # --------------------------------------------------------------------
-
-  # --------------------------------------------------------------------
-  # Habitats-scale assessment
-
-  # --------------------------------------------------------------------
 }
