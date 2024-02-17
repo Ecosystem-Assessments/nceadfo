@@ -1,0 +1,88 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "physeter_macrocephalus",
+  "collection": "direct",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "physeter_macrocephalus": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/direct/physeter_macrocephalus_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./direct/physeter_macrocephalus.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-67.2726, 42.9143],
+        [-67.4525, 42.293],
+        [-67.4525, 42.263],
+        [-67.4425, 42.113],
+        [-67.2325, 40.503],
+        [-67.2225, 40.443],
+        [-67.1925, 40.403],
+        [-67.0825, 40.353],
+        [-67.0125, 40.333],
+        [-66.8225, 40.333],
+        [-66.6825, 40.343],
+        [-66.5425, 40.383],
+        [-64.2865, 41.4456],
+        [-61.9025, 41.783],
+        [-60.6125, 42.023],
+        [-60.4725, 42.063],
+        [-59.9025, 42.383],
+        [-59.7225, 42.503],
+        [-59.5825, 42.603],
+        [-57.7125, 44.033],
+        [-57.6325, 44.113],
+        [-57.6157, 44.1535],
+        [-57.1125, 44.333],
+        [-57.0325, 44.373],
+        [-57.0225, 44.453],
+        [-57.0225, 44.513],
+        [-57.0525, 44.543],
+        [-57.0925, 44.563],
+        [-57.1625, 44.583],
+        [-62.0281, 44.7591],
+        [-66.4525, 44.893],
+        [-66.4625, 44.893],
+        [-66.5525, 44.883],
+        [-66.6325, 44.863],
+        [-66.6625, 44.843],
+        [-66.7325, 44.753],
+        [-66.9625, 44.443],
+        [-66.9925, 44.373],
+        [-67.0225, 44.293],
+        [-67.2726, 42.9143]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

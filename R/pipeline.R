@@ -61,4 +61,8 @@ pipeline <- function() {
 
   # Data for eDrivers
   make_eDrivers()
+
+  # Create data for application
+  make_bucket()
+  make_stac()
 }

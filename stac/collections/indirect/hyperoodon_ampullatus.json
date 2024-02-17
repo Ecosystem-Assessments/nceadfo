@@ -1,0 +1,88 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "hyperoodon_ampullatus",
+  "collection": "indirect",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "hyperoodon_ampullatus": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/indirect/hyperoodon_ampullatus_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./indirect/hyperoodon_ampullatus.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-66.1401, 41.0318],
+        [-66.1225, 41.023],
+        [-66.0725, 41.003],
+        [-66.0025, 40.983],
+        [-65.7925, 40.963],
+        [-65.7325, 40.963],
+        [-65.5825, 40.993],
+        [-58.3825, 42.683],
+        [-58.1725, 42.733],
+        [-57.7125, 42.893],
+        [-56.8425, 43.213],
+        [-56.7925, 43.233],
+        [-56.7925, 43.243],
+        [-56.8025, 43.263],
+        [-57.6425, 44.853],
+        [-57.6725, 44.903],
+        [-57.7325, 44.983],
+        [-57.8025, 45.053],
+        [-57.8325, 45.073],
+        [-57.9725, 45.163],
+        [-58.0125, 45.183],
+        [-58.0225, 45.183],
+        [-58.0425, 45.203],
+        [-58.1225, 45.233],
+        [-58.2625, 45.233],
+        [-58.3425, 45.223],
+        [-58.6025, 45.173],
+        [-58.9225, 45.103],
+        [-59.1425, 45.053],
+        [-59.2225, 45.033],
+        [-59.3525, 44.993],
+        [-65.6325, 42.003],
+        [-65.6425, 41.993],
+        [-66.1925, 41.253],
+        [-66.2625, 41.133],
+        [-66.2625, 41.123],
+        [-66.2425, 41.093],
+        [-66.2025, 41.053],
+        [-66.1725, 41.033],
+        [-66.1401, 41.0318]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

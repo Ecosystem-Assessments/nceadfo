@@ -1,0 +1,77 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "lagenorhynchus_acutus",
+  "collection": "net",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "lagenorhynchus_acutus": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/net/lagenorhynchus_acutus_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./net/lagenorhynchus_acutus.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-67.0589, 45.0403],
+        [-67.0725, 45.033],
+        [-67.3525, 44.343],
+        [-67.4425, 44.073],
+        [-67.5725, 43.443],
+        [-67.5725, 43.423],
+        [-67.2625, 41.023],
+        [-67.0025, 40.663],
+        [-66.9325, 40.623],
+        [-66.8925, 40.603],
+        [-66.8325, 40.603],
+        [-57.7725, 40.863],
+        [-57.4325, 40.883],
+        [-57.3925, 40.903],
+        [-56.0425, 41.743],
+        [-56.0425, 44.973],
+        [-56.8825, 46.133],
+        [-57.2525, 46.533],
+        [-57.2825, 46.553],
+        [-57.3525, 46.593],
+        [-57.4125, 46.603],
+        [-57.8725, 46.643],
+        [-61.2825, 46.643],
+        [-62.6325, 46.633],
+        [-66.8688, 45.1359],
+        [-66.9325, 45.123],
+        [-67.0025, 45.093],
+        [-67.0425, 45.073],
+        [-67.0589, 45.0403]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

@@ -1,0 +1,75 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "balaenoptera_acutorostrata",
+  "collection": "distribution",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "balaenoptera_acutorostrata": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/distribution/balaenoptera_acutorostrata_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./distribution/balaenoptera_acutorostrata.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-66.1725, 41.013],
+        [-58.4325, 42.583],
+        [-58.3925, 42.603],
+        [-57.4225, 44.103],
+        [-57.4125, 44.123],
+        [-57.4125, 44.133],
+        [-57.4225, 44.153],
+        [-57.4525, 44.203],
+        [-58.2525, 45.453],
+        [-58.8225, 46.343],
+        [-58.8425, 46.373],
+        [-58.8625, 46.403],
+        [-59.2725, 46.493],
+        [-59.2825, 46.493],
+        [-66.9725, 45.183],
+        [-67.0425, 45.163],
+        [-67.0725, 45.113],
+        [-67.0925, 45.073],
+        [-67.5625, 43.383],
+        [-67.5625, 43.323],
+        [-67.2825, 42.343],
+        [-67.1625, 42.153],
+        [-67.1125, 42.093],
+        [-66.2225, 41.053],
+        [-66.1925, 41.023],
+        [-66.1825, 41.013],
+        [-66.1725, 41.013]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

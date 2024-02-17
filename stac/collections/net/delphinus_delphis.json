@@ -1,0 +1,83 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "delphinus_delphis",
+  "collection": "net",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "delphinus_delphis": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/net/delphinus_delphis_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./net/delphinus_delphis.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-67.1974, 42.2165],
+        [-67.2025, 42.203],
+        [-67.2025, 42.153],
+        [-67.0025, 40.603],
+        [-66.9625, 40.543],
+        [-66.9225, 40.503],
+        [-66.8925, 40.483],
+        [-66.8225, 40.443],
+        [-66.7525, 40.423],
+        [-66.6125, 40.423],
+        [-64.92, 41.2195],
+        [-58.9525, 42.083],
+        [-58.9125, 42.103],
+        [-58.8825, 42.123],
+        [-58.8425, 42.163],
+        [-57.4125, 44.223],
+        [-57.4125, 44.233],
+        [-57.4206, 44.2492],
+        [-56.6625, 44.513],
+        [-56.5825, 44.553],
+        [-56.0725, 44.873],
+        [-56.0425, 44.893],
+        [-56.0425, 45.123],
+        [-59.6025, 46.643],
+        [-59.7825, 46.643],
+        [-64.3407, 45.089],
+        [-66.5325, 44.513],
+        [-66.6025, 44.493],
+        [-66.6425, 44.473],
+        [-66.6725, 44.453],
+        [-66.7425, 44.403],
+        [-67.4025, 42.603],
+        [-67.4025, 42.543],
+        [-67.3925, 42.523],
+        [-67.1974, 42.2165]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

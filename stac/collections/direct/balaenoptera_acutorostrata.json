@@ -1,0 +1,81 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "balaenoptera_acutorostrata",
+  "collection": "direct",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "balaenoptera_acutorostrata": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/direct/balaenoptera_acutorostrata_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./direct/balaenoptera_acutorostrata.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-67.5011, 43.1107],
+        [-67.4725, 42.113],
+        [-67.0425, 41.263],
+        [-67.0025, 41.223],
+        [-66.7525, 41.003],
+        [-66.6825, 40.983],
+        [-66.6425, 40.983],
+        [-66.1725, 40.993],
+        [-66.0647, 41.0394],
+        [-58.4325, 42.583],
+        [-58.3925, 42.603],
+        [-57.3825, 44.123],
+        [-57.3825, 44.183],
+        [-57.4197, 44.2453],
+        [-56.6225, 44.493],
+        [-56.0425, 44.873],
+        [-56.0425, 45.103],
+        [-57.1925, 46.363],
+        [-57.2325, 46.383],
+        [-59.4425, 46.643],
+        [-61.9525, 46.643],
+        [-62.5125, 46.593],
+        [-66.9325, 46.073],
+        [-67.0025, 46.043],
+        [-67.0325, 46.023],
+        [-67.0725, 45.983],
+        [-67.4825, 45.143],
+        [-67.5425, 44.563],
+        [-67.5425, 44.503],
+        [-67.5143, 43.5611],
+        [-67.5625, 43.383],
+        [-67.5625, 43.323],
+        [-67.5011, 43.1107]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

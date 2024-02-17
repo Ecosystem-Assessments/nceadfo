@@ -1,0 +1,81 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "mesoplodon_bidens",
+  "collection": "indirect",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "mesoplodon_bidens": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/indirect/mesoplodon_bidens_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./indirect/mesoplodon_bidens.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-63.3925, 42.353],
+        [-60.8825, 42.523],
+        [-60.7525, 42.533],
+        [-60.6625, 42.553],
+        [-57.8325, 43.523],
+        [-57.7125, 43.583],
+        [-57.6825, 43.603],
+        [-57.6025, 43.683],
+        [-57.5925, 43.733],
+        [-57.5825, 43.843],
+        [-57.5825, 43.943],
+        [-57.6022, 44.523],
+        [-57.5925, 44.523],
+        [-57.5825, 44.623],
+        [-57.5825, 44.713],
+        [-57.6125, 44.793],
+        [-57.6425, 44.813],
+        [-57.6925, 44.813],
+        [-57.7725, 44.793],
+        [-57.8025, 44.793],
+        [-57.9025, 44.783],
+        [-58.9025, 44.663],
+        [-59.1125, 44.633],
+        [-59.1925, 44.613],
+        [-59.4325, 44.543],
+        [-63.6925, 42.583],
+        [-63.6925, 42.473],
+        [-63.6625, 42.433],
+        [-63.6425, 42.413],
+        [-63.6125, 42.393],
+        [-63.5625, 42.373],
+        [-63.4925, 42.353],
+        [-63.3925, 42.353]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

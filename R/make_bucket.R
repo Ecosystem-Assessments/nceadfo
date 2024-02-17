@@ -97,6 +97,6 @@ make_bucket <- function() {
   })
 
   # Upload cogs
-  bucket_in <- "scotian-shelf-cogs-private"
-  system(glue::glue("gsutil -m cp -R bucket/* gs://{bucket_in}"))
+  # bucket_in <- "scotian-shelf-cogs-private"
+  # system(glue::glue("gsutil -m cp -R bucket/* gs://{bucket_in}"))
 }
