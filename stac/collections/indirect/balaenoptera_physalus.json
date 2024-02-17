@@ -1,0 +1,91 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "balaenoptera_physalus",
+  "collection": "indirect",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "balaenoptera_physalus": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/indirect/balaenoptera_physalus_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./indirect/balaenoptera_physalus.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-65.8325, 40.973],
+        [-65.6825, 41.003],
+        [-58.5825, 43.253],
+        [-58.5225, 43.273],
+        [-57.1981, 43.8187],
+        [-57.0525, 43.853],
+        [-57.0325, 43.873],
+        [-57.0325, 43.893],
+        [-57.0825, 43.993],
+        [-58.6325, 46.343],
+        [-58.7325, 46.493],
+        [-58.8825, 46.643],
+        [-59.2325, 46.643],
+        [-59.3225, 46.613],
+        [-59.4325, 46.563],
+        [-60.5405, 45.8794],
+        [-65.6125, 42.993],
+        [-65.6725, 42.953],
+        [-65.7125, 42.913],
+        [-65.7925, 42.793],
+        [-66.3025, 41.973],
+        [-66.3625, 41.853],
+        [-66.3913, 41.781],
+        [-66.4025, 41.773],
+        [-66.4525, 41.643],
+        [-66.4625, 41.603],
+        [-66.4725, 41.553],
+        [-66.4725, 41.543],
+        [-66.4725, 41.543],
+        [-66.4825, 41.493],
+        [-66.4825, 41.403],
+        [-66.4725, 41.373],
+        [-66.4725, 41.373],
+        [-66.4725, 41.313],
+        [-66.4425, 41.223],
+        [-66.4225, 41.213],
+        [-66.3356, 41.2034],
+        [-66.2425, 41.093],
+        [-66.1825, 41.023],
+        [-66.1625, 41.003],
+        [-66.1425, 40.993],
+        [-66.0525, 40.973],
+        [-65.8325, 40.973]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

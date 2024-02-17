@@ -1,0 +1,83 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "phocoena_phocoena",
+  "collection": "indirect",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "phocoena_phocoena": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/indirect/phocoena_phocoena_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./indirect/phocoena_phocoena.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-66.1225, 41.143],
+        [-66.1094, 41.1449],
+        [-66.0825, 41.123],
+        [-65.9325, 41.123],
+        [-64.8125, 41.253],
+        [-63.3741, 41.9194],
+        [-60.1825, 43.133],
+        [-58.9125, 43.753],
+        [-58.8725, 43.773],
+        [-57.5925, 44.503],
+        [-57.5925, 44.523],
+        [-57.6525, 44.613],
+        [-58.0125, 45.123],
+        [-58.1525, 45.233],
+        [-59.7825, 46.033],
+        [-59.8525, 46.053],
+        [-59.8925, 46.053],
+        [-65.3925, 45.423],
+        [-67.0425, 45.153],
+        [-67.0725, 45.113],
+        [-67.0925, 45.073],
+        [-67.3025, 44.403],
+        [-67.5825, 43.353],
+        [-67.6625, 42.783],
+        [-67.6625, 42.773],
+        [-67.6425, 42.743],
+        [-67.5225, 42.583],
+        [-66.8375, 41.7956],
+        [-66.8225, 41.773],
+        [-66.7625, 41.703],
+        [-66.6965, 41.6304],
+        [-66.4025, 41.283],
+        [-66.1825, 41.163],
+        [-66.1425, 41.143],
+        [-66.1225, 41.143]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

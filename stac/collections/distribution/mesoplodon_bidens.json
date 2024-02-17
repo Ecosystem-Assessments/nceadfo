@@ -1,0 +1,86 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "mesoplodon_bidens",
+  "collection": "distribution",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "mesoplodon_bidens": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/distribution/mesoplodon_bidens_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./distribution/mesoplodon_bidens.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-65.7625, 40.533],
+        [-65.6625, 40.553],
+        [-65.5225, 40.593],
+        [-58.4525, 43.043],
+        [-58.4025, 43.063],
+        [-58.1925, 43.153],
+        [-57.1325, 43.663],
+        [-57.1325, 43.703],
+        [-57.7725, 44.703],
+        [-57.8125, 44.763],
+        [-57.8225, 44.773],
+        [-57.8525, 44.783],
+        [-57.9025, 44.783],
+        [-58.9025, 44.663],
+        [-59.1125, 44.633],
+        [-59.1925, 44.613],
+        [-59.4325, 44.543],
+        [-65.7525, 42.663],
+        [-65.8025, 42.643],
+        [-65.9025, 42.603],
+        [-65.9525, 42.583],
+        [-66.0225, 42.543],
+        [-66.1725, 42.433],
+        [-66.2225, 42.393],
+        [-66.3425, 42.293],
+        [-66.7225, 41.963],
+        [-66.7425, 41.943],
+        [-66.8325, 41.833],
+        [-66.8425, 41.793],
+        [-66.8425, 41.783],
+        [-66.8125, 41.743],
+        [-66.4625, 41.333],
+        [-66.2825, 41.123],
+        [-65.8625, 40.633],
+        [-65.8025, 40.563],
+        [-65.7825, 40.543],
+        [-65.7725, 40.533],
+        [-65.7625, 40.533]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

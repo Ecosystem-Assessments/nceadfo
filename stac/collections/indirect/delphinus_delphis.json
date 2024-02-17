@@ -1,0 +1,75 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "delphinus_delphis",
+  "collection": "indirect",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "delphinus_delphis": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/indirect/delphinus_delphis_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./indirect/delphinus_delphis.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-66.1325, 41.003],
+        [-58.9525, 42.083],
+        [-58.9125, 42.103],
+        [-58.8825, 42.123],
+        [-58.8425, 42.163],
+        [-57.4125, 44.223],
+        [-57.4125, 44.233],
+        [-57.4325, 44.273],
+        [-57.5025, 44.383],
+        [-57.6825, 44.663],
+        [-57.8125, 44.863],
+        [-58.8425, 46.263],
+        [-58.8725, 46.293],
+        [-58.9125, 46.293],
+        [-66.5325, 44.513],
+        [-66.6025, 44.493],
+        [-66.6425, 44.473],
+        [-66.6725, 44.453],
+        [-66.7425, 44.403],
+        [-67.4025, 42.603],
+        [-67.4025, 42.543],
+        [-67.3925, 42.523],
+        [-67.1825, 42.193],
+        [-67.1625, 42.163],
+        [-66.1825, 41.023],
+        [-66.1625, 41.003],
+        [-66.1325, 41.003]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

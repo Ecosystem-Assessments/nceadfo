@@ -1,0 +1,76 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "phocoena_phocoena",
+  "collection": "direct",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "phocoena_phocoena": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/direct/phocoena_phocoena_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./direct/phocoena_phocoena.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-58.3635, 43.8742],
+        [-56.6025, 44.413],
+        [-56.5225, 44.443],
+        [-56.0425, 44.853],
+        [-56.0425, 45.033],
+        [-56.0525, 45.063],
+        [-56.0925, 45.083],
+        [-59.6025, 46.643],
+        [-62.0725, 46.643],
+        [-66.9625, 45.493],
+        [-67.2825, 45.313],
+        [-67.3525, 45.273],
+        [-67.3825, 45.253],
+        [-67.6125, 44.433],
+        [-67.6925, 42.743],
+        [-67.6925, 42.683],
+        [-67.5725, 42.083],
+        [-67.1625, 41.073],
+        [-67.1225, 41.033],
+        [-67.0925, 41.013],
+        [-66.9525, 40.973],
+        [-66.6125, 40.903],
+        [-66.4425, 40.903],
+        [-65.9094, 41.1258],
+        [-64.8125, 41.253],
+        [-59.7425, 42.773],
+        [-59.6725, 42.813],
+        [-58.3635, 43.8742]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

@@ -1,0 +1,125 @@
+{
+  "id": "net",
+  "title": "Net effects of stressors on marine species",
+  "stac_version": "1.0.0",
+  "type": "Collection",
+  "description": "This catalog contains outputs of net effects of stressors on several marine species of the Scotian Shelf.",
+  "license": "proprietary",
+  "keywords": ["cumulative effect", "scotian shelf", "net effect", "marine species"],
+  "providers": [
+    {
+      "name": "inSileco Inc.",
+      "roles": "producer",
+      "url": "https://insileco.io"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [-71.2395, 45.1454, -55.8029, 52.6467]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        ["2024-01-01T00:00:00Z", "2024-01-01T00:00:00Z"]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/all_species",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/balaenoptera_acutorostrata",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/balaenoptera_borealis",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/balaenoptera_musculus",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/balaenoptera_physalus",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/delphinus_delphis",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/globicephala_melas",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/halichoerus_grypus",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/hyperoodon_ampullatus",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/lagenorhynchus_acutus",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/lagenorhynchus_albirostris",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/megaptera_novaeangliae",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/mesoplodon_bidens",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/orcinus_orca",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/phocoena_phocoena",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./net/physeter_macrocephalus",
+      "type": "application/json"
+    }
+  ]
+}

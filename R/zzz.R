@@ -60,3 +60,17 @@ export_raster <- function(dat, out, nm) {
   )
   unlink(here::here(out, glue::glue("{nm}.tif.aux.xml")))
 }
+
+
+# ------------------------------------------------------------------------------
+# Function to mask on area of interest
+mask_aoi <- function(dat) {
+  # Area of interest
+  aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE)
+  tmp <- dat
+  tmp[[1]][] <- NA
+  aoi$val_ras <- 1
+  aoi_mask <- stars::st_rasterize(aoi["val_ras"], template = tmp)
+  stars::st_dimensions(aoi_mask) <- stars::st_dimensions(dat)
+  dat * aoi_mask
+}

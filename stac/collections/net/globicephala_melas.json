@@ -1,0 +1,83 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "globicephala_melas",
+  "collection": "net",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "globicephala_melas": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/net/globicephala_melas_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./net/globicephala_melas.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-65.3325, 40.373],
+        [-57.7125, 42.363],
+        [-57.6825, 42.383],
+        [-57.2625, 43.463],
+        [-57.2625, 43.4893],
+        [-56.6425, 43.653],
+        [-56.6125, 43.673],
+        [-56.6025, 43.683],
+        [-56.0425, 44.523],
+        [-56.0425, 44.853],
+        [-57.1125, 45.763],
+        [-57.1425, 45.783],
+        [-57.1825, 45.803],
+        [-58.6425, 46.383],
+        [-58.8225, 46.453],
+        [-59.5225, 46.643],
+        [-61.4325, 46.643],
+        [-63.4725, 46.553],
+        [-63.4925, 46.543],
+        [-65.9305, 45.0703],
+        [-65.9525, 45.063],
+        [-67.2725, 44.203],
+        [-67.2726, 44.2028],
+        [-67.3025, 44.183],
+        [-67.3725, 44.113],
+        [-67.3725, 44.083],
+        [-67.3525, 42.323],
+        [-67.0625, 40.533],
+        [-66.9925, 40.493],
+        [-66.8925, 40.463],
+        [-66.6525, 40.463],
+        [-65.8388, 40.7679],
+        [-65.4025, 40.393],
+        [-65.3625, 40.373],
+        [-65.3325, 40.373]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

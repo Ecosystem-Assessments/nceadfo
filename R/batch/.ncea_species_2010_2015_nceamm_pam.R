@@ -5,27 +5,30 @@
 # #   "sf",
 # #   "stars",
 # #   "vroom",
-# #   "here"
+# #   "here",
+# #   "units",
+# #   "terra"
 # # ))
 # # devtools::install_github("ecosystem-assessments/motifcensus")
 # # devtools::install_github("ecosystem-assessments/rcea")
-# library(rcea)
-# library(dplyr)
-# library(tidyr)
-# library(stars)
+library(rcea)
+library(dplyr)
+library(tidyr)
+library(stars)
+library(terra)
 
 # Specify and create output folder
 per <- "2010_2015"
-output <- here::here("output", "ncea", per)
-# output <- "~/scratch/output/ncea/2010_2015/"
+output <- here::here("output_nceamm_pam", "ncea", per)
+# output <- "~/scratch/output_nceamm_pam/ncea/2010_2015/"
 rcea::chk_create(output)
 
 # Load files for analysis
-load("data/FormatData/biotic.RData")
-load("data/FormatData/species_sensitivity.RData")
-load("data/FormatData/metaweb.RData")
-load("data/FormatData/TrophicSensitivity.RData")
-load("data/FormatData/driversRaster.RData")
+load("data/FormatData_nceamm_pam/biotic.RData")
+load("data/FormatData_nceamm_pam/species_sensitivity.RData")
+load("data/FormatData_nceamm_pam/metaweb.RData")
+load("data/FormatData_nceamm_pam/TrophicSensitivity.RData")
+load("data/FormatData_nceamm_pam/driversRaster.RData")
 drivers <- drivers[[per]]
 
 # Network-scale cumulative effects assessment
@@ -42,5 +45,6 @@ rcea::ncea_species(
   trophic_sensitivity,
   w_d = 0.5,
   w_i = 0.25,
-  output = output
+  output = output,
+  output_format = "COG"
 )

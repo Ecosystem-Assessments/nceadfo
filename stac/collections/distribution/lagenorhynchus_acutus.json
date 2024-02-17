@@ -1,0 +1,83 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "lagenorhynchus_acutus",
+  "collection": "distribution",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "lagenorhynchus_acutus": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/distribution/lagenorhynchus_acutus_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./distribution/lagenorhynchus_acutus.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-63.7125, 40.873],
+        [-58.8525, 40.883],
+        [-57.8825, 40.923],
+        [-57.8525, 40.933],
+        [-57.7425, 40.973],
+        [-57.6925, 40.993],
+        [-57.6525, 41.023],
+        [-57.6125, 41.073],
+        [-57.4525, 41.773],
+        [-57.4525, 42.223],
+        [-57.5125, 44.293],
+        [-57.5425, 44.343],
+        [-57.6125, 44.453],
+        [-57.9325, 44.953],
+        [-58.7725, 46.263],
+        [-58.8125, 46.323],
+        [-58.8225, 46.333],
+        [-59.4625, 46.353],
+        [-59.5225, 46.353],
+        [-66.9325, 45.123],
+        [-67.0025, 45.093],
+        [-67.0425, 45.073],
+        [-67.0625, 45.033],
+        [-67.3025, 44.363],
+        [-67.5625, 43.403],
+        [-67.5625, 43.363],
+        [-67.3625, 42.393],
+        [-67.3425, 42.363],
+        [-67.1125, 42.093],
+        [-66.4025, 41.263],
+        [-66.2825, 41.123],
+        [-66.2225, 41.053],
+        [-66.2125, 41.043],
+        [-64.0225, 40.873],
+        [-63.7125, 40.873]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

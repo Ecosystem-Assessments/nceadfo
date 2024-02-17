@@ -1,0 +1,81 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "globicephala_melas",
+  "collection": "indirect",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "globicephala_melas": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/indirect/globicephala_melas_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./indirect/globicephala_melas.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-65.3325, 40.373],
+        [-57.7125, 42.363],
+        [-57.6825, 42.383],
+        [-57.4487, 43.383],
+        [-57.4125, 43.383],
+        [-57.3025, 43.433],
+        [-57.2725, 43.453],
+        [-57.2625, 43.463],
+        [-57.2625, 43.513],
+        [-57.3803, 43.6693],
+        [-57.2925, 44.033],
+        [-57.2925, 44.053],
+        [-57.5025, 44.383],
+        [-58.0425, 45.213],
+        [-58.0625, 45.243],
+        [-58.8125, 46.353],
+        [-58.8825, 46.453],
+        [-58.9425, 46.453],
+        [-59.4325, 46.403],
+        [-65.9225, 45.073],
+        [-65.9525, 45.063],
+        [-67.2725, 44.203],
+        [-67.2925, 44.163],
+        [-67.3125, 44.113],
+        [-67.3225, 44.083],
+        [-67.3425, 42.383],
+        [-67.3425, 42.373],
+        [-67.3025, 42.323],
+        [-66.2925, 41.153],
+        [-66.2825, 41.143],
+        [-65.4025, 40.393],
+        [-65.3625, 40.373],
+        [-65.3325, 40.373]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

@@ -38,3 +38,6 @@ figures2/*
 !figures/atlas/
 !figures/webinar/
 frontpage.svg
+
+# Google service key
+pof-stac-insileco-*.json

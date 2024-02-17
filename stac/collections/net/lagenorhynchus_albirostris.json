@@ -1,0 +1,92 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "lagenorhynchus_albirostris",
+  "collection": "net",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "lagenorhynchus_albirostris": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/net/lagenorhynchus_albirostris_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./net/lagenorhynchus_albirostris.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-58.5125, 41.493],
+        [-58.4025, 41.503],
+        [-58.2925, 41.563],
+        [-58.2225, 41.643],
+        [-58.2125, 41.723],
+        [-57.9925, 44.053],
+        [-57.9825, 44.173],
+        [-57.9825, 44.1924],
+        [-56.0425, 44.603],
+        [-56.0425, 44.973],
+        [-56.4225, 46.013],
+        [-56.4825, 46.093],
+        [-56.5525, 46.143],
+        [-56.5825, 46.163],
+        [-56.6225, 46.183],
+        [-56.6925, 46.213],
+        [-56.7625, 46.233],
+        [-56.8325, 46.243],
+        [-60.4225, 46.643],
+        [-61.0925, 46.643],
+        [-66.6877, 45.0161],
+        [-66.8525, 44.983],
+        [-66.9625, 44.933],
+        [-66.97, 44.922],
+        [-66.9925, 44.913],
+        [-67.0325, 44.893],
+        [-67.1725, 44.803],
+        [-67.2325, 44.743],
+        [-67.2725, 44.693],
+        [-67.3325, 44.613],
+        [-67.3625, 44.543],
+        [-67.3925, 44.463],
+        [-67.4225, 44.343],
+        [-67.4225, 44.273],
+        [-67.4125, 44.193],
+        [-67.0825, 41.943],
+        [-67.0025, 41.863],
+        [-66.9725, 41.843],
+        [-66.9025, 41.803],
+        [-66.8425, 41.803],
+        [-66.7925, 41.783],
+        [-64.1025, 41.533],
+        [-63.1425, 41.493],
+        [-58.5125, 41.493]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

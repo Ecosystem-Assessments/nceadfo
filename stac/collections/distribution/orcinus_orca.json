@@ -1,0 +1,85 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "orcinus_orca",
+  "collection": "distribution",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "orcinus_orca": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/distribution/orcinus_orca_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./distribution/orcinus_orca.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-63.2125, 41.553],
+        [-61.4825, 41.813],
+        [-61.3825, 41.833],
+        [-61.3125, 41.853],
+        [-61.1025, 41.933],
+        [-57.8325, 43.523],
+        [-57.7925, 43.543],
+        [-57.7125, 43.583],
+        [-57.6825, 43.603],
+        [-57.6025, 43.683],
+        [-57.5925, 43.733],
+        [-57.5825, 43.843],
+        [-57.5825, 43.943],
+        [-57.6025, 44.433],
+        [-57.6125, 44.453],
+        [-57.7725, 44.703],
+        [-58.0925, 45.203],
+        [-58.1225, 45.233],
+        [-58.1525, 45.253],
+        [-58.3225, 45.303],
+        [-58.5525, 45.333],
+        [-58.8025, 45.333],
+        [-66.9725, 45.183],
+        [-67.0425, 45.163],
+        [-67.0725, 45.113],
+        [-67.0925, 45.073],
+        [-67.3025, 44.403],
+        [-67.4925, 43.603],
+        [-67.4925, 43.593],
+        [-67.4725, 43.513],
+        [-67.0325, 42.273],
+        [-66.9925, 42.213],
+        [-66.9525, 42.173],
+        [-66.9225, 42.153],
+        [-66.8825, 42.133],
+        [-63.5825, 41.553],
+        [-63.2125, 41.553]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}

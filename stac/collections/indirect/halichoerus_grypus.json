@@ -1,0 +1,76 @@
+{
+  "stac_version": "1.0.0",
+  "type": "Feature",
+  "id": "halichoerus_grypus",
+  "collection": "indirect",
+  "properties": {
+    "datetime": "2024-02-17",
+    "start_datetime": null,
+    "end_datetime": null
+  },
+  "assets": {
+    "halichoerus_grypus": {
+      "href": "/vsigs_streaming/scotian-shelf-cogs-private/indirect/halichoerus_grypus_cog.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "role": "data"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "./indirect/halichoerus_grypus.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-66.3225, 41.243],
+        [-58.1225, 43.803],
+        [-58.0825, 43.843],
+        [-58.0425, 43.903],
+        [-57.6925, 44.613],
+        [-57.6925, 44.673],
+        [-57.6937, 44.6754],
+        [-57.5825, 44.713],
+        [-57.5825, 44.733],
+        [-57.6325, 44.843],
+        [-57.6725, 44.903],
+        [-57.7025, 44.943],
+        [-59.5725, 46.433],
+        [-59.5825, 46.433],
+        [-66.9625, 45.203],
+        [-67.0025, 45.193],
+        [-67.0825, 45.163],
+        [-67.1125, 45.143],
+        [-67.1425, 45.113],
+        [-67.1725, 45.063],
+        [-67.3625, 44.543],
+        [-67.3625, 42.233],
+        [-67.3325, 42.183],
+        [-66.5325, 41.243],
+        [-66.4825, 41.213],
+        [-66.3925, 41.213],
+        [-66.3272, 41.243],
+        [-66.3225, 41.243]
+      ]
+    ]
+  },
+  "bbox": [-67.7425, 40.043, -56.0425, 46.643]
+}
