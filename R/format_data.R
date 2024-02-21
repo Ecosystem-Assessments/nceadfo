@@ -1,27 +1,16 @@
 #' Script to format data in preparation for the assessment
 #'
-#' @param assessment name of assessment, one of "original", "nceamm_pam", "nceamm_wsdb", "nceamm_pam_wsdb" (temporary)
-#'
 #' @export
 
-format_data <- function(assessment = "original") {
-  if (assessment == "original") {
-    out <- here::here("data", "FormatData")
-  } else {
-    out <- here::here("data", glue::glue("FormatData_{assessment}"))
-  }
+format_data <- function() {
+  out <- here::here("data", "FormatData")
   rcea::chk_create(out)
   modules <- here::here("data", "cea_modules")
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Species list
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  if (assessment == "original") {
-    spn <- "species_list.csv"
-  } else {
-    spn <- "species_list_nceamm.csv"
-  }
-  sp <- vroom::vroom(here::here(modules, spn)) |>
+  sp <- vroom::vroom(here::here(modules, "species_list.csv")) |>
     dplyr::rename(species = scientific_name) |>
     dplyr::arrange(species) |>
     dplyr::mutate(file = glue::glue("{shortname}-{aphiaID}.tif"))
@@ -38,8 +27,7 @@ format_data <- function(assessment = "original") {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Biotic data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-  spn <- glue::glue("species_{assessment}") |> as.character()
-  biotic <- here::here(modules, spn, sp$file) |>
+  biotic <- here::here(modules, "species", sp$file) |>
     lapply(raster::raster)
 
   # Check if some distributions are empty

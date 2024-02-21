@@ -21,7 +21,7 @@ masterload <- function(path) {
 
   # Import file depending on extension
   ## GEOJSON
-  if (ext %in% c("geojson", "shp", "gpkg")) {
+  if (ext %in% c("geojson", "shp")) {
     dat <- sf::st_read(path, quiet = TRUE)
   }
 

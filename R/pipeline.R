@@ -26,16 +26,11 @@ pipeline <- function() {
   make_trophic_sensitivity()
   format_data()
 
-  # NCEAMM
-  format_data("nceamm_pam")
-  format_data("nceamm_wsdb")
-  format_data("nceamm_pam_wsdb")
-
 
   # Assessment
   cea()
-  # source("R/batch/.ncea_species_2010_2015.R") # Run on compute canada
-  # source("R/batch/.ncea_species_2016_2021.R") # Run on compute canada
+  # source("R/.ncea_species_2010_2015.R") # Run on compute canada
+  # source("R/.ncea_species_2016_2021.R") # Run on compute canada
 
   # Outputs
   out_footprint()
@@ -61,8 +56,4 @@ pipeline <- function() {
 
   # Data for eDrivers
   make_eDrivers()
-
-  # Create data for application
-  make_bucket()
-  make_stac()
 }
