@@ -6,91 +6,91 @@ make_biotic <- function() {
   # Load and prepare data DFO occurrence for analyses
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # ------------------------------
-  # Load data
-  ## Occurrences
+  # Load data 
+  ## Occurrences 
   datpath <- here::here("data", "data-integrated", "species_occurrences_nw_atlantic-18869625")
   occ <- vroom::vroom(
     here::here(
-      datpath,
-      "species_occurrences_nw_atlantic-18869625-occurrences.csv"
+      datpath, 
+      "species_occurrences_nw_atlantic-18869625-occurrences.csv"  
     )
   )
-
+  
   ## Stations
   stations <- vroom::vroom(
     here::here(
       datpath,
-      "species_occurrences_nw_atlantic-18869625-stations.csv"
+      "species_occurrences_nw_atlantic-18869625-stations.csv"  
     )
   ) |>
-    sf::st_as_sf(coords = c("longitude", "latitude"), crs = 4326) |>
-    dplyr::mutate(
-      DEPTH = scale(-DEPTH),
-      SURF_TEMP = scale(SURF_TEMP),
-      BOTT_TEMP = scale(BOTT_TEMP),
-      BOTT_SAL = scale(BOTT_SAL)
-    )
-
-  ## Species list
+  sf::st_as_sf(coords = c("longitude","latitude"), crs = 4326) |>
+  dplyr::mutate(
+    DEPTH = scale(-DEPTH),
+    SURF_TEMP = scale(SURF_TEMP),
+    BOTT_TEMP = scale(BOTT_TEMP),
+    BOTT_SAL = scale(BOTT_SAL)
+  )
+  
+  ## Species list 
   datpath <- here::here("data", "data-integrated", "species_list_nw_atlantic-893b37e8")
   species_list <- vroom::vroom(here::here(datpath, "species_list_nw_atlantic-893b37e8.csv"))
-
+  
   ## Abiotic data
-  abiotic <- here::here("data", "data-abiotic") |>
-    dir(pattern = ".tif$", full.names = TRUE) |>
-    lapply(raster::raster) |>
-    lapply(raster::scale) |>
-    lapply(stars::st_as_stars)
-
+  abiotic <- here::here("data","data-abiotic") |>
+             dir(pattern = ".tif$", full.names = TRUE) |>
+             lapply(raster::raster) |>
+             lapply(raster::scale) |>
+             lapply(stars::st_as_stars)
+  
   # ------------------------------------
   # Extract abiotic data at all stations
   abioticpt <- lapply(abiotic, stars::st_extract, at = stations) |>
-    lapply(sf::st_drop_geometry) |>
-    dplyr::bind_cols()
+               lapply(sf::st_drop_geometry) |>
+               dplyr::bind_cols()
   stations <- cbind(stations, abioticpt)
   rm(abioticpt)
-
+  
   # ------------------------------------
   # Divide by species
   species <- dplyr::group_by(occ, aphiaID) |>
-    dplyr::group_split() |>
-    lapply(
-      function(x) {
-        dplyr::left_join(stations, x, by = c("MISSION", "SETNO")) |>
-          dplyr::mutate(presence = ifelse(is.na(aphiaID), 0, 1))
-      }
-    )
-
-  # ------------------------------------
-  # Species list in data
+             dplyr::group_split() |>
+             lapply(
+               function(x) {
+                 dplyr::left_join(stations, x, by = c("MISSION", "SETNO")) |>
+                 dplyr::mutate(presence = ifelse(is.na(aphiaID), 0, 1))
+               }
+             )
+  
+  # ------------------------------------  
+  # Species list in data 
   sp <- lapply(species, function(x) {
     unique(x$aphiaID) |>
-      na.omit()
+    na.omit()
   }) |>
-    unlist()
+  unlist()
   freq <- lapply(species, function(x) table(x$presence)) |>
-    dplyr::bind_rows()
-  colnames(freq) <- c("absences", "presences")
-  freq <- freq[-nrow(freq), ]
-
+          dplyr::bind_rows()
+  colnames(freq) <- c("absences","presences")
+  freq <- freq[-nrow(freq),]
+  
   sp <- data.frame(aphiaID = sp) |>
-    cbind(freq) |>
-    dplyr::left_join(species_list[, c("aphiaID", "SPEC")], by = "aphiaID") |>
-    dplyr::mutate(
-      shortname = tolower(
-        glue::glue("{gsub(' ', '_', SPEC)}-{aphiaID}")
-      )
-    )
+        cbind(freq) |>
+        dplyr::left_join(species_list[, c("aphiaID","SPEC")], by = "aphiaID") |>
+        dplyr::mutate(
+          shortname = tolower(
+            glue::glue("{gsub(' ', '_', SPEC)}-{aphiaID}")
+          )
+        )
   nSp <- nrow(sp)
-
-
+  
+  
   # -----------------------------------------
-  # Environtal covariates to use for modeling
+  # Environtal covariates to use for modeling 
   envVar <- c(
-    "bathymetry", # "DEPTH",
-    "surface_temperature", # "SURF_TEMP",
-    "bottom_temperature", # "BOTT_TEMP",
-    "bottom_salinity", # "BOTT_SAL",
+    "bathymetry",#"DEPTH", 
+    "surface_temperature",#"SURF_TEMP",
+    "bottom_temperature",#"BOTT_TEMP",
+    "bottom_salinity",#"BOTT_SAL",
     "surface_salinity",
     "bottom_chlorophyll",
     "bottom_iron",
@@ -111,105 +111,102 @@ make_biotic <- function() {
     "surface_primary.productivity",
     "surface_silicate"
   )
-
+  
   # ------------------------------------
-  # Environmental data as data.frame
-  nm <- lapply(abiotic, names) |>
-    unlist() |>
-    unname()
+  # Environmental data as data.frame 
+  nm <- lapply(abiotic, names) |> unlist() |> unname()
   abiotic <- abiotic[nm %in% envVar]
   envDat <- lapply(
     abiotic,
     function(x) {
       as.data.frame(x) |>
-        dplyr::select(-x, -y)
+      dplyr::select(-x,-y)
     }
   ) |>
-    dplyr::bind_cols()
-
+  dplyr::bind_cols()
+  
   # ------------------------------------
-  # Create template for rasters
+  # Create template for rasters 
   env <- as(abiotic[[1]], "Raster")
-
+  
   # ------------------------------------
   # Smoothing objects & parameters
   grd <- raster::raster("data/grid/grid.tif")
   resolution <- 1000
   bandwidth <- 5000
-
+  
   # ------------------------------------
-  # Binary parameters
+  # Binary parameters 
   th <- 0.5
-
+  
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Smoothing function for predictions
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   smooth_predict <- function(dat, resolution, bandwidth, grd) {
-    # Prepare data
-    ## Technically, a sf object could be provided to the btb_smooth function, but there
-    ## is a problem with the epsg checks when its length it greater than 4 characters.
+    # Prepare data 
+    ## Technically, a sf object could be provided to the btb_smooth function, but there 
+    ## is a problem with the epsg checks when its length it greater than 4 characters. 
     ## See Issue #5 https://github.com/InseeFr/btb/issues/5
-    dat <- data.frame(dat) |>
-      na.omit() |>
-      sf::st_as_sf(coords = c("x", "y"), crs = 4326) |>
-      sf::st_transform(crs = 32198)
+    dat <- data.frame(dat) |> na.omit() |>
+           sf::st_as_sf(coords = c("x","y"), crs = 4326) |>
+           sf::st_transform(crs = 32198) 
     dat <- cbind(sf::st_coordinates(dat), dat) |>
-      sf::st_drop_geometry() |>
-      dplyr::rename(x = X, y = Y)
-
+           sf::st_drop_geometry() |>
+           dplyr::rename(x = X, y = Y)
+  
     # Smoothing
     suppressMessages({
       kernel <- btb::btb_smooth(
-        pts = dat,
-        sEPSG = "32198",
-        iCellSize = resolution,
-        iBandwidth = bandwidth
-      )
-    })
-    kernel[, 3] <- ifelse(kernel[, 3, drop = T] > 1, 1, kernel[, 3, drop = T])
+                  pts = dat,
+                  sEPSG = "32198",
+                  iCellSize = resolution,
+                  iBandwidth = bandwidth
+                )
+    })    
+    kernel[,3] <- ifelse(kernel[,3,drop=T] > 1, 1, kernel[,3,drop=T])
     kernel <- sf::st_transform(kernel, crs = 4326)
-
+  
     # Rasterize and return
     # WARNING: I am having an issue with transforming the outputs of fasterize to a stars object
-    #          I therefore export raster objects directly, then export them to disk using the
+    #          I therefore export raster objects directly, then export them to disk using the 
     #          raster functions instead.
     #          Long term this should be amended, but I already spent too much time on this.
     fasterize::fasterize(
       sf = kernel,
-      raster = grd,
-      field = colnames(kernel)[3],
+      raster = grd, 
+      field = colnames(kernel)[3], 
       fun = "max"
-    )
+    ) 
   }
-
+  
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Random forest - regression
   #
-  # Iterate over species
-  #
+  # Iterate over species 
+  # 
   # Steps:
-  # 1. Regression model
+  # 1. Regression model 
   # 2. Classification model NOTE: removed, but kept in code as comment
   # 3. Predict models
   # 4. Smooth predictions
   # ------------------------------------------------------------------------------
-  # Outputs
+  # Outputs 
   out <- list()
-  out$out <- here::here("data", "data-biotic", "marine_species")
-  out$regression_model <- here::here(out$out, "random_forest_regression_rsq")
+  out$out = here::here("data","data-biotic","marine_species")
+  out$regression_model = here::here(out$out,"random_forest_regression_rsq")
   # out$classification_model = here::here(out$out,"random_forest_classification")
-  out$regression <- here::here(out$out, "random_forest_regression")
+  out$regression = here::here(out$out, "random_forest_regression")
   # out$classification = here::here(out$out, "random_forest_classification")
-  out$regression_smooth <- here::here(out$out, "random_forest_regression_smoothing")
+  out$regression_smooth = here::here(out$out, "random_forest_regression_smoothing")
   # out$classification_smooth = here::here(out$out, "random_forest_classification_smoothing")
-  out$regression_binary <- here::here(out$out, "random_forest_regression_binary")
+  out$regression_binary = here::here(out$out, "random_forest_regression_binary")
   lapply(out, chk_create)
   write.csv(sp, here::here(out$out, "species_list.csv"), row.names = FALSE)
-
-  # Functions
+  
+  # Functions 
   export_rdata <- function(dat, out, nm) {
     save(
-      dat,
+      dat, 
       file = here::here(out, glue::glue("{nm}.RData"))
     )
   }
@@ -229,38 +226,38 @@ make_biotic <- function() {
     )
     unlink(here::here(out, glue::glue("{nm}.tif.aux.xml")))
   }
-
+  
   # Modeling
-  for (i in 1:nSp) {
-    cat(i, " of ", nSp, "\r")
+  for(i in 1:nSp) {
+    cat(i, ' of ', nSp, '\r')
     nmSp <- sp$shortname[i]
-
+  
     suppressWarnings({
-      # ----------------
-      reg <- randomForest::randomForest(
-        formula = species[[i]]$presence ~ .,
-        data = species[[i]][, envVar, drop = TRUE],
-        importance = TRUE,
-        keep.forest = TRUE,
-        na.action = na.omit,
-        ntree = 500,
-        nodesize = 5
-      )
-      export_rdata(dplyr::last(reg$rsq), out$regression_model, nmSp)
-
-      # # ----------------
-      # classif <- randomForest::randomForest(
-      #   formula = as.factor(species[[i]]$presence) ~ .,
-      #   data = species[[i]][, envVar, drop = TRUE],
-      #   importance = TRUE,
-      #   keep.forest = TRUE,
-      #   na.action = na.omit,
-      #   ntree = 500,
-      #   nodesize = 5
-      # )
-      # export_rdata(classif, out$classification_model, nmSp)
+    # ----------------
+    reg <- randomForest::randomForest(
+      formula = species[[i]]$presence ~ .,
+      data = species[[i]][, envVar, drop = TRUE],
+      importance = TRUE,
+      keep.forest = TRUE,
+      na.action = na.omit,
+      ntree = 500,
+      nodesize = 5
+    )
+    export_rdata(dplyr::last(reg$rsq), out$regression_model, nmSp) 
+  
+    # # ----------------
+    # classif <- randomForest::randomForest(
+    #   formula = as.factor(species[[i]]$presence) ~ .,
+    #   data = species[[i]][, envVar, drop = TRUE],
+    #   importance = TRUE,
+    #   keep.forest = TRUE,
+    #   na.action = na.omit,
+    #   ntree = 500,
+    #   nodesize = 5
+    # )
+    # export_rdata(classif, out$classification_model, nmSp)
     })
-
+  
     # ----------------
     pred_reg <- stats::predict(reg, envDat)
     pred_reg <- raster::raster(
@@ -269,10 +266,10 @@ make_biotic <- function() {
       ext = raster::extent(env),
       vals = round(pred_reg, 6)
     ) |>
-      stars::st_as_stars() |>
-      setNames(sp$shortname[i])
+    stars::st_as_stars() |>
+    setNames(sp$shortname[i])
     export_stars(pred_reg, out$regression, nmSp)
-
+  
     # # ----------------
     # pred_classif <- stats::predict(classif, envDat)
     # pred_classif <- raster::raster(
@@ -284,65 +281,65 @@ make_biotic <- function() {
     # stars::st_as_stars() |>
     # setNames(sp$shortname[i])
     # export_stars(pred_classif, out$classification, nmSp)
-
+  
     # ----------------
     smooth_reg <- smooth_predict(
-      dat = pred_reg,
-      resolution = resolution,
-      bandwidth = bandwidth,
+      dat = pred_reg, 
+      resolution = resolution, 
+      bandwidth = bandwidth, 
       grd = grd
     )
     export_raster(smooth_reg, out$regression_smooth, nmSp)
-
+  
     # # ----------------
     # smooth_classif <- smooth_predict(
-    #   dat = pred_classif,
-    #   resolution = resolution,
-    #   bandwidth = bandwidth,
+    #   dat = pred_classif, 
+    #   resolution = resolution, 
+    #   bandwidth = bandwidth, 
     #   grd = grd
     # )
     # export_raster(smooth_classif, out$classification_smooth, nmSp)
-
+  
     # ----------------
     binary_reg <- smooth_reg
     raster::values(binary_reg) <- ifelse(raster::values(binary_reg) > th, 1, 0)
     export_raster(binary_reg, out$regression_binary, nmSp)
   }
-
+  
   # ----------------
-  # Mask all data
+  # Mask all data 
   aoi <- sf::st_read("data/aoi/aoi.gpkg")
   mask <- function(fold) {
     dat <- dir(fold, full.names = TRUE) |>
-      lapply(stars::read_stars)
-    nm <- lapply(dat, names) |> unlist()
-    for (i in 1:length(dat)) {
+           lapply(stars::read_stars) 
+    nm <- lapply(dat, names) |> unlist()    
+    for(i in 1:length(dat)) {
       dat[[i]] <- dat[[i]][aoi]
       names(dat[[i]]) <- nm[i]
     }
-
+  
     lapply(dat, function(x) {
-      stars::write_stars(
-        x,
-        dsn = here::here(fold, names(x)),
-        quiet = TRUE,
-        overwrite = TRUE
-      )
-    })
+     stars::write_stars(
+       x,
+       dsn = here::here(fold, names(x)),
+       quiet = TRUE,
+       overwrite = TRUE
+     )
+    })    
   }
   mask(out$regression)
   mask(out$regression_smooth)
   mask(out$regression_binary)
-
-  # Get model performance for marine species
+  
+  # Get model performance for marine species  
   sp <- read.csv(here::here(out$out, "species_list.csv"))
-  mod <- here::here("data", "data-biotic", "marine_species", "random_forest_regression_rsq") |>
-    dir(full.names = TRUE)
+  mod <- here::here("data","data-biotic","marine_species","random_forest_regression_rsq") |>
+         dir(full.names = TRUE)
   rsq <- data.frame(
     shortname = tools::file_path_sans_ext(basename(mod)),
     rsq = numeric(length(mod))
   )
-  for (i in 1:nrow(rsq)) {
+  for(i in 1:nrow(rsq)) {
     load(mod[i])
     rsq$rsq[i] <- dat
   }
@@ -352,30 +349,30 @@ make_biotic <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load and prepare marine mammals data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  out <- here::here("data", "data-biotic", "marine_mammals")
+  out <- here::here("data","data-biotic","marine_mammals")
   chk_create(out)
   mm <- importdat("3d1bfb8e")
   mmList <- importdat("7c150fc3")[[1]] |>
-    dplyr::select("ScientificName", "aphiaID")
+            dplyr::select("ScientificName","aphiaID")
   aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE)
   grd <- stars::read_stars("data/grid/grid.tif", quiet = TRUE)
   mm <- lapply(mm, stars::st_warp, dest = grd) |>
-    lapply(function(x) x[aoi]) |> # Mask data
-    lapply(function(x) x / max(x[[1]], na.rm = TRUE)) #|>
-  # lapply(function(x) x / x) #binary, keep previous lines in case I want continuous data
+        lapply(function(x) x[aoi]) |> # Mask data 
+        lapply(function(x) x / max(x[[1]], na.rm = TRUE)) #|> 
+        # lapply(function(x) x / x) #binary, keep previous lines in case I want continuous data
 
   # Remove empty species
   uid <- lapply(mm, function(x) max(x[[1]], na.rm = TRUE)) |> unlist()
   uid <- which(uid == 1)
   mm <- mm[uid]
-
+  
   # Names
   nm <- lapply(mm, names) |>
-    unlist() |>
-    unname() |>
-    tools::file_path_sans_ext() |>
-    stringr::str_replace("marine_mammals_wwf_romm.3d1bfb8e.", "")
-  uid <- which(nm == "leatherback_turtle")
+        unlist() |>
+        unname() |>
+        tools::file_path_sans_ext() |>
+        stringr::str_replace("marine_mammals_wwf_romm.3d1bfb8e.","")
+  uid <- which(nm == "leatherback_turtle") 
   nm <- nm[-uid]
   mm[[uid]] <- NULL
   nm <- data.frame(common = nm, species = "")
@@ -390,13 +387,13 @@ make_biotic <- function() {
   nm <- dplyr::left_join(nm, mmList, by = c("species" = "ScientificName"))
   nm$filename <- tolower(stringr::str_replace(nm$species, " ", "_"))
   nm$filename <- glue::glue("{nm$filename}-{nm$aphiaID}.tif")
-  for (i in 1:length(mm)) names(mm[[i]]) <- nm$filename[i]
+  for(i in 1:length(mm)) names(mm[[i]]) <- nm$filename[i]
   write.csv(nm, here::here(out, "mm_list.csv"), row.names = FALSE)
-
-  # Export
-  out2 <- here::here(out, "continuous")
+  
+  # Export 
+  out2 <- here::here(out,"continuous")
   chk_create(out2)
-  for (i in 1:length(mm)) {
+  for(i in 1:length(mm)) {
     stars::write_stars(
       mm[[i]],
       dsn = here::here(out2, nm$filename[i]),
@@ -404,12 +401,12 @@ make_biotic <- function() {
       quiet = TRUE
     )
   }
-
-  # Binary
-  out2 <- here::here(out, "binary")
+  
+  # Binary 
+  out2 <- here::here(out,"binary")
   chk_create(out2)
-  dat <- lapply(mm, function(x) x / x)
-  for (i in 1:length(dat)) {
+  dat <- lapply(mm, function(x) x / x) 
+  for(i in 1:length(dat)) {
     stars::write_stars(
       dat[[i]],
       dsn = here::here(out2, nm$filename[i]),
@@ -422,15 +419,15 @@ make_biotic <- function() {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Load and prepare seabird data
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  out <- list()
-  out$out <- here::here("data", "data-biotic", "sea_birds")
+  out <- list() 
+  out$out <- here::here("data","data-biotic","sea_birds")
   out$cont <- here::here(out$out, "continuous")
-  out$bin <- here::here(out$out, "binary")
+  out$bin <- here::here(out$out,"binary")
   lapply(out, chk_create)
   bird <- importdat("08e94a14")
 
-  # Format and filter data
-  remove <- c("UNDU", "WFSP", "UNGU", "UNSH", "UNLA", "HARD", "PUSA", "UNKI", "USHO", "MURA")
+  # Format and filter data 
+  remove <- c("UNDU","WFSP","UNGU","UNSH","UNLA","HARD","PUSA","UNKI","USHO","MURA")
   modify <- list(
     c(from = "COMU", to = "UNMU"),
     c(from = "TBMU", to = "UNMU"),
@@ -468,388 +465,158 @@ make_biotic <- function() {
     c(from = "BOGU", to = "UNLA"),
     c(from = "BHGU", to = "UNLA")
   ) |>
-    dplyr::bind_rows()
+  dplyr::bind_rows()
   taxa_remove <- function(dat) dat <- dat[!dat$Alpha %in% remove, ]
   taxa_combine <- function(dat) {
-    for (i in 1:nrow(modify)) {
+    for(i in 1:nrow(modify)) {
       uid <- dat$Alpha %in% modify$from[i]
       dat$Alpha[uid] <- modify$to[i]
     }
     dat
   }
 
-  ## Species list
+  ## Species list 
   latin <- bird[["sea_birds_ecsas-08e94a14-vessel_sightings.geojson"]] |>
-    sf::st_drop_geometry() |>
-    dplyr::select(Alpha, Latin) |>
-    dplyr::distinct() |>
-    dplyr::arrange(Latin) |>
-    dplyr::mutate(
-      Latin = stringr::str_replace(Latin, "Stercorarius Jaegers", "Stercorarius"),
-      Latin = stringr::str_replace(Latin, "Ardenna griseus", "Puffinus griseus"),
-      Latin = stringr::str_replace(Latin, "Ardenna gravis", "Puffinus gravis")
-    ) |>
-    eaMethods::get_aphia(field = "Latin")
+           sf::st_drop_geometry() |>
+           dplyr::select(Alpha, Latin) |>
+           dplyr::distinct() |>
+           dplyr::arrange(Latin) |>
+           dplyr::mutate(
+             Latin = stringr::str_replace(Latin, "Stercorarius Jaegers","Stercorarius"),
+             Latin = stringr::str_replace(Latin, "Ardenna griseus", "Puffinus griseus"),
+             Latin = stringr::str_replace(Latin, "Ardenna gravis", "Puffinus gravis")
+           ) |>
+           eaMethods::get_aphia(field = "Latin")
   latin$aphiaID[latin$Latin == "Phalaropus"] <- 137049
-
+  
   # Add shortname for file and object names
   latin$shortname <- tolower(latin$Latin)
-  latin$shortname <- gsub(" ", "_", latin$shortname)
+  latin$shortname <- gsub(" ","_",latin$shortname)
   latin$shortname <- glue::glue("{latin$shortname}-{latin$aphiaID}")
-
+           
   ## Vessel-based surveys
   vw <- bird[["sea_birds_ecsas-08e94a14-vessel_watches.geojson"]] |>
-    dplyr::filter(CalcDurMin > 0 & CalcDurMin < 25) |>
-    dplyr::filter(!is.na(WatchLenKm))
+        dplyr::filter(CalcDurMin > 0 & CalcDurMin < 25) |>
+        dplyr::filter(!is.na(WatchLenKm)) 
 
   vs <- bird[["sea_birds_ecsas-08e94a14-vessel_sightings.geojson"]] |>
-    dplyr::filter(WatchID %in% vw$WatchID) |>
-    dplyr::select(Alpha)
+        dplyr::filter(WatchID %in% vw$WatchID) |>
+        dplyr::select(Alpha)
 
   ## Aerial-based surveys
   ars <- bird[["sea_birds_ecsas-08e94a14-aerial_sightings.geojson"]] |>
-    dplyr::select(Alpha)
-
+         dplyr::select(Alpha)
+         
   ## Combine datasets, group by species and select only those with more than 50 obs
   bird <- dplyr::bind_rows(vs, ars) |>
-    taxa_remove() |> # The order is important because I drop Larus than rename some Larus
-    taxa_combine() |>
-    dplyr::left_join(latin, by = "Alpha") |>
-    dplyr::group_by(Latin) |>
-    dplyr::filter(dplyr::n() >= 50) |>
-    dplyr::group_split()
-
-  ## Species names
+          taxa_remove() |> # The order is important because I drop Larus than rename some Larus
+          taxa_combine() |>
+          dplyr::left_join(latin, by = "Alpha") |>
+          dplyr::group_by(Latin) |>
+          dplyr::filter(dplyr::n() >= 50) |>
+          dplyr::group_split()
+          
+  ## Species names 
   bird_names <- data.frame(
     species = unlist(lapply(bird, function(x) unique(x$Latin))),
     observations = unlist(lapply(bird, function(x) nrow(x)))
   ) |>
-    dplyr::left_join(latin, by = c("species" = "Latin"))
+  dplyr::left_join(latin, by = c("species" = "Latin"))
   write.csv(bird_names, here::here(out$out, "bird_list.csv"), row.names = FALSE)
-
+  
   # Grid for analysis
   aoi <- sf::st_read("data/aoi/aoi.gpkg", quiet = TRUE) |>
-    dplyr::select(geom)
+         dplyr::select(geom)
   cellsize <- 0.05
   grd_bird <- stars::st_rasterize(aoi, dx = cellsize, dy = cellsize)
-
+  
   # Export number of points per grid cell and transform to raster
   sightings <- list()
-  for (i in 1:length(bird)) {
+  for(i in 1:length(bird)) {
     temp <- grd_bird
     dat <- sf::st_intersects(grd_bird, bird[[i]]) |>
-      lapply(length) |>
-      unlist()
+           lapply(length) |>
+           unlist()
     temp$sight <- dat
     temp <- temp["sight"]
     sightings[[i]] <- temp[aoi]
   }
-
+  
   # Add species names
-  for (i in 1:length(sightings)) names(sightings[[i]]) <- bird_names$shortname[i]
+  for(i in 1:length(sightings)) names(sightings[[i]]) <- bird_names$shortname[i]
 
   # Smooth and binary observations
   grd <- raster::raster("data/grid/grid.tif")
   resolution <- 1000
   bandwidth <- 20000
   th <- 0
-  for (i in 1:length(sightings)) {
+  for(i in 1:length(sightings)) {
     # Smooth
     smooth_sight <- smooth_predict(
-      dat = sightings[[i]],
-      resolution = resolution,
-      bandwidth = bandwidth,
+      dat = sightings[[i]], 
+      resolution = resolution, 
+      bandwidth = bandwidth, 
       grd = grd
     )
     smooth_sight <- log(smooth_sight + 1)
     smooth_sight <- smooth_sight / raster::maxValue(smooth_sight)
-    export_raster(smooth_sight, out$cont, bird_names$shortname[i])
-
+    export_raster(smooth_sight, out$cont, bird_names$shortname[i])    
+    
     # Binary
     binary_sight <- smooth_sight
     raster::values(binary_sight) <- ifelse(raster::values(binary_sight) > th, 1, 0)
     export_raster(binary_sight, out$bin, bird_names$shortname[i])
   }
-
-
+  
+  
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Export all species considered in the assessement in cea modules
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  sp <- here::here("data", "data-biotic", "marine_species", "random_forest_regression_binary")
-  mm <- here::here("data", "data-biotic", "marine_mammals", "binary")
-  bd <- here::here("data", "data-biotic", "sea_birds", "binary")
-  out <- here::here("data", "cea_modules", "species")
+  sp <- here::here("data","data-biotic","marine_species","random_forest_regression_binary")
+  mm <- here::here("data","data-biotic","marine_mammals","binary")
+  bd <- here::here("data","data-biotic","sea_birds","binary")
+  out <- here::here("data","cea_modules","species")
   chk_create(out)
   file.copy(dir(sp, full.names = TRUE), out, overwrite = TRUE)
   file.copy(dir(mm, full.names = TRUE), out, overwrite = TRUE)
   file.copy(dir(bd, full.names = TRUE), out, overwrite = TRUE)
 
-  # Species list
+  # Species list 
   sp <- dir(out) |>
-    tools::file_path_sans_ext() |>
-    stringr::str_split("-") |>
-    lapply(function(x) data.frame(shortname = x[1], aphiaID = x[2])) |>
-    dplyr::bind_rows() |>
-    dplyr::mutate(scientific_name = gsub("_", " ", shortname)) |>
-    dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
-    dplyr::mutate(aphiaID = as.numeric(aphiaID)) |>
-    dplyr::left_join(rsq, by = "shortname")
+         tools::file_path_sans_ext() |>
+         stringr::str_split("-") |>
+         lapply(function(x) data.frame(shortname = x[1], aphiaID = x[2])) |>
+         dplyr::bind_rows() |>
+         dplyr::mutate(scientific_name = gsub("_", " ", shortname)) |>
+         dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
+         dplyr::mutate(aphiaID = as.numeric(aphiaID)) |>
+         dplyr::left_join(rsq, by = "shortname")
 
   # Add taxonomic groups (for figures later on)
-  taxo <- importdat(c("893b37e8", "7c150fc3"))
-  taxo <- dplyr::bind_rows(taxo[c(1, 3)]) |>
-    dplyr::select(aphiaID, Phylum, Class) |>
-    dplyr::distinct()
+  taxo <- importdat(c("893b37e8","7c150fc3"))
+  taxo <- dplyr::bind_rows(taxo[c(1,3)]) |>
+          dplyr::select(aphiaID, Phylum, Class) |>
+          dplyr::distinct()
   sp <- dplyr::left_join(sp, taxo, by = "aphiaID") |>
-    dplyr::mutate(
-      gr1 = ifelse(Phylum == "Chordata", "Vertebrates", "Invertebrates"),
-      gr2 = NA,
-      gr3 = "X"
-    )
-
-  uid <- sp$Phylum %in% c("Annelida", "Brachiopoda", "Bryozoa", "Ctenophora", "Porifera", "Ochrophyta")
-  sp$gr2[uid] <- "Others"
+         dplyr::mutate(
+           gr1 = ifelse(Phylum == 'Chordata', 'Vertebrates', 'Invertebrates'),
+           gr2 = NA,
+           gr3 = "X"
+         )
+         
+  uid <- sp$Phylum %in% c('Annelida','Brachiopoda','Bryozoa','Ctenophora','Porifera','Ochrophyta')
+  sp$gr2[uid] <- 'Others'
   sp$gr2[!uid] <- sp$Phylum[!uid]
-  sp$gr2[sp$Phylum == "Chordata"] <- sp$Class[sp$Phylum == "Chordata"]
-  sp$gr2[sp$Class %in% c("Ascidiacea", "Myxini", "Elasmobranchii", "Petromyzonti")] <- "Others2"
-  sp$gr3[sp$Class == "Asteroidea"] <- "Asteroidea"
-  sp$gr3[sp$Class == "Holothuroidea"] <- "Holothuroidea"
-  sp$gr3[sp$Class == "Ophiuroidea"] <- "Ophiuroidea"
-  sp$gr3[sp$Class == "Bivalvia"] <- "Bivalvia"
-  sp$gr3[sp$Class == "Cephalopoda"] <- "Cephalopoda"
-  sp$gr3[sp$Class == "Gastropoda"] <- "Gastropoda"
-  sp$gr3[sp$Class == "Echinoidea"] <- "Echinoidea"
+  sp$gr2[sp$Phylum == 'Chordata'] <- sp$Class[sp$Phylum == 'Chordata']
+  sp$gr2[sp$Class %in% c('Ascidiacea','Myxini','Elasmobranchii','Petromyzonti')] <- 'Others2'
+  sp$gr3[sp$Class == 'Asteroidea'] <- 'Asteroidea'
+  sp$gr3[sp$Class == 'Holothuroidea'] <- 'Holothuroidea'
+  sp$gr3[sp$Class == 'Ophiuroidea'] <- 'Ophiuroidea'
+  sp$gr3[sp$Class == 'Bivalvia'] <- 'Bivalvia'
+  sp$gr3[sp$Class == 'Cephalopoda'] <- 'Cephalopoda'
+  sp$gr3[sp$Class == 'Gastropoda'] <- 'Gastropoda'
+  sp$gr3[sp$Class == 'Echinoidea'] <- 'Echinoidea'
 
   dplyr::select(sp, -Phylum, -Class) |>
-    write.csv(file = here::here("data", "cea_modules", "species_list.csv"), row.names = FALSE)
-
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # UPDATE 2024
-  # -----------
-  # NCEAMM project
-  # Adding marine mammals with acoustic and sightings data from DFO
-  #
-  #
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Outputs
-  out <- list()
-  out$out <- here::here("data", "data-biotic")
-  out$pam <- here::here(out$out, "marine_mammals_pam")
-  out$pam_bin <- here::here(out$pam, "binary")
-  out$pam_cnt <- here::here(out$pam, "continuous")
-  out$wsdb <- here::here(out$out, "marine_mammals_wsdb")
-  out$wsdb_bin <- here::here(out$wsdb, "binary")
-  out$wsdb_cnt <- here::here(out$wsdb, "continuous")
-  out$pam_wsdb <- here::here(out$out, "marine_mammals_pam_wsdb", "binary")
-  lapply(out, chk_create)
-
-  # Thresholding function
-  thresh <- function(dat, threshold = .85) {
-    # Identify quantile
-    quant <- quantile(
-      dat[[1]],
-      probs = threshold,
-      na.rm = TRUE,
-      type = 6
-    )
-
-    # Transform data
-    dat[[1]][dat[[1]] < quant] <- NA
-    dat[[1]][dat[[1]] >= quant] <- 1
-
-    # Return
-    dat
-  }
-
-  # Export function
-  export_ras <- function(dat, out) {
-    for (i in seq_len(length(dat))) {
-      masterwrite(
-        dat[[i]],
-        here::here(out, names(dat[[i]]))
-      )
-    }
-  }
-
-  # -----------------------------------------------------------------------------
-  # PAM
-  # --------------------
-  input <- here::here("data", "data-integrated", "marine_mammals_pam_dfo-c54fc945") |>
-    dir(pattern = ".tif", full.names = TRUE)
-
-  # Continuous data, simply copy paste the integrated data
-  for (i in input) {
-    nm <- gsub("marine_mammals_pam_dfo-c54fc945-", "", basename(i))
-    file.copy(
-      i,
-      here::here(out$pam_cnt, nm),
-      overwrite = TRUE
-    )
-  }
-
-  # Import data & apply threshold
-  pam <- lapply(input, masterload) |>
-    lapply(thresh, threshold = .85)
-  nm <- lapply(pam, names) |>
-    stringr::str_replace("marine_mammals_pam_dfo-c54fc945-", "") |>
-    tools::file_path_sans_ext()
-  for (i in seq_len(length(pam))) names(pam[[i]]) <- nm[i]
-  names(pam) <- nm
-
-  # Export
-  export_ras(pam, out$pam_bin)
-
-  # -----------------------------------------------------------------------------
-  # WSDB
-  # --------------------
-  input <- here::here("data", "data-integrated", "marine_mammals_wsdb_dfo-30aa4bda") |>
-    dir(pattern = ".tif", full.names = TRUE)
-
-  # Continuous data, simply copy paste the integrated data
-  for (i in input) {
-    nm <- gsub("marine_mammals_wsdb_dfo-30aa4bda-", "", basename(i))
-    file.copy(
-      i,
-      here::here(out$wsdb_cnt, nm),
-      overwrite = TRUE
-    )
-  }
-
-  # Import data & apply threshold
-  wsdb <- lapply(input, masterload) |>
-    lapply(thresh, threshold = 0.85)
-  nm <- lapply(wsdb, names) |>
-    stringr::str_replace("marine_mammals_wsdb_dfo-30aa4bda-", "") |>
-    tools::file_path_sans_ext()
-  for (i in seq_len(length(wsdb))) names(wsdb[[i]]) <- nm[i]
-  names(wsdb) <- nm
-
-  # Export
-  export_ras(wsdb, out$wsdb_bin)
-
-  # -----------------------------------------------------------------------------
-  # PAM + WSDB
-  # --------------------
-  names_pam <- names(pam)
-  names_wsdb <- names(wsdb)
-
-  # Data available only in wsdb
-  # pam_only <- pam[names_pam[!names_pam %in% names_wsdb]]
-  wsdb_only <- wsdb[names_wsdb[!names_wsdb %in% names_pam]]
-
-  # Data available in pam & wsdb
-  uid <- names_pam[names_pam %in% names_wsdb]
-  pam_and_wsdb <- list()
-  for (i in seq_len(length(uid))) {
-    nm <- names(pam[[uid[i]]])
-    tmp <- c(pam[[uid[i]]], wsdb[[uid[i]]]) |>
-      merge() |>
-      stars::st_apply(1:2, sum, na.rm = TRUE)
-    names(tmp) <- nm
-    pam_and_wsdb[[i]] <- tmp / tmp
-  }
-
-  # Export
-  # export_ras(pam_only, out$pam_wsdb)
-  export_ras(wsdb_only, out$pam_wsdb)
-  export_ras(pam_and_wsdb, out$pam_wsdb)
-
-  # -----------------------------------------------------------------------------
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Prepare cea modules for all assessments
-  #   - species_nceamm_pam
-  #   - species_nceamm_wsdb
-  #   - species_nceamm_pam_wsdb
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # All other species
-  # This is ugly and will take way too much space, but it's also the simplest way to do it quickly
-  sp <- here::here("data", "data-biotic", "marine_species", "random_forest_regression_binary")
-  mm <- here::here("data", "data-biotic", "marine_mammals", "binary")
-  bd <- here::here("data", "data-biotic", "sea_birds", "binary")
-  out <- list()
-  out$pam <- here::here("data", "cea_modules", "species_nceamm_pam")
-  out$wsdb <- here::here("data", "cea_modules", "species_nceamm_wsdb")
-  out$pam_wsdb <- here::here("data", "cea_modules", "species_nceamm_pam_wsdb")
-  lapply(out, chk_create)
-  lapply(out, function(x) file.copy(dir(sp, full.names = TRUE), x, overwrite = TRUE))
-  lapply(out, function(x) file.copy(dir(mm, full.names = TRUE), x, overwrite = TRUE))
-  lapply(out, function(x) file.copy(dir(bd, full.names = TRUE), x, overwrite = TRUE))
-
-  # PAM
-  export_ras(pam, out$pam)
-  export_ras(wsdb_only, out$pam)
-
-  # WSDB
-  export_ras(wsdb, out$wsdb)
-  # export_ras(pam_only, out$wsdb)
-
-  # PAM & WSDB
-  # export_ras(pam_only, out$pam_wsdb)
-  export_ras(wsdb_only, out$pam_wsdb)
-  export_ras(pam_and_wsdb, out$pam_wsdb)
-
-
-  # Species list updated, but do not replace old list
-  #   write.csv(file = here::here("data","cea_modules","species_list_nceamm2024.csv"), row.names = FALSE)
-  sp <- vroom::vroom(here::here("data", "cea_modules", "species_list.csv"))
-
-  # Species list
-  sp <- dir(out$pam_wsdb) |>
-    tools::file_path_sans_ext() |>
-    stringr::str_split("-") |>
-    lapply(function(x) data.frame(shortname = x[1], aphiaID = x[2])) |>
-    dplyr::bind_rows() |>
-    dplyr::mutate(scientific_name = gsub("_", " ", shortname)) |>
-    dplyr::mutate(scientific_name = stringr::str_to_sentence(scientific_name)) |>
-    dplyr::mutate(aphiaID = as.numeric(aphiaID))
-
-  # Add taxonomic groups (for figures later on)
-  input <- here::here("data", "data-integrated")
-  taxo <- list(
-    vroom::vroom(
-      here::here(
-        input,
-        "species_list_marine_mammals_birds-7c150fc3",
-        "species_list_marine_mammals_birds-7c150fc3.csv"
-      )
-    ),
-    vroom::vroom(
-      here::here(
-        input,
-        "species_list_nw_atlantic-893b37e8",
-        "species_list_nw_atlantic-893b37e8.csv"
-      )
-    )
-  )
-
-  taxo <- taxo |>
-    dplyr::bind_rows() |>
-    dplyr::select(aphiaID, Phylum, Class) |>
-    dplyr::distinct()
-  sp <- dplyr::left_join(sp, taxo, by = "aphiaID") |>
-    dplyr::mutate(
-      gr1 = ifelse(Phylum == "Chordata", "Vertebrates", "Invertebrates"),
-      gr2 = NA,
-      gr3 = "X"
-    )
-
-  uid <- sp$Phylum %in% c("Annelida", "Brachiopoda", "Bryozoa", "Ctenophora", "Porifera", "Ochrophyta")
-  sp$gr2[uid] <- "Others"
-  sp$gr2[!uid] <- sp$Phylum[!uid]
-  sp$gr2[sp$Phylum == "Chordata"] <- sp$Class[sp$Phylum == "Chordata"]
-  sp$gr2[sp$Class %in% c("Ascidiacea", "Myxini", "Elasmobranchii", "Petromyzonti")] <- "Others2"
-  sp$gr3[sp$Class == "Asteroidea"] <- "Asteroidea"
-  sp$gr3[sp$Class == "Holothuroidea"] <- "Holothuroidea"
-  sp$gr3[sp$Class == "Ophiuroidea"] <- "Ophiuroidea"
-  sp$gr3[sp$Class == "Bivalvia"] <- "Bivalvia"
-  sp$gr3[sp$Class == "Cephalopoda"] <- "Cephalopoda"
-  sp$gr3[sp$Class == "Gastropoda"] <- "Gastropoda"
-  sp$gr3[sp$Class == "Echinoidea"] <- "Echinoidea"
-
-  dplyr::select(sp, -Phylum, -Class) |>
-    write.csv(file = here::here("data", "cea_modules", "species_list_nceamm.csv"), row.names = FALSE)
+  write.csv(file = here::here("data","cea_modules","species_list.csv"), row.names = FALSE)
 }

@@ -58,11 +58,6 @@ pipedat:
     - "0b902b1e" # Species trophic sensitivities
     - "084860fd" # CARMs checklist
     - "08e94a14" # ECSAS seabird survey
-    - "fffd03ba" # Marine mammals acoustics database (PAM)
-    - "a5b97616" # Marine mammals sightings database (WSDB)
-    # ------------------------------------------------------------------------
-    # Habitat data
-    - "49bda6fd" # cea_habitats_dfo
   # ==========================================================================
   data_integration:
     # ------------------------------------------------------------------------
@@ -86,11 +81,6 @@ pipedat:
     - "893b37e8" # Species list North West Atlantic
     - "18869625" # Species occurrences North West Atlantic
     - "7c150fc3" # Marine mammals and birds in eastern Canada
-    - "c54fc945" # Marine mammals acoustics database (PAM)
-    - "30aa4bda" # Marine mammals sightings database (WSDB)
-    # ------------------------------------------------------------------------
-    # Habitat data
-    - "0a7a214c" # cea_habitats_dfo
   # ==========================================================================
   params:
     halpern_layers:
