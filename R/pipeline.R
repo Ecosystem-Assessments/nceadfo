@@ -61,6 +61,7 @@ pipeline <- function() {
   render_frontpate()
   render_report()
   render_webinar()
+  render_nceahab()
 
   # Data for eDrivers
   make_eDrivers()

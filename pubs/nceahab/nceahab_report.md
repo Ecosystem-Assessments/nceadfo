@@ -180,7 +180,7 @@ The open-source software R 4.2.3 was used for all analyses [@rcoreteam2023] and 
 \begin{figure}[H]
 \centering
 \includegraphics{./figures/ncea_ceahab.png}
-\caption{Network-scale cumulative effects assessment of 17 stressors on 205 species in the Scotian Shelf Bioregion explicitly considering the underlying structure of the ecological community (\textbf{left-hand}). Habitats-scale cumulative effects assessment of 17 stressors on 21 marine habitats of the Scotian Shelf Bioregion (\textbf{right-hand}).}
+\caption{\textbf{Network-scale and habitat-scale cumulative effects assessments.} Network-scale cumulative effects assessment of 17 stressors on 205 species in the Scotian Shelf Bioregion in eastern Canada explicitly considering the underlying structure of the ecological community (\textbf{A}). Habitats-scale cumulative effects assessment of 17 stressors on 21 marine habitats of the Scotian Shelf Bioregion in eastern Canada (\textbf{B}).}
 \label{ncea_ceahab}
 \end{figure}
 \newpage
@@ -191,7 +191,7 @@ The open-source software R 4.2.3 was used for all analyses [@rcoreteam2023] and 
 \begin{figure}[H]
 \centering
 \includegraphics{./figures/nceahab_species.png}
-\caption{}
+\caption{\textbf{Joint cumulative effects assessment.} Joint cumulative effects assessment of 17 stressors and on 205 species of the Scotian Shelf Bioregion in eastern Canada (\textbf{A}) taking into consideration direct effects of stressors (\textbf{B}), indirect effects propagating through species interactions (\textbf{C}), and indirect effects arising through cumulative effects to the babitats used by species (\textbf{D}).}
 \label{joint}
 \end{figure}
 \newpage
@@ -202,7 +202,7 @@ The open-source software R 4.2.3 was used for all analyses [@rcoreteam2023] and 
 \begin{figure}[H]
 \centering
 \includegraphics{./figures/nceahab.png}
-\caption{\textbf{À écrire}}
+\caption{\textbf{Ecosystem-scale cumulative effects assessment.} Ecosystem-scale assessment of cumulative effects of 17 stressors on 21 marine habitats and 205 species of the Scotian Shelf Bioregion in eastern Canada using untransformed cumulative effects scores (\textbf{A}) and scores normalized by the number of habitats and species, respectively (\textbf{B}).}
 \label{ecosystem}
 \end{figure}
 \newpage
@@ -212,7 +212,7 @@ The open-source software R 4.2.3 was used for all analyses [@rcoreteam2023] and 
 \begin{figure}[H]
 \centering
 \includegraphics{./figures/metanetwork.png}
-\caption{Multiplex network presenting the presence of an effect of individual stressors on each species and each habitat (colored links), indirect effects arising from ecological interactions (grey links), the indirect effects arising from habitat use (blue links), the indirect effects the overall cumulative effect on each species and habitats (species and habitat point sizes) and the mean effect of stressors (stressor point sizes).}
+\caption{Multiplex network presenting the presence of an effect of individual stressors on each species and each habitat (colored links), indirect effects arising from ecological interactions (grey links), the indirect effects arising from species habitat use (blue links), the overall cumulative effect on each species and habitats (species and habitat point sizes) and the mean effect of stressors (stressor point sizes).}
 \label{metaweb}
 \end{figure}
 \newpage
@@ -222,18 +222,11 @@ The open-source software R 4.2.3 was used for all analyses [@rcoreteam2023] and 
 \begin{figure}[H]
 \centering
 \includegraphics{./figures/contribution_nceahab-2016_2021.png}
-\caption{\textbf{À écrire}}
+\caption{
+   \textbf{Contribution to ecosystem-scale cumulative effects} Mean contribution of 17 stressors to the cumulative effects ($C / km^2$) of 205 species and 21 marine habitats of the Scotian Shelf Bioregion in eastern Canada. Taxonomic groups for invertebrates and vertebrates are grouped at the phylum and classes levels, respectively, for ease of representation and interpretation. The mean contribution for each species and habitat was used to evaluate each stressor's contribution to overall cumulative effects. For habitats, only direct effects of stressors are presented. For species, effects are divided into direct and indirect effects. Direct effects are those attributable to the effect of a stressor on a focal species, while indirect effects are the mean effects of stressors spreading through all 3-species interactions a taxon is involved in, and the mean effect to habitats used by the focal species. The total contribution of each driver to cumulative effect is the sum of their direct and indirect contributions to cumulative effects.}
 \label{contribution}
 \end{figure}
 \newpage
-
-
-
-
-**Figure 3. Comparison of network-scale and species-scale cumulative effects for individual species.** Scatterplot of the mean network-scale cumulative effects as a function of the species-scale cumulative effect over a species distribution ($C / km^2$) for all 193 species considered. The size of the point is the degree of each species, *i.e* the number of interactions in which they are involved in the metaweb. The orange line represents the direct effects baseline, meaning that results from the network-scale assessment cannot fall below that line. Species along the orange line are those for which the network-scale and species-scale assessments are equal; that is species with no predicted interaction. The grey line is the 1:1 relative identity line (*i.e* from 0 to the maximum scores of the species-scale and network-scale assessments). Values above or below that line identify species for which the network-scale assessment is relatively greater or lower than the species-scale assessment, respectively. The yellow line represents the direct effects baseline, *i.e.* the minimum scores predicted when only direct effects are considered. Species with no predicted interactions in the metaweb follow that line. 
-
-**Figure 4. Contribution of stressors and species to indirect effects in the network-scale cumulative effects assessment.** The upper half of the figure illustrates the mean contribution of climate (*n = 6*), coastal (*n = 5*), fisheries (*n = 5*), and marine traffic (*n = 2*) stressors to the regional cumulative effects assessment ($C / km^2$) on invertebrates grouped at the phyla taxonomic level (Arthropoda: *n = 30*; Cnidaria: *n = 20*; Echinodermata: *n = 21*; Mollusca: *n = 19*) and vertebrates grouped at the class taxonomic level (Actinopterygii: *n = 62*; Mammalia: *n = 24*). The contribution can be divided into the direct and indirect contributions of stressors to the cumulative effects of each taxonomic group. Direct effects are those attributable to the effect of stressors on a focal species, while indirect effects are the effects of stressors spreading through species interactions. The size of the point is proportional to the relative contribution of stressor groups to a taxonomic group. The grey gradient of boxes surrounding stressor points is proportional to the combined contribution of all stressors to direct or indirect effects, with low or high contributions presented as pale or dark grey, respectively. The lower half of the figure illustrates the mean contribution of taxonomic groups to the propagation of indirect effects to taxonomic groups. As with the stressors, the size of the points represents the relative contribution of taxonomic groups to indirect effects, and the grey gradient of boxes that of the combined contributions of invertebrates or vertebrates to indirect effects.
-
 
 
 
