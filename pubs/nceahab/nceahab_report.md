@@ -62,7 +62,7 @@ Plan:
 # Context
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-Effective management and mitigation of multiple human impacts on marine ecosystems requires accurate knowledge of the spatial patterns of human activities, and their overlap with vulnerable habitats and species. Despite broad recognition of their importance and likelihood of occurrence, consideration of the cumulative effects of anthropogenic stressors (e.g., habitat loss, invasive species, climate change) to the recovery of species and habitats remains a complex issue. As a result, cumulative interactions among identified stressors, which stressors are most impactful, and how they may be effectively mitigated, often remain unknown. To date, models of cumulative effects on marine ecosystems estimate impacts on species or habitats separately; their connection within the same spatial model has not yet been attempted. Recently, two independent analyses performed for the Scotian Shelf seeked to assess cumulative effects to species [@beauchesne2023a] and habitats [@murphy2023], respectively. The goal of this project is to combine both assessment into an ecosystem-scale cumulative effects assessment that considers direct effects to habitats and species as well as indirect effects to species arising from species interactions and habitat use. This project will be the first application of a joint species-habitat cumulative effects assessment and represents a novel ecosystem-level approach to estimate cumulative impacts of human activities and climate change over large spatial scales. 
+Effective management and mitigation of multiple human impacts on marine ecosystems requires accurate knowledge of the spatial patterns of human activities, and their overlap with vulnerable habitats and species. Despite broad recognition of their importance and likelihood of occurrence, consideration of the cumulative effects of anthropogenic stressors (e.g., habitat loss, invasive species, climate change) to the recovery of species and habitats remains a complex issue. As a result, cumulative interactions among identified stressors, which stressors are most impactful, and how they may be effectively mitigated, often remain unknown. To date, models of cumulative effects on marine ecosystems estimate impacts on species or habitats separately; their connection within the same spatial model has not yet been attempted. Recently, two independent analyses performed for the Scotian Shelf sought to assess cumulative effects to species [@beauchesne2023a] and habitats [@murphy2023], respectively. The goal of this project is to combine both assessment into an ecosystem-scale cumulative effects assessment that considers direct effects to habitats and species as well as indirect effects to species arising from species interactions and habitat use. This project will be the first application of a joint species-habitat cumulative effects assessment and represents a novel ecosystem-level approach to estimate cumulative impacts of human activities and climate change over large spatial scales. 
 
 More specifically, the deliverables of the current project were the following:
 
@@ -80,8 +80,8 @@ More specifically, the deliverables of the current project were the following:
      - Direct effects to species
      - Indirect effects to species arising from species interactions 
      - Indirect effects to species arising from habitats used
-  -  Multiplex figure of cumulative effects including:
-     -  Subnetworks
+  - Multiplex figure of cumulative effects including:
+     - Subnetworks
         - Stressors
         - Species 
         - Habitats 
@@ -110,21 +110,22 @@ Here, we expand conventional cumulative effects assessment approaches (hereafter
 
 ## Habitat-scale cumulative effects assessment model
 
-The habitat-scale assessment was developped by @halpern2008a and requires three types of data modules: 1) the mapped presence or absence of habitats ($H_i$), 2) the spatial distribution and relative intensity of environmental stressors ($D_j$), and 3) the habitat-specific sensitivity of each habitat to each stressor ($\mu_{i,j}$). Data are incorporated into a grid made up of cells of homogeneous size characterizing the study area. Cumulative effect ($C_H$) are predicted for each grid cell ($x$) by summing all individual stressor effects over the set of habitats considered:
+The habitat-scale assessment developed by @halpern2008a is a spatially explicit method that predicts relative cumulative effects on species for a set of stressors. Considering a study area divided into cells of homogeneous size, in a given cell $x$, the effect of a stressor $j$ on habitat $i$ is the product of three components: 1) the mapped presence or absence of habitat $i$, $H_{i,x}$; 2) the spatial distribution and relative intensity of environmental stressor $j$, $D_{j,x}$; 3) the habitat-specific sensitivity of habitat $i$ to stressor $j$ ($\mu_{i,j}$). The cumulative effect in $x$, $C_{H_x}$, is then computed as the sum of all products, i.e. the sum of the effect of all considered stressors on the entire set of habitats:
 
-$$C_{H_x} = \sum_i \sum_j H_{i,x} * D_{j,x} * \mu_{i,j}$$
+$$C_{H_x} = \sum_i \sum_j H_{i,x} D_{j,x} \mu_{i,j}$$
 
 This method predicts relative cumulative effects that incorporates knowledge on habitat distribution, their exposure to environmental stressors, and their known or suspected sensitivity to the effects of stressors. The data modules used for the Scotian Shelf Bioregion habitat-scale cumulative effects assessment are described in @murphy2023. For this analysis, were subsampled the environmental stressors used in the assessment to match those used in the network-scale assessment of the Scotian Shelf Bioregion (see @beauchesne2023b). This results in an assessment of the effects of 17 stressors on 21 habitats in the Scotian Shelf Bioregion. 
 
+
 ## Network-scale cumulative effects assessment model
 
-The approach developed by @beauchesne2023a builds on the method developped by @halpern2008a and combines it with recent progress in theoretical ecology [@stouffer2007; @stouffer2012; @beauchesne2021] to predict the net effects of environmental drivers by considering both direct and trophically-mediated indirect effects in ecological communities. By focusing on interactions rather than individual species, this approach provides the ability to consider how a focal species is affected by multiple environmental pressures, but also integrates how species it interacts with respond to the same pressures and how their response propagates to the species of interest.  
+The approach developed by @beauchesne2023a builds on the method developed by @halpern2008a and combines it with recent progress in theoretical ecology [@stouffer2007; @stouffer2012; @beauchesne2021] to predict the net effects of environmental drivers by considering both direct and trophically-mediated indirect effects in ecological communities. By focusing on interactions rather than individual species, this approach provides the ability to consider how a focal species is affected by multiple environmental pressures, but also integrates how species it interacts with respond to the same pressures and how their response propagates to the species of interest.  
 
-The method proposed by @beauchesne2023a decomposes food webs into eollections of $p$-species interactions called motifs [@milo2002]. Motifs that provide a mesoscale characterization of the structural properties of ecological networks [@bascompte2005; @stouffer2007; @stouffer2010; @stouffer2011; @bramonmora2018]. In a $n$-species food web ($n \geq p$), the collection of $p$-species motifs ($p \leq n$) in which species $k$ is involved in ($M_k = \{m_{k,1},m_{k,2},...,m_{k,x}\}$) forms its motif census ($M_k$) [@stouffer2012; @beauchesne2021]. The motif census provides an overview of all the interactions and connected species likely to affect a species’ dynamics, and the propagation of disturbances through their interactions. 
+The method proposed by @beauchesne2023a decomposes food webs into collections of $p$-species interactions called motifs [@milo2002]. Motifs that provide a mesoscale characterization of the structural properties of ecological networks [@bascompte2005; @stouffer2007; @stouffer2010; @stouffer2011; @bramonmora2018]. In a $n$-species food web ($n \geq p$), the collection of $p$-species motifs ($p \leq n$) in which species $k$ is involved in ($M_k = \{m_{k,1},m_{k,2},...,m_{k,x}\}$) forms its motif census ($M_k$) [@stouffer2012; @beauchesne2021]. The motif census provides an overview of all the interactions and connected species likely to affect a species’ dynamics, and the propagation of disturbances through their interactions. 
 
 The network-scale model focuses on the most abundant 3-species motifs found in empirical food webs (*i.e.* trophic food chain, omnivory, exploitative and apparent competition) [@camacho2007; @stouffer2010] to assess a species motif census. Network-scale cumulative effects scores ($C_N$) are predicted in each grid cell $x$ as follows: 
 
-$$C_{N_x} = \sum_k \frac{1}{|M_k|} \sum_{m_{k,x} \in M_k} \sum_j D_j * \overline{\mu_j} * T_{k_{m_{k,x}}}$$
+$$C_{N_x} = \sum_k \frac{1}{|M_k|} \sum_{m_{k,x} \in M_k} \sum_j D_j \overline{\mu_j} T_{k_{m_{k,x}}}$$
 
 where $k$ is the focal species, $M_k$ is the motif census of species $k$, $m_{k,x}$ are the 3-species motifs of interest forming species $k$'s motifs census, and $D_j$ is the log-transformed and scaled intensity of stressor $j$. 
 
@@ -134,7 +135,7 @@ $$\overline{\mu_j} = w_1 \mu_{k,j} + w_2 \sum_l^2 \mu_{l,j}$$
 
 where $\mu_{k,j}$ and $\mu_{l,j}$ are the sensitivities to stressor $j$ of focal species $k$ and of the two species interacting with species $k$ in motif $m_{k,x}$, respectively. 
 
-$w_1$ and $w_2$ are weighting factors used to give a relative importance to direct -- *i.e.* effects to species $k$ -- and indirect -- *i.e.* effects propagating through species $l$ to species $k$ -- effects in the assessment. $w_1 + 2 w_2 = 1$ so that weighting provides a  percent contribution to direct and indirect effects. Here, we used $w1 = 0.5$ and $w2 = 0.25$ under the assumption that direct and indirect would have equal weights. 
+$w_1$ and $w_2$ are weighting factors used to give a relative importance to direct -- *i.e.* effects to species $k$ -- and indirect -- *i.e.* effects propagating through species $l$ to species $k$ -- effects in the assessment. $w_1 + 2 w_2 = 1$ so that weighting provides a percent contribution to direct and indirect effects. Here, we used $w1 = 0.5$ and $w2 = 0.25$ under the assumption that direct and indirect would have equal weights. 
 
 $T_{k_{m_{k,x}}}$ is the trophic sensitivity of species $k$ in motif $m_{k,x}$. The trophic sensitivity of a species relates to a species propensity to be affected by trophically-mediated indirect effects. This sensitivity is related to the structure of the community, a species' trophic position, and the pathways of effects through which stressors are indirectly propagating to a species [@beauchesne2021]. 
 
@@ -144,9 +145,11 @@ In terms of data requirements, this network-scale assessment builds on the same 
 
 The network-scale assessment considers that indirect effects propagate from one species to another through their ecological interactions. Similarly, it is expected that indirect effects of stressors will propagate to species from effects to their habitats. Indirect effects to species arising from habitats were assessed as a function of cumulative effects to individual habitats and species habitat use in each grid cell $x$ as follows: 
 
-$$I_{H_{k,x}} = \sum_i^{H_x} \frac{U_{i,x}}{\sum_{H_x} U_{k,x}} \sum_j D_{j,x} * \mu_{i,j}$$
+$$
+I_{k,x} = \frac{1}{\sum_{i}U_{k,i,x}} \sum_i U_{k,i,x} \sum_j D_{j,x} \mu_{i,j}
+$$
 
-where $k$ is the focal species, $i$ are habitats, $j$ are stressors, $H_x$ are habitats found in cell $x$, $D_j$ is the log-transformed and scaled intensity of stressor $j$, and $\mu_{i,j}$ is the habitat-specific sensitivity of each habitat to each stressor. Since multiple habitats may be found in a single cell, $U_{k_{i,x}}$ is the percent use of habitat $i$ by species $k$ in cell $x$, $\sum_{H_x} U_{k,x}$ is total percent habitat use by species $k$ in cell $x$, and dividing them together scales the contribution of each habitat to the indirect effects to species $k$ as a function of their total percent use in cell $x$. In our case, we considered that habitat were equally distributed within each $1 km^2$ grid cell and that species used the whole cell. The fraction for habitat used thus becomes $\frac{1}{|H_k|}$, where $|H_k|$ is the number of habitats used in cell $x$ by species $k$. 
+where $k$ is the focal species, $i$ a habitat, $j$ a stressor, $H_x$ are habitats found in cell $x$, $D_j$ is the log-transformed and scaled intensity of stressor $j$, and $\mu_{i,j}$ is the habitat-specific sensitivity of each habitat to each stressor. Since multiple habitats may be found in a single cell, $U_{k,i,x}$ is the percent use of habitat $i$ by species $k$ in cell $x$, $\sum_{i}U_{k,i,x}$ is total percent habitat use by species $k$ in cell $x$, and dividing them together scales the contribution of each habitat to the indirect effects to species $k$ as a function of their total percent use in cell $x$. In our case, we considered that habitat were equally distributed within each $1 km^2$ grid cell and that species used the whole cell. The fraction for habitat used thus becomes $\frac{1}{|H_k|}$, where $|H_k|$ is the number of habitats used in cell $x$ by species $k$. 
 
 Species and habitats are distributed in 3-dimension in marine environment, which is not captured by the 2-dimensional spatial data used for the assessment. This means, for example, that a pelagic species such as sea bird could be present in a grid cell where benthic habitats are also present without using the benthic habitats in actuality. To account for the 3-dimensional distribution of habitats and species, we used environmental traits to match which habitats may be used by which species. 
 
@@ -159,7 +162,7 @@ We used this categorization for species and habitats to assess which habitats ma
 
 ## Joint cumulative effects to species 
 
-Results from the network-scale assessment (*i.e.* direct stressors effects and indirect effects through species interactions) are then combined with the indirect effects to species through habitats. As the units from these assessments cannot be compared, we scale both assessments before combining them together. Results from the network-scale assessment were normalized between 0 and 2 to accound for the two types of effects considered in that assessment, while indirect effects to species through habitats was normalized between 0 and 1. Results from both assessment were then summed within each grid cell to provide a joint cumulative effects assessment to species that considers direct stressors effects and indirect effects arising through species interactions and habitats. 
+Results from the network-scale assessment (*i.e.* direct stressors effects and indirect effects through species interactions) are then combined with the indirect effects to species through habitats. As the units from these assessments cannot be compared, we scale both assessments before combining them together. Results from the network-scale assessment were normalized between 0 and 2 to account for the two types of effects considered in that assessment, while indirect effects to species through habitats was normalized between 0 and 1. Results from both assessment were then summed within each grid cell to provide a joint cumulative effects assessment to species that considers direct stressors effects and indirect effects arising through species interactions and habitats. 
 
 ## Ecosystem-scale cumulative effects assessment
 
@@ -191,7 +194,7 @@ The open-source software R 4.2.3 was used for all analyses [@rcoreteam2023] and 
 \begin{figure}[H]
 \centering
 \includegraphics{./figures/nceahab_species.png}
-\caption{\textbf{Joint cumulative effects assessment.} Joint cumulative effects assessment of 17 stressors and on 205 species of the Scotian Shelf Bioregion in eastern Canada (\textbf{A}) taking into consideration direct effects of stressors (\textbf{B}), indirect effects propagating through species interactions (\textbf{C}), and indirect effects arising through cumulative effects to the babitats used by species (\textbf{D}).}
+\caption{\textbf{Joint cumulative effects assessment.} Joint cumulative effects assessment of 17 stressors and on 205 species of the Scotian Shelf Bioregion in eastern Canada (\textbf{A}) taking into consideration direct effects of stressors (\textbf{B}), indirect effects propagating through species interactions (\textbf{C}), and indirect effects arising through cumulative effects to the habitats used by species (\textbf{D}).}
 \label{joint}
 \end{figure}
 \newpage
