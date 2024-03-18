@@ -56,6 +56,7 @@ render_nceahab <- function() {
     here::here("figures", "nceahab", "ncea_ceahab.png"),
     here::here("figures", "nceahab", "nceahab_species.png"),
     here::here("figures", "nceahab", "nceahab.png"),
+    here::here("figures", "nceahab", "diagram.png"),
     here::here("figures", "metanetwork", "metanetwork.png"),
     here::here("figures", "contribution", "contribution_nceahab-2016_2021.png")
   )
