@@ -48,18 +48,18 @@ fig_metanetwork_nceahab <- function(bg = "#ffffff", out = here::here("figures", 
   # Function to add transparent nodes for spacing between each node groups
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   randomString <- function() paste0(letters[runif(20, 1, 26)], collapse = "")
-  insertRow <- function(dat, group, network) {
+  insertRow <- function(dat, network, subnetwork) {
     # New row to add
     newrow <- data.frame(
-      group = group,
       network = network,
-      name = randomString(),
-      cex = 0,
-      col = "#00000000"
+      subnetwork = subnetwork,
+      category = randomString(),
+      col = "#00000000",
+      size = 0
     )
 
     # ID in data.frame where to add rows
-    uid <- which(dat$network == network) |>
+    uid <- which(dat$subnetwork == subnetwork) |>
       sort(decreasing = TRUE)
 
     # Add rows
@@ -72,9 +72,9 @@ fig_metanetwork_nceahab <- function(bg = "#ffffff", out = here::here("figures", 
     dat
   }
 
-  insertRow_ <- function(dat, group, network, nrep) {
+  insertRow_ <- function(dat, network, subnetwork, nrep) {
     for (i in 1:nrep) {
-      dat <- insertRow(dat, group, network)
+      dat <- insertRow(dat, network, subnetwork)
     }
     dat
   }
@@ -214,17 +214,13 @@ fig_metanetwork_nceahab <- function(bg = "#ffffff", out = here::here("figures", 
     dplyr::rename(size = cea) |>
     dplyr::mutate(size = log(size + 1))
 
-
-  # WARNING: The following is only to make the code work
-  # This should be removed once we transition to the metanetwork package
-  # nodes <- dplyr::rename(nodes, group = network, network = subnetwork, name = category)
-
   # Add rows
-  # nodes <- nodes |>
-  #   insertRow_("Stressors", "Marine traffic", 4) |>
-  #   insertRow_("Stressors", "Fisheries", 1) |>
-  #   insertRow_("Stressors", "Coastal", 1) |>
-  #   insertRow_("Stressors", "Climate", 1)
+  nodes <- nodes |>
+    insertRow_("Stressors", "Marine traffic", 1) |>
+    insertRow_("Stressors", "Fisheries", 1) |>
+    insertRow_("Stressors", "Coastal", 1) |>
+    insertRow_("Stressors", "Climate", 1) |>
+    insertRow_("Habitats", "Pelagic", 1)
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Links
@@ -237,6 +233,8 @@ fig_metanetwork_nceahab <- function(bg = "#ffffff", out = here::here("figures", 
   links <- dplyr::bind_rows(links) |>
     dplyr::select(from, to = name, col)
 
+  # Change marine traffic name
+  nodes$subnetwork <- stringr::str_replace(nodes$subnetwork, "Marine traffic", "Shipping")
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Figure
@@ -248,97 +246,4 @@ fig_metanetwork_nceahab <- function(bg = "#ffffff", out = here::here("figures", 
     legend = FALSE,
     img_size = 400
   )
-
-
-
-
-
-  # # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  # # Graph elements
-  # # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
-  # # Combine in a single object
-  # metanetwork <- list()
-  # metanetwork$nodes <- nodes
-  # metanetwork$links <- links
-
-  # # Network order
-  # orderNet <- unique(nodes$network)
-
-  # # Network boundaries
-  # metanetwork$networkGroup <- bound(metanetwork, order = orderNet)
-
-  # # Node coordinates
-  # metanetwork <- nodePos(metanetwork, edgeRad = .875, groupRad = .6)
-
-  # # Manually add colors
-  # metanetwork$networkGroup <- metanetwork$networkGroup |>
-  #   dplyr::left_join(nodes[, c("network", "col")], by = c("Var1" = "network")) |>
-  #   dplyr::distinct()
-
-  # # Others
-  # rad1 <- .925
-  # rad2 <- 1
-  # shadowEdge <- TRUE
-
-  # # Output
-  # rcea::chk_create(out)
-
-  # png(
-  #   here::here(out, nm),
-  #   res = 300,
-  #   width = 300,
-  #   height = 300,
-  #   units = "mm"
-  # )
-
-  # # Plot
-  # par(mar = c(2, 2, 2, 2), bg = bg)
-  # plot0(x = c(-1.1, 1.1))
-
-  # # Adjust some group names
-  # uid <- metanetwork$networkGroup$Var1 == "Others2"
-  # metanetwork$networkGroup$Var1[uid] <- "Others"
-  # uid <- metanetwork$networkGroup$Var1 == "Marine traffic"
-  # metanetwork$networkGroup$Var1[uid] <- "."
-  # boxGroup(metanetwork,
-  #   rad1 = rad1,
-  #   colBox = metanetwork$networkGroup$col,
-  #   colNames = "#ffffff",
-  #   border = "transparent",
-  #   # border = '#000000',
-  #   cexNetwork = .9
-  # )
-  # arctext2(".", "Marine", "traffic")
-
-  # plotLinks(metanetwork, cols = metanetwork$links$col, lwd = 0.5)
-
-  # if (shadowEdge) {
-  #   points(metanetwork$nodes$x,
-  #     metanetwork$nodes$y,
-  #     pch = 20,
-  #     cex = (metanetwork$nodes$cex * 3),
-  #     col = "#d7d7d7"
-  #   )
-  # }
-
-  # points(metanetwork$nodes$x,
-  #   metanetwork$nodes$y,
-  #   pch = 20,
-  #   cex = (metanetwork$nodes$cex * 2),
-  #   col = metanetwork$nodes$col
-  # )
-
-  # # Add Vertebrates, Invertebrates and Stressors
-  # metanetwork$nodes$network <- metanetwork$nodes$group
-  # metanetwork$networkGroup <- bound(metanetwork, order = unique(metanetwork$nodes$network))
-  # metanetwork <- nodePos(metanetwork, edgeRad = .875, groupRad = .5)
-
-  # boxGroup2(metanetwork,
-  #   rad1 = 1.03, rad2 = 1.13,
-  #   colBox = "#00000000", colNames = "#000000",
-  #   border = "#000000",
-  #   cexNetwork = 1.25
-  # )
-
-  # dev.off()
 }

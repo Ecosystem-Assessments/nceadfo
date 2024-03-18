@@ -46,7 +46,7 @@ fig_contribution_nceahab <- function(direct, indirect, period) {
   colVer <- "#6a5024"
 
   # Colors for habitats
-  colHab <- c("#535d8aFF", "#535d8aBB", "#535d8a77")
+  colHab <- c("#535d8aFF", "#535d8aBB", "#535d8a77", "#535d8a44")
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=#
   # Data lists
@@ -89,8 +89,13 @@ fig_contribution_nceahab <- function(direct, indirect, period) {
       col = colHab[2]
     ),
     data.frame(
-      gr2 = "Pelagic",
-      h = c("SPELAGIC", "DPELAGIC"),
+      gr2 = "Pelagic (shallow)",
+      h = c("SPELAGIC"),
+      col = colHab[4]
+    ),
+    data.frame(
+      gr2 = "Pelagic (deep)",
+      h = c("DPELAGIC"),
       col = colHab[3]
     )
   ) |>
